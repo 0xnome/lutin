@@ -5,8 +5,6 @@ skinparam TitleFontSize 20
 skinparam sequenceTitleFontSize 20
 skinparam sequenceTitleFontStyle plain
 
-title coucou\n----
-
 !define __ ➝
 !define O •
 !define DECS DECS
@@ -53,7 +51,9 @@ state E6 : EXP __ O T
 state E7 : INSTRS INSTRS id O opaff
 
 state E8 : DECS __ DECS const AFFECTS O pv
-state E8 : AFFECTS __ AFFECTS O id eg num
+state E8 : AFFECTS __ AFFECTS O v id eg num
+
+state E9 : AFFECTS __ id O eg num
 
 state E10 : IDS __ id O
 
@@ -66,7 +66,96 @@ state E13 : IDS __ IDS v O id
 
 state E14 : IDS __ IDS v id O
 
+state E15 : INSTRS __ INSTRS lire id O pv
 
+state E16 : EXP __ EXP O add T
+state E16 : EXP __ EXP O sous T
+
+state E17 : EXP __ T O
+
+state E18 : INSTRS __ INSTRS id opaff O EXP pv
+state E18 : EXP __ O EXP add T
+state E18 : EXP __ O EXP sous T
+state E18 : EXP __ O T
+
+state E19 :  DECS __ DECS const AFFECTS pv O
+
+state E20 : AFFECTS __ AFFECT v O id eg num
+
+state E21 : AFFECTS __ id eg O num
+
+state E22 : INSTRS __ INSTRS lire id pv O
+
+state E23 : EXP __ EXP add O T
+state E23 : T __ O T mult F
+state E23 : T __ O T div F
+state E23 : T __ O F
+state E23 : F __ O id
+state E23 : F __ O num
+state E23 : F __ O parouv EXP parfer
+
+state E24 : EXP __ EXP sous O T
+state E24 : T __ O T mult F
+state E24 : T __ O T div F
+state E24 : T __ O F
+state E24 : F __ O id
+state E24 : F __ O num
+state E24 : F __ O parouv EXP parfer
+
+state E25 : INSTRS __ INSTRS id aff EXP O pv
+state E25 : EXP __ EXP O add T
+state E25 : EXP __ EXP O sous T
+
+state E26 : EXP __ T O
+
+state E27 : AFFECTS __ AFFECT v id O eg num
+
+state E28 : AFFECTS __ id eg num O
+
+state E29 : EXP __ EXP add T O
+state E29 : T __ T O mult F
+state E29 : T __ T O div F
+
+state E30 : T __ F O
+
+state E31 : F __ id O
+
+state E32 : F __ num O
+
+state E33 : F __ parouv O EXP parfer
+state E33 : EXP __ EXP O add T
+state E33 : EXP __ EXP O sous T
+state E33 : EXP __ O
+
+state E34 : EXP __ EXP sous T O
+state E34 : T __ T O mult F
+state E34 : T __ T O div F
+
+state E35 : INSTRS __ INSTRS id opaff EXP pv O
+
+state E36 : AFFECTS __ AFFECTS id  eg O num
+
+state E37 : T __ T mult O F
+state E37 : F __ O id
+state E37 : F __ O num
+state E37 : F __ O parouv EXP parfer
+
+state E38 : T __ T div O F
+state E38 : F __ O id
+state E38 : F __ O num
+state E38 : F __ O parouv EXP parfer
+
+state E39 : F __ parouv EXP O parfer
+state E39 : EXP __ EXP O add T
+state E39 : EXP __ EXP O sous T
+
+state E40 : AFFECTS __ AFFECTS id eg num O
+
+state E41 : T __ T mult F O
+
+state E42 : T __ T div F O
+
+state E43 : F __ parouv EXP parfer O
 
 [*] -> E0
 E0 --> E1 : DECS
@@ -84,5 +173,52 @@ E2 --> E5 : lire
 E2 --> E6 : ecire
 E2 --> E7 : id
 E3 --> E8 : AFFECTS
+E3 --> E9 : id
+E9 --> E21 : eg
+E5 --> E15 : id
+E6 --> E16 : EXP
+E6 --> E17 : T
+E7 --> E18  : opaff
+E8 --> E19 : pv
+E8 --> E20 : v
+E15 --> E22 : pv
+E16 --> E23 : add
+E16 --> E24 : sous
+E18 --> E25 : EXP
+E18 --> E26 : T
+E24 --> E30 : F
+E24 --> E31 : id
+E24 --> E32 : num
+E24 --> E33 : parouv
+E24 --> E34 : T
+E25 --> E35 : pv
+E25 --> E23 : add
+E25 --> E24 : sous
+E20 --> E27 : id
+E27 --> E36 : eg
+E37 --> E40 : num
+E21 --> E28 : num
+E23 --> E29 : T
+E23 --> E30 : F
+E23 --> E31 : id
+E23 --> E32 : num
+E23 --> E33 : parouv
+E29 --> E37 : mult
+E29 --> E38 : div
+E34 --> E38 : div
+E34 --> E37 : mult
+E33 --> E39 : EXP
+E39 --> E43 : parfer
+E39 --> E23 : add
+E39 --> E24 : sous
+E37 --> E41 : F
+E37 --> E31 : id
+E37 --> E32 : num
+E37 --> E33 : parouv
+E38 --> E42 : F
+E38 --> E31 : id
+E38 --> E32 : num
+E38 --> E33 : parouv
+
 
 @enduml
