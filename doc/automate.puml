@@ -1,0 +1,52 @@
+@startuml
+skinparam shadowing false
+skinparam monochrome true
+skinparam TitleFontSize 20
+skinparam sequenceTitleFontSize 20
+skinparam sequenceTitleFontStyle plain
+
+title coucou\n----
+
+!define __ ➝
+!define O •
+!define DECS DECS
+
+[*] -> E0
+state E0 : S __ O PROG
+state E0 : PROG __ O DECS INSTRS
+state E0 : DECS __ O DECS var IDS pv
+state E0 : DECS __ O DECS const AFFECTS pv
+state E0 : DECS __ O
+
+state E1 : PROG __ DECS O INSTRS
+state E1 : INSTRS __ O INSTRS lire id pv
+state E1 : INSTRS __ O INSTRS ecrire EXP pv
+state E1 : INSTRS __ O INSTRS id opaff pv
+state E1 : INSTRS __ O
+state E1 : DECS __ DECS O var IDS pv
+state E1 : DECS __ DECS O const AFFECTS pv
+
+state E2 : PROG __ DECS INSTRS O
+state E2 : INSTRS __ INSTRS O lire id pv
+state E2 : INSTRS __ INSTRS O ecrire EXP pv
+state E2 : INSTRS __ INSTRS O id opaff EXP pv
+
+state E3 : DECS __ DECS const O AFFECTS pv
+state E3 : AFFECTS __ O AFFECTS v id eg num
+state E3 : AFFECTS __ O id eg num
+
+state E4 : DECS __ DECS var O IDS pv
+state E4 : IDS __ O IDS v id
+state E4 : IDS __ O id
+
+state F : S __ PROG O
+state Accept
+
+E0 --> E1 : DECS
+E1 --> E2 : INSTRS
+F --> Accept : $
+E0 --> F : PROG
+E1 --> E3 : const
+E2 --> E4 : var
+
+@enduml
