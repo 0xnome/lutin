@@ -1,9 +1,14 @@
 @startuml
 skinparam shadowing false
-skinparam monochrome true
+skinparam monochrome false
 skinparam TitleFontSize 20
 skinparam sequenceTitleFontSize 20
 skinparam sequenceTitleFontStyle plain
+
+skinparam state {
+  BackgroundColor white
+  BackgroundColor<<Warning>> lightblue
+}
 
 !define __ ➝
 !define O •
@@ -11,8 +16,6 @@ skinparam sequenceTitleFontStyle plain
 !define T TERME
 !define F FACTEUR
 state F : S __ PROG O
-
-state Accept
 
 state E0 : S __ O PROG
 state E0 : PROG __ O DECS INSTRS
@@ -68,6 +71,7 @@ state E14 : IDS __ IDS v id O
 
 state E15 : INSTRS __ INSTRS lire id O pv
 
+state E16 : INSTRS __ INSTRS lire EXP O pv
 state E16 : EXP __ EXP O add T
 state E16 : EXP __ EXP O sous T
 
@@ -122,6 +126,7 @@ state E31 : F __ id O
 
 state E32 : F __ num O
 
+
 state E33 : F __ parouv O EXP parfer
 state E33 : EXP __ EXP O add T
 state E33 : EXP __ EXP O sous T
@@ -157,10 +162,13 @@ state E42 : T __ T div F O
 
 state E43 : F __ parouv EXP parfer O
 
+state E44 : INSTRS __ INSTRS lire EXP pv O
+
+
 [*] -> E0
 E0 --> E1 : DECS
 E1 --> E2 : INSTRS
-F --> Accept : $
+F --> [*] : $
 E0 --> F : PROG
 E1 --> E3 : const
 E2 --> E4 : var
@@ -170,7 +178,7 @@ E4 --> E10 : id
 E11 --> E13 : v
 E13 --> E14 : id
 E2 --> E5 : lire
-E2 --> E6 : ecire
+E2 --> E6 : ecrire
 E2 --> E7 : id
 E3 --> E8 : AFFECTS
 E3 --> E9 : id
@@ -183,7 +191,8 @@ E8 --> E19 : pv
 E8 --> E20 : v
 E15 --> E22 : pv
 E16 --> E23 : add
-E16 --> E24 : sous
+E16 --> E_24 : sous
+E16 --> E44 : pv
 E18 --> E25 : EXP
 E18 --> E26 : T
 E24 --> E30 : F
@@ -196,15 +205,15 @@ E25 --> E23 : add
 E25 --> E24 : sous
 E20 --> E27 : id
 E27 --> E36 : eg
-E37 --> E40 : num
+E36 --> E40 : num
 E21 --> E28 : num
 E23 --> E29 : T
-E23 --> E30 : F
-E23 --> E31 : id
-E23 --> E32 : num
+E23 --> E_30 : F
+E23 --> E_31 : id
+E23 --> E_32 : num
 E23 --> E33 : parouv
 E29 --> E37 : mult
-E29 --> E38 : div
+E29 --> E_38 : div
 E34 --> E38 : div
 E34 --> E37 : mult
 E33 --> E39 : EXP
@@ -212,13 +221,19 @@ E39 --> E43 : parfer
 E39 --> E23 : add
 E39 --> E24 : sous
 E37 --> E41 : F
-E37 --> E31 : id
-E37 --> E32 : num
+E37 --> E_31 : id
+E37 --> E_32 : num
 E37 --> E33 : parouv
 E38 --> E42 : F
 E38 --> E31 : id
 E38 --> E32 : num
 E38 --> E33 : parouv
 
+state E29 <<Warning>>
+state E33 <<warning>>
+state E34 <<warning>>
+state E0 <<warning>>
+state E1 <<warning>>
+state E2 <<warning>>
 
 @enduml
