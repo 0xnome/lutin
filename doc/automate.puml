@@ -15,7 +15,7 @@ skinparam state {
 !define DECS DECS
 !define T TERME
 !define F FACTEUR
-state F : S __ PROG O
+state Final : S __ PROG O
 
 state E0 : S __ O PROG
 state E0 : PROG __ O DECS INSTRS
@@ -24,12 +24,13 @@ state E0 : DECS __ O DECS const AFFECTS pv
 state E0 : DECS __ O
 
 state E1 : PROG __ DECS O INSTRS
+state E1 : DECS __ DECS O var IDS pv
+state E1 : DECS __ DECS O const AFFECTS pv
 state E1 : INSTRS __ O INSTRS lire id pv
 state E1 : INSTRS __ O INSTRS ecrire EXP pv
 state E1 : INSTRS __ O INSTRS id opaff pv
 state E1 : INSTRS __ O
-state E1 : DECS __ DECS O var IDS pv
-state E1 : DECS __ DECS O const AFFECTS pv
+
 
 state E2 : PROG __ DECS INSTRS O
 state E2 : INSTRS __ INSTRS O lire id pv
@@ -46,12 +47,20 @@ state E4 : IDS __ O id
 
 
 state E5 : INSTRS __ INSTRS lire O id pv
+
 state E6 : INSTRS __ INSTRS lire O EXP pv
 state E6 : EXP __ O EXP add T
 state E6 : EXP __ O EXP sous T
 state E6 : EXP __ O T
+state E6 : T __ O T mult F
+state E6 : T __ O T div F
+state E6 : T __ O F
+state E6 : F __ O id
+state E6 : F __ O num
+state E6 : F __ O parouv EXP parfer
 
-state E7 : INSTRS INSTRS id O opaff
+
+state E7 : INSTRS __ INSTRS id O opaff EXP pv
 
 state E8 : DECS __ DECS const AFFECTS O pv
 state E8 : AFFECTS __ AFFECTS O v id eg num
@@ -76,11 +85,19 @@ state E16 : EXP __ EXP O add T
 state E16 : EXP __ EXP O sous T
 
 state E17 : EXP __ T O
+state E17 : T __ T O mult F
+state E17 : T __ T O div F
 
 state E18 : INSTRS __ INSTRS id opaff O EXP pv
 state E18 : EXP __ O EXP add T
 state E18 : EXP __ O EXP sous T
 state E18 : EXP __ O T
+state E18 : T __ O T mult F
+state E18 : T __ O T div F
+state E18 : T __ O F
+state E18 : F __ O id
+state E18 : F __ O num
+state E18 : F __ O parouv EXP parfer
 
 state E19 :  DECS __ DECS const AFFECTS pv O
 
@@ -110,8 +127,6 @@ state E25 : INSTRS __ INSTRS id aff EXP O pv
 state E25 : EXP __ EXP O add T
 state E25 : EXP __ EXP O sous T
 
-state E26 : EXP __ T O
-
 state E27 : AFFECTS __ AFFECT v id O eg num
 
 state E28 : AFFECTS __ id eg num O
@@ -128,9 +143,15 @@ state E32 : F __ num O
 
 
 state E33 : F __ parouv O EXP parfer
-state E33 : EXP __ EXP O add T
-state E33 : EXP __ EXP O sous T
-state E33 : EXP __ O
+state E33 : EXP __ O EXP add T
+state E33 : EXP __ O EXP sous T
+state E33 : EXP __ O T
+state E33 : T __ O T mult F
+state E33 : T __ O T div F
+state E33 : T __ O F
+state E33 : F __ O id
+state E33 : F __ O num
+state E33 : F __ O parouv EXP parfer
 
 state E34 : EXP __ EXP sous T O
 state E34 : T __ T O mult F
@@ -167,73 +188,117 @@ state E44 : INSTRS __ INSTRS lire EXP pv O
 
 [*] -> E0
 E0 --> E1 : DECS
+E0 --> Final : PROG
+
 E1 --> E2 : INSTRS
-F --> [*] : $
-E0 --> F : PROG
 E1 --> E3 : const
-E2 --> E4 : var
-E4 --> E11 : IDS
-E11 --> E12 : pv
-E4 --> E10 : id
-E11 --> E13 : v
-E13 --> E14 : id
+E1 --> E4 : var
+
 E2 --> E5 : lire
 E2 --> E6 : ecrire
 E2 --> E7 : id
+
 E3 --> E8 : AFFECTS
 E3 --> E9 : id
-E9 --> E21 : eg
+
+E4 --> E10 : id
+E4 --> E11 : IDS
+
 E5 --> E15 : id
+
 E6 --> E16 : EXP
 E6 --> E17 : T
+E6 --> E30 : F
+E6 --> E31 : id
+E6 --> E32 : num
+E6 --> E33 : parouv
+
 E7 --> E18  : opaff
+
 E8 --> E19 : pv
 E8 --> E20 : v
+
+E9 --> E21 : eg
+
+E11 --> E12 : pv
+E11 --> E13 : v
+
+E13 --> E14 : id
+
 E15 --> E22 : pv
+
 E16 --> E23 : add
-E16 --> E_24 : sous
+E16 --> E24 : sous
 E16 --> E44 : pv
+
+E17 --> E37 : mult
+E17 --> E38 : div
+
+E18 --> E17 : T
 E18 --> E25 : EXP
-E18 --> E26 : T
+E18 --> E30 : F
+E18 --> E31 : id
+E18 --> E32 : num
+
+E20 --> E27 : id
+
+E21 --> E28 : num
+
+E23 --> E29 : T
+E23 --> E30 : F
+E23 --> E31 : id
+E23 --> E32 : num
+E23 --> E33 : parouv
+
 E24 --> E30 : F
 E24 --> E31 : id
 E24 --> E32 : num
 E24 --> E33 : parouv
 E24 --> E34 : T
-E25 --> E35 : pv
+
 E25 --> E23 : add
 E25 --> E24 : sous
-E20 --> E27 : id
+E25 --> E35 : pv
+
 E27 --> E36 : eg
-E36 --> E40 : num
-E21 --> E28 : num
-E23 --> E29 : T
-E23 --> E_30 : F
-E23 --> E_31 : id
-E23 --> E_32 : num
-E23 --> E33 : parouv
+
 E29 --> E37 : mult
-E29 --> E_38 : div
-E34 --> E38 : div
-E34 --> E37 : mult
+E29 --> E38 : div
+
+E33 --> E33 : parouv
 E33 --> E39 : EXP
-E39 --> E43 : parfer
-E39 --> E23 : add
-E39 --> E24 : sous
-E37 --> E41 : F
-E37 --> E_31 : id
-E37 --> E_32 : num
+E33 --> E30 : F
+E33 --> E31 : id
+E33 --> E32 : num
+E33 --> E17 : T
+
+
+E34 --> E37 : mult
+E34 --> E38 : div
+
+E36 --> E40 : num
+
+E37 --> E31 : id
+E37 --> E32 : num
 E37 --> E33 : parouv
-E38 --> E42 : F
+E37 --> E41 : F
+
 E38 --> E31 : id
 E38 --> E32 : num
 E38 --> E33 : parouv
+E38 --> E42 : F
+
+E39 --> E23 : add
+E39 --> E24 : sous
+E39 --> E43 : parfer
+
+Final --> [*] : $
 
 state E29 <<Warning>>
-state E33 <<warning>>
 state E34 <<warning>>
 state E0 <<warning>>
 state E1 <<warning>>
 state E2 <<warning>>
+state E17 <<warning>>
 
 @enduml
