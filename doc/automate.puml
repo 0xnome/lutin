@@ -48,7 +48,7 @@ state E4 : IDS __ O id
 
 state E5 : INSTRS __ INSTRS lire O id pv
 
-state E6 : INSTRS __ INSTRS lire O EXP pv
+state E6 : INSTRS __ INSTRS ecrire O EXP pv
 state E6 : EXP __ O EXP add T
 state E6 : EXP __ O EXP sous T
 state E6 : EXP __ O T
@@ -80,7 +80,7 @@ state E14 : IDS __ IDS v id O
 
 state E15 : INSTRS __ INSTRS lire id O pv
 
-state E16 : INSTRS __ INSTRS lire EXP O pv
+state E16 : INSTRS __ INSTRS ecire EXP O pv
 state E16 : EXP __ EXP O add T
 state E16 : EXP __ EXP O sous T
 
@@ -183,7 +183,7 @@ state E42 : T __ T div F O
 
 state E43 : F __ parouv EXP parfer O
 
-state E44 : INSTRS __ INSTRS lire EXP pv O
+state E44 : INSTRS __ INSTRS ecrire EXP pv O
 
 
 [*] -> E0
