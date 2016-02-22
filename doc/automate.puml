@@ -239,6 +239,7 @@ E18 --> E25 : EXP
 E18 --> E30 : F
 E18 --> E31 : id
 E18 --> E32 : num
+E18 --> E33 : parouv
 
 E20 --> E27 : id
 
