@@ -177,10 +177,10 @@ fi
 
 if [ $resultGlobal = "Echec" ]
 then
-   exit 0
+   exit 1
 fi
 
 if [ $resultGlobal = "Ok" ]
 then
-   exit 1
+   exit 0
 fi

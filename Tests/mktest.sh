@@ -9,10 +9,10 @@ for i in ??.*
 do
   ./test.sh $i results.csv
   result=$?
-  if [ $result -eq 0 ]
+  if [ $result -eq 1 ]
   then
     let "nKo=$nKo+1"
-  elif [ $result -eq 1 ]
+  elif [ $result -eq 0 ]
   then
     let "nOk=$nOk+1"
   else
