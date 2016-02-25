@@ -26,3 +26,11 @@ echo "Failed tests     : $nKo"
 echo "Misformed tests  : $nMis"
 echo "-----------------------"
 echo "Total            : $nTotal"
+
+# Au moins une erreur, ya échec donc on retourne 1
+if ! [ ${nKo} -eq 0 ]
+then
+	exit 1
+else
+	exit 0
+fi
