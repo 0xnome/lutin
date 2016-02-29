@@ -17,12 +17,13 @@ class Symbole{
 	+Symbole (int id)
 	+operator int() const
 }
-class AffectationConstantes
-class AffectationConstanteNonFinale
-class AffectationConstanteFinale
-class Identificateurs
-class IdentificateurNonFinal
-class IdentificateurFinal
+class AffectationConstante{
+	+AffectationConstante suivant
+}
+class Identificateur{
+	+Identificateur suivant
+}
+class IdentificateurFacteur
 class BlocDeclarations
 class DeclarationVariable
 class DeclarationConstante
@@ -44,8 +45,8 @@ class ConstanteNumerique
 Symbole <|-- Programme
 Symbole <|-- BlocDeclarations
 Symbole <|-- BlocInstructions
-Symbole <|-- AffectationConstantes
-Symbole <|-- Identificateurs
+Symbole <|-- AffectationConstante
+Symbole <|-- Identificateur
 Symbole <|-- Expression
 
 BlocDeclarations *-- Programme
@@ -54,15 +55,9 @@ BlocDeclarations *-- DeclarationVariable
 BlocDeclarations <|-- DeclarationConstante
 BlocDeclarations *-- DeclarationConstante
 
-Identificateurs *-- DeclarationVariable
-Identificateurs <|-- IdentificateurNonFinal
-Identificateurs *-- IdentificateurNonFinal
-Identificateurs <|-- IdentificateurFinal
+Identificateur *-- DeclarationVariable
 
-AffectationConstantes *-- DeclarationConstante
-AffectationConstantes <|-- AffectationConstanteNonFinale
-AffectationConstantes *-- AffectationConstanteNonFinale
-AffectationConstantes <|-- AffectationConstanteFinale
+AffectationConstante *-- DeclarationConstante
 
 BlocInstructions *-- Programme
 BlocInstructions <|-- InstructionLecture
@@ -91,6 +86,6 @@ Facteur <|-- ExpressionParenthesee
 Facteur *-- ExpressionMult
 Facteur *-- ExpressionDiv
 Facteur <|-- ConstanteNumerique
-Facteur <|-- IdentificateurFinal
+Facteur <|-- IdentificateurFacteur
 
 @enduml
