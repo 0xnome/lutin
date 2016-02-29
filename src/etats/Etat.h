@@ -2,6 +2,8 @@
 #define LUTIN_ETAT_H
 
 #include <string>
+#include "../symboles/Symbole.h"
+#include "../automate/Automate.h"
 
 class Etat
 {
@@ -26,6 +28,9 @@ public:
     Etat0() : Etat("E0")
     { }
 
+
+private:
+    virtual bool transition(Automate &automate, Symbole *s);
 };
 
 

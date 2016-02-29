@@ -12,3 +12,7 @@ Etat::Etat(std::string nom)
     this->nom = nom;
 }
 
+bool Etat0::transition(Automate &automate, Symbole *s)
+{
+    return false;
+}
