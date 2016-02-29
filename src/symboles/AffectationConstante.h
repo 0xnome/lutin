@@ -8,7 +8,9 @@ class AffectationConstante : public Symbole
 public:
   AffectationConstante();
   ~AffectationConstante();
-
+protected:
+  AffectationConstante* suivant;
+  DeclarationConstante* declarationConstante;
 };
 
 
