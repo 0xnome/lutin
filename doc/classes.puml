@@ -24,11 +24,15 @@ class Identificateur{
 	+Identificateur suivant
 }
 class IdentificateurFacteur
-class BlocDeclarations
+class BlocDeclaration {
+    +BlocDeclaration suivant
+}
 class DeclarationVariable
 class DeclarationConstante
 class Programme
-class BlocInstructions
+class BlocInstruction {
+    +BlocInstruction suivant
+}
 class InstructionLecture
 class InstructionEcriture
 class InstructionAffectation
@@ -43,29 +47,24 @@ class ExpressionParenthesee
 class ConstanteNumerique
 
 Symbole <|-- Programme
-Symbole <|-- BlocDeclarations
-Symbole <|-- BlocInstructions
+Symbole <|-- BlocDeclaration
+Symbole <|-- BlocInstruction
 Symbole <|-- AffectationConstante
 Symbole <|-- Identificateur
 Symbole <|-- Expression
 
-BlocDeclarations *-- Programme
-BlocDeclarations <|-- DeclarationVariable
-BlocDeclarations *-- DeclarationVariable
-BlocDeclarations <|-- DeclarationConstante
-BlocDeclarations *-- DeclarationConstante
+BlocDeclaration *-- Programme
+BlocDeclaration <|-- DeclarationVariable
+BlocDeclaration <|-- DeclarationConstante
 
 Identificateur *-- DeclarationVariable
 
 AffectationConstante *-- DeclarationConstante
 
-BlocInstructions *-- Programme
-BlocInstructions <|-- InstructionLecture
-BlocInstructions *-- InstructionLecture
-BlocInstructions <|-- InstructionEcriture
-BlocInstructions *-- InstructionEcriture
-BlocInstructions <|-- InstructionAffectation
-BlocInstructions *-- InstructionAffectation
+BlocInstruction *-- Programme
+BlocInstruction <|-- InstructionLecture
+BlocInstruction <|-- InstructionEcriture
+BlocInstruction <|-- InstructionAffectation
 
 Expression <|-- ExpressionAdditive
 Expression *-- ExpressionAdditive
