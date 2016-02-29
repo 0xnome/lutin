@@ -27,3 +27,12 @@
 *.app
 .idea
 bin
+
+# Makefile & cmake
+Makefile
+cmake_install.cmake
+CmakeFiles
+CmakeCache.txt
+
+# Mac OsX
+.DS_Store
