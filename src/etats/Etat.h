@@ -2,6 +2,7 @@
 #define LUTIN_ETAT_H
 
 #include <string>
+#include <iostream>
 #include "../symboles/Symbole.h"
 #include "../automate/Automate.h"
 
@@ -13,7 +14,9 @@ public:
 
     virtual ~Etat();
 
-    void print() const;
+    std::ostream &operator<<(std::ostream& os) {
+        return os << this->nom;
+    }
 
     virtual bool transition(Automate &automate, Symbole *s) = 0;
 
@@ -27,7 +30,6 @@ class Etat0:Etat
 public:
     Etat0() : Etat("E0")
     { }
-
 
 private:
     virtual bool transition(Automate &automate, Symbole *s);
