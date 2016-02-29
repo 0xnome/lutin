@@ -10,8 +10,10 @@ bool Etat0::transition(Automate &automate, Symbole *s)
 {
     switch (*s){
         case PROGRAMME:
+            //automate.decalage(new Etat0());
             break;
-        case DECLARATION_CONSTANTES:
+        case BLOCS_DECLARATION:
+            //automate.decalage(new Etat0());
             break;
     }
     return false;

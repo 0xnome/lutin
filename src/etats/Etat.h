@@ -3,8 +3,8 @@
 
 #include <string>
 #include <iostream>
-#include "../symboles/Symbole.h"
-#include "../automate/Automate.h"
+#include <Symbole.h>
+#include <Automate.h>
 
 class Etat
 {
@@ -25,7 +25,7 @@ protected:
 };
 
 
-class Etat0:Etat
+class Etat0: public Etat
 {
 public:
     Etat0() : Etat("E0")
