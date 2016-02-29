@@ -1,0 +1,96 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam TitleFontSize 20
+skinparam sequenceTitleFontSize 20
+skinparam sequenceTitleFontStyle plain
+
+skinparam class {
+	BackgroundColor white
+	BackgroundColor<<Warning>> lightblue
+}
+
+title Diagramme de classe
+
+class Symbole{
+	~int id
+	+Symbole (int id)
+	+operator int() const
+}
+class AffectationConstantes
+class AffectationConstanteNonFinale
+class AffectationConstanteFinale
+class Identificateurs
+class IdentificateurNonFinal
+class IdentificateurFinal
+class BlocDeclarations
+class DeclarationVariable
+class DeclarationConstante
+class Programme
+class BlocInstructions
+class InstructionLecture
+class InstructionEcriture
+class InstructionAffectation
+class Expression
+class ExpressionAdditive
+class ExpressionSoustractive
+class Terme
+class ExpressionMult
+class ExpressionDiv
+class Facteur
+class ExpressionParenthesee
+class ConstanteNumerique
+
+Symbole <|-- Programme
+Symbole <|-- BlocDeclarations
+Symbole <|-- BlocInstructions
+Symbole <|-- AffectationConstantes
+Symbole <|-- Identificateurs
+Symbole <|-- Expression
+
+BlocDeclarations *-- Programme
+BlocDeclarations <|-- DeclarationVariable
+BlocDeclarations *-- DeclarationVariable
+BlocDeclarations <|-- DeclarationConstante
+BlocDeclarations *-- DeclarationConstante
+
+Identificateurs *-- DeclarationVariable
+Identificateurs <|-- IdentificateurNonFinal
+Identificateurs *-- IdentificateurNonFinal
+Identificateurs <|-- IdentificateurFinal
+
+AffectationConstantes *-- DeclarationConstante
+AffectationConstantes <|-- AffectationConstanteNonFinale
+AffectationConstantes *-- AffectationConstanteNonFinale
+AffectationConstantes <|-- AffectationConstanteFinale
+
+BlocInstructions *-- Programme
+BlocInstructions <|-- InstructionLecture
+BlocInstructions *-- InstructionLecture
+BlocInstructions <|-- InstructionEcriture
+BlocInstructions *-- InstructionEcriture
+BlocInstructions <|-- InstructionAffectation
+BlocInstructions *-- InstructionAffectation
+
+Expression <|-- ExpressionAdditive
+Expression *-- ExpressionAdditive
+Expression <|-- ExpressionSoustractive
+Expression *-- ExpressionSoustractive
+Expression <|-- Terme
+Expression *-- ExpressionParenthesee
+
+Terme *-- ExpressionAdditive
+Terme *-- ExpressionSoustractive
+Terme *-- ExpressionMult
+Terme <|-- ExpressionMult
+Terme *-- ExpressionDiv
+Terme <|-- ExpressionDiv
+Terme <|-- Facteur
+
+Facteur <|-- ExpressionParenthesee
+Facteur *-- ExpressionMult
+Facteur *-- ExpressionDiv
+Facteur <|-- ConstanteNumerique
+Facteur <|-- IdentificateurFinal
+
+@enduml
