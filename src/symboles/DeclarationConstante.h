@@ -1,10 +1,10 @@
 #ifndef LUTIN_DECLARATIONCONSTANTE_H
 #define LUTIN_DECLARATIONCONSTANTE_H
 
-#include "AffectationConstante.h"
+#include "BlocDeclaration.h"
 
 
-class DeclarationConstante : public Symbole
+class DeclarationConstante : public BlocDeclaration
 {
 public:
   DeclarationConstante();
