@@ -4,11 +4,11 @@
 #include "Symbole.h"
 #include "Programme.h"
 
-class BlocDeclarations : public Symbole
+class BlocDeclaration : public Symbole
 {
 public:
-  BlocDeclarations();
-  ~BlocDeclarations();
+  BlocDeclaration();
+  ~BlocDeclaration();
 protected:
   BlocDeclaration* suivant;
   Programme* programme;

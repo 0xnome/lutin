@@ -53,7 +53,9 @@ Symbole <|-- AffectationConstante
 Symbole <|-- Identificateur
 Symbole <|-- Expression
 
-BlocDeclaration *-- Programme
+Programme *-- BlocDeclaration
+Programme *-- BlocInstruction
+
 BlocDeclaration <|-- DeclarationVariable
 BlocDeclaration <|-- DeclarationConstante
 
@@ -61,7 +63,7 @@ Identificateur *-- DeclarationVariable
 
 AffectationConstante *-- DeclarationConstante
 
-BlocInstruction *-- Programme
+
 BlocInstruction <|-- InstructionLecture
 BlocInstruction <|-- InstructionEcriture
 BlocInstruction <|-- InstructionAffectation

@@ -1,9 +1,9 @@
 #ifndef LUTIN_PROGRAMME_H
 #define LUTIN_PROGRAMME_H
 
-#include "Symbole.h"
+#include "BlocDeclaration.h"
 
-class Programme : public Symbole
+class Programme : public BlocDeclaration
 {
 public:
   Programme();

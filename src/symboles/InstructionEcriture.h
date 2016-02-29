@@ -1,9 +1,9 @@
 #ifndef LUTIN_INSTRUCTIONECRITURE_H
 #define LUTIN_INSTRUCTIONECRITURE_H
 
-#include "BlocInstructions.h"
+#include "BlocInstruction.h"
 
-class InstructionEcriture : public BlocInstructions
+class InstructionEcriture : public BlocInstruction
 {
 public:
   InstructionEcriture();
