@@ -3,8 +3,9 @@
 
 #include <string>
 #include <iostream>
-#include <Symbole.h>
-#include <Automate.h>
+
+#include "../automate/Automate.h"
+#include "../symboles/Symbole.h"
 
 class Etat
 {

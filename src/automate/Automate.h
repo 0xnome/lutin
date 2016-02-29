@@ -3,7 +3,7 @@
 
 
 #include <Etat.h>
-
+class Etat;
 class Automate
 {
 public:

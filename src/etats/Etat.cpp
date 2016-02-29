@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Etat.h"
+#include "../automate/Automate.h"
+#include "../symboles/Symbole.h"
 
 Etat::Etat(std::string nom)
 {
