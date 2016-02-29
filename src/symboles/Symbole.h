@@ -5,12 +5,12 @@
 class Symbole
 {
 protected:
-    int ident;
+    int identifiant;
 public:
-    Symbole(int id):ident(id){}
+    Symbole(int id):identifiant(id){}
     virtual ~Symbole(){}
     void print();
-    operator int() const { return ident;}
+    operator int() const { return identifiant;}
 };
 
 
