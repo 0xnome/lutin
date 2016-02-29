@@ -6,9 +6,14 @@
 #define LUTIN_EXPRESSIONADDITIVE_H
 
 
+#include "Symbole.h"
+
 class ExpressionAdditive : public Symbole
 {
 
+public:
+    ExpressionAdditive(int id) : Symbole(id)
+    { }
 };
 
 

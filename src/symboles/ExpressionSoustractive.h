@@ -2,9 +2,14 @@
 #define LUTIN_EXPRESSIONSOUSTRACTIVE_H
 
 
+#include "Symbole.h"
+
 class ExpressionSoustractive : public Symbole
 {
 
+public:
+    ExpressionSoustractive(int id) : Symbole(id)
+    { }
 };
 
 

@@ -2,9 +2,14 @@
 #define LUTIN_EXPRESSION_H
 
 
+#include "Symbole.h"
+
 class Expression : public Symbole
 {
 
+public:
+    Expression(int id) : Symbole(id)
+    { }
 };
 
 

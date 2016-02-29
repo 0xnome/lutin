@@ -6,9 +6,14 @@
 #define LUTIN_EXPRESSIONDIV_H
 
 
+#include "Terme.h"
+
 class ExpressionDiv : public Terme
 {
 
+public:
+    ExpressionDiv(int id) : Terme(id)
+    { }
 };
 
 

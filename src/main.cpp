@@ -1,4 +1,6 @@
 #include <iostream>
+#include <symboles/Facteur.h>
+
 using namespace std;
 
 int main(int arg,char const *args[])
