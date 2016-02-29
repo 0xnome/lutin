@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 2.8)
 project(lutin)
 
-include_directories(src)
+include_directories(src/symboles)
+include_directories(src/etats)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 

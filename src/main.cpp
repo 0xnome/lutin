@@ -1,5 +1,4 @@
 #include <iostream>
-#include <symboles/Facteur.h>
 
 using namespace std;
 
