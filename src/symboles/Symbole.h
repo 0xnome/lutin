@@ -39,8 +39,8 @@ public:
     { }
 
 
-    std::ostream &operator<<(std::ostream& os) {
-        return os << this->identifiant;
+    friend std::ostream &operator<<(std::ostream& os, const Symbole & symbole) {
+        return os << symbole.identifiant;
     }
 
     operator int() const
