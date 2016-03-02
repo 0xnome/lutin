@@ -11,9 +11,10 @@
 class Terme : public Expression
 {
 
+protected:
+    Terme(int id) : Expression(id){ }
 public:
-    Terme(int id) : Expression(id)
-    { }
+    Terme(): Expression(TERME){}
 };
 
 

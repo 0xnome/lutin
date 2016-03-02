@@ -9,7 +9,8 @@
 
 class ExpressionParenthesee : public Facteur
 {
-
+public:
+    ExpressionParenthesee():Facteur(EXPRESSION_PARENTHESEE){}
 };
 
 

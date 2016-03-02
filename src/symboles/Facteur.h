@@ -6,10 +6,10 @@
 
 class Facteur : public Terme
 {
-
+protected:
+    Facteur(int id) : Terme(id){ }
 public:
-    Facteur(int id) : Terme(id)
-    { }
+    Facteur():Terme(FACTEUR){}
 };
 
 

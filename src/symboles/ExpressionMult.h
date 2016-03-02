@@ -7,9 +7,11 @@
 
 #include "Facteur.h"
 
-class ExpressionMult : public Facteur
+class ExpressionMult : public Terme
 {
 
+public:
+    ExpressionMult(): Terme(EXPRESSION_MULT){}
 };
 
 

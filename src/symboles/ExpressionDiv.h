@@ -12,8 +12,7 @@ class ExpressionDiv : public Terme
 {
 
 public:
-    ExpressionDiv(int id) : Terme(id)
-    { }
+    ExpressionDiv(): Terme(EXPRESSION_DIV){}
 };
 
 

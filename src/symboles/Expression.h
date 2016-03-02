@@ -7,9 +7,10 @@
 class Expression : public Symbole
 {
 
+protected:
+    Expression(int id) : Symbole(id){ }
 public:
-    Expression(int id) : Symbole(id)
-    { }
+    Expression():Symbole(EXPRESSION){}
 };
 
 

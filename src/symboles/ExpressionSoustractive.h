@@ -8,8 +8,7 @@ class ExpressionSoustractive : public Symbole
 {
 
 public:
-    ExpressionSoustractive(int id) : Symbole(id)
-    { }
+    ExpressionSoustractive():Symbole(EXPRESSION_SOUSTRACTIVE){}
 };
 
 

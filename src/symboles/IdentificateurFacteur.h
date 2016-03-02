@@ -10,7 +10,8 @@
 
 class IdentificateurFacteur : public Facteur
 {
-
+public:
+    IdentificateurFacteur():Facteur(IDENTIFICATEUR_FACTEUR){}
 };
 
 

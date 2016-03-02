@@ -8,8 +8,7 @@ class ConstanteNumerique : public Facteur
 {
 
 public:
-    ConstanteNumerique(int id) : Facteur(id)
-    { }
+    ConstanteNumerique() : Facteur(CONSTANTE_NUMERIQUE){ }
 };
 
 

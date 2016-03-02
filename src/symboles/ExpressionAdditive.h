@@ -12,8 +12,7 @@ class ExpressionAdditive : public Symbole
 {
 
 public:
-    ExpressionAdditive(int id) : Symbole(id)
-    { }
+    ExpressionAdditive():Symbole(EXPRESSION_ADDITIVE){}
 };
 
 
