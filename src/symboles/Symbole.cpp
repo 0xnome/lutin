@@ -1,7 +1,4 @@
 #include "Symbole.h"
+#include <iostream>
 
-
-void Symbole::print()
-{
-
-}
+using namespace std;

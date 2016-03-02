@@ -1,6 +1,8 @@
 #ifndef LUTIN_SYMBOLE_H
 #define LUTIN_SYMBOLE_H
 
+#include <iostream>
+
 enum SYMBOLES
 {
     BLOCS_DECLARATION,
@@ -36,7 +38,10 @@ public:
     virtual ~Symbole()
     { }
 
-    void print();
+
+    std::ostream &operator<<(std::ostream& os) {
+        return os << this->identifiant;
+    }
 
     operator int() const
     { return identifiant; }
