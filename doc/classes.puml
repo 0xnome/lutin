@@ -30,6 +30,8 @@ class IdTerminal{
 class NumTerminal{
   +Int Value
 }
+class FinProgramme
+class ErreurLexicale
 
 class AffectationConstante{
 	+AffectationConstante suivant
@@ -73,6 +75,8 @@ Symbole <|-- VarTerminal
 Symbole <|-- EgalTerminal
 Symbole <|-- IdTerminal
 Symbole <|-- NumTerminal
+Symbole <|-- FinProgramme
+Symbole <|-- ErreurLexicale
 
 Programme *-- BlocDeclaration
 Programme *-- BlocInstruction
