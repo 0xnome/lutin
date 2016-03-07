@@ -3,11 +3,12 @@
 
 #include "BlocDeclaration.h"
 #include "BlocInstruction.h"
+#include "Symbole.h"
 
-class Programme : public BlocDeclaration
+class Programme : public Symbole
 {
 public:
-  Programme();
+  Programme(BlocDeclaration* blocDeclaration, BlocInstruction* blocInstruction);
   ~Programme();
 protected:
   BlocDeclaration* blocDeclaration;

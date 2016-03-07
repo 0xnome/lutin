@@ -8,11 +8,8 @@ class IdTerminal : public Symbole
 {
 public:
     std::string IdName;
-    IdTerminal();
-    // IdTerminal(std::string name) : IdName(name)
-    // { }
-    ~IdTerminal()
-    { }
+    IdTerminal(std::string name);
+    ~IdTerminal();
 };
 
 
