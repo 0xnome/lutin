@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 2.8)
 set(project_name lutin)
 project(${project_name})
 
-set(Boost_USE_STATIC_LIBS ON)
 FIND_PACKAGE(Boost COMPONENTS program_options regex REQUIRED)
 INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
 
