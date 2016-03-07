@@ -6,14 +6,15 @@
 #define LUTIN_LEXEUR_H
 
 #include <string>
+#include <vector>
 
 class Lexeur {
 public:
-    Lexeur(std::string flux);
+    Lexeur(std::vector<std::string> lignesDuFichier);
     std::string getNext();
 
 private:
-    std::string flux;
+    std::vector<std::string> lignesDuFichier;
 };
 
 

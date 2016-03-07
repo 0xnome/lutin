@@ -5,6 +5,7 @@
 #include <stack>
 #include <Etat.h>
 #include <Symbole.h>
+#include <Lexeur.h>
 
 class Etat;
 
@@ -12,7 +13,7 @@ class Automate
 {
 public:
 
-
+    Automate(std::string nomFichier);
 
     void decalage(Etat *etat);
 
@@ -26,13 +27,17 @@ public:
 
     void popEtat(int nb);
 
+    ~Automate();
+
 private:
-    std::stack<Etat *> pilesEtats;
+    std::stack<Etat*> pilesEtats;
 
-    std::stack<Symbole *> pilesSymboles;
+    std::stack<Symbole*> pilesSymboles;
 
+    Lexeur *lexeur;
 
 };
+
 
 
 #endif //LUTIN_AUTOMATE_H

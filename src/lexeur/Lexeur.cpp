@@ -4,8 +4,8 @@
 
 #include "Lexeur.h"
 
-Lexeur::Lexeur(std::string flux) {
-    this->flux = flux;
+Lexeur::Lexeur(std::vector<std::string> lignesDuFichier) {
+    this->lignesDuFichier = lignesDuFichier;
 }
 
 std::string Lexeur::getNext() {

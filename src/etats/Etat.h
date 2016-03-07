@@ -4,9 +4,10 @@
 #include <string>
 #include <iostream>
 
-#include "../automate/Automate.h"
-#include "../symboles/Symbole.h"
+#include "Automate.h"
+#include "Symbole.h"
 
+class Automate;
 class Etat
 {
 public:
