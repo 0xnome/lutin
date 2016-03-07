@@ -8,8 +8,10 @@ using namespace std;
 
 void Automate::decalage(Etat * etat)
 {
-    Etat * e = new Etat0();
-    std::cout << e << std::endl;
+    // TODO : récuperer le symbole
+    lexeur->getNext();
+    this->etatCourant()->transition(this, nullptr);
+
 }
 
 Etat* Automate::popEtat()
@@ -78,3 +80,10 @@ Automate::~Automate()
 {
     delete lexeur;
 }
+
+Etat *Automate::etatCourant() const
+{
+    return pilesEtats.top();
+}
+
+
