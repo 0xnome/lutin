@@ -1,10 +1,36 @@
 #include "Programme.h"
 
-    void Programme::setBlockInstruction(BlocInstruction* instruction){
-      this->blocInstruction = instruction;
-    }
 
-    void Programme::setBlocDeclaration(BlocDeclaration* declaration){
-      this->blocDeclaration = declaration;
-    }
+Programme::Programme(int id, BlocDeclaration *blocDeclaration, BlocInstruction *blocInstruction) : Symbole(id)
+{
+    this->blocInstruction = blocInstruction;
+    this->blocDeclaration = blocDeclaration;
+}
 
+Programme::~Programme()
+{
+    delete this->blocDeclaration;
+    delete this->blocInstruction;
+}
+
+void Programme::executer()
+{
+
+    return;
+}
+
+void Programme::afficher()
+{
+    return;
+}
+
+void Programme::analyser()
+{
+    return;
+}
+
+void Programme::optimiser()
+{
+    return;
+
+}

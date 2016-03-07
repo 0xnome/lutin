@@ -22,10 +22,10 @@ class Automate{
 
 }
 
-Automate ---> Symbole : stack<Symbole*> pileSymboles
-Automate ---> Etat : stack<Etat*> pileEtats
-Automate ---> Lexeur : lexeur
-Automate -> Programme : programme
+Automate -> Symbole : stack<Symbole*>\n pileSymboles
+Automate --> Etat : stack<Etat*>\n pileEtats
+Automate --> Lexeur : lexeur
+Automate --> Programme : programme
 
 class Etat{
     ~string nom
@@ -33,18 +33,21 @@ class Etat{
 }
 
 class Programme{
- ~HashMap<string,int> dictVariables
- ~HashMap<string,int> dictConstantes
 
  +AjouterDeclarationVar()
  +AjouterDeclarationConst()
+
 }
+
+Programme -- BlocDeclaration : HashMap<string,BlocDeclaration>\n dictDeclaration
+Programme -- BlocInstruction : Vector<BlocInstruction>\n dictInstruction
+
+
 
 
 
 
 class Lexeur{
-
 
 }
 

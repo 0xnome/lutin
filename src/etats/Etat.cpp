@@ -65,9 +65,10 @@ bool Etat1::transition(Automate* automate, Symbole* s)
     }
 }
 
+// TODO
 bool Etat2::transition(Automate* automate, Symbole* s)
 {
-
+    return false;
 }
 
 bool Etat3::transition(Automate* automate, Symbole* s)
