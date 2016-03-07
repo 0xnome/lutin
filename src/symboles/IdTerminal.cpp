@@ -1,5 +1,5 @@
 #include "IdTerminal.h"
 
-IdTerminal::IdTerminal(std::string name){
-  this->IdName = name;
-}
+// IdTerminal::IdTerminal(std::string name){
+//   this->IdName = name;
+// }

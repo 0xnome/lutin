@@ -7,9 +7,10 @@
 class IdTerminal : public Symbole
 {
 public:
-    String IdName;
-    IdTerminal(std::string name) : IdName(name)
-    { }
+    std::string IdName;
+    IdTerminal();
+    // IdTerminal(std::string name) : IdName(name)
+    // { }
     ~IdTerminal()
     { }
 };
