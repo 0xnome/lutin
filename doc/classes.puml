@@ -19,7 +19,7 @@ class Symbole{
 }
 
 class VirguleTerminal
-class EgaleTerminal
+class EgalTerminal
 Class PointVirguleTerminal
 class ConstTerminal
 class VarTerminal
