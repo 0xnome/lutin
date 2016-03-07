@@ -100,9 +100,9 @@ Programme *-- BlocInstruction
 BlocDeclaration <|-- DeclarationVariable
 BlocDeclaration <|-- DeclarationConstante
 
-Identificateur *-- DeclarationVariable
+Identificateur --* DeclarationVariable
 
-AffectationConstante *-- DeclarationConstante
+AffectationConstante --* DeclarationConstante
 
 
 BlocInstruction <|-- InstructionLecture
@@ -130,4 +130,10 @@ Facteur *-- ExpressionDiv
 Facteur <|-- ConstanteNumerique
 Facteur <|-- IdentificateurFacteur
 
+AffectationConstante --> IdTerminal : id
+AffectationConstante --> NumTerminal : valeur
+Identificateur --> IdTerminal : id
+ConstanteNumerique --> NumTerminal : valeur
+ConstanteNumerique --> NumTerminal : valeur
+IdentificateurFacteur --> IdTerminal : id
 @endumlSymbole <|--
