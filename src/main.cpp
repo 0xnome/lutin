@@ -24,24 +24,49 @@ int main(int argc, char **argv)
                 ("programme,p", "Display the program as it should looks like in memory")
                 ("execute,e", "interactive execution")
                 ("analyse,a", "static program analysis")
-                ("optimize,o", "optimize the program");
+                ("optimize,o", "optimize the program")
+                ("input-file,i", po::value<std::string>(), "input file");
 
+        po::positional_options_description p;
+        p.add("input-file", -1);
         po::variables_map vm;
-        try {
-            po::store(po::parse_command_line(argc, argv, desc),
-                      vm); // can throw
+        po::notify(vm);
 
-            /** --help option
-             */
-            if (vm.count("help")) {
-                std::cout << "Lutin Compiler" << std::endl
-                << desc << std::endl;
+        try {
+            po::store(po::command_line_parser(argc, argv).
+                    options(desc).positional(p).run(), vm);
+
+
+            if (vm.count("help") || argc == 1) {
+                std::cout << "Lutin Compiler" << std::endl;
+                std::cout << "Usage: lutin [options] file" << std::endl;
+                std::cout << desc << std::endl;
                 return SUCCESS;
             }
 
+            if(vm.count("execute")){
+                std::cout << "--execute option specified" << std::endl;
+            }
+
+            if(vm.count("analyse")){
+                std::cout << "--analyse option specified" << std::endl;
+            }
+
+            if(vm.count("optimize")){
+                std::cout << "--optimize option specified" << std::endl;
+            }
+
+            if(vm.count("programme")){
+                std::cout << "--program option specified" << std::endl;
+            }
+
+            if (vm.count("input-file")) {
+                std::string filename = vm["input-file"].as<std::string>();
+                std::cout << "--input-file spécified: " << filename << "\n";
+            }
+
+
             po::notify(vm);
-            // throws on error, so do after help in case
-            // there are any problems
         }
         catch (po::error &e) {
             std::cerr << "ERROR: " << e.what() << std::endl << std::endl;
