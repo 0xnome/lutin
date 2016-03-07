@@ -30,6 +30,8 @@ enum SYMBOLES
     // Symboles terminaux
     CONST_TERMINAL,
     VAR_TERMINAL,
+    VIRGULE,
+    POINT_VIRGULE
 };
 
 

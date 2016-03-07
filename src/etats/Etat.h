@@ -124,4 +124,12 @@ public:
     { }
 };
 
+class Etat28: public Etat
+{
+public:
+    Etat28() : Etat("E28")
+    { }
+    virtual bool transition(Automate* automate, Symbole* s);
+};
+
 #endif //LUTIN_ETAT_H
