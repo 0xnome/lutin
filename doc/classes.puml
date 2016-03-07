@@ -67,7 +67,6 @@ Symbole <|-- AffectationConstante
 Symbole <|-- Identificateur
 Symbole <|-- Expression
 Symbole <|-- VirguleTerminal
-Symbole <|-- EgaleTerminal
 Symbole <|-- PointVirguleTerminal
 Symbole <|-- ConstTerminal
 Symbole <|-- VarTerminal
