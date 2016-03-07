@@ -20,11 +20,11 @@ int main(int argc, char **argv)
         po::options_description desc("Options");
 
         desc.add_options()
-                ("help", "Print help messages")
-                ("programme", "Display the program as it should looks like in memory")
-                ("execute", "interactive execution")
-                ("analyse", "static program analysis")
-                ("optimize", "optimize the program");
+                ("help,h", "Print help messages")
+                ("programme,p", "Display the program as it should looks like in memory")
+                ("execute,e", "interactive execution")
+                ("analyse,a", "static program analysis")
+                ("optimize,o", "optimize the program");
 
         po::variables_map vm;
         try {
