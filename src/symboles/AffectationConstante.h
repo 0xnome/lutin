@@ -9,13 +9,15 @@
 class AffectationConstante : public Symbole
 {
 public:
-  AffectationConstante(IdTerminal* id, NumTerminal* num);
-  ~AffectationConstante();
+    AffectationConstante(IdTerminal* id, NumTerminal* num);
+    ~AffectationConstante();
+    void setSuivant(AffectationConstante* suivant);
+    void setDeclarationConstante(DeclarationConstante* declarationConstante);
 protected:
-  IdTerminal* id;
-  NumTerminal* num;
-  AffectationConstante* suivant;
-  DeclarationConstante* declarationConstante;
+    IdTerminal* id;
+    NumTerminal* num;
+    AffectationConstante* suivant;
+    DeclarationConstante* declarationConstante;
 };
 
 

@@ -45,20 +45,36 @@ class BlocDeclaration {
 }
 class DeclarationVariable
 class DeclarationConstante
-class Programme
+class Programme{
+    +setBlockInstruction()
+    +setBlockDeclaration()
+}
 class BlocInstruction {
     +BlocInstruction suivant
 }
 class InstructionLecture
 class InstructionEcriture
 class InstructionAffectation
-class Expression
+class Expression{
+  +setExpressionAdditive()
+  +setExpressionSoustractive()
+  +setExpressionParenthesee()
+}
 class ExpressionAdditive
 class ExpressionSoustractive
-class Terme
+class Terme{
+  +setExpressionAdditive()
+  +setExpressionSoustractive()
+  +setExpressionMult()
+  +setExpressiondiv()
+}
 class ExpressionMult
 class ExpressionDiv
-class Facteur
+class Facteur{
+  +setExpressionDiv()
+  +setExpressionMult()
+
+}
 class ExpressionParenthesee
 class ConstanteNumerique
 

@@ -5,8 +5,12 @@
 
 class ExpressionParenthesee : public Facteur
 {
-public:
-    ExpressionParenthesee():Facteur(EXPRESSION_PARENTHESEE){}
+
+  protected:
+    ExpressionParenthesee(int id) : Facteur(id){}
+  public:
+    ExpressionParenthesee() : Facteur(EXPRESSION_PARENTHESEE){}
+    ~ExpressionParenthesee();
 };
 
 

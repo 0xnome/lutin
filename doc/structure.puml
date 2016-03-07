@@ -1,0 +1,51 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam TitleFontSize 20
+skinparam sequenceTitleFontSize 20
+skinparam sequenceTitleFontStyle plain
+
+skinparam class {
+	BackgroundColor white
+	BackgroundColor<<Warning>> lightblue
+}
+
+title Structure du programme
+
+class Symbole{
+	~int id
+	+Symbole (int id)
+	+operator int() const
+}
+
+class Automate{
+
+}
+
+Automate ---> Symbole : stack<Symbole*> pileSymboles
+Automate ---> Etat : stack<Etat*> pileEtats
+Automate ---> Lexeur : lexeur
+Automate -> Programme : programme
+
+class Etat{
+    ~string nom
+    +transition(Automate *, Symbole *)
+}
+
+class Programme{
+ ~HashMap<string,int> dictVariables
+ ~HashMap<string,int> dictConstantes
+
+ +AjouterDeclarationVar()
+ +AjouterDeclarationConst()
+}
+
+
+
+
+class Lexeur{
+
+
+}
+
+@enduml
