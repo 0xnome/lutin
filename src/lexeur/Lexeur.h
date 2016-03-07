@@ -7,6 +7,7 @@
 
 #include <string>
 #include <vector>
+#include <boost/regex/v4/regex_fwd.hpp>
 
 class Lexeur {
 public:
@@ -16,6 +17,5 @@ public:
 private:
     std::vector<std::string> lignesDuFichier;
 };
-
 
 #endif //LUTIN_LEXEUR_H
