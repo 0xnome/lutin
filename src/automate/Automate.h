@@ -27,6 +27,9 @@ public:
 
     void popEtat(int nb);
 
+
+    Etat* etatCourant()const ;
+
     ~Automate();
 
 private:

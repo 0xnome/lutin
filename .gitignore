@@ -36,3 +36,6 @@ CmakeCache.txt
 
 # Mac OsX
 .DS_Store
+
+# lien symbolique pour les tests
+Tests/lut

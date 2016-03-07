@@ -8,8 +8,10 @@ using namespace std;
 
 void Automate::decalage(Etat * etat)
 {
-    Etat * e = new Etat0();
-    std::cout << e << std::endl;
+    // TODO : récuperer le symbole
+    lexeur->getNext();
+//    this->etatCourant()->transition(this, nullptr);
+
 }
 
 Etat* Automate::popEtat()
@@ -69,7 +71,8 @@ Automate::Automate(string nomFichier)
     }
     else
     {
-        // TODO : mettre une erreur conforme aux tests
+        std::cerr << "Erreur a l'ouverture du fichier " << nomFichier << std::endl;
+        exit(1);
     }
 
 }
@@ -78,3 +81,10 @@ Automate::~Automate()
 {
     delete lexeur;
 }
+
+Etat *Automate::etatCourant() const
+{
+    return pilesEtats.top();
+}
+
+

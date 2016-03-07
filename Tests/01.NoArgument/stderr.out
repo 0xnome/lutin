@@ -1,7 +1,11 @@
-Erreur, veuillez specifier des arguments
-  Utilisation :
-    ../lut [-p] [-a] [-e] [-o] source.lt
-      [-p] affiche le code source reconnu
-      [-a] analyse le programme de maniere statique
-      [-e] execute interactivement le programme
-      [-o] optimise les expressions et instructions
+Compilateur Lutin
+Utilisation: lut [options] fichier
+Options:
+  -h [ --help ]         Affiche ce message d'aide
+  -p [ --program ]      Affiche sur la sortie standard la représentation en
+                        mémoire du programme
+  -e [ --execute ]      Exécution interactive du programme
+  -a [ --analyse ]      Analyse statique du programme
+  -o [ --optimize ]     Transforme le programme et le simplifie
+  -i [ --input ] arg    programme lutin, argument par défaut
+

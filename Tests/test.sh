@@ -85,7 +85,7 @@ fi
 resultOut="Non testé"
 if [ -r "std.out" ]
 then 
-  diff -wB temp.txt std.out >/dev/null
+  diff -wB temp.txt std.out #>/dev/null
   if [ $? -eq 0 ]
   then
     echo "                                       Stdout      : PASSED"
@@ -103,7 +103,7 @@ fi
 resultErr="Non testé"
 if [ -r "stderr.out" ]
 then 
-  diff -wB temperr.txt stderr.out >/dev/null
+  diff -wB temperr.txt stderr.out #>/dev/null
   if [ $? -eq 0 ]
   then
     echo "                                       Stderr      : PASSED"
