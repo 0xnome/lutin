@@ -10,6 +10,7 @@ INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
 include_directories(src/symboles)
 include_directories(src/etats)
 include_directories(src/automate)
+include_directories(src/lexeur)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 
