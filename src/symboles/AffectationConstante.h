@@ -17,7 +17,6 @@ protected:
     IdTerminal* id;
     NumTerminal* num;
     AffectationConstante* suivant;
-    DeclarationConstante* declarationConstante;
 };
 
 

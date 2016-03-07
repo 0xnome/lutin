@@ -8,15 +8,15 @@
 class Programme : public Symbole
 {
 public:
-    Programme(int id, BlocDeclaration *blocDeclaration, BlocInstruction *blocInstruction);
+    Programme(BlocDeclaration *blocDeclaration, BlocInstruction *blocInstruction);
 
-    void executer();
+    virtual void executer();
 
-    void afficher();
+    virtual void afficher();
 
-    void analyser();
+    virtual void analyser();
 
-    void optimiser();
+    virtual void optimiser();
 
     ~Programme();
 

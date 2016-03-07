@@ -1,7 +1,7 @@
 #include "Programme.h"
 
 
-Programme::Programme(int id, BlocDeclaration *blocDeclaration, BlocInstruction *blocInstruction) : Symbole(id)
+Programme::Programme(BlocDeclaration *blocDeclaration, BlocInstruction *blocInstruction) : Symbole(PROGRAMME)
 {
     this->blocInstruction = blocInstruction;
     this->blocDeclaration = blocDeclaration;
@@ -15,12 +15,17 @@ Programme::~Programme()
 
 void Programme::executer()
 {
-
     return;
 }
 
 void Programme::afficher()
 {
+    if (blocDeclaration != nullptr) {
+        blocDeclaration->afficher();
+    }
+    if (blocInstruction != nullptr) {
+        blocInstruction->afficher();
+    }
     return;
 }
 

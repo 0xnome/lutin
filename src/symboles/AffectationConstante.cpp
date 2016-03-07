@@ -12,10 +12,6 @@ void AffectationConstante::setSuivant(AffectationConstante* suiv){
 
 }
 
-void AffectationConstante::setDeclarationConstante(DeclarationConstante* constante){
-    this->declarationConstante = constante;
-}
-
 AffectationConstante::~AffectationConstante()
 {
 

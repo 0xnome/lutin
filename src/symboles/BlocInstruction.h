@@ -6,10 +6,20 @@
 class BlocInstruction : public Symbole
 {
 public:
-  BlocInstruction();
-  ~BlocInstruction();
+    BlocInstruction();
+
+    ~BlocInstruction();
+
+    virtual void executer();
+
+    virtual void afficher();
+
+    virtual void analyser();
+
+    virtual void optimiser();
+
 protected:
-  BlocInstruction* suivant;
+    BlocInstruction *suivant;
 };
 
 

@@ -6,10 +6,20 @@
 class BlocDeclaration : public Symbole
 {
 public:
-  BlocDeclaration();
-  ~BlocDeclaration();
+    BlocDeclaration();
+
+    ~BlocDeclaration();
+
+    virtual void executer() = 0;
+
+    virtual void afficher() = 0;
+
+    virtual void analyser() = 0;
+
+    virtual void optimiser() = 0;
+
 protected:
-  BlocDeclaration* suivant;
+    BlocDeclaration *suivant;
 };
 
 

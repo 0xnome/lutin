@@ -3,7 +3,13 @@
 void Identificateur::setSuivant(Identificateur* suiv){
     this->suivant = suiv;
 }
-void Identificateur::setDeclarationVariable(DeclarationVariable* variable){
-    this->declarationVariable = variable;
+
+Identificateur * Identificateur::getSuivant()
+{
+    return this->suivant;
 }
 
+void Identificateur::afficher()
+{
+    std::cout << this->identifiant;
+}
