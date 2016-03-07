@@ -69,7 +69,6 @@ int main(int argc, char **argv)
 
             if (vm.count("input")) {
                 fichier = vm["input"].as<std::string>();
-                std::cout << "--fichier spécifiée: " << fichier << "\n";
             }
 
             po::notify(vm);

@@ -10,7 +10,7 @@ void Automate::decalage(Etat * etat)
 {
     // TODO : récuperer le symbole
     lexeur->getNext();
-    this->etatCourant()->transition(this, nullptr);
+//    this->etatCourant()->transition(this, nullptr);
 
 }
 
@@ -71,7 +71,8 @@ Automate::Automate(string nomFichier)
     }
     else
     {
-        // TODO : mettre une erreur conforme aux tests
+        std::cerr << "Erreur a l'ouverture du fichier " << nomFichier << std::endl;
+        exit(1);
     }
 
 }
