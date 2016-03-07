@@ -37,26 +37,33 @@ int main(int argc, char **argv)
                     options(desc).positional(p).run(), vm);
 
 
-            if (vm.count("help") || argc == 1) {
+            if (argc == 1) {
+                std::cerr << "Lutin Compiler" << std::endl;
+                std::cerr << "Usage: lutin [options] file" << std::endl;
+                std::cerr << desc << std::endl;
+                return ERROR_IN_COMMAND_LINE;
+            }
+
+            if (vm.count("help")) {
                 std::cout << "Lutin Compiler" << std::endl;
                 std::cout << "Usage: lutin [options] file" << std::endl;
                 std::cout << desc << std::endl;
                 return SUCCESS;
             }
 
-            if(vm.count("execute")){
+            if (vm.count("execute")) {
                 std::cout << "--execute option specified" << std::endl;
             }
 
-            if(vm.count("analyse")){
+            if (vm.count("analyse")) {
                 std::cout << "--analyse option specified" << std::endl;
             }
 
-            if(vm.count("optimize")){
+            if (vm.count("optimize")) {
                 std::cout << "--optimize option specified" << std::endl;
             }
 
-            if(vm.count("programme")){
+            if (vm.count("programme")) {
                 std::cout << "--program option specified" << std::endl;
             }
 
