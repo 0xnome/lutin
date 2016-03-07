@@ -61,13 +61,18 @@ Automate::Automate(string nomFichier)
         vector<string> lignesDuFichier;
         while (getline(stringstream,ligne,delimiteur))
         {
-            if(!ligne.empty())
-            {
-                lignesDuFichier.push_back(ligne);
-            }
+            lignesDuFichier.push_back(ligne);
         }
 
         lexeur = new Lexeur(lignesDuFichier);
+
+        cout << "lexeur ..." << endl;
+        for(int i = 0 ; i < 50 ; i++){
+            cout << lexeur->getNext() << endl;
+        }
+        cout << "fin lexeur ..." << endl;
+
+
     }
     else
     {

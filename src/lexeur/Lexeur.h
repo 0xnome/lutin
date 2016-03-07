@@ -15,7 +15,8 @@ public:
     std::string getNext();
 
 private:
-    std::vector<std::string> lignesDuFichier;
+    std::vector<std::vector<std::string>> lignesDuProgramme;
+    int ligne,colone;
 };
 
 #endif //LUTIN_LEXEUR_H
