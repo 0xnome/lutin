@@ -8,8 +8,11 @@
 class Programme : public Symbole
 {
 public:
-  Programme(BlocDeclaration* blocDeclaration, BlocInstruction* blocInstruction);
+  Programme();
   ~Programme();
+
+  void setBlockInstruction(BlocInstruction* instruction);
+  void setBlocDeclaration(BlocDeclaration* declaration);
 protected:
   BlocDeclaration* blocDeclaration;
   BlocInstruction* blocInstruction;

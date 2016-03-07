@@ -2,13 +2,13 @@
 #define LUTIN_AUTOMATE_H
 
 
+
 #include <stack>
 #include <Etat.h>
 #include <Symbole.h>
 #include <Lexeur.h>
 
 class Etat;
-
 class Automate
 {
 public:

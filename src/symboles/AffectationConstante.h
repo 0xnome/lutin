@@ -7,11 +7,13 @@
 class AffectationConstante : public Symbole
 {
 public:
-  AffectationConstante();
-  ~AffectationConstante();
+    AffectationConstante();
+    ~AffectationConstante();
+    void setSuivant(AffectationConstante* suivant);
+    void setDeclarationConstante(DeclarationConstante* declarationConstante);
 protected:
-  AffectationConstante* suivant;
-  DeclarationConstante* declarationConstante;
+    AffectationConstante* suivant;
+    DeclarationConstante* declarationConstante;
 };
 
 
