@@ -8,8 +8,10 @@ class NumTerminal : public Symbole
 {
 public:
     int Value;
-    NumTerminal();
-    ~NumTerminal();
+    NumTerminal(int val) : Value(val)
+    { }
+    ~NumTerminal()
+    { }
 };
 
 

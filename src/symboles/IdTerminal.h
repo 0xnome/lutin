@@ -2,15 +2,16 @@
 #define LUTIN_IDTERMINAL_H
 
 #include "Symbole.h"
-#include <String>
 
 
 class IdTerminal : public Symbole
 {
 public:
     String IdName;
-    IdTerminal();
-    ~IdTerminal();
+    IdTerminal(std::string name) : IdName(name)
+    { }
+    ~IdTerminal()
+    { }
 };
 
 
