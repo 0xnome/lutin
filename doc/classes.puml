@@ -17,6 +17,20 @@ class Symbole{
 	+Symbole (int id)
 	+operator int() const
 }
+
+class VirguleTerminal
+class EgaleTerminal
+Class PointVirguleTerminal
+class ConstTerminal
+class VarTerminal
+class EgalTerminal
+class IdTerminal{
+  +String IdName
+}
+class NumTerminal{
+  +Int Value
+}
+
 class AffectationConstante{
 	+AffectationConstante suivant
 }
@@ -52,6 +66,14 @@ Symbole <|-- BlocInstruction
 Symbole <|-- AffectationConstante
 Symbole <|-- Identificateur
 Symbole <|-- Expression
+Symbole <|-- VirguleTerminal
+Symbole <|-- EgaleTerminal
+Symbole <|-- PointVirguleTerminal
+Symbole <|-- ConstTerminal
+Symbole <|-- VarTerminal
+Symbole <|-- EgalTerminal
+Symbole <|-- IdTerminal
+Symbole <|-- NumTerminal
 
 Programme *-- BlocDeclaration
 Programme *-- BlocInstruction
@@ -89,4 +111,4 @@ Facteur *-- ExpressionDiv
 Facteur <|-- ConstanteNumerique
 Facteur <|-- IdentificateurFacteur
 
-@enduml
+@endumlSymbole <|--
