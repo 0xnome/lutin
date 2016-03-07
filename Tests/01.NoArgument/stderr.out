@@ -1,10 +1,11 @@
-Lutin Compiler
-Usage: lutin [options] file
+Compilateur Lutin
+Utilisation: lut [options] fichier
 Options:
-  -h [ --help ]           Print help messages
-  -p [ --programme ]      Display the program as it should looks like in memory
-  -e [ --execute ]        interactive execution
-  -a [ --analyse ]        static program analysis
-  -o [ --optimize ]       optimize the program
-  -i [ --input-file ] arg input file
+  -h [ --help ]         Affiche ce message d'aide
+  -p [ --program ]      Affiche sur la sortie standard la représentation en
+                        mémoire du programme
+  -e [ --execute ]      Exécution interactive du programme
+  -a [ --analyse ]      Analyse statique du programme
+  -o [ --optimize ]     Transforme le programme et le simplifie
+  -i [ --input ] arg    programme lutin, argument par défaut
 

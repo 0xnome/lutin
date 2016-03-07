@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include "Automate.h"
 #include <boost/program_options.hpp>
 
 namespace po = boost::program_options;
@@ -11,24 +11,24 @@ namespace
     const size_t ERROR_IN_COMMAND_LINE = 1;
     const size_t SUCCESS = 0;
     const size_t ERROR_UNHANDLED_EXCEPTION = 2;
-
-} // namespace
+}
 
 int main(int argc, char **argv)
 {
+    std::string fichier;
     try {
         po::options_description desc("Options");
 
         desc.add_options()
-                ("help,h", "Print help messages")
-                ("programme,p", "Display the program as it should looks like in memory")
-                ("execute,e", "interactive execution")
-                ("analyse,a", "static program analysis")
-                ("optimize,o", "optimize the program")
-                ("input-file,i", po::value<std::string>(), "input file");
+                ("help,h", "Affiche ce message d'aide")
+                ("program,p", "Affiche sur la sortie standard la représentation en mémoire du programme")
+                ("execute,e", "Exécution interactive du programme")
+                ("analyse,a", "Analyse statique du programme")
+                ("optimize,o", "Transforme le programme et le simplifie")
+                ("input,i", po::value<std::string>()->required(), "programme lutin, argument par défaut");
 
         po::positional_options_description p;
-        p.add("input-file", -1);
+        p.add("input", -1);
         po::variables_map vm;
         po::notify(vm);
 
@@ -38,40 +38,39 @@ int main(int argc, char **argv)
 
 
             if (argc == 1) {
-                std::cerr << "Lutin Compiler" << std::endl;
-                std::cerr << "Usage: lutin [options] file" << std::endl;
+                std::cerr << "Compilateur Lutin" << std::endl;
+                std::cerr << "Utilisation: lut [options] fichier" << std::endl;
                 std::cerr << desc << std::endl;
                 return ERROR_IN_COMMAND_LINE;
             }
 
             if (vm.count("help")) {
-                std::cout << "Lutin Compiler" << std::endl;
-                std::cout << "Usage: lutin [options] file" << std::endl;
+                std::cout << "Compilateur Lutin" << std::endl;
+                std::cout << "Utilisation: lut [options] fichier" << std::endl;
                 std::cout << desc << std::endl;
                 return SUCCESS;
             }
 
             if (vm.count("execute")) {
-                std::cout << "--execute option specified" << std::endl;
+                std::cout << "--execute option spécifiée" << std::endl;
             }
 
             if (vm.count("analyse")) {
-                std::cout << "--analyse option specified" << std::endl;
+                std::cout << "--analyse option spécifiée" << std::endl;
             }
 
             if (vm.count("optimize")) {
-                std::cout << "--optimize option specified" << std::endl;
+                std::cout << "--optimize option spécifiée" << std::endl;
             }
 
-            if (vm.count("programme")) {
-                std::cout << "--program option specified" << std::endl;
+            if (vm.count("program")) {
+                std::cout << "--program option spécifiée" << std::endl;
             }
 
-            if (vm.count("input-file")) {
-                std::string filename = vm["input-file"].as<std::string>();
-                std::cout << "--input-file spécified: " << filename << "\n";
+            if (vm.count("input")) {
+                fichier = vm["input"].as<std::string>();
+                std::cout << "--fichier spécifiée: " << fichier << "\n";
             }
-
 
             po::notify(vm);
         }
@@ -81,9 +80,7 @@ int main(int argc, char **argv)
             return ERROR_IN_COMMAND_LINE;
         }
 
-
-        cout << "More coming soon..." << endl;
-
+        Automate automate(fichier);
 
     }
     catch (std::exception &e) {
