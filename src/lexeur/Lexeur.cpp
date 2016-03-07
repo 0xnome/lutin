@@ -9,5 +9,5 @@ Lexeur::Lexeur(std::string flux) {
 }
 
 std::string Lexeur::getNext() {
-    return "";
+    return "none";
 }
