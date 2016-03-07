@@ -15,7 +15,7 @@ public:
 
     Automate(std::string nomFichier);
 
-    void decalage(Etat *etat);
+    void decalage();
 
     Symbole *popSymbole();
 

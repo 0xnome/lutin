@@ -17,7 +17,11 @@ EtatInterface::~EtatInterface(){}
 //}
 // ------------------------- //
 
-Etat::~Etat(){}
+Etat::~Etat(){}/*
+Etat0::~Etat0(){}
+Etat1::~Etat1(){}
+Etat2::~Etat2(){}
+Etat3::~Etat3(){}*/
 
 bool Etat::transition(Automate *automate, Symbole *s)
 {
@@ -60,6 +64,11 @@ bool Etat1::transition(Automate* automate, Symbole* s)
         default:
             return false;
     }
+}
+
+bool Etat2::transition(Automate* automate, Symbole* s)
+{
+
 }
 
 bool Etat3::transition(Automate* automate, Symbole* s)

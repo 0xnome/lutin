@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void Automate::decalage(Etat * etat)
+void Automate::decalage()
 {
     // TODO : récuperer le symbole
     lexeur->getNext();

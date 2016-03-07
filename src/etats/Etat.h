@@ -35,7 +35,7 @@ public:
     Etat(std::string nom) : EtatInterface(nom)
     { }
 
-    virtual ~Etat();
+    ~Etat();
 
     virtual bool transition(Automate* automate, Symbole* s);
 
@@ -55,7 +55,6 @@ class Etat0: public Etat
 public:
     Etat0() : Etat("E0")
     { }
-
     virtual bool transition(Automate* automate, Symbole* s);
 };
 
@@ -64,7 +63,6 @@ class Etat1: public Etat
 public:
     Etat1() : Etat("E1")
     { }
-
     virtual bool transition(Automate* automate, Symbole* s);
 };
 
@@ -73,7 +71,6 @@ class Etat2: public Etat
 public:
     Etat2() : Etat("E2")
     { }
-
     virtual bool transition(Automate* automate, Symbole* s);
 };
 
@@ -82,7 +79,6 @@ class Etat3: public Etat
 public:
     Etat3() : Etat("E3")
     { }
-
     virtual bool transition(Automate* automate, Symbole* s);
 };
 
