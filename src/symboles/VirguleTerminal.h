@@ -7,8 +7,8 @@
 class VirguleTerminal : public Symbole
 {
 public:
-    VirguleTerminal();
-    ~VirguleTerminal();
+    VirguleTerminal():Symbole(VIRGULE){};
+    ~VirguleTerminal(){};
 };
 
 
