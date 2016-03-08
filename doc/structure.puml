@@ -16,6 +16,10 @@ class Symbole{
 	~int id
 	+Symbole (int id)
 	+operator int() const
+	+void exectuer()
+	+void afficher()
+	+void analyser()
+	+void optimiser()
 }
 
 class Automate{
