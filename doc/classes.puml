@@ -49,8 +49,6 @@ class BlocDeclaration {
 class DeclarationVariable
 class DeclarationConstante
 class Programme{
-    +setBlockInstruction()
-    +setBlockDeclaration()
 }
 class BlocInstruction {
     +BlocInstruction suivant

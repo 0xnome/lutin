@@ -7,9 +7,15 @@
 class NumTerminal : public Symbole
 {
 public:
-    int Value;
-    NumTerminal(int val);
-    ~NumTerminal();
+    NumTerminal(int val):Symbole(NUM_TERMINAL),value(val){};
+    ~NumTerminal(){}
+
+    void afficher(){
+        std::cout<<value;
+    }
+
+protected:
+    int value;
 };
 
 

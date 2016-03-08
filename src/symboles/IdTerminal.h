@@ -7,9 +7,21 @@
 class IdTerminal : public Symbole
 {
 public:
-    std::string IdName;
-    IdTerminal(std::string name);
-    ~IdTerminal();
+    IdTerminal(std::string nom) : Symbole(ID_TERMINAL),nom(nom)
+    { };
+
+    ~IdTerminal()
+    {
+
+    }
+
+    void afficher()
+    {
+        std::cout << nom;
+    }
+
+protected:
+    std::string nom;
 };
 
 

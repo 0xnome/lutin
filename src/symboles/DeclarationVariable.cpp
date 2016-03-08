@@ -2,7 +2,7 @@
 
 void DeclarationVariable::afficher()
 {
-    Identificateur * id_courant = &(this->id);
+    IdentificateurVariable * id_courant = this->identificateurVariable;
     while (id_courant != nullptr){
         std::cout << "var ";
         id_courant->afficher();
@@ -10,3 +10,30 @@ void DeclarationVariable::afficher()
         id_courant = id_courant->getSuivant();
     }
 }
+
+DeclarationVariable::DeclarationVariable(IdentificateurVariable *identificateurVariable1):BlocDeclaration(DECLARATION_VARIABLE)
+{
+    this->identificateurVariable = identificateurVariable1;
+}
+
+DeclarationVariable::~DeclarationVariable()
+{
+    delete this->identificateurVariable;
+}
+
+void DeclarationVariable::executer()
+{
+
+}
+
+void DeclarationVariable::analyser()
+{
+
+}
+
+void DeclarationVariable::optimiser()
+{
+
+}
+
+

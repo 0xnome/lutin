@@ -1,10 +1,10 @@
 #include "AffectationConstante.h"
 
 
-AffectationConstante::AffectationConstante(IdTerminal* idT, NumTerminal* numT):Symbole(AFFECTATION_CONSTANTE)
+AffectationConstante::AffectationConstante(IdTerminal *idTerminal, NumTerminal* numT):Symbole(AFFECTATION_CONSTANTE)
 {
-    id = idT;
-    num = numT;
+    this->id = idTerminal;
+    this->num = numT;
 }
 
 void AffectationConstante::setSuivant(AffectationConstante* suiv){
@@ -14,5 +14,38 @@ void AffectationConstante::setSuivant(AffectationConstante* suiv){
 
 AffectationConstante::~AffectationConstante()
 {
-
+    delete this->suivant;
+    delete this->id;
+    delete this->num;
 }
+
+AffectationConstante* AffectationConstante::getSuivant() const
+{
+    return suivant;
+}
+
+void AffectationConstante::executer()
+{
+}
+
+void AffectationConstante::afficher()
+{
+}
+
+void AffectationConstante::analyser()
+{
+}
+
+void AffectationConstante::optimiser()
+{
+}
+
+
+
+
+
+
+
+
+
+

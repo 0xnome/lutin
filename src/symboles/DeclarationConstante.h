@@ -2,13 +2,17 @@
 #define LUTIN_DECLARATIONCONSTANTE_H
 
 #include "BlocDeclaration.h"
+#include "AffectationConstante.h"
 
 
 class DeclarationConstante : public BlocDeclaration
 {
 public:
-  DeclarationConstante();
+  DeclarationConstante(AffectationConstante * affectationConstante);
   ~DeclarationConstante();
+
+protected:
+    AffectationConstante * affectationConstante;
 
 };
 

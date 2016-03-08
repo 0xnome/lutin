@@ -2,12 +2,12 @@
 #define LUTIN_DECLARATIONVARIABLE_H
 
 #include "DeclarationConstante.h"
-#include "Identificateur.h"
+#include "IdentificateurVariable.h"
 
-class DeclarationVariable : public DeclarationConstante
+class DeclarationVariable : public BlocDeclaration
 {
 public:
-    DeclarationVariable();
+    DeclarationVariable(IdentificateurVariable * identificateurVariable1);
 
     ~DeclarationVariable();
 
@@ -20,7 +20,7 @@ public:
     virtual void optimiser();
 
 protected:
-    Identificateur id;
+    IdentificateurVariable* identificateurVariable;
 };
 
 
