@@ -21,7 +21,6 @@ class Symbole{
 	+void analyser()
 	+void optimiser()
 }
-
 class VirguleTerminal
 class EgalTerminal
 Class PointVirguleTerminal
@@ -69,67 +68,76 @@ class Facteur
 class ExpressionParenthesee
 class ConstanteNumerique
 
-Symbole <|-- Programme
-Symbole <|-- BlocDeclaration
-Symbole <|-- BlocInstruction
-Symbole <|-- AffectationConstante
-Symbole <|-- IdentificateurVariable
-Symbole <|-- Expression
-Symbole <|-- VirguleTerminal
-Symbole <|-- PointVirguleTerminal
-Symbole <|-- ConstTerminal
-Symbole <|-- VarTerminal
-Symbole <|-- EgalTerminal
-Symbole <|-- IdTerminal
-Symbole <|-- NumTerminal
-Symbole <|-- FinProgramme
-Symbole <|-- ErreurLexicale
+
+AffectationConstante *-- IdTerminal : id
+AffectationConstante *-- NumTerminal : valeur
+
+BlocDeclaration <|-- DeclarationConstante
+BlocDeclaration <|-- DeclarationVariable
+BlocInstruction <|-- InstructionAffectation
+BlocInstruction <|-- InstructionEcriture
+BlocInstruction <|-- InstructionLecture
+
+ConstanteNumerique *-- NumTerminal : valeur
+
+DeclarationConstante *-- AffectationConstante
+
+DeclarationVariable *-- IdentificateurVariable
+
+Expression <|-- ExpressionAdditive
+Expression <|-- ExpressionSoustractive
+Expression <|-- Terme
+
+ExpressionAdditive *-- Expression
+ExpressionAdditive *-- Terme
+
+ExpressionDiv *-- Facteur
+ExpressionDiv *-- Terme
+
+ExpressionMult *-- Facteur
+ExpressionMult *-- Terme
+
+ExpressionParenthesee *-- Expression
+
+ExpressionSoustractive *-- Expression
+ExpressionSoustractive *-- Terme
+
+Facteur <|-- ConstanteNumerique
+Facteur <|-- ExpressionParenthesee
+Facteur <|-- IdentificateurFacteur
+
+IdentificateurFacteur *-- IdTerminal : id
+
+IdentificateurVariable *-- IdTerminal : id
+
+InstructionAffectation *-- Expression
+InstructionAffectation *-- IdTerminal : id
+
+InstructionEcriture *-- Expression
+
+InstructionLecture *-- IdTerminal : id
 
 Programme *-- BlocDeclaration
 Programme *-- BlocInstruction
 
-BlocDeclaration <|-- DeclarationVariable
-BlocDeclaration <|-- DeclarationConstante
+Symbole <|-- AffectationConstante
+Symbole <|-- BlocDeclaration
+Symbole <|-- BlocInstruction
+Symbole <|-- ConstTerminal
+Symbole <|-- EgalTerminal
+Symbole <|-- ErreurLexicale
+Symbole <|-- Expression
+Symbole <|-- FinProgramme
+Symbole <|-- IdentificateurVariable
+Symbole <|-- IdTerminal
+Symbole <|-- NumTerminal
+Symbole <|-- PointVirguleTerminal
+Symbole <|-- Programme
+Symbole <|-- VarTerminal
+Symbole <|-- VirguleTerminal
 
-IdentificateurVariable --* DeclarationVariable
-
-AffectationConstante --* DeclarationConstante
-
-
-BlocInstruction <|-- InstructionLecture
-BlocInstruction <|-- InstructionEcriture
-BlocInstruction <|-- InstructionAffectation
-
-InstructionLecture *-- IdTerminal : id
-InstructionAffectation *-- IdTerminal : id
-
-InstructionEcriture *-- Expression
-InstructionAffectation *-- Expression
-
-Expression <|-- ExpressionAdditive
-ExpressionAdditive *-- Expression
-Expression <|-- ExpressionSoustractive
-ExpressionSoustractive *-- Expression
-Expression <|-- Terme
-ExpressionParenthesee *-- Expression
-
-ExpressionAdditive *-- Terme
-ExpressionSoustractive *-- Terme
-ExpressionMult *-- Terme
-Terme <|-- ExpressionMult
-ExpressionDiv *-- Terme
 Terme <|-- ExpressionDiv
+Terme <|-- ExpressionMult
 Terme <|-- Facteur
 
-Facteur <|-- ExpressionParenthesee
-ExpressionMult *-- Facteur
-ExpressionDiv *-- Facteur
-Facteur <|-- ConstanteNumerique
-Facteur <|-- IdentificateurFacteur
-
-AffectationConstante *-- IdTerminal : id
-AffectationConstante *-- NumTerminal : valeur
-IdentificateurVariable *-- IdTerminal : id
-ConstanteNumerique *-- NumTerminal : valeur
-IdentificateurFacteur *-- IdTerminal : id
 @enduml
