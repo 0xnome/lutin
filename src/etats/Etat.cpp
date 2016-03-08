@@ -34,7 +34,7 @@ bool Etat0::transition(Automate* automate, Symbole* s)
         automate->pushSymbole(s);
         automate->pushEtat(new EtatFin());
         return true;
-    case BLOCS_DECLARATION:
+    case BLOC_DECLARATION:
         automate->pushSymbole(s);
         automate->pushEtat(new Etat1());
         return true;
@@ -56,7 +56,7 @@ bool Etat1::transition(Automate* automate, Symbole* s)
         automate->pushEtat(new Etat4());
         automate->decalage();
         return true;
-    case BLOC_INSTRUCTIONS:
+    case BLOC_INSTRUCTION:
         automate->pushSymbole(s);
         automate->pushEtat(new Etat2());
         return true;

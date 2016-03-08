@@ -5,10 +5,13 @@
 
 class BlocInstruction : public Symbole
 {
-public:
-    BlocInstruction();
 
-    ~BlocInstruction();
+protected:
+    BlocInstruction(int id):Symbole(id){}
+public:
+    BlocInstruction():Symbole(BLOC_INSTRUCTION){};
+
+    ~BlocInstruction(){};
 
     virtual void executer();
 

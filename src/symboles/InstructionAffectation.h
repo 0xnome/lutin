@@ -6,8 +6,8 @@
 class InstructionAffectation : public BlocInstruction
 {
 public:
-  InstructionAffectation();
-  ~InstructionAffectation();
+  InstructionAffectation():BlocInstruction(INSTRUCTION_AFFECTATION){};
+  ~InstructionAffectation(){};
 
 };
 
