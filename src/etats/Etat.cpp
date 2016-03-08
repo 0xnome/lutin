@@ -94,8 +94,8 @@ bool Etat28::transition(Automate* automate, Symbole* s)
     IdTerminal* id;
     AffectationConstante* affects;
     switch (*s){
-    case VIRGULE:
-    case POINT_VIRGULE:
+    case VIRGULE_TERMINAL:
+    case POINT_VIRGULE_TERMINAL:
         num = (NumTerminal*) automate->popSymbole();
         automate->popSymbole();
         id = (IdTerminal*) automate->popSymbole();
