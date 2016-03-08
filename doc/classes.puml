@@ -40,8 +40,8 @@ class ErreurLexicale
 class AffectationConstante{
 	+AffectationConstante suivant
 }
-class Identificateur{
-	+Identificateur suivant
+class IdentificateurVariable{
+	+IdentificateurVariable suivant
 }
 class IdentificateurFacteur
 class BlocDeclaration {
@@ -59,26 +59,13 @@ class BlocInstruction {
 class InstructionLecture
 class InstructionEcriture
 class InstructionAffectation
-class Expression{
-  +setExpressionAdditive()
-  +setExpressionSoustractive()
-  +setExpressionParenthesee()
-}
+class Expression
 class ExpressionAdditive
 class ExpressionSoustractive
-class Terme{
-  +setExpressionAdditive()
-  +setExpressionSoustractive()
-  +setExpressionMult()
-  +setExpressiondiv()
-}
+class Terme
 class ExpressionMult
 class ExpressionDiv
-class Facteur{
-  +setExpressionDiv()
-  +setExpressionMult()
-
-}
+class Facteur
 class ExpressionParenthesee
 class ConstanteNumerique
 
@@ -86,7 +73,7 @@ Symbole <|-- Programme
 Symbole <|-- BlocDeclaration
 Symbole <|-- BlocInstruction
 Symbole <|-- AffectationConstante
-Symbole <|-- Identificateur
+Symbole <|-- IdentificateurVariable
 Symbole <|-- Expression
 Symbole <|-- VirguleTerminal
 Symbole <|-- PointVirguleTerminal
@@ -104,7 +91,7 @@ Programme *-- BlocInstruction
 BlocDeclaration <|-- DeclarationVariable
 BlocDeclaration <|-- DeclarationConstante
 
-Identificateur --* DeclarationVariable
+IdentificateurVariable --* DeclarationVariable
 
 AffectationConstante --* DeclarationConstante
 
@@ -113,31 +100,36 @@ BlocInstruction <|-- InstructionLecture
 BlocInstruction <|-- InstructionEcriture
 BlocInstruction <|-- InstructionAffectation
 
-Expression <|-- ExpressionAdditive
-Expression *-- ExpressionAdditive
-Expression <|-- ExpressionSoustractive
-Expression *-- ExpressionSoustractive
-Expression <|-- Terme
-Expression *-- ExpressionParenthesee
+InstructionLecture *-- IdTerminal : id
+InstructionAffectation *-- IdTerminal : id
 
-Terme *-- ExpressionAdditive
-Terme *-- ExpressionSoustractive
-Terme *-- ExpressionMult
+InstructionEcriture *-- Expression
+InstructionAffectation *-- Expression
+
+Expression <|-- ExpressionAdditive
+ExpressionAdditive *-- Expression
+Expression <|-- ExpressionSoustractive
+ExpressionSoustractive *-- Expression
+Expression <|-- Terme
+ExpressionParenthesee *-- Expression
+
+ExpressionAdditive *-- Terme
+ExpressionSoustractive *-- Terme
+ExpressionMult *-- Terme
 Terme <|-- ExpressionMult
-Terme *-- ExpressionDiv
+ExpressionDiv *-- Terme
 Terme <|-- ExpressionDiv
 Terme <|-- Facteur
 
 Facteur <|-- ExpressionParenthesee
-Facteur *-- ExpressionMult
-Facteur *-- ExpressionDiv
+ExpressionMult *-- Facteur
+ExpressionDiv *-- Facteur
 Facteur <|-- ConstanteNumerique
 Facteur <|-- IdentificateurFacteur
 
-AffectationConstante --> IdTerminal : id
-AffectationConstante --> NumTerminal : valeur
-Identificateur --> IdTerminal : id
-ConstanteNumerique --> NumTerminal : valeur
-ConstanteNumerique --> NumTerminal : valeur
-IdentificateurFacteur --> IdTerminal : id
-@endumlSymbole <|--
+AffectationConstante *-- IdTerminal : id
+AffectationConstante *-- NumTerminal : valeur
+IdentificateurVariable *-- IdTerminal : id
+ConstanteNumerique *-- NumTerminal : valeur
+IdentificateurFacteur *-- IdTerminal : id
+@enduml
