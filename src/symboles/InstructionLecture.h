@@ -6,8 +6,8 @@
 class InstructionLecture : public BlocInstruction
 {
 public:
-  InstructionLecture();
-  ~InstructionLecture();
+  InstructionLecture():BlocInstruction(INSTRUCTION_LECTURE){};
+  ~InstructionLecture(){};
 
 };
 

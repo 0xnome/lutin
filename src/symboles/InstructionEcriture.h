@@ -6,8 +6,8 @@
 class InstructionEcriture : public BlocInstruction
 {
 public:
-  InstructionEcriture();
-  ~InstructionEcriture();
+  InstructionEcriture():BlocInstruction(INSTRUCTION_ECRITURE){};
+  ~InstructionEcriture(){};
 
 };
 

@@ -6,9 +6,9 @@
 class BlocDeclaration : public Symbole
 {
 public:
-    BlocDeclaration();
+    BlocDeclaration():Symbole(BLOC_DECLARATION){};
 
-    ~BlocDeclaration();
+    ~BlocDeclaration(){};
 
     virtual void executer() = 0;
 
