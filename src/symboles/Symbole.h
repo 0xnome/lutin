@@ -5,8 +5,8 @@
 
 enum SYMBOLES
 {
-	// Symboles non terminaux
-    PROGRAMME,
+    // Symboles non terminaux
+     PROGRAMME,
 
     // Partie instruction
     BLOC_INSTRUCTION,
@@ -28,7 +28,7 @@ enum SYMBOLES
     IDENTIFICATEUR_FACTEUR,
 
     // Partie déclaration
-    BLOC_DECLARATION,
+            BLOC_DECLARATION,
 
     IDENTIFICATEUR_VARIABLE,
     DECLARATION_VARIABLE,
@@ -38,7 +38,7 @@ enum SYMBOLES
 
 
     // Symboles terminaux
-    CONST_TERMINAL,
+            CONST_TERMINAL,
     VAR_TERMINAL,
     VIRGULE_TERMINAL,
     POINT_VIRGULE_TERMINAL,
@@ -47,7 +47,7 @@ enum SYMBOLES
     ID_TERMINAL,
 
     // Autres symboles
-    FIN_PROGRAMME,
+            FIN_PROGRAMME,
     ERREUR_LEXICALE
 };
 
@@ -64,7 +64,8 @@ public:
     { }
 
 
-    friend std::ostream &operator<<(std::ostream& os, const Symbole & symbole) {
+    friend std::ostream &operator<<(std::ostream &os, const Symbole &symbole)
+    {
         return os << symbole.identifiant;
     }
 

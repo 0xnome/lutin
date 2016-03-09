@@ -7,8 +7,8 @@
 class ErreurLexicale : public Symbole
 {
 public:
-    ErreurLexicale();
-    ~ErreurLexicale();
+    ErreurLexicale():Symbole(ERREUR_LEXICALE){}
+    ~ErreurLexicale(){}
 };
 
 

@@ -6,16 +6,23 @@
 class BlocDeclaration : public Symbole
 {
 public:
-    BlocDeclaration():Symbole(BLOC_DECLARATION){
+    BlocDeclaration() : Symbole(BLOC_DECLARATION)
+    {
         this->suivant = nullptr;
     };
+
+    void setSuivant(BlocDeclaration *blocDeclaration)
+    {
+        this->suivant = blocDeclaration;
+    }
 
     BlocDeclaration *getSuivant() const
     {
         return suivant;
     }
 
-    ~BlocDeclaration(){};
+    virtual ~BlocDeclaration()
+    { };
 
     virtual void executer() = 0;
 
@@ -26,7 +33,8 @@ public:
     virtual void optimiser() = 0;
 
 protected:
-    BlocDeclaration(int id):Symbole(id){}
+    BlocDeclaration(int id) : Symbole(id)
+    { }
 
     BlocDeclaration *suivant;
 };

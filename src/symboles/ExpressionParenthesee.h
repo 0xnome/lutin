@@ -6,11 +6,24 @@
 class ExpressionParenthesee : public Facteur
 {
 
-  protected:
-    ExpressionParenthesee(int id) : Facteur(id){}
-  public:
-    ExpressionParenthesee() : Facteur(EXPRESSION_PARENTHESEE){}
-    ~ExpressionParenthesee();
+public:
+    ExpressionParenthesee(Expression * expression1) : Facteur(EXPRESSION_PARENTHESEE)
+    {
+        this->expression = expression1;
+    }
+
+    void afficher()
+    {
+        //TODO
+    }
+
+    ~ExpressionParenthesee()
+    {
+        delete this->expression;
+    }
+
+protected:
+    Expression * expression;
 };
 
 

@@ -7,19 +7,34 @@ class BlocInstruction : public Symbole
 {
 
 protected:
-    BlocInstruction(int id):Symbole(id){}
+    BlocInstruction(int id) : Symbole(id)
+    { }
+
 public:
-    BlocInstruction():Symbole(BLOC_INSTRUCTION){};
+    BlocInstruction() : Symbole(BLOC_INSTRUCTION)
+    { };
 
-    ~BlocInstruction(){};
+    virtual ~BlocInstruction()
+    { };
 
-    virtual void executer();
 
-    virtual void afficher();
+    BlocInstruction *getSuivant() const
+    {
+        return suivant;
+    }
 
-    virtual void analyser();
+    void setSuivant(BlocInstruction *suivant)
+    {
+        BlocInstruction::suivant = suivant;
+    }
 
-    virtual void optimiser();
+    virtual void executer() = 0;
+
+    virtual void afficher() = 0;
+
+    virtual void analyser() = 0;
+
+    virtual void optimiser() = 0;
 
 protected:
     BlocInstruction *suivant;

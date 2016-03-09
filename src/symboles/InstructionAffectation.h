@@ -2,13 +2,32 @@
 #define LUTIN_INSTRUCTIONAFFECTATION_H
 
 #include "BlocInstruction.h"
+#include "Expression.h"
+#include "IdTerminal.h"
 
 class InstructionAffectation : public BlocInstruction
 {
 public:
-  InstructionAffectation():BlocInstruction(INSTRUCTION_AFFECTATION){};
-  ~InstructionAffectation(){};
+    InstructionAffectation(Expression *expression1, IdTerminal *terminal) : BlocInstruction(INSTRUCTION_AFFECTATION)
+    {
+        this->expression = expression1;
+        this->id = terminal;
+    };
 
+    void executer();
+
+    void afficher();
+
+    ~InstructionAffectation()
+    {
+        delete this->expression;
+        delete this->id;
+    }
+
+protected:
+    Expression *expression;
+
+    IdTerminal *id;
 };
 
 

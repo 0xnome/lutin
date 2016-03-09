@@ -4,20 +4,21 @@
 
 #include "Terme.h"
 
-class ExpressionDiv;
-class ExpressionMult;
 class Facteur : public Terme
 {
-protected:
-    Facteur(int id) : Terme(id){}
+
 public:
-    Facteur():Terme(FACTEUR){}
+    Facteur() : Terme(FACTEUR)
+    { }
 
-    ExpressionDiv* expressionDiv;
-    ExpressionMult* expressionMult;
+    virtual ~Facteur()
+    { }
 
-    void setExpressionDiv(ExpressionDiv* div);
-    void setExpressionMult(ExpressionMult* mult);
+    virtual void afficher() = 0;
+
+protected:
+    Facteur(int id) : Terme(id)
+    { }
 
 };
 

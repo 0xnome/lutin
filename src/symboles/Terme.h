@@ -3,22 +3,21 @@
 
 #include "Expression.h"
 
-class ExpressionSoustractive;
-class ExpressionAdditive;
-class ExpressionMult;
-class ExpressionDiv;
-
 class Terme : public Expression
 {
 
 protected:
-    Terme(int id) : Expression(id){ }
+    Terme(int id) : Expression(id)
+    { }
+
 public:
-    Terme(): Expression(TERME){}
-    ExpressionSoustractive* expressionSoustractive;
-    ExpressionAdditive* expressionAdditive;
-    ExpressionMult* expressionMult;
-    ExpressionDiv* expressionDiv;
+    Terme() : Expression(TERME)
+    { }
+
+    virtual void afficher() = 0;
+
+    virtual ~Terme()
+    { }
 
 };
 

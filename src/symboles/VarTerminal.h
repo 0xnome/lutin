@@ -7,8 +7,15 @@
 class VarTerminal : public Symbole
 {
 public:
-    VarTerminal();
-    ~VarTerminal();
+    VarTerminal() : Symbole(VAR_TERMINAL)
+    {
+
+    }
+
+    ~VarTerminal()
+    {
+        
+    }
 };
 
 

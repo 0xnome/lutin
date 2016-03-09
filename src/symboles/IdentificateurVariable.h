@@ -7,7 +7,8 @@
 class IdentificateurVariable : public Symbole
 {
 public:
-    IdentificateurVariable(IdTerminal* idTerminal1);
+    IdentificateurVariable(IdTerminal *idTerminal1);
+
     ~IdentificateurVariable();
 
     virtual void executer();
@@ -16,15 +17,15 @@ public:
 
     virtual void analyser();
 
-    void setSuivant(IdentificateurVariable * suivant);
+    void setSuivant(IdentificateurVariable *suivant);
 
-    IdentificateurVariable* getSuivant() const;
+    IdentificateurVariable *getSuivant() const;
 
     virtual void optimiser();
 
 protected:
-    IdentificateurVariable* suivant;
-    IdTerminal* idTerminal;
+    IdentificateurVariable *suivant;
+    IdTerminal *idTerminal;
 public:
 
 };

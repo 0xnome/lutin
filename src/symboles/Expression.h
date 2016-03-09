@@ -3,24 +3,24 @@
 
 #include "Symbole.h"
 
-class ExpressionAdditive;
-class ExpressionSoustractive;
-class ExpressionParenthesee;
+
 class Expression : public Symbole
 {
 
 protected:
-    Expression(int id) : Symbole(id){ }
+    Expression(int id) : Symbole(id)
+    { }
+
 public:
-    Expression():Symbole(EXPRESSION){}
+    Expression() : Symbole(EXPRESSION)
+    { }
 
-    ExpressionAdditive* expressionAdditive;
-    ExpressionSoustractive* expressionSoustractive;
-    ExpressionParenthesee* expressionParenthesee;
+    virtual void afficher() = 0;
 
-    void setExpressionAdditive(ExpressionAdditive* addition);
-    void setExpressionSoustractive(ExpressionSoustractive* soustraction);
-    void setExpressionParenthesee(ExpressionParenthesee* parenthese);
+    virtual void exectuer() = 0;
+
+    virtual ~Expression()
+    { };
 
 };
 

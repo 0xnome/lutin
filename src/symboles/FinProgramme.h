@@ -7,8 +7,11 @@
 class FinProgramme : public Symbole
 {
 public:
-    FinProgramme();
-    ~FinProgramme();
+    FinProgramme() : Symbole(FIN_PROGRAMME)
+    { }
+
+    ~FinProgramme()
+    { }
 };
 
 
