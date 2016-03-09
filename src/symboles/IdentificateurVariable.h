@@ -17,11 +17,11 @@ public:
 
     virtual void analyser();
 
+    virtual void optimiser();
+
     void setSuivant(IdentificateurVariable *suivant);
 
     IdentificateurVariable *getSuivant() const;
-
-    virtual void optimiser();
 
 protected:
     IdentificateurVariable *suivant;

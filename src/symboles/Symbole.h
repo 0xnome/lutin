@@ -6,7 +6,7 @@
 enum SYMBOLES
 {
     // Symboles non terminaux
-     PROGRAMME,
+    PROGRAMME,
 
     // Partie instruction
     BLOC_INSTRUCTION,
@@ -28,7 +28,7 @@ enum SYMBOLES
     IDENTIFICATEUR_FACTEUR,
 
     // Partie déclaration
-            BLOC_DECLARATION,
+    BLOC_DECLARATION,
 
     IDENTIFICATEUR_VARIABLE,
     DECLARATION_VARIABLE,
@@ -38,16 +38,27 @@ enum SYMBOLES
 
 
     // Symboles terminaux
-            CONST_TERMINAL,
+    ID_TERMINAL,
+    NUM_TERMINAL,
     VAR_TERMINAL,
+    CONST_TERMINAL,
+    LIRE_TERMINAL,
+    ECRIRE_TERMINAL,
+    PLUS_TERMINAL,
+    MOINS_TERMINAL,
+    MULT_TERMINAL,
+    DIV_TERMINAL,
     VIRGULE_TERMINAL,
     POINT_VIRGULE_TERMINAL,
     EGAL_TERMINAL,
-    NUM_TERMINAL,
-    ID_TERMINAL,
+    AFFECT_TERMINAL,
+    PAROUV_TERMINAL,
+    PARFER_TERMINAL,
+
+
 
     // Autres symboles
-            FIN_PROGRAMME,
+    FIN_PROGRAMME,
     ERREUR_LEXICALE
 };
 

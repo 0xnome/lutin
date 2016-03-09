@@ -27,6 +27,15 @@ Class PointVirguleTerminal
 class ConstTerminal
 class VarTerminal
 class EgalTerminal
+class LireTerminal
+class EcrireTerminal
+class PlusTerminal
+class MoinsTerminal
+class MultTerminal
+class DivTerminal
+class AffectTerminal
+class ParOuvTerminal
+class ParFerTerminal
 class IdTerminal{
   +String IdName
 }
@@ -121,18 +130,27 @@ Programme *-- BlocInstruction
 Symbole <|-- AffectationConstante
 Symbole <|-- BlocDeclaration
 Symbole <|-- BlocInstruction
-Symbole <|-- ConstTerminal
-Symbole <|-- EgalTerminal
 Symbole <|-- ErreurLexicale
 Symbole <|-- Expression
 Symbole <|-- FinProgramme
 Symbole <|-- IdentificateurVariable
+Symbole <|-- Programme
 Symbole <|-- IdTerminal
 Symbole <|-- NumTerminal
 Symbole <|-- PointVirguleTerminal
-Symbole <|-- Programme
+Symbole <|--- ConstTerminal
 Symbole <|-- VarTerminal
-Symbole <|-- VirguleTerminal
+Symbole <|--- EgalTerminal
+Symbole <|--VirguleTerminal
+Symbole <|--- LireTerminal
+Symbole <|-- EcrireTerminal
+Symbole <|--- PlusTerminal
+Symbole <|-- MoinsTerminal
+Symbole <|--- MultTerminal
+Symbole <|-- DivTerminal
+Symbole <|--- AffectTerminal
+Symbole <|-- ParOuvTerminal
+Symbole <|--- ParFerTerminal
 
 Terme <|-- ExpressionDiv
 Terme <|-- ExpressionMult
