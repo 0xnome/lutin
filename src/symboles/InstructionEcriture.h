@@ -2,12 +2,28 @@
 #define LUTIN_INSTRUCTIONECRITURE_H
 
 #include "BlocInstruction.h"
+#include "Expression.h"
 
 class InstructionEcriture : public BlocInstruction
 {
 public:
-  InstructionEcriture():BlocInstruction(INSTRUCTION_ECRITURE){};
-  ~InstructionEcriture(){};
+    InstructionEcriture(Expression *exp) : BlocInstruction(INSTRUCTION_ECRITURE)
+    {
+        this->expression = exp;
+    }
+
+    void afficher();
+
+    void executer();
+
+    ~InstructionEcriture()
+    {
+        delete this->expression;
+    }
+
+
+protected:
+    Expression *expression;
 
 };
 

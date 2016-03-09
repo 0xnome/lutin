@@ -7,8 +7,11 @@
 class PointVirguleTerminal : public Symbole
 {
 public:
-    PointVirguleTerminal();
-    ~PointVirguleTerminal();
+    PointVirguleTerminal() : Symbole(POINT_VIRGULE_TERMINAL)
+    { }
+
+    ~PointVirguleTerminal()
+    { }
 };
 
 

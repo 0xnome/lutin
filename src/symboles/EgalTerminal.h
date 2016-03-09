@@ -7,8 +7,10 @@
 class EgalTerminal : public Symbole
 {
 public:
-    EgalTerminal();
-    ~EgalTerminal();
+    EgalTerminal() : Symbole(EGAL_TERMINAL)
+    { }
+
+    ~EgalTerminal(){}
 };
 
 

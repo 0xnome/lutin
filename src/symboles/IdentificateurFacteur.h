@@ -3,11 +3,23 @@
 
 
 #include "Facteur.h"
+#include "IdTerminal.h"
 
 class IdentificateurFacteur : public Facteur
 {
 public:
-    IdentificateurFacteur():Facteur(IDENTIFICATEUR_FACTEUR){}
+    IdentificateurFacteur(IdTerminal * idTerminal) : Facteur(IDENTIFICATEUR_FACTEUR)
+    {
+        this->id = idTerminal;
+    }
+
+    ~IdentificateurFacteur()
+    {
+        delete id;
+    }
+
+protected:
+    IdTerminal * id;
 };
 
 

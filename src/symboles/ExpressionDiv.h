@@ -3,12 +3,33 @@
 
 
 #include "Terme.h"
+#include "Facteur.h"
 
 class ExpressionDiv : public Terme
 {
 
 public:
-    ExpressionDiv(): Terme(EXPRESSION_DIV){}
+    ExpressionDiv(Facteur * facteur1, Terme * terme1): Terme(EXPRESSION_DIV)
+    {
+        this->terme = terme1;
+        this->facteur = facteur1;
+    }
+
+    void afficher();
+
+    void executer();
+
+    ~ExpressionDiv()
+    {
+        delete this->terme;
+        delete this->facteur;
+    }
+
+protected:
+
+    Facteur * facteur;
+
+    Terme * terme;
 };
 
 

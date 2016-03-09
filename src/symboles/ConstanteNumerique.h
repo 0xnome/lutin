@@ -3,12 +3,29 @@
 
 
 #include "Facteur.h"
+#include "NumTerminal.h"
 
 class ConstanteNumerique : public Facteur
 {
 
 public:
-    ConstanteNumerique() : Facteur(CONSTANTE_NUMERIQUE){ }
+    ConstanteNumerique(NumTerminal *numTerminal) : Facteur(CONSTANTE_NUMERIQUE)
+    {
+        this->valeur = numTerminal;
+    }
+
+    ~ConstanteNumerique()
+    {
+        delete valeur;
+    }
+
+    void afficher()
+    {
+        valeur->afficher();
+    }
+
+protected:
+    NumTerminal *valeur;
 };
 
 

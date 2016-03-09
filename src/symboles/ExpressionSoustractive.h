@@ -2,13 +2,34 @@
 #define LUTIN_EXPRESSIONSOUSTRACTIVE_H
 
 
-#include "Symbole.h"
+#include "Expression.h"
+#include "Terme.h"
 
-class ExpressionSoustractive : public Symbole
+class ExpressionSoustractive : public Expression
 {
 
 public:
-    ExpressionSoustractive():Symbole(EXPRESSION_SOUSTRACTIVE){}
+    ExpressionSoustractive(Terme * terme1, Expression* expression1):Expression(EXPRESSION_SOUSTRACTIVE)
+    {
+        this->terme = terme1;
+        this->expression = expression1;
+    }
+
+    void afficher();
+
+    void exectuer();
+
+    ~ExpressionSoustractive()
+    {
+        delete this->terme;
+        delete this->expression;
+    }
+
+protected:
+    Terme * terme;
+
+    Expression * expression;
+
 };
 
 

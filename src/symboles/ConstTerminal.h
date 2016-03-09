@@ -7,8 +7,8 @@
 class ConstTerminal : public Symbole
 {
 public:
-    ConstTerminal();
-    ~ConstTerminal();
+    ConstTerminal():Symbole(CONST_TERMINAL){}
+    ~ConstTerminal(){}
 };
 
 

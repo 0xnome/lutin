@@ -11,7 +11,26 @@ class ExpressionMult : public Terme
 {
 
 public:
-    ExpressionMult(): Terme(EXPRESSION_MULT){}
+    ExpressionMult(Facteur *facteur1, Terme *terme1) : Terme(EXPRESSION_MULT)
+    {
+        this->facteur = facteur1;
+        this->terme = terme1;
+    }
+
+    void exectuer();
+
+    void afficher();
+
+    ~ExpressionMult()
+    {
+        delete this->terme;
+        delete this->facteur;
+    }
+
+protected:
+    Facteur *facteur;
+
+    Terme *terme;
 };
 
 

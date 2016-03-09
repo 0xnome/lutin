@@ -2,13 +2,37 @@
 #define LUTIN_EXPRESSIONADDITIVE_H
 
 
-#include "Symbole.h"
+#include "Expression.h"
+#include "Terme.h"
 
-class ExpressionAdditive : public Symbole
+class ExpressionAdditive : public Expression
 {
 
 public:
-    ExpressionAdditive():Symbole(EXPRESSION_ADDITIVE){}
+    ExpressionAdditive(Terme *terme1, Expression *expression1) : Expression(EXPRESSION_ADDITIVE)
+    {
+        this->terme = terme1;
+        this->expression = expression1;
+    }
+
+    void afficher();
+
+    void executer();
+
+    ~ExpressionAdditive()
+    {
+        delete this->terme;
+        delete this->expression;
+    }
+
+
+protected:
+
+    Terme *terme;
+
+    Expression *expression;
+
+
 };
 
 
