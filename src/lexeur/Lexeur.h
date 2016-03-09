@@ -8,11 +8,12 @@
 #include <string>
 #include <vector>
 #include <boost/regex/v4/regex_fwd.hpp>
+#include <Symbole.h>
 
 class Lexeur {
 public:
     Lexeur(std::vector<std::string> lignesDuFichier);
-    std::string getNext();
+    Symbole* getNext();
 
 private:
     std::vector<std::vector<std::string>> lignesDuProgramme;

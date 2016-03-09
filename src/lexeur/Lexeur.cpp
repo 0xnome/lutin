@@ -8,6 +8,16 @@
 #include <regex>
 #include <boost/algorithm/string/regex.hpp>
 #include <boost/algorithm/string/trim.hpp>
+#include <IdTerminal.h>
+#include <ConstTerminal.h>
+#include <InstructionLecture.h>
+#include <InstructionEcriture.h>
+#include <NumTerminal.h>
+#include <VirguleTerminal.h>
+#include <PointVirguleTerminal.h>
+#include <FinProgramme.h>
+#include <ErreurLexicale.h>
+#include <EgalTerminal.h>
 
 using namespace boost;
 using namespace std;
@@ -56,83 +66,91 @@ Lexeur::Lexeur(std::vector<std::string> lignesDuFichier) {
     colone = 0;
 }
 
-std::string Lexeur::getNext() {
+Symbole *Lexeur::getNext() {
     boost::match_results<std::string::const_iterator> what;
-    if (ligne == (int)lignesDuProgramme.size()-1 && colone > (int)lignesDuProgramme.at(ligne).size()-1) {
-        return "fin";
+    if (ligne == (int) lignesDuProgramme.size() - 1 && colone > (int) lignesDuProgramme.at(ligne).size() - 1) {
+        return new FinProgramme();
     }
-    if (colone > (int)lignesDuProgramme.at(ligne).size()-1) {
+    if (colone > (int) lignesDuProgramme.at(ligne).size() - 1) {
         ligne++;
         colone = 0;
     }
     colone++;
 
-
-    if(regex_match(lignesDuProgramme.at(ligne).at(colone-1),s_var)) {
-        return lignesDuProgramme.at(ligne).at(colone-1) + " type : s_var";
+    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_var)) {
+        cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_var" << endl;
+        return new IdTerminal(lignesDuProgramme.at(ligne).at(colone - 1));
     }
 
-    if(regex_match(lignesDuProgramme.at(ligne).at(colone-1),s_const)) {
-        return lignesDuProgramme.at(ligne).at(colone-1) + " type : s_const";
+    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_const)) {
+        cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_const" << endl;
+        return new ConstTerminal();
     }
 
-    if(regex_match(lignesDuProgramme.at(ligne).at(colone-1),s_lire)) {
-        return lignesDuProgramme.at(ligne).at(colone-1) + " type : s_lire";
+    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_lire)) {
+        cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_lire" << endl;
+        return new InstructionLecture();
     }
 
-    if(regex_match(lignesDuProgramme.at(ligne).at(colone-1),s_ecrire)) {
-        return lignesDuProgramme.at(ligne).at(colone-1) + " type : s_ecrire";
+    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_ecrire)) {
+        cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_ecrire" << endl;
+        return new InstructionEcriture();
     }
 
-    if(regex_match(lignesDuProgramme.at(ligne).at(colone-1),s_num)) {
-        return lignesDuProgramme.at(ligne).at(colone-1) + " type : s_num";
+    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_num)) {
+        cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_num" << endl;
+        return new NumTerminal(std::stoi(lignesDuProgramme.at(ligne).at(colone - 1)));
     }
 
-    if(regex_match(lignesDuProgramme.at(ligne).at(colone-1),s_id)) {
-        return lignesDuProgramme.at(ligne).at(colone-1) + " type : s_id";
+    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_id)) {
+        cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_id" << endl;
+        return new IdTerminal(lignesDuProgramme.at(ligne).at(colone - 1));
     }
 
-    if(regex_match(lignesDuProgramme.at(ligne).at(colone-1),s_add)) {
-        return lignesDuProgramme.at(ligne).at(colone-1) + " type : s_add";
+    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_add)) {
+        return lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_add";
     }
 
-    if(regex_match(lignesDuProgramme.at(ligne).at(colone-1),s_sous)) {
-        return lignesDuProgramme.at(ligne).at(colone-1) + " type : s_sous";
+    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_sous)) {
+        return lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_sous";
     }
 
-    if(regex_match(lignesDuProgramme.at(ligne).at(colone-1),s_div)) {
-        return lignesDuProgramme.at(ligne).at(colone-1) + " type : s_div";
+    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_div)) {
+        return lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_div";
     }
 
-    if(regex_match(lignesDuProgramme.at(ligne).at(colone-1),s_mul)) {
-        return lignesDuProgramme.at(ligne).at(colone-1) + " type : s_mul";
+    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_mul)) {
+        cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_mul" << endl;
+        return new VirguleTerminal();
+
     }
 
-    if(regex_match(lignesDuProgramme.at(ligne).at(colone-1),s_vir)) {
-        return lignesDuProgramme.at(ligne).at(colone-1) + " type : s_vir";
+    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_vir)) {
+        return lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_vir";
     }
 
-    if(regex_match(lignesDuProgramme.at(ligne).at(colone-1),s_pv)) {
-        return lignesDuProgramme.at(ligne).at(colone-1) + " type : s_pv";
+    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_pv)) {
+        cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_pv" << endl;
+        return new PointVirguleTerminal();
     }
 
-    if(regex_match(lignesDuProgramme.at(ligne).at(colone-1),s_eg)) {
-        return lignesDuProgramme.at(ligne).at(colone-1) + " type : s_eg";
+    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_eg)) {
+        cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_eg" << endl;
+        return new EgalTerminal();
     }
 
-    if(regex_match(lignesDuProgramme.at(ligne).at(colone-1),s_opaff)) {
-        return lignesDuProgramme.at(ligne).at(colone-1) + " type : s_opaff";
+    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_opaff)) {
+        return lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_opaff";
     }
 
-    if(regex_match(lignesDuProgramme.at(ligne).at(colone-1),s_po)) {
-        return lignesDuProgramme.at(ligne).at(colone-1) + " type : s_po";
+    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_po)) {
+        return lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_po";
     }
 
-    if(regex_match(lignesDuProgramme.at(ligne).at(colone-1),s_pf)) {
-        return lignesDuProgramme.at(ligne).at(colone-1) + " type : s_pf";
+    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_pf)) {
+        return lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_pf";
     }
 
-    return lignesDuProgramme.at(ligne).at(colone-1) + " type : erreur lexicale";
-
-
+    cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : erreur lexicale" << endl;
+    return new ErreurLexicale();
 }
