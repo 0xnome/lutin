@@ -66,9 +66,11 @@ Automate::Automate(string nomFichier)
 
         lexeur = new Lexeur(lignesDuFichier);
 
+// Pour tester le lexeur
         cout << "lexeur ..." << endl;
-        for(int i = 0 ; i < 50 ; i++){
-            cout << lexeur->getNext() << endl;
+        Symbole* symb;
+        while((symb = lexeur->getNext()) != nullptr){
+            cout << *symb << endl;
         }
         cout << "fin lexeur ..." << endl;
 

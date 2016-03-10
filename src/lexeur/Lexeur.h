@@ -18,6 +18,7 @@ public:
 private:
     std::vector<std::vector<std::string>> lignesDuProgramme;
     unsigned int ligne,colone;
+    bool lectureTerminee;
 };
 
 #endif //LUTIN_LEXEUR_H

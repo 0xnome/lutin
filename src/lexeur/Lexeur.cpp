@@ -41,8 +41,8 @@ static const boost::regex s_vir(",");
 static const boost::regex s_pv(";");
 static const boost::regex s_eg("=");
 static const boost::regex s_opaff(":=");
-static const boost::regex s_pf("\\(");
-static const boost::regex s_po("\\)");
+static const boost::regex s_po("\\(");
+static const boost::regex s_pf("\\)");
 
 
 Lexeur::Lexeur(std::vector<std::string> lignesDuFichier) {
@@ -68,11 +68,17 @@ Lexeur::Lexeur(std::vector<std::string> lignesDuFichier) {
     };
     ligne = 0;
     colone = 0;
+    lectureTerminee = false;
 }
 
 Symbole *Lexeur::getNext() {
+    if(lectureTerminee){
+        return nullptr;
+    }
     boost::match_results<std::string::const_iterator> what;
     if (ligne == lignesDuProgramme.size() - 1 && colone > lignesDuProgramme.at(ligne).size() - 1) {
+        lectureTerminee = true;
+        cout << "Fin Programme" << endl;
         return new FinProgramme;
     }
     if (colone > lignesDuProgramme.at(ligne).size() - 1) {

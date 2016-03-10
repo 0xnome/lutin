@@ -6,60 +6,60 @@
 enum SYMBOLES
 {
     // Symboles non terminaux
-    PROGRAMME,
+    PROGRAMME,                  //0
 
     // Partie instruction
-    BLOC_INSTRUCTION,
+    BLOC_INSTRUCTION,           //1
 
-    INSTRUCTION_LECTURE,
-    INSTRUCTION_ECRITURE,
-    INSTRUCTION_AFFECTATION,
+    INSTRUCTION_LECTURE,        //2
+    INSTRUCTION_ECRITURE,       //3
+    INSTRUCTION_AFFECTATION,    //4
 
-    EXPRESSION,
-    EXPRESSION_ADDITIVE,
-    EXPRESSION_SOUSTRACTIVE,
-    EXPRESSION_MULT,
-    EXPRESSION_DIV,
+    EXPRESSION,                 //5
+    EXPRESSION_ADDITIVE,        //6
+    EXPRESSION_SOUSTRACTIVE,    //7
+    EXPRESSION_MULT,            //8
+    EXPRESSION_DIV,             //9
 
-    TERME,
-    FACTEUR,
-    EXPRESSION_PARENTHESEE,
-    CONSTANTE_NUMERIQUE,
-    IDENTIFICATEUR_FACTEUR,
+    TERME,                      //10
+    FACTEUR,                    //11
+    EXPRESSION_PARENTHESEE,     //12
+    CONSTANTE_NUMERIQUE,        //13
+    IDENTIFICATEUR_FACTEUR,     //14
 
     // Partie déclaration
-    BLOC_DECLARATION,
+    BLOC_DECLARATION,           //15
 
-    IDENTIFICATEUR_VARIABLE,
-    DECLARATION_VARIABLE,
+    IDENTIFICATEUR_VARIABLE,    //16
+    DECLARATION_VARIABLE,       //17
 
-    AFFECTATION_CONSTANTE,
-    DECLARATION_CONSTANTE,
+    AFFECTATION_CONSTANTE,      //18
+    DECLARATION_CONSTANTE,      //19
 
 
     // Symboles terminaux
-    ID_TERMINAL,
-    NUM_TERMINAL,
-    VAR_TERMINAL,
-    CONST_TERMINAL,
-    LIRE_TERMINAL,
-    ECRIRE_TERMINAL,
-    PLUS_TERMINAL,
-    MOINS_TERMINAL,
-    MULT_TERMINAL,
-    DIV_TERMINAL,
-    VIRGULE_TERMINAL,
-    POINT_VIRGULE_TERMINAL,
-    EGAL_TERMINAL,
-    AFFECT_TERMINAL,
-    PAROUV_TERMINAL,
-    PARFER_TERMINAL,
+    ID_TERMINAL,                //20
+    NUM_TERMINAL,               //21
+    VAR_TERMINAL,               //22
+    CONST_TERMINAL,             //23
+    LIRE_TERMINAL,              //24
+    ECRIRE_TERMINAL,            //25
+    PLUS_TERMINAL,              //26
+    MOINS_TERMINAL,             //27
+    MULT_TERMINAL,              //28
+    DIV_TERMINAL,               //29
+    VIRGULE_TERMINAL,           //30
+    POINT_VIRGULE_TERMINAL,     //31
+    EGAL_TERMINAL,              //32
+    AFFECT_TERMINAL,            //33
+    PAROUV_TERMINAL,            //34
+    PARFER_TERMINAL,            //35
 
 
 
     // Autres symboles
-    FIN_PROGRAMME,
-    ERREUR_LEXICALE
+    FIN_PROGRAMME,              //36
+    ERREUR_LEXICALE             //37
 };
 
 
