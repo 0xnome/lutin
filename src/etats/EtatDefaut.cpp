@@ -1,12 +1,8 @@
 #include <iostream>
-#include "Etat.h"
-#include "../automate/Automate.h"
-#include "../symboles/Symbole.h"
-#include "../symboles/IdTerminal.h"
-#include "../symboles/NumTerminal.h"
-#include "../symboles/AffectationConstante.h"
+#include "EtatDefaut.h"
+#include "SymbolesTerminaux.h"
+#include "SymbolesNonTerminaux.h"
 
-EtatInterface::~EtatInterface(){}
 
 // --------- Modèle --------- //
 //bool EtatX::transition(Automate* automate, Symbole* s)
@@ -20,13 +16,13 @@ EtatInterface::~EtatInterface(){}
 //}
 // ------------------------- //
 
-Etat::~Etat(){}
 
-bool Etat::transition(Automate *automate, Symbole *s)
+bool EtatDefaut::transition(Automate *automate, Symbole *s)
 {
     return false;
 }
 
+/*
 bool Etat0::transition(Automate* automate, Symbole* s)
 {
     switch (*s){
@@ -108,3 +104,4 @@ bool Etat28::transition(Automate* automate, Symbole* s)
         return false;
     }
 }
+*/

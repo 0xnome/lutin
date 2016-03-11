@@ -1,4 +1,4 @@
-#include <Etat.h>
+#include "EtatDefaut.h"
 #include "Automate.h"
 #include <fstream>
 #include <sstream>
@@ -14,9 +14,9 @@ void Automate::decalage()
 
 }
 
-Etat* Automate::popEtat()
+EtatInterface * Automate::popEtat()
 {
-    Etat* etat = pilesEtats.top();
+    EtatInterface * etat = pilesEtats.top();
     pilesEtats.pop();
     return etat;
 }
@@ -28,7 +28,7 @@ Symbole* Automate::popSymbole()
     return symbole;
 }
 
-void Automate::pushEtat(Etat * const etat)
+void Automate::pushEtat(EtatInterface *const etat)
 {
     pilesEtats.push(etat);
 }
@@ -89,7 +89,7 @@ Automate::~Automate()
     delete lexeur;
 }
 
-Etat *Automate::etatCourant() const
+EtatInterface * Automate::etatCourant() const
 {
     return pilesEtats.top();
 }

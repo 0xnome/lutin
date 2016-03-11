@@ -4,11 +4,10 @@
 
 
 #include <stack>
-#include <Etat.h>
-#include <Symbole.h>
-#include <Lexeur.h>
+#include "EtatInterface.h"
+#include "Symbole.h"
+#include "Lexeur.h"
 
-class Etat;
 class Automate
 {
 public:
@@ -19,21 +18,21 @@ public:
 
     Symbole *popSymbole();
 
-    Etat *popEtat();
+    EtatInterface * popEtat();
 
-    void pushEtat(Etat *const etat);
+    void pushEtat(EtatInterface *const etat);
 
     void pushSymbole(Symbole *const symbole);
 
     void popEtat(int nb);
 
 
-    Etat* etatCourant()const ;
+    EtatInterface * etatCourant()const ;
 
     ~Automate();
 
 private:
-    std::stack<Etat*> pilesEtats;
+    std::stack<EtatInterface *> pilesEtats;
 
     std::stack<Symbole*> pilesSymboles;
 
