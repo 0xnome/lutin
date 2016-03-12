@@ -4,6 +4,7 @@
 
 
 #include <stack>
+#include <Programme.h>
 #include "EtatInterface.h"
 #include "Symbole.h"
 #include "Lexeur.h"
@@ -14,7 +15,7 @@ public:
 
     Automate(std::string nomFichier);
 
-    void decalage();
+    bool decalage();
 
     Symbole *popSymbole();
 
@@ -26,6 +27,7 @@ public:
 
     void popEtat(int nb);
 
+    void setProgramme(Programme* programme);
 
     EtatInterface * etatCourant()const ;
 
@@ -37,6 +39,10 @@ private:
     std::stack<Symbole*> pilesSymboles;
 
     Lexeur *lexeur;
+
+    Programme* programme;
+
+    bool chargerProgramme();
 
 };
 

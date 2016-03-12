@@ -20,6 +20,10 @@ public:
         return os << this->nom;
     }
 
+    std::string getNom(){
+        return this->nom;
+    }
+
     virtual bool transition(Automate* automate, Symbole *s) = 0;
 
 protected:

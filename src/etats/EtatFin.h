@@ -8,6 +8,9 @@ class EtatFin: public EtatDefaut
 public:
     EtatFin() : EtatDefaut("EFin")
     { }
+
+    bool transition(Automate* automate, Symbole* s);
+
 };
 
 #endif //LUTIN_ETATFIN_H

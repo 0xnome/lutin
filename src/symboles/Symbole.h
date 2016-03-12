@@ -68,6 +68,89 @@ class Symbole
 protected:
     int identifiant;
 public:
+    static std::string getName(Symbole* s)
+    {
+        switch(*s){
+            case PROGRAMME :
+                return "PROGRAMME";
+            case BLOC_INSTRUCTION :
+                return "BLOC_INSTRUCTION";
+            case INSTRUCTION_LECTURE :
+                return "INSTRUCTION_LECTURE";
+            case INSTRUCTION_ECRITURE :
+                return "INSTRUCTION_ECRITURE";
+            case INSTRUCTION_AFFECTATION :
+                return "INSTRUCTION_AFFECTATION";
+            case EXPRESSION :
+                return "EXPRESSION";
+            case EXPRESSION_ADDITIVE :
+                return "EXPRESSION_ADDITIVE";
+            case EXPRESSION_SOUSTRACTIVE :
+                return "EXPRESSION_SOUSTRACTIVE";
+            case EXPRESSION_MULT :
+                return "EXPRESSION_MULT";
+            case EXPRESSION_DIV :
+                return "EXPRESSION_DIV";
+            case TERME :
+                return "TERME";
+            case FACTEUR :
+                return "FACTEUR";
+            case EXPRESSION_PARENTHESEE :
+                return "EXPRESSION_PARENTHESEE";
+            case CONSTANTE_NUMERIQUE :
+                return "CONSTANTE_NUMERIQUE";
+            case IDENTIFICATEUR_FACTEUR :
+                return "IDENTIFICATEUR_FACTEUR";
+            case BLOC_DECLARATION :
+                return "BLOC_DECLARATION";
+            case IDENTIFICATEUR_VARIABLE :
+                return "IDENTIFICATEUR_VARIABLE";
+            case DECLARATION_VARIABLE :
+                return "DECLARATION_VARIABLE";
+            case AFFECTATION_CONSTANTE :
+                return "AFFECTATION_CONSTANTE";
+            case DECLARATION_CONSTANTE :
+                return "DECLARATION_CONSTANTE";
+            case ID_TERMINAL :
+                return "ID_TERMINAL";
+            case NUM_TERMINAL :
+                return "NUM_TERMINAL";
+            case VAR_TERMINAL :
+                return "VAR_TERMINAL";
+            case CONST_TERMINAL :
+                return "CONST_TERMINAL";
+            case LIRE_TERMINAL :
+                return "LIRE_TERMINAL";
+            case ECRIRE_TERMINAL :
+                return "ECRIRE_TERMINAL";
+            case PLUS_TERMINAL :
+                return "PLUS_TERMINAL";
+            case MOINS_TERMINAL :
+                return "MOINS_TERMINAL";
+            case MULT_TERMINAL :
+                return "MULT_TERMINAL";
+            case DIV_TERMINAL :
+                return "DIV_TERMINAL";
+            case VIRGULE_TERMINAL :
+                return "VIRGULE_TERMINAL";
+            case POINT_VIRGULE_TERMINAL :
+                return "POINT_VIRGULE_TERMINAL";
+            case EGAL_TERMINAL :
+                return "EGAL_TERMINAL";
+            case AFFECT_TERMINAL :
+                return "AFFECT_TERMINAL";
+            case PAROUV_TERMINAL :
+                return "PAROUV_TERMINAL";
+            case PARFER_TERMINAL :
+                return "PARFER_TERMINAL";
+            case FIN_PROGRAMME :
+                return "FIN_PROGRAMME";
+            case ERREUR_LEXICALE  :
+                return "ERREUR_LEXICALE ";
+            default:
+                return "SYMBOLE_INCONNU";
+        }
+    }
     Symbole(int id) : identifiant(id)
     { }
 

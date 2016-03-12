@@ -8,18 +8,21 @@ bool Etat1::transition(Automate* automate, Symbole* s)
     switch (*s){
         case CONST_TERMINAL:
             automate->pushSymbole(s);
-            automate->pushEtat(new Etat3());
-            automate->decalage();
-            return true;
+            automate->pushEtat(new Etat3);
+            return automate->decalage();
+            /*
         case VAR_TERMINAL:
             automate->pushSymbole(s);
-            automate->pushEtat(new Etat4());
+            automate->pushEtat(new Etat4);
             automate->decalage();
             return true;
+        */
+        /*
         case BLOC_INSTRUCTION:
             automate->pushSymbole(s);
-            automate->pushEtat(new Etat2());
+            automate->pushEtat(new Etat2);
             return true;
+         */
         default:
             return false;
     }

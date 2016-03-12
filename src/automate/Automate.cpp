@@ -3,38 +3,48 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <Etat0.h>
 
 using namespace std;
 
-void Automate::decalage()
+bool Automate::decalage()
 {
-    // TODO : récuperer le symbole
-    lexeur->getNext();
-//    this->etatCourant()->transition(this, nullptr);
-
+    Symbole* symbole = lexeur->getNext();
+    cout << "lecture de " << Symbole::getName(symbole) << endl;
+    if((int)symbole == ERREUR_LEXICALE){
+        //TODO gestion si lecture d'erreur
+    }
+    return this->etatCourant()->transition(this, symbole);
 }
 
 EtatInterface * Automate::popEtat()
 {
     EtatInterface * etat = pilesEtats.top();
     pilesEtats.pop();
+    cout << "(POP1) nouvel Etat courant : " << etat->getNom() << endl;
     return etat;
 }
 
 Symbole* Automate::popSymbole()
 {
+    if(pilesSymboles.empty()){
+        return nullptr;
+    }
     Symbole * symbole = pilesSymboles.top();
+    cout << "(POP) Symbole pop : " << Symbole::getName(symbole) << endl;
     pilesSymboles.pop();
     return symbole;
 }
 
 void Automate::pushEtat(EtatInterface *const etat)
 {
+    cout << "(PUSH) nouvel etat courant : " << etat->getNom() << endl;
     pilesEtats.push(etat);
 }
 
 void Automate::pushSymbole(Symbole * const symbole)
 {
+    cout << "(PUSH) nouveau symbole reconnu : " << Symbole::getName(symbole) << endl;
     pilesSymboles.push(symbole);
 }
 
@@ -42,8 +52,11 @@ void Automate::popEtat(int nb)
 {
     for (int i = 0; i < nb; ++i)
     {
+        EtatInterface* e = pilesEtats.top();
         pilesEtats.pop();
+        delete e;
     }
+    cout << "(POP" << nb << ") nouvel etat courant : " << this->etatCourant()->getNom() << endl;
 }
 
 Automate::Automate(string nomFichier)
@@ -66,6 +79,8 @@ Automate::Automate(string nomFichier)
 
         lexeur = new Lexeur(lignesDuFichier);
 
+        cout << "programme : " << this->chargerProgramme() << endl;
+        /*
 // Pour tester le lexeur
         cout << "lexeur ..." << endl;
         Symbole* symb;
@@ -73,7 +88,7 @@ Automate::Automate(string nomFichier)
             cout << *symb << endl;
         }
         cout << "fin lexeur ..." << endl;
-
+*/
 
     }
     else
@@ -95,3 +110,11 @@ EtatInterface * Automate::etatCourant() const
 }
 
 
+void Automate::setProgramme(Programme *programme) {
+    this->programme = programme;
+}
+
+bool Automate::chargerProgramme() {
+    this->pushEtat(new Etat0());
+    return this->decalage();
+}
