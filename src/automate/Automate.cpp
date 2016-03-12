@@ -78,9 +78,10 @@ Automate::Automate(string nomFichier)
         }
 
         lexeur = new Lexeur(lignesDuFichier);
-
-        cout << "programme : " << this->chargerProgramme() << endl;
-        /*
+        this->programme = nullptr;
+        cout << "chargement : " << this->chargerProgramme() << endl;
+        cout << "programme charge." << endl;
+/*
 // Pour tester le lexeur
         cout << "lexeur ..." << endl;
         Symbole* symb;
@@ -89,7 +90,6 @@ Automate::Automate(string nomFichier)
         }
         cout << "fin lexeur ..." << endl;
 */
-
     }
     else
     {
@@ -102,6 +102,7 @@ Automate::Automate(string nomFichier)
 Automate::~Automate()
 {
     delete lexeur;
+    delete programme;
 }
 
 EtatInterface * Automate::etatCourant() const
@@ -110,11 +111,20 @@ EtatInterface * Automate::etatCourant() const
 }
 
 
-void Automate::setProgramme(Programme *programme) {
-    this->programme = programme;
+void Automate::setProgramme(Programme *nouveauProgramme) {
+    if(this->programme != nullptr)
+    {
+        delete this->programme;
+    }
+    this->programme = nouveauProgramme;
 }
 
 bool Automate::chargerProgramme() {
     this->pushEtat(new Etat0());
     return this->decalage();
+}
+
+void Automate::afficherProgramme() {
+    cout << "AFFICHAGE DU PROGRAMME" << endl;
+    this->programme->afficher();
 }

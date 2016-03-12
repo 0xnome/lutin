@@ -3,8 +3,8 @@
 
 Programme::Programme(BlocDeclaration *blocDeclaration, BlocInstruction *blocInstruction) : Symbole(PROGRAMME)
 {
-    this->blocInstruction = blocInstruction;
     this->blocDeclaration = blocDeclaration;
+    this->blocInstruction = blocInstruction;
 }
 
 Programme::~Programme()

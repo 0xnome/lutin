@@ -31,22 +31,3 @@ void DeclarationConstante::optimiser()
 void DeclarationConstante::executer()
 {
 }
-
-
-
-
-void DeclarationConstante::executer() {
-    //TODO
-}
-
-void DeclarationConstante::afficher() {
-//TODO
-}
-
-void DeclarationConstante::analyser() {
-    //TODO
-}
-
-void DeclarationConstante::optimiser() {
-    //TODO
-}

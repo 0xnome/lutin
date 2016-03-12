@@ -17,6 +17,8 @@ public:
 
     bool decalage();
 
+    void afficherProgramme();
+
     Symbole *popSymbole();
 
     EtatInterface * popEtat();

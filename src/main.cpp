@@ -80,7 +80,7 @@ int main(int argc, char **argv)
         }
 
         Automate automate(fichier);
-
+        automate.afficherProgramme();
     }
     catch (std::exception &e) {
         std::cerr << "Unhandled Exception reached the top of main: "

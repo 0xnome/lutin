@@ -10,7 +10,7 @@ public:
     DeclarationConstante(AffectationConstante *affectationConstante);
 
     ~DeclarationConstante();
-    
+
     virtual void executer();
 
     virtual void afficher();

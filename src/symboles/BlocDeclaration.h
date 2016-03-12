@@ -34,7 +34,9 @@ public:
 
 protected:
     BlocDeclaration(int id) : Symbole(id)
-    { }
+    {
+        this->suivant = nullptr;
+    }
 
     BlocDeclaration *suivant;
 };

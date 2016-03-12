@@ -5,6 +5,7 @@ AffectationConstante::AffectationConstante(IdTerminal *idTerminal, NumTerminal* 
 {
     this->id = idTerminal;
     this->num = numT;
+    this->suivant = nullptr;
 }
 
 void AffectationConstante::setSuivant(AffectationConstante* suiv){

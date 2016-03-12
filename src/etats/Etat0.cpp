@@ -12,11 +12,11 @@ bool Etat0::transition(Automate* automate, Symbole* s)
             BlocDeclaration *blocDeclaration = nullptr;
             BlocInstruction *blocInstruction = nullptr;
             Symbole *symb = automate->popSymbole();
-            if (symb != nullptr && (int) *symb == BLOC_INSTRUCTION) {
+            if (symb != nullptr && ((int) *symb == DECLARATION_CONSTANTE || (int) *symb == DECLARATION_VARIABLE)) {
                 blocInstruction = (BlocInstruction *) symb;
                 symb = automate->popSymbole();
             }
-            if (symb != nullptr && (int) *symb == BLOC_DECLARATION) {
+            if (symb != nullptr && ((int) *symb == INSTRUCTION_AFFECTATION || (int) *symb == INSTRUCTION_ECRITURE || (int) *symb == INSTRUCTION_LECTURE)) {
                 blocDeclaration = (BlocDeclaration *) symb;
             }
             Programme *programme = new Programme(blocDeclaration, blocInstruction);

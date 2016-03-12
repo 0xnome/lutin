@@ -8,11 +8,15 @@ class BlocInstruction : public Symbole
 
 protected:
     BlocInstruction(int id) : Symbole(id)
-    { }
+    {
+        this->suivant = nullptr;
+    }
 
 public:
     BlocInstruction() : Symbole(BLOC_INSTRUCTION)
-    { };
+    {
+        this->suivant = nullptr;
+    };
 
     virtual ~BlocInstruction()
     { };
