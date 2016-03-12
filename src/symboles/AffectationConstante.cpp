@@ -30,6 +30,9 @@ void AffectationConstante::executer()
 
 void AffectationConstante::afficher()
 {
+    this->id->afficher();
+    std::cout << "=";
+    this->num->afficher();
 }
 
 void AffectationConstante::analyser()
