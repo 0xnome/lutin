@@ -13,7 +13,7 @@ bool Etat3::transition(Automate* automate, Symbole* s)
         */
         case ID_TERMINAL:
             automate->pushSymbole(s);
-            automate->pushEtat(new Etat9;
+            automate->pushEtat(new Etat9);
             return automate->decalage();
         case VIRGULE_TERMINAL:
         case POINT_VIRGULE_TERMINAL:
