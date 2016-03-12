@@ -20,5 +20,19 @@ void DeclarationConstante::afficher() {
     }
 }
 
+void DeclarationConstante::analyser()
+{
+}
+
+void DeclarationConstante::optimiser()
+{
+}
+
+void DeclarationConstante::executer()
+{
+}
+
+
+
 
 
