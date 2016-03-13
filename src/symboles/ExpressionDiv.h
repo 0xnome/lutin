@@ -27,9 +27,10 @@ public:
 
 protected:
 
+    Terme * terme;
+
     Facteur * facteur;
 
-    Terme * terme;
 };
 
 

@@ -9,7 +9,7 @@ class ExpressionSoustractive : public Expression
 {
 
 public:
-    ExpressionSoustractive(Terme * terme1, Expression* expression1):Expression(EXPRESSION_SOUSTRACTIVE)
+    ExpressionSoustractive(Terme *terme1, Expression *expression1) : Expression(EXPRESSION_SOUSTRACTIVE)
     {
         this->terme = terme1;
         this->expression = expression1;
@@ -26,9 +26,9 @@ public:
     }
 
 protected:
-    Terme * terme;
+    Terme *terme;
 
-    Expression * expression;
+    Expression *expression;
 
 };
 

@@ -10,7 +10,8 @@ public:
     NumTerminal(int val):Symbole(NUM_TERMINAL),value(val){};
     ~NumTerminal(){}
 
-    void afficher(){
+    void afficher()
+    {
         std::cout<<value;
     }
 

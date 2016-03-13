@@ -28,10 +28,9 @@ public:
 
 protected:
 
-    Terme *terme;
-
     Expression *expression;
 
+    Terme *terme;
 
 };
 

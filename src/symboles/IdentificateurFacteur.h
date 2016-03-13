@@ -13,9 +13,14 @@ public:
         this->id = idTerminal;
     }
 
+    void afficher()
+    {
+        this->id->afficher();
+    }
+
     ~IdentificateurFacteur()
     {
-        delete id;
+        delete this->id;
     }
 
 protected:

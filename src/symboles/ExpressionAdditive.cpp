@@ -1,5 +1,7 @@
 #include "ExpressionAdditive.h"
 
+using namespace std;
+
 void ExpressionAdditive::executer()
 {
   //TODO
@@ -7,7 +9,9 @@ void ExpressionAdditive::executer()
 
 void ExpressionAdditive::afficher()
 {
-//TODO
+    this->expression->afficher();
+    cout<<"+";
+    this->terme->afficher();
 }
 
 

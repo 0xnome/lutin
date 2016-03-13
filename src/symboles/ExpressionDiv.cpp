@@ -1,13 +1,18 @@
 #include "ExpressionDiv.h"
 
+
+using namespace std;
+
 void ExpressionDiv::afficher()
 {
-  //TODO
+    //TODO
 }
 
 void ExpressionDiv::executer()
 {
- //TODO
+    this->terme->afficher();
+    cout<<"/";
+    this->facteur->afficher();
 }
 
 

@@ -14,7 +14,9 @@ public:
 
     void afficher()
     {
-        //TODO
+        std::cout<<"(";
+        this->expression->afficher();
+        std::cout<<")";
     }
 
     ~ExpressionParenthesee()

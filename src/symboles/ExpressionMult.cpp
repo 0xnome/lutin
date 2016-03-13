@@ -1,13 +1,17 @@
 #include "ExpressionMult.h"
 
+using namespace std;
+
 void ExpressionMult::afficher()
 {
-  // TODO
+    // TODO
 }
 
 void ExpressionMult::exectuer()
 {
-  // TODO
+    this->terme->afficher();
+    cout<<"*";
+    this->facteur->afficher();
 }
 
 

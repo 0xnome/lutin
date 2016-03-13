@@ -1,5 +1,7 @@
 #include "ExpressionSoustractive.h"
 
+using namespace std;
+
 void ExpressionSoustractive::afficher()
 {
   //TODO
@@ -7,8 +9,9 @@ void ExpressionSoustractive::afficher()
 
 void ExpressionSoustractive::exectuer()
 {
-  //TODO
-
+    this->expression->afficher();
+    cout<<"-";
+    this->terme->afficher();
 }
 
 

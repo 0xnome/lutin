@@ -16,12 +16,12 @@ public:
 
     ~ConstanteNumerique()
     {
-        delete valeur;
+        delete this->valeur;
     }
 
     void afficher()
     {
-        valeur->afficher();
+        this->valeur->afficher();
     }
 
 protected:
