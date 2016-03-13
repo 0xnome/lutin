@@ -11,7 +11,7 @@ bool Automate::decalage()
 {
     Symbole* symbole = lexeur->getNext();
     cout << "lecture de " << Symbole::getName(symbole) << endl;
-    if((int)symbole == ERREUR_LEXICALE){
+    if((int)*symbole == ERREUR_LEXICALE){
         //TODO gestion si lecture d'erreur
     }
     return this->etatCourant()->transition(this, symbole);
