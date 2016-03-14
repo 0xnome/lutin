@@ -22,6 +22,8 @@ public:
         delete this->id;
     }
 
+    bool estVide();
+
 protected:
     IdTerminal *id;
 

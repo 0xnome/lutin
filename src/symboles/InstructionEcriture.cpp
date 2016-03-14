@@ -16,4 +16,6 @@ void InstructionEcriture::executer(TableDesSymboles *tableDesSymboles)
 }
 
 
-
+bool InstructionEcriture::estVide() {
+    return this->expression == nullptr;
+}

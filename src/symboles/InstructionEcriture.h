@@ -21,6 +21,7 @@ public:
         delete this->expression;
     }
 
+    bool estVide();
 
 protected:
     Expression *expression;

@@ -47,7 +47,7 @@ void Programme::executer(TableDesSymboles *tableDesSymboles)
 void Programme::afficher()
 {
 
-    if (blocDeclaration != nullptr)
+    if (!blocDeclaration->estVide())
     {
         BlocDeclaration* declarationCur;
         declarationCur = blocDeclaration;
@@ -60,7 +60,7 @@ void Programme::afficher()
         }
     }
 
-    if (blocInstruction != nullptr)
+    if (!blocInstruction->estVide())
     {
         BlocInstruction* instructionCur;
         instructionCur = blocInstruction;

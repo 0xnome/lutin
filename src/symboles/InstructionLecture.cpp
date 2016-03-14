@@ -16,3 +16,7 @@ void InstructionLecture::executer(TableDesSymboles *tableDesSymboles)
     cin >> val ;
     tableDesSymboles->setVariableValeur(id->getNom(),val);
 }
+
+bool InstructionLecture::estVide() {
+    return this->id == nullptr;
+}
