@@ -7,7 +7,7 @@ void InstructionEcriture::afficher()
 {
     cout<<"ecrire ";
     this->expression->afficher();
-    cout<<" ;"
+    cout<<" ;";
 }
 
 void InstructionEcriture::executer()
