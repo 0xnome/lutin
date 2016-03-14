@@ -1,8 +1,11 @@
 #include <iostream>
 #include "Automate.h"
 #include <boost/program_options.hpp>
+#include "easyloggingpp.h"
+INITIALIZE_EASYLOGGINGPP
 
 namespace po = boost::program_options;
+
 
 using namespace std;
 
@@ -35,6 +38,7 @@ int main(int argc, char **argv)
                 ("execute,e", "Exécution interactive du programme")
                 ("analyse,a", "Analyse statique du programme")
                 ("optimize,o", "Transforme le programme et le simplifie")
+                ("verbose,v", po::value<std::string>(), "Affiche le debug (plus ou moins selon le niveau)")
                 ("input,i", po::value<std::string>()->required(), "programme lutin, argument par défaut");
 
         po::positional_options_description p;
@@ -64,30 +68,17 @@ int main(int argc, char **argv)
                 return SUCCESS;
             }
 
-            if (vm.count("execute"))
+            if (vm.count("verbose"))
             {
-                execute = true;
+
+                std::string severite = vm["verbose"].as<std::string>();
             }
 
-            if (vm.count("analyse"))
-            {
-                analyse = true;
-            }
-
-            if (vm.count("optimize"))
-            {
-                optimize = true;
-            }
-
-            if (vm.count("program"))
-            {
-                program = true;
-            }
-
-            if (vm.count("input"))
-            {
-                fichier = vm["input"].as<std::string>();
-            }
+            if (vm.count("execute")) execute = true;
+            if (vm.count("analyse")) analyse = true;
+            if (vm.count("optimize")) optimize = true;
+            if (vm.count("program")) program = true;
+            if (vm.count("input")) fichier = vm["input"].as<std::string>();
 
             po::notify(vm);
         }
@@ -117,7 +108,7 @@ int main(int argc, char **argv)
 
     catch (std::exception &e)
     {
-        std::cerr << "Un erreur non traitée est remontée jusqu'au main : "
+        LOG(FATAL) << "Un erreur non traitée est remontée jusqu'au main : "
         << e.what() << ", l'application va se stopper" << std::endl;
         return ERROR_UNHANDLED_EXCEPTION;
     }

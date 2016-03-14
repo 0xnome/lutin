@@ -4,6 +4,7 @@
 #include <sstream>
 #include <vector>
 #include <Etat0.h>
+#include "easyloggingpp.h"
 
 using namespace std;
 
@@ -129,24 +130,24 @@ bool Automate::chargerProgramme()
 
 void Automate::afficherProgramme()
 {
-    cout << "AFFICHAGE DU PROGRAMME" << endl;
+    LOG(DEBUG)  << "AFFICHAGE DU PROGRAMME" << endl;
     this->programme->afficher();
 }
 
 void Automate::analyserProgramme()
 {
-    cout << "ANALYSE DU PROGRAMME" << endl;
+    LOG(DEBUG) << "ANALYSE DU PROGRAMME" << endl;
     this->programme->analyser();
 }
 
 void Automate::optimiserProgramme()
 {
-    cout << "OPTIMISATION DU PROGRAMME" << endl;
+    LOG(DEBUG) << "OPTIMISATION DU PROGRAMME" << endl;
     this->programme->optimiser();
 }
 
 void Automate::executerProgramme()
 {
-    cout << "EXECUTION DU PROGRAMME" << endl;
+    LOG(DEBUG) << "EXECUTION DU PROGRAMME" << endl;
     this->programme->executer();
 }

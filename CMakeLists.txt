@@ -6,6 +6,7 @@ project(${project_name})
 FIND_PACKAGE(Boost COMPONENTS program_options regex REQUIRED)
 INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
 
+include_directories(lib)
 include_directories(src/symboles)
 include_directories(src/etats)
 include_directories(src/automate)
@@ -22,6 +23,7 @@ endif ()
 
 file(GLOB_RECURSE source_files "src/*.cpp")
 file(GLOB_RECURSE header_files "src/*.h")
+file(GLOB_RECURSE header_files "lib/*.h")
 
 
 add_executable(${project_name} ${header_files} ${source_files})
