@@ -17,7 +17,7 @@ public:
 
     virtual void afficher() = 0;
 
-    virtual void exectuer() = 0;
+    virtual void executer() = 0;
 
     virtual ~Expression()
     { };

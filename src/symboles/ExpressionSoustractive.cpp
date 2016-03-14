@@ -9,7 +9,7 @@ void ExpressionSoustractive::afficher()
     this->terme->afficher();
 }
 
-void ExpressionSoustractive::exectuer()
+void ExpressionSoustractive::executer()
 {
 
 }
