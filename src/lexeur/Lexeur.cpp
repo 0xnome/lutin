@@ -39,7 +39,7 @@ Lexeur::Lexeur(std::vector<std::string> lignesDuFichier) {
         std::vector<std::string> vecteurLigne;
         chaine = boost::regex_replace(ligne, boost::regex(","), boost::regex(" , "));
         chaine = boost::regex_replace(chaine, boost::regex(";"), boost::regex(" ; "));
-        chaine = boost::regex_replace(chaine, boost::regex("[^:]?="), boost::regex(" = "));
+        chaine = boost::regex_replace(chaine, boost::regex("[^:A-Za-z0-9]?="), boost::regex(" = "));
         chaine = boost::regex_replace(chaine, boost::regex(":="), boost::regex(" := "));
         chaine = boost::regex_replace(chaine, boost::regex("\\+"), boost::regex(" \\+ "));
         chaine = boost::regex_replace(chaine, boost::regex("-"), boost::regex(" - "));
