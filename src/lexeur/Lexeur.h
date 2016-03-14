@@ -22,6 +22,7 @@ private:
     unsigned int ligne,colone;
     bool lectureTerminee;
     Symbole* current;
+    std::vector<std::string> lignesDuFichier;
 };
 
 #endif //LUTIN_LEXEUR_H

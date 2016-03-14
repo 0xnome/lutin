@@ -6,9 +6,15 @@
 
 class ErreurLexicale : public Symbole {
 public:
-    ErreurLexicale() : Symbole(ERREUR_LEXICALE) { }
-
-    ~ErreurLexicale() { }
+    ErreurLexicale(std::string message):Symbole(ERREUR_LEXICALE){
+        this->message = message ;
+    }
+    ~ErreurLexicale(){}
+    std::string* getMessage(){
+        return &message;
+    }
+private:
+    std::string message;
 };
 
 
