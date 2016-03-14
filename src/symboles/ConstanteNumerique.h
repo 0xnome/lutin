@@ -21,7 +21,7 @@ public:
 
     int eval()
     {
-        return 0;
+        return valeur->getValue();
     }
 
 

@@ -12,7 +12,7 @@ void ExpressionAdditive::afficher()
 
 int ExpressionAdditive::eval()
 {
-  return 0;
+    return (terme->eval() + expression->eval());
 }
 
 void ExpressionAdditive::executer(TableDesSymboles *tableDesSymboles)
