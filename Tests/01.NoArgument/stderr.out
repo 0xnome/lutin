@@ -7,5 +7,5 @@ Options:
   -e [ --execute ]      Exécution interactive du programme
   -a [ --analyse ]      Analyse statique du programme
   -o [ --optimize ]     Transforme le programme et le simplifie
+  -v [ --verbose ]      Affiche le debug
   -i [ --input ] arg    programme lutin, argument par défaut
-
