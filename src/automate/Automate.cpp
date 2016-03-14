@@ -130,24 +130,24 @@ bool Automate::chargerProgramme()
 
 void Automate::afficherProgramme()
 {
-    LOG(DEBUG)  << "AFFICHAGE DU PROGRAMME" << endl;
+    LOG(INFO)  << "AFFICHAGE DU PROGRAMME" << endl;
     this->programme->afficher();
 }
 
 void Automate::analyserProgramme()
 {
-    LOG(DEBUG) << "ANALYSE DU PROGRAMME" << endl;
+    LOG(INFO) << "ANALYSE DU PROGRAMME" << endl;
     this->programme->analyser();
 }
 
 void Automate::optimiserProgramme()
 {
-    LOG(DEBUG) << "OPTIMISATION DU PROGRAMME" << endl;
+    LOG(INFO) << "OPTIMISATION DU PROGRAMME" << endl;
     this->programme->optimiser();
 }
 
 void Automate::executerProgramme()
 {
     LOG(DEBUG) << "EXECUTION DU PROGRAMME" << endl;
-    this->programme->executer();
+    //this->programme->executer();
 }

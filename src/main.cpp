@@ -38,7 +38,7 @@ int main(int argc, char **argv)
                 ("execute,e", "Exécution interactive du programme")
                 ("analyse,a", "Analyse statique du programme")
                 ("optimize,o", "Transforme le programme et le simplifie")
-                ("verbose,v", po::value<std::string>(), "Affiche le debug (plus ou moins selon le niveau)")
+                ("verbose,v", "Affiche le debug")
                 ("input,i", po::value<std::string>()->required(), "programme lutin, argument par défaut");
 
         po::positional_options_description p;
@@ -46,6 +46,10 @@ int main(int argc, char **argv)
         po::variables_map vm;
         po::notify(vm);
 
+        el::Configurations c;
+        c.setToDefault();
+        c.parseFromText("*GLOBAL:\n ENABLED = FALSE");
+        el::Loggers::reconfigureLogger("default", c);
         try
         {
             po::store(po::command_line_parser(argc, argv).
@@ -70,8 +74,8 @@ int main(int argc, char **argv)
 
             if (vm.count("verbose"))
             {
-
-                std::string severite = vm["verbose"].as<std::string>();
+                c.parseFromText("*GLOBAL:\n ENABLED = TRUE");
+                el::Loggers::reconfigureLogger("default", c);
             }
 
             if (vm.count("execute")) execute = true;
