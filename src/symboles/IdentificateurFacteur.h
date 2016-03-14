@@ -19,7 +19,7 @@ public:
     }
 
     int eval(TableDesSymboles *tablesDesSymboles){
-        // tablesDesSymboles
+        // tablesDesSymboles->getValeur(id->getNim());
         return 0;
     }
 
