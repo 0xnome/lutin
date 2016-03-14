@@ -8,6 +8,7 @@
 #include "EtatInterface.h"
 #include "Symbole.h"
 #include "Lexeur.h"
+#include "TableDesSymboles.h"
 
 enum RETOUR_PAS{
     CONTINUE,
@@ -59,6 +60,8 @@ private:
     bool chargerProgramme();
 
     int pas();
+
+    TableDesSymboles tableDesSymboles;
 };
 
 

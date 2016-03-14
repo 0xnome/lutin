@@ -1,8 +1,11 @@
 #include <iostream>
 #include "Automate.h"
 #include <boost/program_options.hpp>
+#include "easyloggingpp.h"
+INITIALIZE_EASYLOGGINGPP
 
 namespace po = boost::program_options;
+
 
 using namespace std;
 
@@ -35,6 +38,7 @@ int main(int argc, char **argv)
                 ("execute,e", "Exécution interactive du programme")
                 ("analyse,a", "Analyse statique du programme")
                 ("optimize,o", "Transforme le programme et le simplifie")
+                ("verbose,v", "Affiche le debug")
                 ("input,i", po::value<std::string>()->required(), "programme lutin, argument par défaut");
 
         po::positional_options_description p;
@@ -42,6 +46,12 @@ int main(int argc, char **argv)
         po::variables_map vm;
         po::notify(vm);
 
+        el::Configurations c;
+        c.setToDefault();
+        c.parseFromText("*GLOBAL:\n ENABLED = FALSE");
+        c.parseFromText("*GLOBAL:\n FORMAT = --- %level --- %msg");
+
+        el::Loggers::reconfigureLogger("default", c);
         try
         {
             po::store(po::command_line_parser(argc, argv).
@@ -64,30 +74,17 @@ int main(int argc, char **argv)
                 return SUCCESS;
             }
 
-            if (vm.count("execute"))
+            if (vm.count("verbose"))
             {
-                execute = true;
+                c.parseFromText("*GLOBAL:\n ENABLED = TRUE");
+                el::Loggers::reconfigureLogger("default", c);
             }
 
-            if (vm.count("analyse"))
-            {
-                analyse = true;
-            }
-
-            if (vm.count("optimize"))
-            {
-                optimize = true;
-            }
-
-            if (vm.count("program"))
-            {
-                program = true;
-            }
-
-            if (vm.count("input"))
-            {
-                fichier = vm["input"].as<std::string>();
-            }
+            if (vm.count("execute")) execute = true;
+            if (vm.count("analyse")) analyse = true;
+            if (vm.count("optimize")) optimize = true;
+            if (vm.count("program")) program = true;
+            if (vm.count("input")) fichier = vm["input"].as<std::string>();
 
             po::notify(vm);
         }

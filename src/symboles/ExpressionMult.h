@@ -21,6 +21,9 @@ public:
 
     void afficher();
 
+    int eval(TableDesSymboles *tablesDesSymboles);
+
+
     ~ExpressionMult()
     {
         delete this->terme;

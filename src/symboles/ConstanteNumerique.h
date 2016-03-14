@@ -19,6 +19,12 @@ public:
         delete this->valeur;
     }
 
+    int eval(TableDesSymboles *tablesDesSymboles)
+    {
+        return valeur->getValue();
+    }
+
+
     void afficher()
     {
         this->valeur->afficher();

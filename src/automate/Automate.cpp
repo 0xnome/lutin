@@ -4,6 +4,7 @@
 #include <sstream>
 #include <vector>
 #include <Etat0.h>
+#include "easyloggingpp.h"
 
 using namespace std;
 
@@ -21,7 +22,7 @@ EtatInterface *Automate::popEtat()
 {
     EtatInterface *etat = pilesEtats.top();
     pilesEtats.pop();
-    cout << "(POP1) nouvel Etat courant : " << etat->getNom() << endl;
+    LOG(INFO) << "(POP1) nouvel Etat courant : " << etat->getNom() << endl;
     return etat;
 }
 
@@ -32,20 +33,20 @@ Symbole *Automate::popSymbole()
         return nullptr;
     }
     Symbole *symbole = pilesSymboles.top();
-    cout << "(POP) Symbole pop : " << Symbole::getName(symbole) << endl;
+    LOG(INFO) << "(POP) Symbole pop : " << Symbole::getName(symbole) << endl;
     pilesSymboles.pop();
     return symbole;
 }
 
 void Automate::pushEtat(EtatInterface *const etat)
 {
-    cout << "(PUSH) nouvel etat courant : " << etat->getNom() << endl;
+    LOG(INFO) << "(PUSH) nouvel etat courant : " << etat->getNom() << endl;
     pilesEtats.push(etat);
 }
 
 void Automate::pushSymbole(Symbole *const symbole)
 {
-    cout << "(PUSH) nouveau symbole reconnu : " << Symbole::getName(symbole) << endl;
+    LOG(INFO) << "(PUSH) nouveau symbole reconnu : " << Symbole::getName(symbole) << endl;
     pilesSymboles.push(symbole);
 }
 
@@ -57,7 +58,7 @@ void Automate::popEtat(int nb)
         pilesEtats.pop();
         delete e;
     }
-    cout << "(POP" << nb << ") nouvel etat courant : " << this->etatCourant()->getNom() << endl;
+    LOG(INFO) << "(POP" << nb << ") nouvel etat courant : " << this->etatCourant()->getNom() << endl;
 }
 
 Automate::Automate(string nomFichier)
@@ -79,9 +80,8 @@ Automate::Automate(string nomFichier)
 
         lexeur = new Lexeur(lignesDuFichier);
         this->programme = nullptr;
-
-        cout << "chargement : " << this->chargerProgramme() << endl;
-        cout << "programme charge." << endl;
+        LOG(INFO) << "chargement : " << this->chargerProgramme() << endl;
+        LOG(INFO) << "programme charge." << endl;
 /*
 // Pour tester le lexeur
         cout << "lexeur ..." << endl;
@@ -147,24 +147,24 @@ int Automate::pas() {
 
 void Automate::afficherProgramme()
 {
-    cout << "AFFICHAGE DU PROGRAMME" << endl;
+    LOG(INFO)  << "AFFICHAGE DU PROGRAMME" << endl;
     this->programme->afficher();
 }
 
 void Automate::analyserProgramme()
 {
-    cout << "ANALYSE DU PROGRAMME" << endl;
+    LOG(INFO) << "ANALYSE DU PROGRAMME" << endl;
     this->programme->analyser();
 }
 
 void Automate::optimiserProgramme()
 {
-    cout << "OPTIMISATION DU PROGRAMME" << endl;
+    LOG(INFO) << "OPTIMISATION DU PROGRAMME" << endl;
     this->programme->optimiser();
 }
 
 void Automate::executerProgramme()
 {
-    cout << "EXECUTION DU PROGRAMME" << endl;
-    this->programme->executer(nullptr);
+    LOG(DEBUG) << "EXECUTION DU PROGRAMME" << endl;
+    //this->programme->executer();
 }

@@ -2,10 +2,12 @@ cmake_minimum_required(VERSION 2.8)
 #project name
 set(project_name lutin)
 project(${project_name})
+set(TEST_TABLE_SYMBOLE testTableSymbole)
 
 FIND_PACKAGE(Boost COMPONENTS program_options regex REQUIRED)
 INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
 
+include_directories(lib)
 include_directories(src/symboles)
 include_directories(src/etats)
 include_directories(src/automate)
@@ -19,10 +21,14 @@ else()
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -ggdb -std=c++0x -lboost_program_options -lboost_regex")
 endif ()
 
-
+enable_testing()
 file(GLOB_RECURSE source_files "src/*.cpp")
 file(GLOB_RECURSE header_files "src/*.h")
+file(GLOB_RECURSE header_files "lib/*.h")
 
 
 add_executable(${project_name} ${header_files} ${source_files})
 TARGET_LINK_LIBRARIES(${project_name} ${Boost_LIBRARIES})
+
+add_executable(${TEST_TABLE_SYMBOLE} TestUnitaires/TestTableDesSymboles.cpp src/automate/TableDesSymboles.cpp)
+add_test(${TEST_TABLE_SYMBOLE} ${TEST_TABLE_SYMBOLE})

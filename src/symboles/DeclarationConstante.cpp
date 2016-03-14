@@ -30,7 +30,11 @@ void DeclarationConstante::optimiser()
 
 void DeclarationConstante::executer(TableDesSymboles *tableDesSymboles)
 {
-
+   AffectationConstante *affc_courant = this->affectationConstante;
+    while (affc_courant != nullptr){
+        affc_courant->executer(tableDesSymboles);
+        affc_courant = affc_courant->getSuivant();
+    }
 }
 
 bool DeclarationConstante::estVide() {

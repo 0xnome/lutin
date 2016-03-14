@@ -18,6 +18,11 @@ public:
         this->id->afficher();
     }
 
+    int eval(TableDesSymboles *tablesDesSymboles){
+        return tablesDesSymboles->getValeur(id->getNom());
+    }
+
+
     ~IdentificateurFacteur()
     {
         delete this->id;

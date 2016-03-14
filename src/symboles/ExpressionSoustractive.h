@@ -19,6 +19,9 @@ public:
 
     void executer(TableDesSymboles *tableDesSymboles);
 
+    int eval(TableDesSymboles *tablesDesSymboles);
+
+
     ~ExpressionSoustractive()
     {
         delete this->terme;

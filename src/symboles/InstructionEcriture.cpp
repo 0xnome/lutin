@@ -12,7 +12,8 @@ void InstructionEcriture::afficher()
 
 void InstructionEcriture::executer(TableDesSymboles *tableDesSymboles)
 {
-
+    cout << expression->eval(nullptr);
 }
+
 
 

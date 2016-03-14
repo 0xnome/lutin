@@ -12,5 +12,7 @@ void InstructionLecture::afficher()
 
 void InstructionLecture::executer(TableDesSymboles *tableDesSymboles)
 {
-
+    int val;
+    cin >> val ;
+    tableDesSymboles->setVariableValeur(id->getNom(),val);
 }

@@ -15,6 +15,10 @@ public:
         std::cout<<value;
     }
 
+    int getValue(){
+      return value;
+    }
+
 protected:
     int value;
 };

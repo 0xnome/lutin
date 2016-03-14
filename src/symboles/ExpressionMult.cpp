@@ -9,6 +9,12 @@ void ExpressionMult::afficher()
     this->facteur->afficher();
 }
 
+int ExpressionMult::eval(TableDesSymboles *tablesDesSymboles)
+{
+    return (facteur->eval(tablesDesSymboles) * terme->eval(tablesDesSymboles));
+}
+
+
 void ExpressionMult::executer(TableDesSymboles *tableDesSymboles)
 {
 

@@ -19,6 +19,11 @@ public:
         std::cout<<")";
     }
 
+    int eval(TableDesSymboles *tablesDesSymboles)
+    {
+        return expression->eval(TableDesSymboles *tablesDesSymboles);
+    }
+
     ~ExpressionParenthesee()
     {
         delete this->expression;

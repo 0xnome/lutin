@@ -19,6 +19,8 @@ public:
 
     void executer(TableDesSymboles *tableDesSymboles);
 
+    int eval(TableDesSymboles *tablesDesSymboles);
+
     ~ExpressionDiv()
     {
         delete this->terme;
