@@ -101,7 +101,7 @@ state E18 : F __ O parouv EXP parfer
 
 state E19 :  DECS __ DECS const AFFECTS pv O
 
-state E20 : AFFECTS __ AFFECT v O id eg num
+state E20 : AFFECTS __ AFFECTS v O id eg num
 
 state E21 : AFFECTS __ id eg O num
 
@@ -127,7 +127,7 @@ state E25 : INSTRS __ INSTRS id aff EXP O pv
 state E25 : EXP __ EXP O add T
 state E25 : EXP __ EXP O sous T
 
-state E27 : AFFECTS __ AFFECT v id O eg num
+state E27 : AFFECTS __ AFFECTS v id O eg num
 
 state E28 : AFFECTS __ id eg num O
 

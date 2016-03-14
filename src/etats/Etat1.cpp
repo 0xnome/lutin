@@ -1,7 +1,6 @@
 #include <InstructionAffectation.h>
 #include "Etat1.h"
 #include "Etat3.h"
-#include "Etat4.h"
 #include "Etat2.h"
 
 bool Etat1::transition(Automate* automate, Symbole* s)
