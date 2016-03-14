@@ -8,6 +8,7 @@
 #include "EtatInterface.h"
 #include "Symbole.h"
 #include "Lexeur.h"
+#include "TableDesSymboles.h"
 
 class Automate
 {
@@ -52,6 +53,8 @@ private:
     Programme* programme;
 
     bool chargerProgramme();
+
+    TableDesSymboles tableDesSymboles;
 
 };
 

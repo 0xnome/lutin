@@ -12,10 +12,9 @@ TableDesSymboles::~TableDesSymboles()
 
 }
 
-bool TableDesSymboles::estUtilisee(string nomVariable) const
+bool TableDesSymboles::estUtiliseeVariable(string nomVariable) const
 {
-    //TODO
-    return false;
+    return this->tableVariables.find(nomVariable)->second.estUtilisee;
 }
 
 bool TableDesSymboles::estInitialisee(string nomVariable) const
@@ -32,13 +31,13 @@ bool TableDesSymboles::estDeclaree(string nomVariable) const
 
 void TableDesSymboles::ajouterConstante(string nomConstante, int valeurConstante)
 {
-    Entree constEntree = {true, false, valeurConstante};
+    Entree constEntree =  {true, false, true, valeurConstante};
     this->tableConstantes[nomConstante] = constEntree;
 }
 
 void TableDesSymboles::ajouterVariable(std::string nomVariable)
 {
-    Entree varEntree = {false, false};
+    Entree varEntree = {false, false, false};
     this->tableVariables[nomVariable] = varEntree;
 }
 
@@ -91,5 +90,21 @@ unsigned long TableDesSymboles::getNbVariable() const
 {
     return this->tableVariables.size();
 }
+
+int TableDesSymboles::getValeur(std::string nom) const
+{
+    auto iterator = this->tableVariables.find(nom);
+
+    if(iterator != this->tableVariables.end())
+    {
+        return iterator->second.valeur;
+    }
+    else
+    {
+        return this->tableConstantes.find(nom)->second.valeur;
+    }
+}
+
+
 
 

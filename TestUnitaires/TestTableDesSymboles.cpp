@@ -23,6 +23,18 @@ void testAjouterConstante()
 
 }
 
+void testEstUtiliseeConstante()
+{
+    TableDesSymboles tableDesSymboles;
+    string constString1("constVar");
+
+    tableDesSymboles.ajouterConstante(constString1, 46);
+    tableDesSymboles.setConstanteUtilisee(constString1);
+
+    //assert(tableDesSymboles.)
+
+}
+
 void testEstInitialiseeEstUtiliseeVariable()
 {
     TableDesSymboles tableDesSymboles;
@@ -33,7 +45,10 @@ void testEstInitialiseeEstUtiliseeVariable()
     assert(tableDesSymboles.getNbVariable() == 1);
 
     assert(!tableDesSymboles.estInitialisee(variable));
-    assert(!tableDesSymboles.estUtilisee(variable));
+    assert(!tableDesSymboles.estUtiliseeVariable(variable));
+
+
+    tableDesSymboles.estUtiliseeVariable("fakevariable");
 }
 
 
@@ -56,5 +71,6 @@ int main(int argc, char **argv)
     testAjouterConstante();
     testAjouterVariable();
     testEstInitialiseeEstUtiliseeVariable();
+    testEstUtiliseeConstante();
     return 0;
 }

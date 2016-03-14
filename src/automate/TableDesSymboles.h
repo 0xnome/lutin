@@ -4,11 +4,14 @@
 #include <unordered_map>
 #include <string>
 
+
 struct Entree
 {
     bool estInitialisee;
     bool estUtilisee;
+    bool estConstante;
     int valeur;
+
 };
 
 
@@ -44,13 +47,15 @@ public:
     /**
      * Renvoie la valeur de la variable
      */
-    int getVariableValeur(std::string nomVariable)const;
+    int getVariableValeur(std::string nomVariable) const;
 
     /**
      * Renvoie la valeur de la constante
      */
     int getConstanteValeur(std::string nomConstante) const;
 
+
+    int getValeur(std::string nom)const ;
 
     /**
      * Set la valeur de la variable à valeur
@@ -65,7 +70,7 @@ public:
     /**
      * Regarde si la variable dont le nom passé en paramètre a utilisée au moins une fois dans le programme
      */
-    bool estUtilisee(std::string nomVariable) const;
+    bool estUtiliseeVariable(std::string nomVariable) const;
 
     /**
      * Regarde si la variable est dans la table des symboles
@@ -73,16 +78,16 @@ public:
     bool estDeclaree(std::string nomVariable) const;
 
 
-
     /* ------------ méthodes utilisées pour les tests -------------- */
-    unsigned long getNbConstante()const;
+    unsigned long getNbConstante() const;
 
-    unsigned long getNbVariable()const;
+    unsigned long getNbVariable() const;
 
 
 private:
     std::unordered_map<std::string, Entree> tableVariables;
     std::unordered_map<std::string, Entree> tableConstantes;
+
 
 };
 
