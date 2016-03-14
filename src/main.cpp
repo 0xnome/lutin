@@ -49,6 +49,8 @@ int main(int argc, char **argv)
         el::Configurations c;
         c.setToDefault();
         c.parseFromText("*GLOBAL:\n ENABLED = FALSE");
+        c.parseFromText("*GLOBAL:\n FORMAT = --- %level --- %msg");
+
         el::Loggers::reconfigureLogger("default", c);
         try
         {
