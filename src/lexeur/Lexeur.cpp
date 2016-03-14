@@ -33,7 +33,7 @@ static const boost::regex s_pf("\\)");
 
 Lexeur::Lexeur(std::vector<std::string> lignesDuFichier) {
     std::string chaine;
-    // lignesDuProgramme = std::vector<std::vector<std::string>>;
+    this->lignesDuFichier = lignesDuFichier;
 
     for (string ligne : lignesDuFichier) {
         std::vector<std::string> vecteurLigne;
@@ -65,8 +65,8 @@ Symbole *Lexeur::getNext() {
 }
 
 void Lexeur::shift() {
-    if(lectureTerminee){
-        current =  nullptr;
+    if (lectureTerminee) {
+        current = nullptr;
         return;
     }
     boost::match_results<std::string::const_iterator> what;
@@ -180,9 +180,11 @@ void Lexeur::shift() {
     }
 
     LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : erreur lexicale" << endl;
-    current = new ErreurLexicale;
+
+    current = new ErreurLexicale("Erreur lexicale ("+std::to_string(ligne+1)+":"+std::to_string(lignesDuFichier.at(ligne).find(lignesDuProgramme.at(ligne).at(colone - 1))+1)+") caractere "+lignesDuProgramme.at(ligne).at(colone - 1));
+    cout << *((ErreurLexicale*)current)->getMessage() ;
 }
 
-Symbole* Lexeur::getCurrent() {
+Symbole *Lexeur::getCurrent() {
     return current;
 }
