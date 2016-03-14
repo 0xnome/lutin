@@ -28,6 +28,8 @@ void DeclarationConstante::optimiser()
 {
 }
 
-void DeclarationConstante::executer()
+void DeclarationConstante::executer(TableDesSymboles *tableDesSymboles)
 {
+
 }
+

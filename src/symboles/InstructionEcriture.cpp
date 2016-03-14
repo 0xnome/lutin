@@ -10,10 +10,9 @@ void InstructionEcriture::afficher()
     cout<<" ;";
 }
 
-void InstructionEcriture::executer()
+void InstructionEcriture::executer(TableDesSymboles *tableDesSymboles)
 {
-  //TODO
-}
 
+}
 
 

@@ -21,10 +21,6 @@ DeclarationVariable::~DeclarationVariable()
     delete this->identificateurVariable;
 }
 
-void DeclarationVariable::executer()
-{
-
-}
 
 void DeclarationVariable::analyser()
 {
@@ -35,5 +31,12 @@ void DeclarationVariable::optimiser()
 {
 
 }
+
+void DeclarationVariable::executer(TableDesSymboles *tableDesSymboles)
+{
+
+}
+
+
 
 

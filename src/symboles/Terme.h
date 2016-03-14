@@ -1,6 +1,7 @@
 #ifndef LUTIN_TERME_H
 #define LUTIN_TERME_H
 
+#include "TableDesSymboles.h"
 #include "Expression.h"
 
 class Terme : public Expression
@@ -15,6 +16,8 @@ public:
     { }
 
     virtual void afficher() = 0;
+
+    virtual void executer(TableDesSymboles *tableDesSymboles) = 0;
 
     virtual ~Terme()
     { }

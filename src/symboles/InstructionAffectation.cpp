@@ -3,10 +3,6 @@
 using namespace std;
 
 
-void InstructionAffectation::executer()
-{
-  //TODO
-}
 
 void InstructionAffectation::afficher()
 {
@@ -15,6 +11,13 @@ void InstructionAffectation::afficher()
     this->expression->afficher();
     cout<<" ;";
 }
+
+void InstructionAffectation::executer(TableDesSymboles *tableDesSymboles)
+{
+
+}
+
+
 
 
 

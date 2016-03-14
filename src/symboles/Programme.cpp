@@ -1,3 +1,4 @@
+#include <TableDesSymboles.h>
 #include "Programme.h"
 
 
@@ -13,7 +14,7 @@ Programme::~Programme()
     delete this->blocInstruction;
 }
 
-void Programme::executer()
+void Programme::executer(TableDesSymboles *tableDesSymboles)
 {
     return;
 }

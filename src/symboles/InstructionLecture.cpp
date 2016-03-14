@@ -10,8 +10,7 @@ void InstructionLecture::afficher()
     cout<<" ;";
 }
 
-void InstructionLecture::executer()
+void InstructionLecture::executer(TableDesSymboles *tableDesSymboles)
 {
-  //TODO
-}
 
+}

@@ -10,10 +10,8 @@ void ExpressionDiv::afficher()
     this->facteur->afficher();
 }
 
-void ExpressionDiv::executer()
+void ExpressionDiv::executer(TableDesSymboles *tableDesSymboles)
 {
 
 }
-
-
 
