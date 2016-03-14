@@ -25,7 +25,7 @@ AffectationConstante* AffectationConstante::getSuivant() const
     return suivant;
 }
 
-void AffectationConstante::executer()
+void AffectationConstante::executer(TableDesSymboles *tableDesSymboles)
 {
 }
 

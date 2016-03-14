@@ -10,7 +10,7 @@ class Programme : public Symbole
 public:
     Programme(BlocDeclaration *blocDeclaration, BlocInstruction *blocInstruction);
 
-    virtual void executer();
+    virtual void executer(TableDesSymboles *tableDesSymboles);
 
     virtual void afficher();
 

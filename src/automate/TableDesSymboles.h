@@ -8,8 +8,8 @@ struct Entree
 {
     // TODO : rajouter la valeur de la variable
     bool estInitialisee;
-    bool estConstante;
     bool estUtilisee;
+    int valeur;
 };
 
 
@@ -18,23 +18,20 @@ class TableDesSymboles
 
 public:
 
+    TableDesSymboles();
 
-    TableDesSymboles()
-    { }
+    ~TableDesSymboles();
 
+    void ajouterConstante(std::string nomConstante, int valeurConstante);
 
-    virtual ~TableDesSymboles()
-    { }
+    void ajouterVariable(std::string nomConstante);
+
+    void setVariableUtilisee(std::string nomVariable);
 
     /**
      * Regarde si la variable dont le nom passé en paramètre a été initialisée
      */
     bool estInitialisee(std::string nomVariable) const;
-
-    /**
-     * Regarde si la variable dont le nom passé en paramètre est une constante
-     */
-    bool estConstante(std::string nomVariable) const;
 
     /**
      * Regarde si la variable dont le nom passé en paramètre a utilisée au moins une fois dans le programme
@@ -46,8 +43,10 @@ public:
      */
     bool estDeclaree(std::string nomVariable) const;
 
+
 private:
-    std::unordered_map<std::string, Entree> table;
+    std::unordered_map<std::string, Entree> tableVariables;
+    std::unordered_map<std::string, Entree> tableConstantes;
 
 };
 

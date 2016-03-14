@@ -1,6 +1,7 @@
 #ifndef LUTIN_INSTRUCTIONLECTURE_H
 #define LUTIN_INSTRUCTIONLECTURE_H
 
+#include <TableDesSymboles.h>
 #include "BlocInstruction.h"
 #include "IdTerminal.h"
 
@@ -14,7 +15,7 @@ public:
 
     void afficher();
 
-    void executer();
+    void executer(TableDesSymboles *tableDesSymboles);
 
     ~InstructionLecture()
     {

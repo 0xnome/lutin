@@ -1,28 +1,54 @@
 #include "TableDesSymboles.h"
 
+using namespace std;
 
-bool TableDesSymboles::estUtilisee(std::string nomVariable) const
+TableDesSymboles::TableDesSymboles()
+{
+
+}
+
+TableDesSymboles::~TableDesSymboles()
+{
+
+}
+
+bool TableDesSymboles::estUtilisee(string nomVariable) const
 {
     //TODO
     return false;
 }
 
-bool TableDesSymboles::estConstante(std::string nomVariable) const
+bool TableDesSymboles::estInitialisee(string nomVariable) const
 {
     //TODO
     return false;
 }
 
-bool TableDesSymboles::estInitialisee(std::string nomVariable) const
+bool TableDesSymboles::estDeclaree(string nomVariable) const
 {
-    //TODO
-    return false;
+    return this->tableVariables.find(nomVariable) != this->tableVariables.end() ||
+           this->tableConstantes.find(nomVariable) != this->tableConstantes.end();
 }
 
-bool TableDesSymboles::estDeclaree(std::string nomVariable) const
+void TableDesSymboles::ajouterConstante(string nomConstante, int valeurConstante)
 {
-    return this->table.find(nomVariable) != this->table.end();
+    Entree constEntree = {true, false, valeurConstante};
+    this->tableConstantes[nomConstante] = constEntree;
 }
+
+void TableDesSymboles::ajouterVariable(std::string nomVariable)
+{
+    Entree varEntree = {false, false};
+    this->tableVariables[nomVariable] = varEntree;
+}
+
+void TableDesSymboles::setVariableUtilisee(std::string nomVariable)
+{
+    this->tableVariables[nomVariable].estUtilisee = true;
+}
+
+
+
 
 
 

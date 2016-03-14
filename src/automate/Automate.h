@@ -21,9 +21,15 @@ public:
 
     Automate(std::string nomFichier);
 
-    bool decalage();
+    void decalage(EtatInterface* nouvelEtat, Symbole* symboleActuel);
+
+    void analyserProgramme();
+
+    void optimiserProgramme();
 
     void afficherProgramme();
+
+    void executerProgramme();
 
     Symbole *popSymbole();
 

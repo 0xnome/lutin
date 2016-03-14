@@ -1,6 +1,7 @@
 #ifndef LUTIN_AFFECTATIONCONSTANTE_H
 #define LUTIN_AFFECTATIONCONSTANTE_H
 
+#include <TableDesSymboles.h>
 #include "Symbole.h"
 #include "IdTerminal.h"
 #include "NumTerminal.h"
@@ -13,7 +14,7 @@ public:
     ~AffectationConstante();
 
 
-    virtual void executer();
+    virtual void executer(TableDesSymboles *tableDesSymboles);
 
     virtual void afficher();
 

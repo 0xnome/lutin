@@ -2,7 +2,7 @@
 #define LUTIN_SYMBOLE_H
 
 #include <iostream>
-
+#include "TableDesSymboles.h"
 enum SYMBOLES
 {
     // Symboles non terminaux
@@ -169,7 +169,7 @@ public:
     /**
      * Execute le programme de manière interactive (option -e)
      */
-    virtual void executer()
+    virtual void executer(TableDesSymboles *tableDesSymboles)
     { }
 
     /**

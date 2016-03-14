@@ -32,7 +32,7 @@ public:
         BlocInstruction::suivant = suivant;
     }
 
-    virtual void executer() = 0;
+    virtual void executer(TableDesSymboles *tableDesSymboles) = 0;
 
     virtual void afficher() = 0;
 

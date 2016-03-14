@@ -57,14 +57,19 @@ Lexeur::Lexeur(std::vector<std::string> lignesDuFichier) {
 }
 
 Symbole *Lexeur::getNext() {
+    shift();
+    return current;
+}
+
+void Lexeur::shift() {
     if(lectureTerminee){
-        return nullptr;
+        current =  nullptr;
     }
     boost::match_results<std::string::const_iterator> what;
     if (ligne == lignesDuProgramme.size() - 1 && colone > lignesDuProgramme.at(ligne).size() - 1) {
         lectureTerminee = true;
         cout << "Fin Programme" << endl;
-        return new FinProgramme;
+        current = new FinProgramme;
     }
     if (colone > lignesDuProgramme.at(ligne).size() - 1) {
         ligne++;
@@ -74,85 +79,89 @@ Symbole *Lexeur::getNext() {
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_var)) {
         cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_var" << endl;
-        return new IdTerminal(lignesDuProgramme.at(ligne).at(colone - 1));
+        current = new IdTerminal(lignesDuProgramme.at(ligne).at(colone - 1));
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_const)) {
         cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_const" << endl;
-        return new ConstTerminal;
+        current = new ConstTerminal;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_lire)) {
         cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_lire" << endl;
-        return new LireTerminal;
+        current = new LireTerminal;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_ecrire)) {
         cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_ecrire" << endl;
-        return new EcrireTerminal;
+        current = new EcrireTerminal;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_num)) {
         cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_num" << endl;
-        return new NumTerminal(std::stoi(lignesDuProgramme.at(ligne).at(colone - 1)));
+        current = new NumTerminal(std::stoi(lignesDuProgramme.at(ligne).at(colone - 1)));
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_id)) {
         cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_id" << endl;
-        return new IdTerminal(lignesDuProgramme.at(ligne).at(colone - 1));
+        current = new IdTerminal(lignesDuProgramme.at(ligne).at(colone - 1));
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_add)) {
         cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_add" << endl;
-        return new PlusTerminal;
+        current = new PlusTerminal;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_sous)) {
         cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_sous" << endl;
-        return new MoinsTerminal;
+        current = new MoinsTerminal;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_div)) {
         cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_div" << endl;
-        return new DivTerminal;
+        current = new DivTerminal;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_mul)) {
         cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_mul" << endl;
-        return new MultTerminal;
+        current = new MultTerminal;
 
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_vir)) {
         cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_vir" << endl;
-        return new VirguleTerminal;
+        current = new VirguleTerminal;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_pv)) {
         cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_pv" << endl;
-        return new PointVirguleTerminal;
+        current = new PointVirguleTerminal;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_eg)) {
         cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_eg" << endl;
-        return new EgalTerminal;
+        current = new EgalTerminal;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_opaff)) {
         cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_opaff" << endl;
-        return new AffectTerminal;
+        current = new AffectTerminal;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_po)) {
         cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_po" << endl;
-        return new ParOuvTerminal;
+        current = new ParOuvTerminal;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_pf)) {
         cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_pf" << endl;
-        return new ParFerTerminal;
+        current = new ParFerTerminal;
     }
 
     cout << lignesDuProgramme.at(ligne).at(colone - 1) + " type : erreur lexicale" << endl;
-    return new ErreurLexicale;
+    current = new ErreurLexicale;
+}
+
+Symbole* Lexeur::getCurrent() {
+    return current;
 }

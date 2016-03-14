@@ -15,8 +15,18 @@ namespace
 
 int main(int argc, char **argv)
 {
+    /**
+     * variables pour la récupération des options
+     */
     std::string fichier;
-    try {
+    bool execute = false;
+    bool optimize = false;
+    bool analyse = false;
+    bool program = false;
+
+
+    try
+    {
         po::options_description desc("Options");
 
         desc.add_options()
@@ -32,61 +42,84 @@ int main(int argc, char **argv)
         po::variables_map vm;
         po::notify(vm);
 
-        try {
+        try
+        {
             po::store(po::command_line_parser(argc, argv).
                     options(desc).positional(p).run(), vm);
 
 
-            if (argc == 1) {
+            if (argc == 1)
+            {
                 std::cerr << "Compilateur Lutin" << std::endl;
                 std::cerr << "Utilisation: lut [options] fichier" << std::endl;
                 std::cerr << desc << std::endl;
                 return ERROR_IN_COMMAND_LINE;
             }
 
-            if (vm.count("help")) {
+            if (vm.count("help"))
+            {
                 std::cout << "Compilateur Lutin" << std::endl;
                 std::cout << "Utilisation: lut [options] fichier" << std::endl;
                 std::cout << desc << std::endl;
                 return SUCCESS;
             }
 
-            if (vm.count("execute")) {
-                std::cout << "--execute option spécifiée" << std::endl;
+            if (vm.count("execute"))
+            {
+                execute = true;
             }
 
-            if (vm.count("analyse")) {
-                std::cout << "--analyse option spécifiée" << std::endl;
+            if (vm.count("analyse"))
+            {
+                analyse = true;
             }
 
-            if (vm.count("optimize")) {
-                std::cout << "--optimize option spécifiée" << std::endl;
+            if (vm.count("optimize"))
+            {
+                optimize = true;
             }
 
-            if (vm.count("program")) {
-                std::cout << "--program option spécifiée" << std::endl;
+            if (vm.count("program"))
+            {
+                program = true;
             }
 
-            if (vm.count("input")) {
+            if (vm.count("input"))
+            {
                 fichier = vm["input"].as<std::string>();
             }
 
             po::notify(vm);
         }
-        catch (po::error &e) {
+
+        catch (po::error &e)
+        {
             std::cerr << "ERROR: " << e.what() << std::endl << std::endl;
             std::cerr << desc << std::endl;
             return ERROR_IN_COMMAND_LINE;
         }
 
         Automate automate(fichier);
-        automate.afficherProgramme();
-    }
-    catch (std::exception &e) {
-        std::cerr << "Unhandled Exception reached the top of main: "
-        << e.what() << ", application will now exit" << std::endl;
-        return ERROR_UNHANDLED_EXCEPTION;
 
+        if (analyse)
+            automate.analyserProgramme();
+
+        if (optimize)
+            automate.optimiserProgramme();
+
+        if (program)
+            automate.afficherProgramme();
+
+        if (execute)
+            automate.executerProgramme();
+
+    }
+
+    catch (std::exception &e)
+    {
+        std::cerr << "Un erreur non traitée est remontée jusqu'au main : "
+        << e.what() << ", l'application va se stopper" << std::endl;
+        return ERROR_UNHANDLED_EXCEPTION;
     }
 
     return SUCCESS;

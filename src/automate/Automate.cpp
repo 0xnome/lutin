@@ -17,20 +17,21 @@ void Automate::decalage(EtatInterface* nouvelEtat, Symbole* symboleActuel)
     lexeur->shift();
 }
 
-EtatInterface * Automate::popEtat()
+EtatInterface *Automate::popEtat()
 {
-    EtatInterface * etat = pilesEtats.top();
+    EtatInterface *etat = pilesEtats.top();
     pilesEtats.pop();
     cout << "(POP1) nouvel Etat courant : " << etat->getNom() << endl;
     return etat;
 }
 
-Symbole* Automate::popSymbole()
+Symbole *Automate::popSymbole()
 {
-    if(pilesSymboles.empty()){
+    if (pilesSymboles.empty())
+    {
         return nullptr;
     }
-    Symbole * symbole = pilesSymboles.top();
+    Symbole *symbole = pilesSymboles.top();
     cout << "(POP) Symbole pop : " << Symbole::getName(symbole) << endl;
     pilesSymboles.pop();
     return symbole;
@@ -42,7 +43,7 @@ void Automate::pushEtat(EtatInterface *const etat)
     pilesEtats.push(etat);
 }
 
-void Automate::pushSymbole(Symbole * const symbole)
+void Automate::pushSymbole(Symbole *const symbole)
 {
     cout << "(PUSH) nouveau symbole reconnu : " << Symbole::getName(symbole) << endl;
     pilesSymboles.push(symbole);
@@ -52,7 +53,7 @@ void Automate::popEtat(int nb)
 {
     for (int i = 0; i < nb; ++i)
     {
-        EtatInterface* e = pilesEtats.top();
+        EtatInterface *e = pilesEtats.top();
         pilesEtats.pop();
         delete e;
     }
@@ -61,9 +62,8 @@ void Automate::popEtat(int nb)
 
 Automate::Automate(string nomFichier)
 {
-
     ifstream fluxFichier(nomFichier);
-    if(fluxFichier)
+    if (fluxFichier)
     {
         string contenuDuFichier((istreambuf_iterator<char>(fluxFichier)), istreambuf_iterator<char>());
 
@@ -72,7 +72,7 @@ Automate::Automate(string nomFichier)
         char delimiteur = '\n';
         string ligne;
         vector<string> lignesDuFichier;
-        while (getline(stringstream,ligne,delimiteur))
+        while (getline(stringstream, ligne, delimiteur))
         {
             lignesDuFichier.push_back(ligne);
         }
@@ -105,14 +105,15 @@ Automate::~Automate()
     delete programme;
 }
 
-EtatInterface * Automate::etatCourant() const
+EtatInterface *Automate::etatCourant() const
 {
     return pilesEtats.top();
 }
 
 
-void Automate::setProgramme(Programme *nouveauProgramme) {
-    if(this->programme != nullptr)
+void Automate::setProgramme(Programme *nouveauProgramme)
+{
+    if (this->programme != nullptr)
     {
         delete this->programme;
     }
@@ -137,7 +138,8 @@ bool Automate::chargerProgramme() {
     return false;
 }
 
-void Automate::afficherProgramme() {
+void Automate::afficherProgramme()
+{
     cout << "AFFICHAGE DU PROGRAMME" << endl;
     this->programme->afficher();
 }
@@ -145,4 +147,22 @@ void Automate::afficherProgramme() {
 int Automate::pas() {
     Symbole *s = this->lexeur->getCourant();
     return this->etatCourant()->transition(this, s);
+}
+
+void Automate::analyserProgramme()
+{
+    cout << "ANALYSE DU PROGRAMME" << endl;
+    this->programme->analyser();
+}
+
+void Automate::optimiserProgramme()
+{
+    cout << "OPTIMISATION DU PROGRAMME" << endl;
+    this->programme->optimiser();
+}
+
+void Automate::executerProgramme()
+{
+    cout << "EXECUTION DU PROGRAMME" << endl;
+    this->programme->executer(nullptr);
 }

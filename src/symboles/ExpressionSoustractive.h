@@ -17,7 +17,7 @@ public:
 
     void afficher();
 
-    void exectuer();
+    void executer(TableDesSymboles *tableDesSymboles);
 
     ~ExpressionSoustractive()
     {

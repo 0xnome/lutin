@@ -14,7 +14,7 @@ public:
 
     void afficher();
 
-    void executer();
+    void executer(TableDesSymboles *tableDesSymboles);
 
     ~InstructionEcriture()
     {
