@@ -17,7 +17,14 @@ public:
 
     bool decalage();
 
+
+    void analyserProgramme();
+
+    void optimiserProgramme();
+
     void afficherProgramme();
+
+    void executerProgramme();
 
     Symbole *popSymbole();
 

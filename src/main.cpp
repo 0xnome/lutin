@@ -16,6 +16,12 @@ namespace
 int main(int argc, char **argv)
 {
     std::string fichier;
+    bool execute = false;
+    bool optimize = false;
+    bool analyse = false;
+    bool program = false;
+
+
     try {
         po::options_description desc("Options");
 
@@ -52,19 +58,19 @@ int main(int argc, char **argv)
             }
 
             if (vm.count("execute")) {
-                std::cout << "--execute option spécifiée" << std::endl;
+                execute = true;
             }
 
             if (vm.count("analyse")) {
-                std::cout << "--analyse option spécifiée" << std::endl;
+                analyse = true;
             }
 
             if (vm.count("optimize")) {
-                std::cout << "--optimize option spécifiée" << std::endl;
+                optimize = true;
             }
 
             if (vm.count("program")) {
-                std::cout << "--program option spécifiée" << std::endl;
+                program = true;
             }
 
             if (vm.count("input")) {
@@ -80,8 +86,21 @@ int main(int argc, char **argv)
         }
 
         Automate automate(fichier);
-        automate.afficherProgramme();
+
+        if (analyse)
+            automate.analyserProgramme();
+
+        if (optimize)
+            automate.optimiserProgramme();
+
+        if (program)
+            automate.afficherProgramme();
+
+        if (execute)
+            automate.executerProgramme();
+
     }
+
     catch (std::exception &e) {
         std::cerr << "Unhandled Exception reached the top of main: "
         << e.what() << ", application will now exit" << std::endl;
