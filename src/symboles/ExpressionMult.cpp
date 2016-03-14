@@ -4,14 +4,13 @@ using namespace std;
 
 void ExpressionMult::afficher()
 {
-    // TODO
+    this->terme->afficher();
+    cout<<"*";
+    this->facteur->afficher();
 }
 
 void ExpressionMult::exectuer()
 {
-    this->terme->afficher();
-    cout<<"*";
-    this->facteur->afficher();
 }
 
 

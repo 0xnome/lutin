@@ -4,14 +4,14 @@ using namespace std;
 
 void ExpressionSoustractive::afficher()
 {
-  //TODO
+    this->expression->afficher();
+    cout<<"-";
+    this->terme->afficher();
 }
 
 void ExpressionSoustractive::exectuer()
 {
-    this->expression->afficher();
-    cout<<"-";
-    this->terme->afficher();
+
 }
 
 
