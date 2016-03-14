@@ -5,8 +5,9 @@ using namespace std;
 
 void InstructionEcriture::afficher()
 {
-    cout<<"ecrire";
+    cout<<"ecrire ";
     this->expression->afficher();
+    cout<<" ;"
 }
 
 void InstructionEcriture::executer()

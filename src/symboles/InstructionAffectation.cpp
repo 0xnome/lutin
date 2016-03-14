@@ -11,8 +11,9 @@ void InstructionAffectation::executer()
 void InstructionAffectation::afficher()
 {
     this->id->afficher();
-    cout<<":=";
+    cout<<" := ";
     this->expression->afficher();
+    cout<<" ;";
 }
 
 
