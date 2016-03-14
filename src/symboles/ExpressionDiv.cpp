@@ -5,14 +5,14 @@ using namespace std;
 
 void ExpressionDiv::afficher()
 {
-    //TODO
+      this->terme->afficher();
+    cout<<"/";
+    this->facteur->afficher();
 }
 
 void ExpressionDiv::executer()
 {
-    this->terme->afficher();
-    cout<<"/";
-    this->facteur->afficher();
+
 }
 
 
