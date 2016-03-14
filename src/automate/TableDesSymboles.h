@@ -9,7 +9,6 @@ struct Entree
 {
     bool estInitialisee;
     bool estUtilisee;
-    bool estConstante;
     int valeur;
 
 };
@@ -55,7 +54,9 @@ public:
     int getConstanteValeur(std::string nomConstante) const;
 
 
-    int getValeur(std::string nom)const ;
+    int getValeur(std::string nom) const;
+
+    Entree* getEntree(std::string nom)const;
 
     /**
      * Set la valeur de la variable à valeur
@@ -85,8 +86,10 @@ public:
 
 
 private:
-    std::unordered_map<std::string, Entree> tableVariables;
-    std::unordered_map<std::string, Entree> tableConstantes;
+    std::unordered_map<std::string, Entree*> tableVariables;
+    std::unordered_map<std::string, Entree*> tableConstantes;
+
+    typedef std::unordered_map<std::string, Entree*>::iterator TableIterator;
 
 
 };

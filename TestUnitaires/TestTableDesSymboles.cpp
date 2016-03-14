@@ -20,6 +20,8 @@ void testAjouterConstante()
     // ajout d'une constante de mm nom
     tableDesSymboles.ajouterConstante(constString1, 42);
     assert(tableDesSymboles.getNbConstante() == 1);
+    assert(tableDesSymboles.getConstanteValeur(constString1) == 46);
+
 
 }
 
@@ -47,8 +49,6 @@ void testEstInitialiseeEstUtiliseeVariable()
     assert(!tableDesSymboles.estInitialisee(variable));
     assert(!tableDesSymboles.estUtiliseeVariable(variable));
 
-
-    tableDesSymboles.estUtiliseeVariable("fakevariable");
 }
 
 
