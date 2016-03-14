@@ -21,6 +21,9 @@ public:
 
     void afficher();
 
+    int eval();
+
+
     ~ExpressionMult()
     {
         delete this->terme;

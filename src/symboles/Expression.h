@@ -18,6 +18,8 @@ public:
 
     virtual void afficher() = 0;
 
+    virtual int eval() = 0;
+
     virtual void executer(TableDesSymboles *tableDesSymboles) = 0;
 
     virtual ~Expression()

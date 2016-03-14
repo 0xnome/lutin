@@ -14,4 +14,10 @@ void ExpressionSoustractive::executer(TableDesSymboles *tableDesSymboles)
 
 }
 
+int ExpressionSoustractive::eval()
+{
+  return 0;
+}
+
+
 

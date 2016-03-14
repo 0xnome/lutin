@@ -19,6 +19,12 @@ public:
         delete this->valeur;
     }
 
+    int eval()
+    {
+        return 0;
+    }
+
+
     void afficher()
     {
         this->valeur->afficher();

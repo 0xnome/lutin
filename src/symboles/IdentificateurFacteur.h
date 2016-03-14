@@ -18,6 +18,11 @@ public:
         this->id->afficher();
     }
 
+    int eval(){
+        return 0;
+    }
+
+
     ~IdentificateurFacteur()
     {
         delete this->id;

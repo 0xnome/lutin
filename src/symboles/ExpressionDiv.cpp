@@ -15,3 +15,7 @@ void ExpressionDiv::executer(TableDesSymboles *tableDesSymboles)
 
 }
 
+int ExpressionDiv::eval()
+{
+return 0;
+}
