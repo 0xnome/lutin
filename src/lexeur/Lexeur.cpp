@@ -84,7 +84,7 @@ void Lexeur::shift() {
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_var)) {
         LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_var" << endl;
-        current = new IdTerminal(lignesDuProgramme.at(ligne).at(colone - 1));
+        current = new VarTerminal();
         return;
     }
 

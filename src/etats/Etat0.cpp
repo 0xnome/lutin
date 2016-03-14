@@ -9,25 +9,27 @@
 int Etat0::transition(Automate *automate, Symbole *s) {
     switch (*s) {
         case PROGRAMME:
+            // PROG
             automate->pushSymbole(s);
             automate->pushEtat(new EtatFin);
             return CONTINUE;
         case BLOC_DECLARATION:
         case DECLARATION_CONSTANTE:
         case DECLARATION_VARIABLE:
+            // DECS
             automate->pushSymbole(s);
             automate->pushEtat(new Etat1);
             return CONTINUE;
-
         case CONST_TERMINAL:
         case VAR_TERMINAL:
         case ID_TERMINAL:
         case LIRE_TERMINAL:
         case ECRIRE_TERMINAL:
         case FIN_PROGRAMME: {
-            // On lit un SUIVANT de DECS, donc on fait une reduction qui produit un DECS vide
+            // suivants de DECS
+            // on fait une reduction qui produit un DECS vide (cas particulier ici)
 
-            // ici on a mis une DeclarationConstante, mais ça n'a pas d'importance
+            // on a mis une DeclarationConstante, mais ça n'a pas d'importance
             BlocDeclaration *decs = new DeclarationConstante(nullptr);
             //faire la transition sur decs
             return automate->etatCourant()->transition(automate, decs);

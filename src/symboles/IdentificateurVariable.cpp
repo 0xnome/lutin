@@ -17,7 +17,7 @@ void IdentificateurVariable::setSuivant(IdentificateurVariable *suiv) {
 }
 
 void IdentificateurVariable::afficher() {
-    std::cout << this->identifiant;
+    this->id->afficher();
 }
 
 IdentificateurVariable *IdentificateurVariable::getSuivant() const {
