@@ -30,7 +30,7 @@ IdentificateurVariable::~IdentificateurVariable()
 
 void IdentificateurVariable::executer(TableDesSymboles *tableDesSymboles)
 {
-    //TODO
+    tableDesSymboles->ajouterVariable(this->idTerminal->getNom());
 }
 
 void IdentificateurVariable::analyser()
