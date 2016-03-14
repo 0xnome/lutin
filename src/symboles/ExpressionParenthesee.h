@@ -19,6 +19,11 @@ public:
         std::cout<<")";
     }
 
+    int eval()
+    {
+        return 0;
+    }
+
     ~ExpressionParenthesee()
     {
         delete this->expression;

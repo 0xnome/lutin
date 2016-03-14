@@ -16,6 +16,8 @@ public:
 
     virtual void afficher() = 0;
 
+    virtual int eval() = 0;
+
 protected:
     Facteur(int id) : Terme(id)
     { }
