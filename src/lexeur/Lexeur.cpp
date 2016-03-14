@@ -69,7 +69,8 @@ void Lexeur::shift() {
         current = nullptr;
         return;
     }
-    boost::match_results<std::string::const_iterator> what;
+
+
     if (ligne == lignesDuProgramme.size() - 1 && colone > lignesDuProgramme.at(ligne).size() - 1) {
         lectureTerminee = true;
         LOG(INFO) << "Fin Programme" << endl;
@@ -79,6 +80,11 @@ void Lexeur::shift() {
     if (colone > lignesDuProgramme.at(ligne).size() - 1) {
         ligne++;
         colone = 0;
+    }
+
+    while (lignesDuProgramme.at(ligne).at(0) == "" || lignesDuProgramme.at(ligne).at(0) == " "){
+        ligne++;
+        colone = 0 ;
     }
     colone++;
 
@@ -179,10 +185,13 @@ void Lexeur::shift() {
         return;
     }
 
+
     LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : erreur lexicale" << endl;
 
-    current = new ErreurLexicale("Erreur lexicale ("+std::to_string(ligne+1)+":"+std::to_string(lignesDuFichier.at(ligne).find(lignesDuProgramme.at(ligne).at(colone - 1))+1)+") caractere "+lignesDuProgramme.at(ligne).at(colone - 1));
-    cout << *((ErreurLexicale*)current)->getMessage() ;
+    current = new ErreurLexicale("Erreur lexicale (" + std::to_string(ligne + 1) + ":" + std::to_string(
+            lignesDuFichier.at(ligne).find(lignesDuProgramme.at(ligne).at(colone - 1)) + 1) + ") caractere " +
+                                 lignesDuProgramme.at(ligne).at(colone - 1));
+    cout << *((ErreurLexicale *) current)->getMessage();
 }
 
 Symbole *Lexeur::getCurrent() {
