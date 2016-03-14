@@ -84,6 +84,12 @@ void Lexeur::shift() {
 
     while (lignesDuProgramme.at(ligne).at(0) == "" || lignesDuProgramme.at(ligne).at(0) == " "){
         ligne++;
+        if(ligne >= lignesDuProgramme.size() - 1) {
+            LOG(INFO) << "Fin Programme" << endl;
+            lectureTerminee = true;
+            current = new FinProgramme;
+            return;
+        }
         colone = 0 ;
     }
     colone++;
