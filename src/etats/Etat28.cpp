@@ -3,12 +3,10 @@
 #include <AffectationConstante.h>
 #include "Etat28.h"
 
-bool Etat28::transition(Automate* automate, Symbole* s)
-{
+int Etat28::transition(Automate *automate, Symbole *s) {
     switch (*s) {
         case VIRGULE_TERMINAL:
-        case POINT_VIRGULE_TERMINAL:
-        {
+        case POINT_VIRGULE_TERMINAL: {
             //On a lu un suivant de AFFECTS
             NumTerminal *num = (NumTerminal *) automate->popSymbole();
             automate->popSymbole(); // pop du EGAL_TERMINAL
@@ -21,6 +19,6 @@ bool Etat28::transition(Automate* automate, Symbole* s)
             return automate->etatCourant()->transition(automate, affects);
         }
         default:
-            return false;
+            return ERREUR;
     }
 }

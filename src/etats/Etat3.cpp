@@ -2,7 +2,7 @@
 #include "Etat8.h"
 #include "Etat9.h"
 
-bool Etat3::transition(Automate* automate, Symbole* s)
+int Etat3::transition(Automate *automate, Symbole *s)
 {
     switch (*s){
         case AFFECTATION_CONSTANTE:
@@ -13,6 +13,6 @@ bool Etat3::transition(Automate* automate, Symbole* s)
             automate->decalage(new Etat9, s);
             return CONTINUE;
         default:
-            return false;
+            return ERREUR;
     }
 }

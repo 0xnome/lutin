@@ -8,23 +8,23 @@
 #include "Symbole.h"
 
 class Automate;
-class EtatInterface
-{
+
+class EtatInterface {
 public:
 
-    EtatInterface(std::string nom) : nom(nom) {}
+    EtatInterface(std::string nom) : nom(nom) { }
 
-    virtual ~EtatInterface(){};
+    virtual ~EtatInterface() { };
 
-    std::ostream &operator<<(std::ostream& os) {
+    std::ostream &operator<<(std::ostream &os) {
         return os << this->nom;
     }
 
-    std::string getNom(){
+    std::string getNom() {
         return this->nom;
     }
 
-    virtual bool transition(Automate* automate, Symbole *s) = 0;
+    virtual int transition(Automate *automate, Symbole *s) = 0;
 
 protected:
     std::string nom;

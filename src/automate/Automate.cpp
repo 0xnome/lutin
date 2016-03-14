@@ -8,8 +8,7 @@
 
 using namespace std;
 
-void Automate::decalage(EtatInterface* nouvelEtat, Symbole* symboleActuel)
-{
+void Automate::decalage(EtatInterface *nouvelEtat, Symbole *symboleActuel) {
     //empiler etat et symbole
     this->pushEtat(nouvelEtat);
     this->pushSymbole(symboleActuel);
@@ -18,18 +17,15 @@ void Automate::decalage(EtatInterface* nouvelEtat, Symbole* symboleActuel)
     lexeur->shift();
 }
 
-EtatInterface *Automate::popEtat()
-{
+EtatInterface *Automate::popEtat() {
     EtatInterface *etat = pilesEtats.top();
     pilesEtats.pop();
     LOG(INFO) << "(POP1) nouvel Etat courant : " << etat->getNom() << endl;
     return etat;
 }
 
-Symbole *Automate::popSymbole()
-{
-    if (pilesSymboles.empty())
-    {
+Symbole *Automate::popSymbole() {
+    if (pilesSymboles.empty()) {
         return nullptr;
     }
     Symbole *symbole = pilesSymboles.top();
@@ -38,22 +34,18 @@ Symbole *Automate::popSymbole()
     return symbole;
 }
 
-void Automate::pushEtat(EtatInterface *const etat)
-{
+void Automate::pushEtat(EtatInterface *const etat) {
     LOG(INFO) << "(PUSH) nouvel etat courant : " << etat->getNom() << endl;
     pilesEtats.push(etat);
 }
 
-void Automate::pushSymbole(Symbole *const symbole)
-{
+void Automate::pushSymbole(Symbole *const symbole) {
     LOG(INFO) << "(PUSH) nouveau symbole reconnu : " << Symbole::getName(symbole) << endl;
     pilesSymboles.push(symbole);
 }
 
-void Automate::popEtat(int nb)
-{
-    for (int i = 0; i < nb; ++i)
-    {
+void Automate::popEtat(int nb) {
+    for (int i = 0; i < nb; ++i) {
         EtatInterface *e = pilesEtats.top();
         pilesEtats.pop();
         delete e;
@@ -61,11 +53,9 @@ void Automate::popEtat(int nb)
     LOG(INFO) << "(POP" << nb << ") nouvel etat courant : " << this->etatCourant()->getNom() << endl;
 }
 
-Automate::Automate(string nomFichier)
-{
+Automate::Automate(string nomFichier) {
     ifstream fluxFichier(nomFichier);
-    if (fluxFichier)
-    {
+    if (fluxFichier) {
         string contenuDuFichier((istreambuf_iterator<char>(fluxFichier)), istreambuf_iterator<char>());
 
         // split du fichier ligne par ligne
@@ -73,15 +63,21 @@ Automate::Automate(string nomFichier)
         char delimiteur = '\n';
         string ligne;
         vector<string> lignesDuFichier;
-        while (getline(stringstream, ligne, delimiteur))
-        {
+        getline(stringstream, ligne, delimiteur);
+        do{
             lignesDuFichier.push_back(ligne);
         }
+        while (getline(stringstream, ligne, delimiteur));
 
         lexeur = new Lexeur(lignesDuFichier);
         this->programme = nullptr;
-        LOG(INFO) << "chargement : " << this->chargerProgramme() << endl;
-        LOG(INFO) << "programme charge." << endl;
+
+        if(this->chargerProgramme()){
+            LOG(INFO) << "chargement : REUSSI" << endl;
+        }
+        else{
+            LOG(ERROR) << "chargement : ECHOUE" << endl;
+        }
 /*
 // Pour tester le lexeur
         cout << "lexeur ..." << endl;
@@ -93,30 +89,25 @@ Automate::Automate(string nomFichier)
         cout << "fin lexeur ..." << endl;
 */
     }
-    else
-    {
+    else {
         std::cerr << "Erreur a l'ouverture du fichier " << nomFichier << std::endl;
         exit(1);
     }
 
 }
 
-Automate::~Automate()
-{
+Automate::~Automate() {
     delete lexeur;
     delete programme;
 }
 
-EtatInterface *Automate::etatCourant() const
-{
+EtatInterface *Automate::etatCourant() const {
     return pilesEtats.top();
 }
 
 
-void Automate::setProgramme(Programme *nouveauProgramme)
-{
-    if (this->programme != nullptr)
-    {
+void Automate::setProgramme(Programme *nouveauProgramme) {
+    if (this->programme != nullptr) {
         delete this->programme;
     }
     this->programme = nouveauProgramme;
@@ -127,14 +118,17 @@ bool Automate::chargerProgramme() {
     //initialisation de la pile à l'Etat0
     this->pushEtat(new Etat0);
     // boucle principale
-    do{
+    do {
         pasRetour = this->pas();
-    }while(pasRetour == CONTINUE);
+    } while (pasRetour == CONTINUE);
 
-    if(pasRetour == ERREUR){
+    if (pasRetour == ERREUR) {
+        LOG(ERROR) << "Erreur d'execution du programme lors de la transition dans l'etat "
+        << this->etatCourant()->getNom() << " sur le symbole "
+        << Symbole::getName(this->lexeur->getCurrent()) << endl;
         return false;
     }
-    else if(pasRetour == TERMINE){
+    else if (pasRetour == TERMINE) {
         return true;
     }
     return false;
@@ -145,26 +139,22 @@ int Automate::pas() {
     return this->etatCourant()->transition(this, s);
 }
 
-void Automate::afficherProgramme()
-{
-    LOG(INFO)  << "AFFICHAGE DU PROGRAMME" << endl;
+void Automate::afficherProgramme() {
+    LOG(INFO) << "AFFICHAGE DU PROGRAMME" << endl;
     this->programme->afficher();
 }
 
-void Automate::analyserProgramme()
-{
+void Automate::analyserProgramme() {
     LOG(INFO) << "ANALYSE DU PROGRAMME" << endl;
     this->programme->analyser();
 }
 
-void Automate::optimiserProgramme()
-{
+void Automate::optimiserProgramme() {
     LOG(INFO) << "OPTIMISATION DU PROGRAMME" << endl;
     this->programme->optimiser();
 }
 
-void Automate::executerProgramme()
-{
+void Automate::executerProgramme() {
     LOG(DEBUG) << "EXECUTION DU PROGRAMME" << endl;
     //this->programme->executer();
 }

@@ -8,14 +8,14 @@
 #include "Symbole.h"
 #include "EtatInterface.h"
 
-class EtatDefaut : public EtatInterface
-{
+class EtatDefaut : public EtatInterface {
 public:
 
-    EtatDefaut(std::string nom) : EtatInterface(nom){ }
+    EtatDefaut(std::string nom) : EtatInterface(nom) { }
 
-    virtual ~EtatDefaut(){};
+    virtual ~EtatDefaut() { };
 
-    virtual bool transition(Automate* automate, Symbole* s);
+    virtual int transition(Automate *automate, Symbole *s);
 };
+
 #endif //LUTIN_ETATDEFAUT_H

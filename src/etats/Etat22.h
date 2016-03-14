@@ -3,10 +3,9 @@
 #include "Automate.h"
 #include "Symbole.h"
 
-class Etat22: public EtatDefaut
-{
+class Etat22 : public EtatDefaut {
 public:
-    Etat22() : EtatDefaut("E22")
-    { }
-    bool transition(Automate* automate, Symbole* s);
+    Etat22() : EtatDefaut("E22") { }
+
+    int transition(Automate *automate, Symbole *s);
 };

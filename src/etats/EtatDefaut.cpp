@@ -1,6 +1,5 @@
 #include "EtatDefaut.h"
 
-bool EtatDefaut::transition(Automate *automate, Symbole *s)
-{
-    return false;
+int EtatDefaut::transition(Automate *automate, Symbole *s) {
+    return ERREUR;
 }

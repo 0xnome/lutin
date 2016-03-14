@@ -6,9 +6,8 @@
 #include "EtatFin.h"
 #include "Etat1.h"
 
-bool Etat0::transition(Automate* automate, Symbole* s)
-{
-    switch (*s){
+int Etat0::transition(Automate *automate, Symbole *s) {
+    switch (*s) {
         case PROGRAMME:
             automate->pushSymbole(s);
             automate->pushEtat(new EtatFin);
@@ -19,20 +18,21 @@ bool Etat0::transition(Automate* automate, Symbole* s)
             automate->pushSymbole(s);
             automate->pushEtat(new Etat1);
             return CONTINUE;
+
         case CONST_TERMINAL:
         case VAR_TERMINAL:
         case ID_TERMINAL:
         case LIRE_TERMINAL:
         case ECRIRE_TERMINAL:
-        {
+        case FIN_PROGRAMME: {
             // On lit un SUIVANT de DECS, donc on fait une reduction qui produit un DECS vide
 
             // ici on a mis une DeclarationConstante, mais ça n'a pas d'importance
-            BlocDeclaration* decs = new DeclarationConstante(nullptr);
+            BlocDeclaration *decs = new DeclarationConstante(nullptr);
             //faire la transition sur decs
-            return automate->etatCourant()->transition(automate,decs);
+            return automate->etatCourant()->transition(automate, decs);
         }
         default:
-            return false;
+            return ERREUR;
     }
 }

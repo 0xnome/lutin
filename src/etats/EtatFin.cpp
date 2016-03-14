@@ -1,6 +1,6 @@
 #include "EtatFin.h"
 
-bool EtatFin::transition(Automate* automate, Symbole* s)
+int EtatFin::transition(Automate *automate, Symbole *s)
 {
     switch (*s){
         case FIN_PROGRAMME: {
@@ -9,6 +9,6 @@ bool EtatFin::transition(Automate* automate, Symbole* s)
             return TERMINE;
         }
         default:
-            return false;
+            return ERREUR;
     }
 }

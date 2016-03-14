@@ -3,13 +3,11 @@
 
 #include "EtatDefaut.h"
 
-class EtatFin: public EtatDefaut
-{
+class EtatFin : public EtatDefaut {
 public:
-    EtatFin() : EtatDefaut("EFin")
-    { }
+    EtatFin() : EtatDefaut("EFin") { }
 
-    bool transition(Automate* automate, Symbole* s);
+    int transition(Automate *automate, Symbole *s);
 
 };
 
