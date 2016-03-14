@@ -34,13 +34,19 @@ bool Etat0::transition(Automate* automate, Symbole* s)
             automate->pushEtat(new Etat1);
             return true;
         */
+        case BLOC_DECLARATION:
+            // TODO Transition sur E1
+            automate->pushSymbole(s);
+            automate->pushEtat(new Etat1);
+            return automate->etatCourant()->transition(automate,s);
         case CONST_TERMINAL:
         case VAR_TERMINAL:
         case ID_TERMINAL:
         case LIRE_TERMINAL:
         case ECRIRE_TERMINAL: {
             // E1 fera la transition
-            automate->pushEtat(new Etat1);
+            // TODO Faire la reduction d'un null
+            // creer un decs
             return automate->etatCourant()->transition(automate, s);
         }
         default:

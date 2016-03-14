@@ -7,14 +7,14 @@
 
 using namespace std;
 
-bool Automate::decalage()
+void Automate::decalage(EtatInterface* nouvelEtat, Symbole* symboleActuel)
 {
-    Symbole* symbole = lexeur->getNext();
-    cout << "lecture de " << Symbole::getName(symbole) << endl;
-    if((int)*symbole == ERREUR_LEXICALE){
-        //TODO gestion si lecture d'erreur
-    }
-    return this->etatCourant()->transition(this, symbole);
+    //empiler etat et symbole
+    this->pushEtat(nouvelEtat);
+    this->pushSymbole(symboleActuel);
+
+    // on decale la tete de lecture
+    lexeur->shift();
 }
 
 EtatInterface * Automate::popEtat()
@@ -120,11 +120,29 @@ void Automate::setProgramme(Programme *nouveauProgramme) {
 }
 
 bool Automate::chargerProgramme() {
-    this->pushEtat(new Etat0());
-    return this->decalage();
+    // tant que l'automate n'est pas terminé
+    int pasRetour;
+
+    // boucle principale
+    do{
+        pasRetour = this->pas();
+    }while(pasRetour == CONTINUE);
+
+    if(pasRetour == ERREUR){
+        return false;
+    }
+    else if(pasRetour == TERMINE){
+        return true;
+    }
+    return false;
 }
 
 void Automate::afficherProgramme() {
     cout << "AFFICHAGE DU PROGRAMME" << endl;
     this->programme->afficher();
+}
+
+int Automate::pas() {
+    Symbole *s = this->lexeur->getCourant();
+    return this->etatCourant()->transition(this, s);
 }

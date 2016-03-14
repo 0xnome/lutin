@@ -9,6 +9,12 @@
 #include "Symbole.h"
 #include "Lexeur.h"
 
+enum RETOUR_PAS{
+    CONTINUE,
+    TERMINE,
+    ERREUR
+};
+
 class Automate
 {
 public:
@@ -46,6 +52,7 @@ private:
 
     bool chargerProgramme();
 
+    int pas();
 };
 
 

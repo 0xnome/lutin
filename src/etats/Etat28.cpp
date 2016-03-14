@@ -13,6 +13,7 @@ bool Etat28::transition(Automate* automate, Symbole* s)
             automate->popSymbole(); // pop du EGAL_TERMINAL
             IdTerminal *id = (IdTerminal *) automate->popSymbole();
             automate->popEtat(3);   // pop de 3 symboles, donc pop de 3 Etats
+
             // Etat courant : Etat3
             AffectationConstante *affects = new AffectationConstante(id, num);
             automate->pushSymbole(affects);
