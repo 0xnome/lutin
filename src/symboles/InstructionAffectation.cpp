@@ -10,9 +10,9 @@ void InstructionAffectation::executer()
 
 void InstructionAffectation::afficher()
 {
-  this->id->afficher();
-  cout<<":=";
-  this->expression->afficher();
+    this->id->afficher();
+    cout<<":=";
+    this->expression->afficher();
 }
 
 

@@ -5,8 +5,8 @@ using namespace std;
 
 void InstructionLecture::afficher()
 {
-  cout<<"lire";
-  this->id->afficher();
+    cout<<"lire";
+    this->id->afficher();
 }
 
 void InstructionLecture::executer()
