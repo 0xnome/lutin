@@ -136,17 +136,17 @@ void Automate::afficherProgramme()
 void Automate::analyserProgramme()
 {
     cout << "ANALYSE DU PROGRAMME" << endl;
-
+    this->programme->analyser();
 }
 
 void Automate::optimiserProgramme()
 {
     cout << "OPTIMISATION DU PROGRAMME" << endl;
-
+    this->programme->optimiser();
 }
 
 void Automate::executerProgramme()
 {
     cout << "EXECUTION DU PROGRAMME" << endl;
-
+    this->programme->executer();
 }

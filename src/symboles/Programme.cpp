@@ -20,10 +20,12 @@ void Programme::executer()
 
 void Programme::afficher()
 {
-    if (blocDeclaration != nullptr) {
+    if (blocDeclaration != nullptr)
+    {
         blocDeclaration->afficher();
     }
-    if (blocInstruction != nullptr) {
+    if (blocInstruction != nullptr)
+    {
         blocInstruction->afficher();
     }
     return;
@@ -37,5 +39,4 @@ void Programme::analyser()
 void Programme::optimiser()
 {
     return;
-
 }
