@@ -11,7 +11,7 @@ using namespace std;
 bool Automate::decalage()
 {
     Symbole *symbole = lexeur->getNext();
-    cout << "lecture de " << Symbole::getName(symbole) << endl;
+    LOG(INFO) << "lecture de " << Symbole::getName(symbole) << endl;
     if ((int) *symbole == ERREUR_LEXICALE)
     {
         //TODO gestion si lecture d'erreur
@@ -23,7 +23,7 @@ EtatInterface *Automate::popEtat()
 {
     EtatInterface *etat = pilesEtats.top();
     pilesEtats.pop();
-    cout << "(POP1) nouvel Etat courant : " << etat->getNom() << endl;
+    LOG(INFO) << "(POP1) nouvel Etat courant : " << etat->getNom() << endl;
     return etat;
 }
 
@@ -34,20 +34,20 @@ Symbole *Automate::popSymbole()
         return nullptr;
     }
     Symbole *symbole = pilesSymboles.top();
-    cout << "(POP) Symbole pop : " << Symbole::getName(symbole) << endl;
+    LOG(INFO) << "(POP) Symbole pop : " << Symbole::getName(symbole) << endl;
     pilesSymboles.pop();
     return symbole;
 }
 
 void Automate::pushEtat(EtatInterface *const etat)
 {
-    cout << "(PUSH) nouvel etat courant : " << etat->getNom() << endl;
+    LOG(INFO) << "(PUSH) nouvel etat courant : " << etat->getNom() << endl;
     pilesEtats.push(etat);
 }
 
 void Automate::pushSymbole(Symbole *const symbole)
 {
-    cout << "(PUSH) nouveau symbole reconnu : " << Symbole::getName(symbole) << endl;
+    LOG(INFO) << "(PUSH) nouveau symbole reconnu : " << Symbole::getName(symbole) << endl;
     pilesSymboles.push(symbole);
 }
 
@@ -59,7 +59,7 @@ void Automate::popEtat(int nb)
         pilesEtats.pop();
         delete e;
     }
-    cout << "(POP" << nb << ") nouvel etat courant : " << this->etatCourant()->getNom() << endl;
+    LOG(INFO) << "(POP" << nb << ") nouvel etat courant : " << this->etatCourant()->getNom() << endl;
 }
 
 Automate::Automate(string nomFichier)
@@ -81,8 +81,8 @@ Automate::Automate(string nomFichier)
 
         lexeur = new Lexeur(lignesDuFichier);
         this->programme = nullptr;
-        cout << "chargement : " << this->chargerProgramme() << endl;
-        cout << "programme charge." << endl;
+        LOG(INFO) << "chargement : " << this->chargerProgramme() << endl;
+        LOG(INFO) << "programme charge." << endl;
 /*
 // Pour tester le lexeur
         cout << "lexeur ..." << endl;
