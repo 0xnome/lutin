@@ -37,6 +37,11 @@ public:
     void setVariableUtilisee(std::string nomVariable);
 
     /**
+     * Set le booleen qui dit que la variable a été initialisée
+     */
+    void setConstanteUtilisee(std::string nomConstante);
+
+    /**
      * Renvoie la valeur de la variable
      */
     int getVariableValeur(std::string nomVariable)const;
@@ -46,10 +51,6 @@ public:
      */
     int getConstanteValeur(std::string nomConstante) const;
 
-    /**
-     * Set le booleen qui dit que la variable a été initialisée
-     */
-    void setConstanteUtilisee(std::string nomConstante);
 
     /**
      * Set la valeur de la variable à valeur
@@ -70,6 +71,13 @@ public:
      * Regarde si la variable est dans la table des symboles
      */
     bool estDeclaree(std::string nomVariable) const;
+
+
+
+    /* ------------ méthodes utilisées pour les tests -------------- */
+    unsigned long getNbConstante()const;
+
+    unsigned long getNbVariable()const;
 
 
 private:

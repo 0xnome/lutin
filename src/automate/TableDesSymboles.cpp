@@ -82,3 +82,14 @@ int TableDesSymboles::getConstanteValeur(std::string nomConstante) const
     return iterator->second.valeur;
 }
 
+unsigned long TableDesSymboles::getNbConstante() const
+{
+    return this->tableConstantes.size();
+}
+
+unsigned long TableDesSymboles::getNbVariable() const
+{
+    return this->tableVariables.size();
+}
+
+
