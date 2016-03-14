@@ -159,7 +159,7 @@ state E34 : T __ T O div F
 
 state E35 : INSTRS __ INSTRS id opaff EXP pv O
 
-state E36 : AFFECTS __ AFFECTS id  eg O num
+state E36 : AFFECTS __ AFFECTS v id  eg O num
 
 state E37 : T __ T mult O F
 state E37 : F __ O id
@@ -175,7 +175,7 @@ state E39 : F __ parouv EXP O parfer
 state E39 : EXP __ EXP O add T
 state E39 : EXP __ EXP O sous T
 
-state E40 : AFFECTS __ AFFECTS id eg num O
+state E40 : AFFECTS __ AFFECTS v id eg num O
 
 state E41 : T __ T mult F O
 

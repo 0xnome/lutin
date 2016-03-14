@@ -18,7 +18,6 @@ bool Etat28::transition(Automate* automate, Symbole* s)
             // Etat courant : Etat3
             AffectationConstante *affects = new AffectationConstante(id, num);
 
-            // associer un identifiant de symbole à la classe, p-e en paramètre de la classe pour pouvoir modifier selon d'ou on vient
             return automate->etatCourant()->transition(automate, affects);
         }
         default:
