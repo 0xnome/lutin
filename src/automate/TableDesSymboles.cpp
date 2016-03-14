@@ -44,15 +44,41 @@ void TableDesSymboles::ajouterVariable(std::string nomVariable)
 
 void TableDesSymboles::setVariableUtilisee(std::string nomVariable)
 {
-    this->tableVariables[nomVariable].estUtilisee = true;
+    auto iterator = this->tableVariables.find(nomVariable);
+    if(iterator != this->tableVariables.end())
+    {
+        iterator->second.estUtilisee = true;
+    }
 }
 
+void TableDesSymboles::setVariableValeur(std::string nomVariable, int valeur)
+{
+    auto iterator = this->tableVariables.find(nomVariable);
+    if(iterator != this->tableVariables.end())
+    {
+        iterator->second.valeur = valeur;
+        iterator->second.estInitialisee = true;
+    }
+}
 
+void TableDesSymboles::setConstanteUtilisee(std::string nomConstante)
+{
+    auto iterator = this->tableConstantes.find(nomConstante);
+    if(iterator != this->tableConstantes.end())
+    {
+        iterator->second.estUtilisee = true;
+    }
+}
 
+int TableDesSymboles::getVariableValeur(std::string nomVariable) const
+{
+    auto iterator = this->tableVariables.find(nomVariable);
+    return iterator->second.valeur;
+}
 
-
-
-
-
-
+int TableDesSymboles::getConstanteValeur(std::string nomConstante) const
+{
+    auto iterator = this->tableConstantes.find(nomConstante);
+    return iterator->second.valeur;
+}
 

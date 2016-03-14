@@ -6,7 +6,6 @@
 
 struct Entree
 {
-    // TODO : rajouter la valeur de la variable
     bool estInitialisee;
     bool estUtilisee;
     int valeur;
@@ -22,11 +21,40 @@ public:
 
     ~TableDesSymboles();
 
+    /**
+     * Ajoute une constante dans la table des symboles
+     */
     void ajouterConstante(std::string nomConstante, int valeurConstante);
 
+    /**
+     * Ajoute une variable dans la table des symboles
+     */
     void ajouterVariable(std::string nomConstante);
 
+    /**
+     * Set le booleen qui dit que la variable a été initialisée
+     */
     void setVariableUtilisee(std::string nomVariable);
+
+    /**
+     * Renvoie la valeur de la variable
+     */
+    int getVariableValeur(std::string nomVariable)const;
+
+    /**
+     * Renvoie la valeur de la constante
+     */
+    int getConstanteValeur(std::string nomConstante) const;
+
+    /**
+     * Set le booleen qui dit que la variable a été initialisée
+     */
+    void setConstanteUtilisee(std::string nomConstante);
+
+    /**
+     * Set la valeur de la variable à valeur
+     */
+    void setVariableValeur(std::string nomVariable, int valeur);
 
     /**
      * Regarde si la variable dont le nom passé en paramètre a été initialisée
