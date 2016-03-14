@@ -11,7 +11,7 @@ void ExpressionMult::afficher()
 
 int ExpressionMult::eval()
 {
-    return (facteur->eval() * terme->eval());
+    return (facteur->eval(nullptr) * terme->eval(nullptr));
 }
 
 

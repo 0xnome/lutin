@@ -16,7 +16,7 @@ public:
     }
 
     void afficher();
-    int eval();
+    int eval(TableDesSymboles *tablesDesSymboles);
 
     void executer(TableDesSymboles *tableDesSymboles);
 

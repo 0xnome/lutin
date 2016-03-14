@@ -17,5 +17,5 @@ void ExpressionDiv::executer(TableDesSymboles *tableDesSymboles)
 
 int ExpressionDiv::eval()
 {
-    return (int)(facteur->eval() / terme->eval());
+    return (int)(facteur->eval(nullptr) / terme->eval(nullptr));
 }

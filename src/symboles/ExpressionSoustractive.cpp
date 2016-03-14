@@ -14,9 +14,9 @@ void ExpressionSoustractive::executer(TableDesSymboles *tableDesSymboles)
 
 }
 
-int ExpressionSoustractive::eval()
+int ExpressionSoustractive::eval(TableDesSymboles *tablesDesSymboles)
 {
-    return (terme->eval() - expression->eval());
+    return (terme->eval(nullptr) - expression->eval(nullptr));
 }
 
 

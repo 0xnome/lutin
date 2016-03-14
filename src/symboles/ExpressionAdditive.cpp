@@ -10,9 +10,9 @@ void ExpressionAdditive::afficher()
     this->terme->afficher();
 }
 
-int ExpressionAdditive::eval()
+int ExpressionAdditive::eval(TableDesSymboles *tablesDesSymboles)
 {
-    return (terme->eval() + expression->eval());
+    return (terme->eval(nullptr) + expression->eval(nullptr));
 }
 
 void ExpressionAdditive::executer(TableDesSymboles *tableDesSymboles)
