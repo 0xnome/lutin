@@ -118,7 +118,7 @@ int main(int argc, char **argv)
     catch (std::exception &e)
     {
         std::cerr << "Un erreur non traitée est remontée jusqu'au main : "
-        << e.what() << ", l'application va se stopper" << std::endl;
+        << e.what() << std::endl << "L'application va se stopper" << std::endl;
         return ERROR_UNHANDLED_EXCEPTION;
     }
 

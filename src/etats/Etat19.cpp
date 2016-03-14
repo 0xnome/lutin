@@ -14,32 +14,30 @@ bool Etat19::transition(Automate* automate, Symbole* s)
        case CONST_TERMINAL:
         */
        case FIN_PROGRAMME: {
-           // on dépile le point virgule
-           automate->popSymbole();  // pop du POINT_VIRGULE_TERMINAL
-           AffectationConstante *affectationConstante = (AffectationConstante *) automate->popSymbole();
-           automate->popSymbole(); // pop du CONST_TERMINAL
+           // on lit un suivant de DECS
+           automate->popSymbole(); // point virgule
+           AffectationConstante* affects = (AffectationConstante*) automate->popSymbole(); // AFFECTS
+           automate->popSymbole(); // const
+           BlocDeclaration* decs = (BlocDeclaration*) automate->popSymbole(); // DECS
 
-           DeclarationConstante *declarationConstante = new DeclarationConstante(affectationConstante);
+           automate->popEtat(4); // on arrive en E0
 
-           BlocDeclaration* blocDeclarationPrecedent = nullptr;
-           Symbole* symb = automate->popSymbole();
-
-           if(symb != nullptr && (int)*symb == BLOC_DECLARATION){
-               blocDeclarationPrecedent = (BlocDeclaration*)symb;
+           DeclarationConstante* declarationConstante = new DeclarationConstante(affects);
+           if(decs->estVide()){
+               // alors la nouvelle DelcarationContanteest est le premier BlocDeclaration
+               return automate->etatCourant()->transition(automate, declarationConstante);
            }
-
-           if (blocDeclarationPrecedent != nullptr) {
-               // le nouveau DeclarationConstante n'est pas le premier
-               // On récupère le dernier blocDeclaration
-               while((blocDeclarationPrecedent=blocDeclarationPrecedent->getSuivant())->getSuivant() != nullptr);
+           else{
+               // il faut insérer declarationConstante à la fin de la file de BlocDeclaration.
+               // on récupère le dernier BlocDeclaration
+               BlocDeclaration* dernierBloc = decs;
+               while(dernierBloc->getSuivant() != nullptr){
+                   dernierBloc = dernierBloc->getSuivant();
+               }
+               // insertion dans la liste
+               dernierBloc->setSuivant(declarationConstante);
+               return automate->etatCourant()->transition(automate, decs);
            }
-           automate->popEtat(4);   // pop de 4 symboles, donc pop de 4 Etats
-
-           // Etat courant : Etat0
-           declarationConstante->setSuivant(blocDeclarationPrecedent);
-           automate->pushSymbole(declarationConstante);
-
-           return automate->etatCourant()->transition(automate, s);
        }
        default:
            return false;

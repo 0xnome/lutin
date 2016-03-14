@@ -37,6 +37,9 @@ void DeclarationVariable::executer(TableDesSymboles *tableDesSymboles)
 
 }
 
+bool DeclarationVariable::estVide() {
+    return identificateurVariable == nullptr;
+}
 
 
 

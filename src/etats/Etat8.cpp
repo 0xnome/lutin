@@ -5,9 +5,8 @@ bool Etat8::transition(Automate* automate, Symbole* s)
 {
    switch (*s){
         case POINT_VIRGULE_TERMINAL:
-            automate->pushSymbole(s);
-            automate->pushEtat(new Etat19);
-            return automate->decalage();
+            automate->decalage(new Etat19, s);
+            return CONTINUE;
 		default:
            return false;
    }

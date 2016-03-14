@@ -33,3 +33,6 @@ void DeclarationConstante::executer(TableDesSymboles *tableDesSymboles)
 
 }
 
+bool DeclarationConstante::estVide() {
+    return affectationConstante == nullptr;
+}

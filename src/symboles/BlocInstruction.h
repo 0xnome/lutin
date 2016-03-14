@@ -40,6 +40,7 @@ public:
 
     virtual void optimiser() = 0;
 
+    virtual bool estVide() = 0;
 protected:
     BlocInstruction *suivant;
 };

@@ -79,14 +79,16 @@ Automate::Automate(string nomFichier)
 
         lexeur = new Lexeur(lignesDuFichier);
         this->programme = nullptr;
+
         cout << "chargement : " << this->chargerProgramme() << endl;
         cout << "programme charge." << endl;
 /*
 // Pour tester le lexeur
         cout << "lexeur ..." << endl;
         Symbole* symb;
-        while((symb = lexeur->getNext()) != nullptr){
+        while((symb = lexeur->getCurrent()) != nullptr){
             cout << *symb << endl;
+            this->lexeur->shift();
         }
         cout << "fin lexeur ..." << endl;
 */
@@ -121,9 +123,9 @@ void Automate::setProgramme(Programme *nouveauProgramme)
 }
 
 bool Automate::chargerProgramme() {
-    // tant que l'automate n'est pas terminé
     int pasRetour;
-
+    //initialisation de la pile à l'Etat0
+    this->pushEtat(new Etat0);
     // boucle principale
     do{
         pasRetour = this->pas();
@@ -138,15 +140,15 @@ bool Automate::chargerProgramme() {
     return false;
 }
 
+int Automate::pas() {
+    Symbole *s = this->lexeur->getCurrent();
+    return this->etatCourant()->transition(this, s);
+}
+
 void Automate::afficherProgramme()
 {
     cout << "AFFICHAGE DU PROGRAMME" << endl;
     this->programme->afficher();
-}
-
-int Automate::pas() {
-    Symbole *s = this->lexeur->getCourant();
-    return this->etatCourant()->transition(this, s);
 }
 
 void Automate::analyserProgramme()

@@ -9,6 +9,7 @@ bool Etat28::transition(Automate* automate, Symbole* s)
         case VIRGULE_TERMINAL:
         case POINT_VIRGULE_TERMINAL:
         {
+            //On a lu un suivant de AFFECTS
             NumTerminal *num = (NumTerminal *) automate->popSymbole();
             automate->popSymbole(); // pop du EGAL_TERMINAL
             IdTerminal *id = (IdTerminal *) automate->popSymbole();
@@ -16,10 +17,9 @@ bool Etat28::transition(Automate* automate, Symbole* s)
 
             // Etat courant : Etat3
             AffectationConstante *affects = new AffectationConstante(id, num);
-            automate->pushSymbole(affects);
 
             // associer un identifiant de symbole à la classe, p-e en paramètre de la classe pour pouvoir modifier selon d'ou on vient
-            return automate->etatCourant()->transition(automate, s);
+            return automate->etatCourant()->transition(automate, affects);
         }
         default:
             return false;

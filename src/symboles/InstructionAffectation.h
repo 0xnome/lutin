@@ -14,16 +14,17 @@ public:
         this->id = terminal;
     };
 
-    void executer(TableDesSymboles *tableDesSymboles);
+    virtual void executer(TableDesSymboles *tableDesSymboles);
 
-    void afficher();
+    virtual void afficher();
 
-    ~InstructionAffectation()
-    {
-        delete this->expression;
-        delete this->id;
-    }
+    ~InstructionAffectation();
 
+    virtual void analyser();
+
+    virtual void optimiser();
+
+    virtual bool estVide();
 protected:
     Expression *expression;
 

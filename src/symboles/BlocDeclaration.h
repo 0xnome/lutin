@@ -33,6 +33,8 @@ public:
 
     virtual void optimiser() = 0;
 
+    virtual bool estVide() = 0;
+
 protected:
     BlocDeclaration(int id) : Symbole(id)
     {

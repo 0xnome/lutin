@@ -11,12 +11,13 @@ bool Etat3::transition(Automate* automate, Symbole* s)
             automate->pushEtat(new Etat8);
             return true;
         */
-        case affect:
-            break;
-        case ID_TERMINAL:
+        case AFFECTATION_CONSTANTE:
             automate->pushSymbole(s);
-            automate->pushEtat(new Etat9);
-            return automate->decalage();
+            automate->pushEtat(new Etat8);
+            return CONTINUE;
+        case ID_TERMINAL:
+            automate->decalage(new Etat9, s);
+            return CONTINUE;
             /* NOPE
         case VIRGULE_TERMINAL:
         case POINT_VIRGULE_TERMINAL:
