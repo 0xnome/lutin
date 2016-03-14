@@ -1,5 +1,7 @@
 #include "InstructionAffectation.h"
 
+using namespace std;
+
 
 void InstructionAffectation::executer()
 {
@@ -8,7 +10,9 @@ void InstructionAffectation::executer()
 
 void InstructionAffectation::afficher()
 {
-  //TODO
+  this->id->afficher();
+  cout<<":=";
+  this->expression->afficher();
 }
 
 

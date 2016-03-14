@@ -1,9 +1,12 @@
 #include "InstructionLecture.h"
 
+using namespace std;
+
 
 void InstructionLecture::afficher()
 {
-  //TODO
+  cout<<"lire";
+  this->id->afficher();
 }
 
 void InstructionLecture::executer()

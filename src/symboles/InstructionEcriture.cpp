@@ -1,9 +1,12 @@
 #include "InstructionEcriture.h"
 
+using namespace std;
+
 
 void InstructionEcriture::afficher()
 {
-  //TODO
+  cout<<"ecrire";
+  this->expression->afficher();
 }
 
 void InstructionEcriture::executer()

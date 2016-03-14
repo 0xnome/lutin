@@ -5,7 +5,7 @@ using namespace std;
 
 void ExpressionDiv::afficher()
 {
-      this->terme->afficher();
+    this->terme->afficher();
     cout<<"/";
     this->facteur->afficher();
 }
