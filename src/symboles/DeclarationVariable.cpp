@@ -21,10 +21,6 @@ DeclarationVariable::~DeclarationVariable()
     delete this->identificateurVariable;
 }
 
-void DeclarationVariable::executer()
-{
-
-}
 
 void DeclarationVariable::analyser()
 {
@@ -35,5 +31,16 @@ void DeclarationVariable::optimiser()
 {
 
 }
+
+void DeclarationVariable::executer(TableDesSymboles *tableDesSymboles)
+{
+    IdentificateurVariable * id_courant = this->identificateurVariable;
+        while (id_courant != nullptr){
+            id_courant->executer(tableDesSymboles);
+            id_courant = id_courant->getSuivant();
+      }
+}
+
+
 
 

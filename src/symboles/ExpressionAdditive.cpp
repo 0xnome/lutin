@@ -2,10 +2,7 @@
 
 using namespace std;
 
-void ExpressionAdditive::executer()
-{
-  //TODO
-}
+
 
 void ExpressionAdditive::afficher()
 {
@@ -13,6 +10,13 @@ void ExpressionAdditive::afficher()
     cout<<"+";
     this->terme->afficher();
 }
+
+void ExpressionAdditive::executer(TableDesSymboles *tableDesSymboles)
+{
+
+}
+
+
 
 
 

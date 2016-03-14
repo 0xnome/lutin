@@ -1,21 +1,18 @@
+#include <TableDesSymboles.h>
 #include "BlocInstruction.h"
 
-void BlocInstruction::executer()
+void BlocInstruction::executer(TableDesSymboles *tableDesSymboles)
 {
-  Symbole::executer();
 }
 
 void BlocInstruction::afficher()
 {
-  Symbole::afficher();
 }
 
 void BlocInstruction::analyser()
 {
-  Symbole::analyser();
 }
 
 void BlocInstruction::optimiser()
 {
-  Symbole::optimiser();
 }

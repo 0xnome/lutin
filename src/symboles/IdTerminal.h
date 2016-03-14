@@ -20,6 +20,10 @@ public:
         std::cout << nom;
     }
 
+    std::string getNom(){
+        return nom;
+    }
+
 protected:
     std::string nom;
 };

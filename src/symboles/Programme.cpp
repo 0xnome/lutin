@@ -1,3 +1,4 @@
+#include <TableDesSymboles.h>
 #include "Programme.h"
 
 
@@ -13,20 +14,38 @@ Programme::~Programme()
     delete this->blocInstruction;
 }
 
-void Programme::executer()
+void Programme::executer(TableDesSymboles *tableDesSymboles)
 {
     return;
 }
 
 void Programme::afficher()
 {
+
     if (blocDeclaration != nullptr)
     {
-        blocDeclaration->afficher();
+        BlocDeclaration* declarationCur;
+        declarationCur = blocDeclaration;
+
+        declarationCur->afficher();
+
+        while(declarationCur->getSuivant() != nullptr){
+            declarationCur = declarationCur->getSuivant();
+            declarationCur->afficher();
+        }
     }
+
     if (blocInstruction != nullptr)
     {
-        blocInstruction->afficher();
+        BlocInstruction* instructionCur;
+        instructionCur = blocInstruction;
+
+        instructionCur->afficher();
+
+         while(instructionCur->getSuivant() != nullptr){
+            instructionCur = instructionCur->getSuivant();
+            instructionCur->afficher();
+        }
     }
     return;
 }

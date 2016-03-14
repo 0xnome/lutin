@@ -17,7 +17,7 @@ public:
         this->terme = terme1;
     }
 
-    void exectuer();
+    void executer(TableDesSymboles *tableDesSymboles);
 
     void afficher();
 

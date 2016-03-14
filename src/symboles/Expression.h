@@ -1,6 +1,7 @@
 #ifndef LUTIN_EXPRESSION_H
 #define LUTIN_EXPRESSION_H
 
+#include <TableDesSymboles.h>
 #include "Symbole.h"
 
 
@@ -17,7 +18,7 @@ public:
 
     virtual void afficher() = 0;
 
-    virtual void executer() = 0;
+    virtual void executer(TableDesSymboles *tableDesSymboles) = 0;
 
     virtual ~Expression()
     { };

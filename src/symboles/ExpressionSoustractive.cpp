@@ -9,10 +9,9 @@ void ExpressionSoustractive::afficher()
     this->terme->afficher();
 }
 
-void ExpressionSoustractive::executer()
+void ExpressionSoustractive::executer(TableDesSymboles *tableDesSymboles)
 {
 
 }
-
 
 

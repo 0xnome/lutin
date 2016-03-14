@@ -14,11 +14,14 @@ class Lexeur {
 public:
     Lexeur(std::vector<std::string> lignesDuFichier);
     Symbole* getNext();
+    Symbole* getCurrent();
+    void shift();
 
 private:
     std::vector<std::vector<std::string>> lignesDuProgramme;
     unsigned int ligne,colone;
     bool lectureTerminee;
+    Symbole* current;
 };
 
 #endif //LUTIN_LEXEUR_H

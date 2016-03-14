@@ -14,7 +14,7 @@ public:
         this->id = terminal;
     };
 
-    void executer();
+    void executer(TableDesSymboles *tableDesSymboles);
 
     void afficher();
 

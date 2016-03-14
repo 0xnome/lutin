@@ -1,32 +1,84 @@
 #include "TableDesSymboles.h"
 
+using namespace std;
 
-bool TableDesSymboles::estUtilisee(std::string nomVariable) const
+TableDesSymboles::TableDesSymboles()
+{
+
+}
+
+TableDesSymboles::~TableDesSymboles()
+{
+
+}
+
+bool TableDesSymboles::estUtilisee(string nomVariable) const
 {
     //TODO
     return false;
 }
 
-bool TableDesSymboles::estConstante(std::string nomVariable) const
+bool TableDesSymboles::estInitialisee(string nomVariable) const
 {
     //TODO
     return false;
 }
 
-bool TableDesSymboles::estInitialisee(std::string nomVariable) const
+bool TableDesSymboles::estDeclaree(string nomVariable) const
 {
-    //TODO
-    return false;
+    return this->tableVariables.find(nomVariable) != this->tableVariables.end() ||
+           this->tableConstantes.find(nomVariable) != this->tableConstantes.end();
 }
 
-bool TableDesSymboles::estDeclaree(std::string nomVariable) const
+void TableDesSymboles::ajouterConstante(string nomConstante, int valeurConstante)
 {
-    return this->table.find(nomVariable) != this->table.end();
+    Entree constEntree = {true, false, valeurConstante};
+    this->tableConstantes[nomConstante] = constEntree;
 }
 
+void TableDesSymboles::ajouterVariable(std::string nomVariable)
+{
+    Entree varEntree = {false, false};
+    this->tableVariables[nomVariable] = varEntree;
+}
 
+void TableDesSymboles::setVariableUtilisee(std::string nomVariable)
+{
+    auto iterator = this->tableVariables.find(nomVariable);
+    if(iterator != this->tableVariables.end())
+    {
+        iterator->second.estUtilisee = true;
+    }
+}
 
+void TableDesSymboles::setVariableValeur(std::string nomVariable, int valeur)
+{
+    auto iterator = this->tableVariables.find(nomVariable);
+    if(iterator != this->tableVariables.end())
+    {
+        iterator->second.valeur = valeur;
+        iterator->second.estInitialisee = true;
+    }
+}
 
+void TableDesSymboles::setConstanteUtilisee(std::string nomConstante)
+{
+    auto iterator = this->tableConstantes.find(nomConstante);
+    if(iterator != this->tableConstantes.end())
+    {
+        iterator->second.estUtilisee = true;
+    }
+}
 
+int TableDesSymboles::getVariableValeur(std::string nomVariable) const
+{
+    auto iterator = this->tableVariables.find(nomVariable);
+    return iterator->second.valeur;
+}
 
+int TableDesSymboles::getConstanteValeur(std::string nomConstante) const
+{
+    auto iterator = this->tableConstantes.find(nomConstante);
+    return iterator->second.valeur;
+}
 

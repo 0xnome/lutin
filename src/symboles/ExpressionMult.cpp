@@ -9,9 +9,9 @@ void ExpressionMult::afficher()
     this->facteur->afficher();
 }
 
-void ExpressionMult::exectuer()
+void ExpressionMult::executer(TableDesSymboles *tableDesSymboles)
 {
-}
 
+}
 
 

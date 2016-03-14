@@ -25,8 +25,9 @@ AffectationConstante* AffectationConstante::getSuivant() const
     return suivant;
 }
 
-void AffectationConstante::executer()
+void AffectationConstante::executer(TableDesSymboles *tableDesSymboles)
 {
+    tableDesSymboles->ajouterConstante(this->id->getNom(), this->num->getValue());
 }
 
 void AffectationConstante::afficher()

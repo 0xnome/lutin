@@ -1,3 +1,4 @@
+#include <TableDesSymboles.h>
 #include "IdentificateurVariable.h"
 
 void IdentificateurVariable::setSuivant(IdentificateurVariable* suiv){
@@ -27,9 +28,9 @@ IdentificateurVariable::~IdentificateurVariable()
     delete this->suivant;
 }
 
-void IdentificateurVariable::executer()
+void IdentificateurVariable::executer(TableDesSymboles *tableDesSymboles)
 {
-    //TODO
+    tableDesSymboles->ajouterVariable(this->idTerminal->getNom());
 }
 
 void IdentificateurVariable::analyser()
