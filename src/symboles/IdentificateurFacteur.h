@@ -18,8 +18,8 @@ public:
         this->id->afficher();
     }
 
-    int eval(){
-        //TODO : lire dans la tables des symboles
+    int eval(TableDesSymboles *tablesDesSymboles){
+        // tablesDesSymboles
         return 0;
     }
 

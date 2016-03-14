@@ -19,7 +19,7 @@ public:
 
     void executer(TableDesSymboles *tableDesSymboles);
 
-    int eval();
+    int eval(TableDesSymboles *tablesDesSymboles);
 
     ~ExpressionDiv()
     {

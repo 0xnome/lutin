@@ -19,9 +19,9 @@ public:
         std::cout<<")";
     }
 
-    int eval()
+    int eval(TableDesSymboles *tablesDesSymboles)
     {
-        return expression->eval();
+        return expression->eval(TableDesSymboles *tablesDesSymboles);
     }
 
     ~ExpressionParenthesee()

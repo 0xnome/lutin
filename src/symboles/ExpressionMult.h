@@ -21,7 +21,7 @@ public:
 
     void afficher();
 
-    int eval();
+    int eval(TableDesSymboles *tablesDesSymboles);
 
 
     ~ExpressionMult()

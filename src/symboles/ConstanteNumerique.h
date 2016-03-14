@@ -19,7 +19,7 @@ public:
         delete this->valeur;
     }
 
-    int eval()
+    int eval(TableDesSymboles *tablesDesSymboles)
     {
         return valeur->getValue();
     }
