@@ -14,7 +14,7 @@ void InstructionAffectation::afficher()
 
 void InstructionAffectation::executer(TableDesSymboles *tableDesSymboles)
 {
-
+    //tableDesSymboles->setVariableValeur(id,expression->eval());
 }
 
 
