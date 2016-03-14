@@ -2,25 +2,25 @@
 
 using namespace std;
 
+ExpressionAdditive::ExpressionAdditive(Terme *terme, Expression *expression) : Expression(EXPRESSION_ADDITIVE),
+                                                                               terme(terme), expression(expression) {
+}
 
-void ExpressionAdditive::afficher()
-{
+ExpressionAdditive::~ExpressionAdditive() {
+    delete this->terme;
+    delete this->expression;
+}
+
+void ExpressionAdditive::afficher() {
     this->expression->afficher();
-    cout<<"+";
+    cout << "+";
     this->terme->afficher();
 }
 
-int ExpressionAdditive::eval(TableDesSymboles *tablesDesSymboles)
-{
+int ExpressionAdditive::eval(TableDesSymboles *tablesDesSymboles) {
     return (terme->eval(tablesDesSymboles) + expression->eval(tablesDesSymboles));
 }
 
-void ExpressionAdditive::executer(TableDesSymboles *tableDesSymboles)
-{
+void ExpressionAdditive::executer(TableDesSymboles *tableDesSymboles) {
 
 }
-
-
-
-
-

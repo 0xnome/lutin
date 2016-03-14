@@ -4,11 +4,11 @@
 #include "Symbole.h"
 
 
-class LireTerminal : public Symbole
-{
+class LireTerminal : public Symbole {
 public:
-    LireTerminal():Symbole(LIRE_TERMINAL){}
-    ~LireTerminal(){}
+    LireTerminal() : Symbole(LIRE_TERMINAL) { }
+
+    ~LireTerminal() { }
 };
 
 

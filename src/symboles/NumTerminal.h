@@ -4,19 +4,18 @@
 #include "Symbole.h"
 
 
-class NumTerminal : public Symbole
-{
+class NumTerminal : public Symbole {
 public:
-    NumTerminal(int val):Symbole(NUM_TERMINAL),value(val){};
-    ~NumTerminal(){}
+    NumTerminal(int val) : Symbole(NUM_TERMINAL), value(val) { };
 
-    void afficher()
-    {
-        std::cout<<value;
+    ~NumTerminal() { }
+
+    void afficher() {
+        std::cout << value;
     }
 
-    int getValue(){
-      return value;
+    int getValue() {
+        return value;
     }
 
 protected:

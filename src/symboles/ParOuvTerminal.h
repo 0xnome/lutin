@@ -3,11 +3,11 @@
 
 #include "Symbole.h"
 
-class ParOuvTerminal : public Symbole
-{
+class ParOuvTerminal : public Symbole {
 public:
-    ParOuvTerminal():Symbole(PAROUV_TERMINAL){}
-    ~ParOuvTerminal(){}
+    ParOuvTerminal() : Symbole(PAROUV_TERMINAL) { }
+
+    ~ParOuvTerminal() { }
 };
 
 #endif //LUTIN_PAROUVTERMINAL_H

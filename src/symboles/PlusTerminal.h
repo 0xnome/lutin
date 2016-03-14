@@ -3,11 +3,11 @@
 
 #include "Symbole.h"
 
-class PlusTerminal : public Symbole
-{
+class PlusTerminal : public Symbole {
 public:
-    PlusTerminal():Symbole(PLUS_TERMINAL){}
-    ~PlusTerminal(){}
+    PlusTerminal() : Symbole(PLUS_TERMINAL) { }
+
+    ~PlusTerminal() { }
 };
 
 #endif //LUTIN_PLUSTERMINAL_H

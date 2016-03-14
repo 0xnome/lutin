@@ -9,11 +9,9 @@ class ExpressionAdditive : public Expression
 {
 
 public:
-    ExpressionAdditive(Terme *terme1, Expression *expression1) : Expression(EXPRESSION_ADDITIVE)
-    {
-        this->terme = terme1;
-        this->expression = expression1;
-    }
+    ExpressionAdditive(Terme *terme1, Expression *expression1);
+
+    ~ExpressionAdditive();
 
     void afficher();
 
@@ -21,18 +19,12 @@ public:
 
     void executer(TableDesSymboles *tableDesSymboles);
 
-    ~ExpressionAdditive()
-    {
-        delete this->terme;
-        delete this->expression;
-    }
-
 
 protected:
 
-    Expression *expression;
-
     Terme *terme;
+
+    Expression *expression;
 
 };
 

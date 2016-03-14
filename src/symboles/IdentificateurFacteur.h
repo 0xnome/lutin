@@ -8,25 +8,13 @@
 class IdentificateurFacteur : public Facteur
 {
 public:
-    IdentificateurFacteur(IdTerminal * idTerminal) : Facteur(IDENTIFICATEUR_FACTEUR)
-    {
-        this->id = idTerminal;
-    }
+    IdentificateurFacteur(IdTerminal * idTerminal);
 
-    void afficher()
-    {
-        this->id->afficher();
-    }
+    ~IdentificateurFacteur();
 
-    int eval(TableDesSymboles *tablesDesSymboles){
-        return tablesDesSymboles->getValeur(id->getNom());
-    }
+    void afficher();
 
-
-    ~IdentificateurFacteur()
-    {
-        delete this->id;
-    }
+    int eval(TableDesSymboles *tablesDesSymboles);
 
 protected:
     IdTerminal * id;

@@ -4,11 +4,11 @@
 #include "Symbole.h"
 
 
-class ErreurLexicale : public Symbole
-{
+class ErreurLexicale : public Symbole {
 public:
-    ErreurLexicale():Symbole(ERREUR_LEXICALE){}
-    ~ErreurLexicale(){}
+    ErreurLexicale() : Symbole(ERREUR_LEXICALE) { }
+
+    ~ErreurLexicale() { }
 };
 
 

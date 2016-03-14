@@ -4,14 +4,11 @@
 
 #include "Symbole.h"
 
-class FinProgramme : public Symbole
-{
+class FinProgramme : public Symbole {
 public:
-    FinProgramme() : Symbole(FIN_PROGRAMME)
-    { }
+    FinProgramme() : Symbole(FIN_PROGRAMME) { }
 
-    ~FinProgramme()
-    { }
+    ~FinProgramme() { }
 };
 
 

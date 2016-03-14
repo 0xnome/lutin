@@ -4,11 +4,11 @@
 #include "Symbole.h"
 
 
-class VirguleTerminal : public Symbole
-{
+class VirguleTerminal : public Symbole {
 public:
-    VirguleTerminal():Symbole(VIRGULE_TERMINAL){};
-    ~VirguleTerminal(){};
+    VirguleTerminal() : Symbole(VIRGULE_TERMINAL) { };
+
+    ~VirguleTerminal() { };
 };
 
 

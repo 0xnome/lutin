@@ -3,24 +3,29 @@
 using namespace std;
 
 
-
-void InstructionAffectation::afficher()
-{
-    this->id->afficher();
-    cout<<" := ";
-    this->expression->afficher();
-    cout<<" ;";
+InstructionAffectation::InstructionAffectation(Expression *expression, IdTerminal *idTerminal) : BlocInstruction(
+        INSTRUCTION_AFFECTATION), expression(expression), id(idTerminal) {
 }
-
-void InstructionAffectation::executer(TableDesSymboles *tableDesSymboles)
-{
-    tableDesSymboles->setVariableValeur(id->getNom(), expression->eval(nullptr));
-}
-
 
 InstructionAffectation::~InstructionAffectation() {
-    delete this->expression;
-    delete this->id;
+    if(this->expression != nullptr){
+        delete this->expression;
+    }
+    if(this->id != nullptr){
+        delete this->id;
+    }
+}
+
+
+void InstructionAffectation::afficher() {
+    this->id->afficher();
+    cout << " := ";
+    this->expression->afficher();
+    cout << " ;";
+}
+
+void InstructionAffectation::executer(TableDesSymboles *tableDesSymboles) {
+    tableDesSymboles->setVariableValeur(id->getNom(), expression->eval(nullptr));
 }
 
 bool InstructionAffectation::estVide() {

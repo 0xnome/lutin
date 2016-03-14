@@ -3,18 +3,26 @@
 using namespace std;
 
 
-void InstructionLecture::afficher()
-{
-    cout<<"lire ";
-    this->id->afficher();
-    cout<<" ;";
+InstructionLecture::InstructionLecture(IdTerminal *idTerminal) : BlocInstruction(INSTRUCTION_LECTURE), id(idTerminal) {
 }
 
-void InstructionLecture::executer(TableDesSymboles *tableDesSymboles)
-{
+InstructionLecture::~InstructionLecture() {
+    if (this->id != nullptr) {
+        delete this->id;
+    }
+}
+
+void InstructionLecture::afficher() {
+    cout << "lire ";
+    this->id->afficher();
+    cout << " ;";
+}
+
+void InstructionLecture::executer(TableDesSymboles *tableDesSymboles) {
+    // todo vérif sur la valeur d'entrée ? int, negatif, ... à voir
     int val;
-    cin >> val ;
-    tableDesSymboles->setVariableValeur(id->getNom(),val);
+    cin >> val;
+    tableDesSymboles->setVariableValeur(id->getNom(), val);
 }
 
 bool InstructionLecture::estVide() {

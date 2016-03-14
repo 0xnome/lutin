@@ -4,23 +4,19 @@
 
 #include "Terme.h"
 
-class Facteur : public Terme
-{
+class Facteur : public Terme {
 
 public:
-    Facteur() : Terme(FACTEUR)
-    { }
+    Facteur() : Terme(FACTEUR) { }
 
-    virtual ~Facteur()
-    { }
+    virtual ~Facteur() { }
 
     virtual void afficher() = 0;
 
     virtual int eval(TableDesSymboles *tablesDesSymboles) = 0;
 
 protected:
-    Facteur(int id) : Terme(id)
-    { }
+    Facteur(int id) : Terme(id) { }
 
 };
 

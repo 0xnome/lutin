@@ -7,27 +7,13 @@ class ExpressionParenthesee : public Facteur
 {
 
 public:
-    ExpressionParenthesee(Expression * expression1) : Facteur(EXPRESSION_PARENTHESEE)
-    {
-        this->expression = expression1;
-    }
+    ExpressionParenthesee(Expression * expression);
 
-    void afficher()
-    {
-        std::cout<<"(";
-        this->expression->afficher();
-        std::cout<<")";
-    }
+    ~ExpressionParenthesee();
 
-    int eval(TableDesSymboles *tablesDesSymboles)
-    {
-        return expression->eval(TableDesSymboles *tablesDesSymboles);
-    }
+    void afficher();
 
-    ~ExpressionParenthesee()
-    {
-        delete this->expression;
-    }
+    int eval(TableDesSymboles *tablesDesSymboles);
 
 protected:
     Expression * expression;

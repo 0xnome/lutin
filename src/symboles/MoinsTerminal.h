@@ -3,11 +3,11 @@
 
 #include "Symbole.h"
 
-class MoinsTerminal : public Symbole
-{
+class MoinsTerminal : public Symbole {
 public:
-    MoinsTerminal():Symbole(MOINS_TERMINAL){}
-    ~MoinsTerminal(){}
+    MoinsTerminal() : Symbole(MOINS_TERMINAL) { }
+
+    ~MoinsTerminal() { }
 };
 
 #endif //LUTIN_MOINSTERMINAL_H

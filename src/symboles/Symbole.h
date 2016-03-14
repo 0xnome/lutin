@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include "TableDesSymboles.h"
-enum SYMBOLES
-{
+
+enum SYMBOLES {
     // Symboles non terminaux
     PROGRAMME,                  //0
 
@@ -63,14 +63,13 @@ enum SYMBOLES
 };
 
 
-class Symbole
-{
+class Symbole {
 protected:
     int identifiant;
+
 public:
-    static std::string getName(Symbole* s)
-    {
-        switch(*s){
+    static std::string getName(Symbole *s) {
+        switch (*s) {
             case PROGRAMME :
                 return "PROGRAMME";
             case BLOC_INSTRUCTION :
@@ -151,34 +150,27 @@ public:
                 return "SYMBOLE_INCONNU";
         }
     }
-    Symbole(int id) : identifiant(id)
-    { }
 
-    virtual ~Symbole()
-    { }
+    Symbole(int id) : identifiant(id) { }
 
+    virtual ~Symbole() { }
 
-    friend std::ostream &operator<<(std::ostream &os, const Symbole &symbole)
-    {
+    friend std::ostream &operator<<(std::ostream &os, const Symbole &symbole) {
         return os << symbole.identifiant;
     }
 
-    operator int() const
-    { return identifiant; }
+    operator int() const { return identifiant; }
 
     /**
      * Execute le programme de manière interactive (option -e)
      */
-    virtual void executer(TableDesSymboles *tableDesSymboles)
-    { }
+    virtual void executer(TableDesSymboles *tableDesSymboles) { }
 
     /**
      * Affiche la représentation en memoire du programme (option -p)
      * Les éventuelles erreurs sont affichées
-     * TODO:  parcourir les blocs déclarations et instructions pour afficher leur contenu
      */
-    virtual void afficher()
-    { }
+    virtual void afficher() { }
 
     /**
      * Analyse statique du programme afin d'en extraire les erreurs (option -a)
@@ -191,15 +183,13 @@ public:
      *  - mots clefs interdits (var, const, ecrire et lire) à réflechir...
      *  - modification d'une constante
      */
-    virtual void analyser()
-    { }
+    virtual void analyser() { }
 
 
     /**
      * Transfome le programme et le simplfie (option -o)
     */
-    virtual void optimiser()
-    { }
+    virtual void optimiser() { }
 
 
 };

@@ -4,13 +4,11 @@
 #include "Symbole.h"
 
 
-class EgalTerminal : public Symbole
-{
+class EgalTerminal : public Symbole {
 public:
-    EgalTerminal() : Symbole(EGAL_TERMINAL)
-    { }
+    EgalTerminal() : Symbole(EGAL_TERMINAL) { }
 
-    ~EgalTerminal(){}
+    ~EgalTerminal() { }
 };
 
 

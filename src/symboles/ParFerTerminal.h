@@ -3,11 +3,11 @@
 
 #include "Symbole.h"
 
-class ParFerTerminal : public Symbole
-{
+class ParFerTerminal : public Symbole {
 public:
-    ParFerTerminal():Symbole(PARFER_TERMINAL){}
-    ~ParFerTerminal(){}
+    ParFerTerminal() : Symbole(PARFER_TERMINAL) { }
+
+    ~ParFerTerminal() { }
 };
 
 #endif //LUTIN_PARFERTERMINAL_H

@@ -6,13 +6,11 @@
 #include "IdTerminal.h"
 #include "NumTerminal.h"
 
-class AffectationConstante : public Symbole
-{
+class AffectationConstante : public Symbole {
 public:
     AffectationConstante(IdTerminal *id, NumTerminal *num);
 
     ~AffectationConstante();
-
 
     virtual void executer(TableDesSymboles *tableDesSymboles);
 

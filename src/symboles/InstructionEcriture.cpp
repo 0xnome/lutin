@@ -2,16 +2,23 @@
 
 using namespace std;
 
-
-void InstructionEcriture::afficher()
-{
-    cout<<"ecrire ";
-    this->expression->afficher();
-    cout<<" ;";
+InstructionEcriture::~InstructionEcriture() {
+    if (this->expression != nullptr) {
+        delete this->expression;
+    }
 }
 
-void InstructionEcriture::executer(TableDesSymboles *tableDesSymboles)
-{
+InstructionEcriture::InstructionEcriture(Expression *expression) : BlocInstruction(INSTRUCTION_ECRITURE),
+                                                                   expression(expression) {
+}
+
+void InstructionEcriture::afficher() {
+    cout << "ecrire ";
+    this->expression->afficher();
+    cout << " ;";
+}
+
+void InstructionEcriture::executer(TableDesSymboles *tableDesSymboles) {
     cout << expression->eval(nullptr);
 }
 

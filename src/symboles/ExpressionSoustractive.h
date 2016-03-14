@@ -5,28 +5,18 @@
 #include "Expression.h"
 #include "Terme.h"
 
-class ExpressionSoustractive : public Expression
-{
+class ExpressionSoustractive : public Expression {
 
 public:
-    ExpressionSoustractive(Terme *terme1, Expression *expression1) : Expression(EXPRESSION_SOUSTRACTIVE)
-    {
-        this->terme = terme1;
-        this->expression = expression1;
-    }
+    ExpressionSoustractive(Terme *terme, Expression *expression);
+
+    ~ExpressionSoustractive();
 
     void afficher();
 
     void executer(TableDesSymboles *tableDesSymboles);
 
     int eval(TableDesSymboles *tablesDesSymboles);
-
-
-    ~ExpressionSoustractive()
-    {
-        delete this->terme;
-        delete this->expression;
-    }
 
 protected:
     Terme *terme;

@@ -4,11 +4,11 @@
 #include "Symbole.h"
 
 
-class ConstTerminal : public Symbole
-{
+class ConstTerminal : public Symbole {
 public:
-    ConstTerminal():Symbole(CONST_TERMINAL){}
-    ~ConstTerminal(){}
+    ConstTerminal() : Symbole(CONST_TERMINAL) { }
+
+    ~ConstTerminal() { }
 };
 
 

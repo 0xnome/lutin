@@ -5,16 +5,10 @@
 #include "Symbole.h"
 
 
-class Expression : public Symbole
-{
-
-protected:
-    Expression(int id) : Symbole(id)
-    { }
+class Expression : public Symbole {
 
 public:
-    Expression() : Symbole(EXPRESSION)
-    { }
+    Expression() : Symbole(EXPRESSION) { }
 
     virtual void afficher() = 0;
 
@@ -22,8 +16,10 @@ public:
 
     virtual void executer(TableDesSymboles *tableDesSymboles) = 0;
 
-    virtual ~Expression()
-    { };
+    virtual ~Expression() { };
+
+protected:
+    Expression(int id) : Symbole(id) { }
 
 };
 

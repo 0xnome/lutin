@@ -9,23 +9,15 @@ class ExpressionDiv : public Terme
 {
 
 public:
-    ExpressionDiv(Facteur * facteur1, Terme * terme1): Terme(EXPRESSION_DIV)
-    {
-        this->terme = terme1;
-        this->facteur = facteur1;
-    }
+    ExpressionDiv(Facteur * facteur1, Terme * terme1);
+
+    ~ExpressionDiv();
 
     void afficher();
 
     void executer(TableDesSymboles *tableDesSymboles);
 
     int eval(TableDesSymboles *tablesDesSymboles);
-
-    ~ExpressionDiv()
-    {
-        delete this->terme;
-        delete this->facteur;
-    }
 
 protected:
 

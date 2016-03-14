@@ -4,26 +4,24 @@
 #include <TableDesSymboles.h>
 #include "Symbole.h"
 
-class BlocDeclaration : public Symbole
-{
+class BlocDeclaration : public Symbole {
 public:
-    BlocDeclaration() : Symbole(BLOC_DECLARATION)
-    {
-        this->suivant = nullptr;
-    };
+    BlocDeclaration() : Symbole(BLOC_DECLARATION), suivant(nullptr) {
+    }
 
-    void setSuivant(BlocDeclaration *blocDeclaration)
-    {
+    void setSuivant(BlocDeclaration *blocDeclaration) {
         this->suivant = blocDeclaration;
     }
 
-    BlocDeclaration *getSuivant() const
-    {
+    BlocDeclaration *getSuivant() const {
         return suivant;
     }
 
-    virtual ~BlocDeclaration()
-    { };
+    virtual ~BlocDeclaration() {
+        if (suivant != nullptr) {
+            delete suivant;
+        }
+    }
 
     virtual void executer(TableDesSymboles *tableDesSymboles) = 0;
 
@@ -36,9 +34,7 @@ public:
     virtual bool estVide() = 0;
 
 protected:
-    BlocDeclaration(int id) : Symbole(id)
-    {
-        this->suivant = nullptr;
+    BlocDeclaration(int id) : Symbole(id), suivant(nullptr) {
     }
 
     BlocDeclaration *suivant;

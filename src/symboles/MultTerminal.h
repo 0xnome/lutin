@@ -3,10 +3,11 @@
 
 #include "Symbole.h"
 
-class MultTerminal : public Symbole
-{
+class MultTerminal : public Symbole {
 public:
-    MultTerminal():Symbole(MULT_TERMINAL){}
-    ~MultTerminal(){}
+    MultTerminal() : Symbole(MULT_TERMINAL) { }
+
+    ~MultTerminal() { }
 };
+
 #endif //LUTIN_MULTTERMINAL_H

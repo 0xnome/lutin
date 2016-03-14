@@ -8,19 +8,13 @@
 class InstructionLecture : public BlocInstruction
 {
 public:
-    InstructionLecture(IdTerminal *idTerminal) : BlocInstruction(INSTRUCTION_LECTURE)
-    {
-        this->id = idTerminal;
-    }
+    InstructionLecture(IdTerminal *idTerminal);
 
     void afficher();
 
     void executer(TableDesSymboles *tableDesSymboles);
 
-    ~InstructionLecture()
-    {
-        delete this->id;
-    }
+    ~InstructionLecture();
 
     bool estVide();
 

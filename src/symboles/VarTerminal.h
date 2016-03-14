@@ -4,18 +4,11 @@
 #include "Symbole.h"
 
 
-class VarTerminal : public Symbole
-{
+class VarTerminal : public Symbole {
 public:
-    VarTerminal() : Symbole(VAR_TERMINAL)
-    {
+    VarTerminal() : Symbole(VAR_TERMINAL) { }
 
-    }
-
-    ~VarTerminal()
-    {
-        
-    }
+    ~VarTerminal() { }
 };
 
 

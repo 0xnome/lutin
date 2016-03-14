@@ -4,10 +4,9 @@
 #include "DeclarationConstante.h"
 #include "IdentificateurVariable.h"
 
-class DeclarationVariable : public BlocDeclaration
-{
+class DeclarationVariable : public BlocDeclaration {
 public:
-    DeclarationVariable(IdentificateurVariable * identificateurVariable1);
+    DeclarationVariable(IdentificateurVariable *identificateurVariable1);
 
     ~DeclarationVariable();
 
@@ -22,7 +21,7 @@ public:
     virtual bool estVide();
 
 protected:
-    IdentificateurVariable* identificateurVariable;
+    IdentificateurVariable *identificateurVariable;
 };
 
 

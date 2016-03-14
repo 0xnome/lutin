@@ -4,8 +4,7 @@
 #include "Symbole.h"
 #include "IdTerminal.h"
 
-class IdentificateurVariable : public Symbole
-{
+class IdentificateurVariable : public Symbole {
 public:
     IdentificateurVariable(IdTerminal *idTerminal1);
 
@@ -24,9 +23,9 @@ public:
     IdentificateurVariable *getSuivant() const;
 
 protected:
+    IdTerminal *id;
+
     IdentificateurVariable *suivant;
-    IdTerminal *idTerminal;
-public:
 
 };
 

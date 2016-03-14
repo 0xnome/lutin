@@ -5,10 +5,11 @@
 #include "BlocInstruction.h"
 #include "Symbole.h"
 
-class Programme : public Symbole
-{
+class Programme : public Symbole {
 public:
     Programme(BlocDeclaration *blocDeclaration, BlocInstruction *blocInstruction);
+
+    ~Programme();
 
     virtual void executer(TableDesSymboles *tableDesSymboles);
 
@@ -18,11 +19,9 @@ public:
 
     virtual void optimiser();
 
-    ~Programme();
-
-
 protected:
     BlocDeclaration *blocDeclaration;
+
     BlocInstruction *blocInstruction;
 };
 

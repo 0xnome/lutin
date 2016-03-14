@@ -3,32 +3,24 @@
 
 #include "Symbole.h"
 
-class BlocInstruction : public Symbole
-{
-
-protected:
-    BlocInstruction(int id) : Symbole(id)
-    {
-        this->suivant = nullptr;
-    }
+class BlocInstruction : public Symbole {
 
 public:
-    BlocInstruction() : Symbole(BLOC_INSTRUCTION)
-    {
-        this->suivant = nullptr;
-    };
+    BlocInstruction() : Symbole(BLOC_INSTRUCTION), suivant(nullptr) {
+    }
 
-    virtual ~BlocInstruction()
-    { };
+    virtual ~BlocInstruction() {
+        if (suivant != nullptr) {
+            delete suivant;
+        }
+    }
 
-
-    BlocInstruction *getSuivant() const
-    {
+    BlocInstruction *getSuivant() const {
         return suivant;
     }
 
-    void setSuivant(BlocInstruction *suivant)
-    {
+
+    void setSuivant(BlocInstruction *suivant) {
         BlocInstruction::suivant = suivant;
     }
 
@@ -41,7 +33,11 @@ public:
     virtual void optimiser() = 0;
 
     virtual bool estVide() = 0;
+
 protected:
+    BlocInstruction(int id) : Symbole(id), suivant(nullptr) {
+    }
+
     BlocInstruction *suivant;
 };
 
