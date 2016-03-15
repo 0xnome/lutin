@@ -5,14 +5,17 @@
 #include "BlocInstruction.h"
 #include "IdTerminal.h"
 
-class InstructionLecture : public BlocInstruction
-{
+class InstructionLecture : public BlocInstruction {
 public:
     InstructionLecture(IdTerminal *idTerminal);
 
     void afficher();
 
     void executer(TableDesSymboles *tableDesSymboles);
+
+    void analyser();
+
+    void optimiser();
 
     ~InstructionLecture();
 

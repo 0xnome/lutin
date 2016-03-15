@@ -15,7 +15,7 @@ InstructionLecture::~InstructionLecture() {
 void InstructionLecture::afficher() {
     cout << "lire ";
     this->id->afficher();
-    cout << " ;";
+    cout << ";" << endl;
 }
 
 void InstructionLecture::executer(TableDesSymboles *tableDesSymboles) {
@@ -27,4 +27,11 @@ void InstructionLecture::executer(TableDesSymboles *tableDesSymboles) {
 
 bool InstructionLecture::estVide() {
     return this->id == nullptr;
+}
+
+void InstructionLecture::analyser() {
+}
+
+void InstructionLecture::optimiser() {
+
 }

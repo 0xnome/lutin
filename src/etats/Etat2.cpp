@@ -1,4 +1,5 @@
 #include "Etat2.h"
+#include "Etat5.h"
 
 int Etat2::transition(Automate *automate, Symbole *s) {
     switch (*s) {
@@ -11,6 +12,9 @@ int Etat2::transition(Automate *automate, Symbole *s) {
             Programme *prog = new Programme(decs, instrs);
             return automate->etatCourant()->transition(automate, prog);
         }
+        case LIRE_TERMINAL:
+            automate->decalage(new Etat5, s);
+            return CONTINUE;
         default:
             return ERREUR;
     }
