@@ -3,9 +3,11 @@
 
 #include "Symbole.h"
 
-class MultTerminal : public Symbole {
+class MultTerminal : public Symbole
+{
 public:
-    MultTerminal() : Symbole(MULT_TERMINAL) { }
+    MultTerminal(unsigned ligne, unsigned colonne) : Symbole(MULT_TERMINAL, ligne, colonne)
+    { }
 
     ~MultTerminal() { }
 };

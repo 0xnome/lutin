@@ -1,5 +1,6 @@
 #include "TableDesSymboles.h"
 
+
 using namespace std;
 
 TableDesSymboles::TableDesSymboles()
@@ -36,24 +37,26 @@ bool TableDesSymboles::estDeclaree(string nomVariable) const
            this->tableConstantes.find(nomVariable) != this->tableConstantes.end();
 }
 
-void TableDesSymboles::ajouterConstante(string nomConstante, int valeurConstante)
+void TableDesSymboles::ajouterConstante(std::string constante, unsigned ligne, unsigned colonne, int valeurConstante)
 {
     Entree *constEntree = new Entree;
-    *constEntree = {true, false, valeurConstante};
-    pair<TableIterator, bool> result = this->tableConstantes.insert({nomConstante, constEntree});
-    if(!result.second)
+    *constEntree = {true, false, valeurConstante, ligne, colonne};
+    pair<TableIterator, bool> result = this->tableConstantes.insert({constante, constEntree});
+    if (!result.second)
     {
         delete (constEntree);
     }
 
 }
 
-void TableDesSymboles::ajouterVariable(std::string nomVariable)
+void TableDesSymboles::ajouterVariable(std::string variable, unsigned ligne, unsigned colonne)
 {
     Entree *varEntree = new Entree;
-    *varEntree = {false, false, false};
-    pair<TableIterator, bool> result = this->tableVariables.insert({nomVariable, varEntree});
-    if(!result.second)
+    *varEntree = {false, false,};
+    varEntree->ligne = ligne;
+    varEntree->colonne = colonne;
+    pair<TableIterator, bool> result = this->tableVariables.insert({variable, varEntree});
+    if (!result.second)
     {
         delete (varEntree);
     }
@@ -63,7 +66,7 @@ void TableDesSymboles::ajouterVariable(std::string nomVariable)
 void TableDesSymboles::setVariableUtilisee(std::string nomVariable)
 {
     auto iterator = this->tableVariables.find(nomVariable);
-    if(iterator != this->tableVariables.end())
+    if (iterator != this->tableVariables.end())
     {
         iterator->second->estUtilisee = true;
     }
@@ -72,7 +75,7 @@ void TableDesSymboles::setVariableUtilisee(std::string nomVariable)
 void TableDesSymboles::setVariableValeur(std::string nomVariable, int valeur)
 {
     auto iterator = this->tableVariables.find(nomVariable);
-    if(iterator != this->tableVariables.end())
+    if (iterator != this->tableVariables.end())
     {
         iterator->second->valeur = valeur;
         iterator->second->estInitialisee = true;
@@ -82,7 +85,7 @@ void TableDesSymboles::setVariableValeur(std::string nomVariable, int valeur)
 void TableDesSymboles::setConstanteUtilisee(std::string nomConstante)
 {
     auto iterator = this->tableConstantes.find(nomConstante);
-    if(iterator != this->tableConstantes.end())
+    if (iterator != this->tableConstantes.end())
     {
         iterator->second->estUtilisee = true;
     }
@@ -114,7 +117,7 @@ int TableDesSymboles::getValeur(std::string nom) const
 {
     auto iterator = this->tableVariables.find(nom);
 
-    if(iterator != this->tableVariables.end())
+    if (iterator != this->tableVariables.end())
     {
         return iterator->second->valeur;
     }
@@ -130,11 +133,11 @@ Entree *TableDesSymboles::getEntree(std::string nom) const
     auto iteratorTableVariable = this->tableVariables.find(nom);
 
 
-    if(iteratorTableConstante != this->tableConstantes.end())
+    if (iteratorTableConstante != this->tableConstantes.end())
     {
         return iteratorTableConstante->second;
     }
-    else if(iteratorTableVariable != this->tableVariables.end())
+    else if (iteratorTableVariable != this->tableVariables.end())
     {
         return iteratorTableVariable->second;
     }
@@ -143,6 +146,13 @@ Entree *TableDesSymboles::getEntree(std::string nom) const
         return nullptr;
     }
 }
+
+bool TableDesSymboles::estConstante(std::string nom) const
+{
+    return this->tableConstantes.find(nom) != this->tableConstantes.end();
+}
+
+
 
 
 

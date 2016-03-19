@@ -19,6 +19,7 @@ public:
 
     void executer(TableDesSymboles *tableDesSymboles);
 
+    void analyser(TableDesSymboles *tableDesSymboles);
 
 protected:
 

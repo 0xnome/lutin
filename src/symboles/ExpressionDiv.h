@@ -9,21 +9,23 @@ class ExpressionDiv : public Terme
 {
 
 public:
-    ExpressionDiv(Facteur * facteur1, Terme * terme1);
+    ExpressionDiv(Facteur *facteur1, Terme *terme1);
 
     ~ExpressionDiv();
 
-    void afficher();
+    virtual void afficher();
 
-    void executer(TableDesSymboles *tableDesSymboles);
+    virtual void executer(TableDesSymboles *tableDesSymboles);
 
     int eval(TableDesSymboles *tablesDesSymboles);
 
+    virtual void analyser(TableDesSymboles *tableDesSymboles);
+
 protected:
 
-    Terme * terme;
+    Terme *terme;
 
-    Facteur * facteur;
+    Facteur *facteur;
 
 };
 

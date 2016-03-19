@@ -4,9 +4,11 @@
 #include "Symbole.h"
 
 
-class ConstTerminal : public Symbole {
+class ConstTerminal : public Symbole
+{
 public:
-    ConstTerminal() : Symbole(CONST_TERMINAL) { }
+    ConstTerminal(unsigned ligne, unsigned colonne) : Symbole(CONST_TERMINAL, ligne, colonne)
+    { }
 
     ~ConstTerminal() { }
 };

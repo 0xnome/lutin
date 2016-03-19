@@ -28,7 +28,7 @@ public:
 
     virtual void afficher() = 0;
 
-    virtual void analyser() = 0;
+    virtual void analyser(TableDesSymboles *tableDesSymboles) = 0;
 
     virtual void optimiser() = 0;
 

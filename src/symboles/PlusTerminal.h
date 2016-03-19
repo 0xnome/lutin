@@ -3,9 +3,11 @@
 
 #include "Symbole.h"
 
-class PlusTerminal : public Symbole {
+class PlusTerminal : public Symbole
+{
 public:
-    PlusTerminal() : Symbole(PLUS_TERMINAL) { }
+    PlusTerminal(unsigned ligne, unsigned colonne) : Symbole(PLUS_TERMINAL, ligne, colonne)
+    { }
 
     ~PlusTerminal() { }
 };

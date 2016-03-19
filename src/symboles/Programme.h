@@ -15,7 +15,9 @@ public:
 
     virtual void afficher();
 
-    virtual void analyser();
+    Programme(int id);
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles);
 
     virtual void optimiser();
 

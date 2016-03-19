@@ -4,9 +4,11 @@
 #include "Symbole.h"
 
 
-class VarTerminal : public Symbole {
+class VarTerminal : public Symbole
+{
 public:
-    VarTerminal() : Symbole(VAR_TERMINAL) { }
+    VarTerminal(unsigned ligne, unsigned colonne) : Symbole(VAR_TERMINAL, ligne, colonne)
+    { }
 
     ~VarTerminal() { }
 };

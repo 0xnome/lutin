@@ -14,3 +14,11 @@ void IdentificateurFacteur::afficher() {
 int IdentificateurFacteur::eval(TableDesSymboles *tablesDesSymboles) {
     return tablesDesSymboles->getValeur(id->getNom());
 }
+
+void IdentificateurFacteur::executer(TableDesSymboles *tableDesSymboles) {
+}
+
+void IdentificateurFacteur::analyser(TableDesSymboles *tableDesSymboles)
+{
+
+}

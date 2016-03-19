@@ -3,9 +3,11 @@
 
 #include "Symbole.h"
 
-class DivTerminal : public Symbole {
+class DivTerminal : public Symbole
+{
 public:
-    DivTerminal() : Symbole(DIV_TERMINAL) { }
+    DivTerminal(unsigned ligne, unsigned colonne) : Symbole(DIV_TERMINAL, ligne, colonne)
+    { }
 
     ~DivTerminal() { }
 };

@@ -4,9 +4,11 @@
 #include "Symbole.h"
 
 
-class IdTerminal : public Symbole {
+class IdTerminal : public Symbole
+{
 public:
-    IdTerminal(std::string nom) : Symbole(ID_TERMINAL), nom(nom) { };
+    IdTerminal(std::string nom, unsigned ligne, unsigned colonne) : Symbole(ID_TERMINAL, ligne, colonne), nom(nom)
+    { };
 
     ~IdTerminal() { }
 

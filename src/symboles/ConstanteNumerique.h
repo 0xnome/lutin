@@ -23,6 +23,9 @@ public:
         this->valeur->afficher();
     }
 
+    void executer(TableDesSymboles *tableDesSymboles)
+    {}
+
 protected:
     NumTerminal *valeur;
 };

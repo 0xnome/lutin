@@ -3,9 +3,11 @@
 
 #include "Symbole.h"
 
-class ParOuvTerminal : public Symbole {
+class ParOuvTerminal : public Symbole
+{
 public:
-    ParOuvTerminal() : Symbole(PAROUV_TERMINAL) { }
+    ParOuvTerminal(unsigned ligne, unsigned colonne) : Symbole(PAROUV_TERMINAL, ligne, colonne)
+    { }
 
     ~ParOuvTerminal() { }
 };

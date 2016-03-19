@@ -8,7 +8,7 @@
 class Expression : public Symbole {
 
 public:
-    Expression() : Symbole(EXPRESSION) { }
+    Expression() : Symbole(EXPRESSION), statiqueClasse(EXPRESSION) { }
 
     virtual void afficher() = 0;
 
@@ -18,9 +18,16 @@ public:
 
     virtual ~Expression() { };
 
-protected:
-    Expression(int id) : Symbole(id) { }
+    int identifiantStatique() {
+        return statiqueClasse;
+    }
 
+    void setStatiqueClasse(int statiqueClasse) { this->statiqueClasse = statiqueClasse; }
+
+protected:
+    Expression(int id) : Symbole(id), statiqueClasse(id) { }
+
+    int statiqueClasse;
 };
 
 

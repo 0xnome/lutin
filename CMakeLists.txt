@@ -24,10 +24,10 @@ endif ()
 enable_testing()
 file(GLOB_RECURSE source_files "src/*.cpp")
 file(GLOB_RECURSE header_files "src/*.h")
-file(GLOB_RECURSE header_files "lib/*.h")
+file(GLOB_RECURSE lib_header "lib/*.h")
 
 
-add_executable(${project_name} ${header_files} ${source_files})
+add_executable(${project_name} ${header_files} ${source_files} ${lib_header})
 TARGET_LINK_LIBRARIES(${project_name} ${Boost_LIBRARIES})
 
 add_executable(${TEST_TABLE_SYMBOLE} TestUnitaires/TestTableDesSymboles.cpp src/automate/TableDesSymboles.cpp)

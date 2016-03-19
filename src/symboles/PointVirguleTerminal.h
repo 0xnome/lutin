@@ -4,11 +4,14 @@
 #include "Symbole.h"
 
 
-class PointVirguleTerminal : public Symbole {
+class PointVirguleTerminal : public Symbole
+{
 public:
-    PointVirguleTerminal() : Symbole(POINT_VIRGULE_TERMINAL) { }
+    PointVirguleTerminal(unsigned ligne, unsigned colonne) : Symbole(POINT_VIRGULE_TERMINAL, ligne, colonne)
+    { }
 
-    ~PointVirguleTerminal() { }
+    ~PointVirguleTerminal()
+    { }
 };
 
 

@@ -17,6 +17,9 @@ public:
 
     bool estVide();
 
+    void analyser(TableDesSymboles *tableDesSymboles);
+
+    void optimiser();
 protected:
     Expression *expression;
 
