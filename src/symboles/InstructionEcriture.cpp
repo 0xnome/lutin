@@ -19,12 +19,12 @@ void InstructionEcriture::afficher()
 {
     cout << "ecrire ";
     this->expression->afficher();
-    cout << " ;";
+    cout << " ;" << endl;
 }
 
 void InstructionEcriture::executer(TableDesSymboles *tableDesSymboles)
 {
-    cout << expression->eval(nullptr);
+    cout << expression->eval(tableDesSymboles);
 }
 
 

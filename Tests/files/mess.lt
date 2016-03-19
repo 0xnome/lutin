@@ -1,0 +1,15 @@
+var a, b, c;
+const d = 2;
+lire a;
+a:= 7;
+c := a-b;
+c := a+b;
+c := a/b;
+c := a*b;
+ecrire a+a;
+ecrire a-a;
+ecrire a*a;
+ecrire a/a;
+c := (a+3)*(3/(6/2));
+ecrire 2+2*2/2-2;
+c := a*(b+(c-(d/(3))));

@@ -20,7 +20,7 @@ void Automate::decalage(EtatInterface *nouvelEtat, Symbole *symboleActuel) {
 EtatInterface *Automate::popEtat() {
     EtatInterface *etat = pilesEtats.top();
     pilesEtats.pop();
-    LOG(INFO) << "(POP1) nouvel Etat courant : " << etat->getNom() ;
+    LOG(INFO) << "(POP1) nouvel Etat courant : " << etat->getNom();
     return etat;
 }
 
@@ -29,18 +29,18 @@ Symbole *Automate::popSymbole() {
         return nullptr;
     }
     Symbole *symbole = pilesSymboles.top();
-    LOG(INFO) << "(POP) Symbole pop : " << Symbole::getName(symbole) ;
+    LOG(INFO) << "(POP) Symbole pop : " << Symbole::getName(symbole);
     pilesSymboles.pop();
     return symbole;
 }
 
 void Automate::pushEtat(EtatInterface *const etat) {
-    LOG(INFO) << "(PUSH) nouvel etat courant : " << etat->getNom() ;
+    LOG(INFO) << "(PUSH) nouvel etat courant : " << etat->getNom();
     pilesEtats.push(etat);
 }
 
 void Automate::pushSymbole(Symbole *const symbole) {
-    LOG(INFO) << "(PUSH) nouveau symbole reconnu : " << Symbole::getName(symbole) ;
+    LOG(INFO) << "(PUSH) nouveau symbole reconnu : " << Symbole::getName(symbole);
     pilesSymboles.push(symbole);
 }
 
@@ -50,7 +50,7 @@ void Automate::popEtat(int nb) {
         pilesEtats.pop();
         delete e;
     }
-    LOG(INFO) << "(POP" << nb << ") nouvel etat courant : " << this->etatCourant()->getNom() ;
+    LOG(INFO) << "(POP" << nb << ") nouvel etat courant : " << this->etatCourant()->getNom();
 }
 
 Automate::Automate(string nomFichier) {
@@ -64,7 +64,7 @@ Automate::Automate(string nomFichier) {
         string ligne;
         vector<string> lignesDuFichier;
         getline(stringstream, ligne, delimiteur);
-        do{
+        do {
             lignesDuFichier.push_back(ligne);
         }
         while (getline(stringstream, ligne, delimiteur));
@@ -72,13 +72,13 @@ Automate::Automate(string nomFichier) {
         lexeur = new Lexeur(lignesDuFichier);
         this->programme = nullptr;
 
-        if(this->chargerProgramme()){
-            LOG(INFO) << "chargement : REUSSI" ;
-            prgrammeCharge = true;
+        if (this->chargerProgramme()) {
+            LOG(INFO) << "chargement : REUSSI";
+            this->programmeCharge = true;
         }
-        else{
-            LOG(ERROR) << "chargement : ECHOUE" ;
-            prgrammeCharge = false;
+        else {
+            LOG(ERROR) << "chargement : ECHOUE";
+            this->programmeCharge = false;
         }
 /*
 // Pour tester le lexeur
@@ -127,7 +127,7 @@ bool Automate::chargerProgramme() {
     if (pasRetour == ERREUR) {
         LOG(ERROR) << "Erreur d'execution du programme lors de la transition dans l'etat "
         << this->etatCourant()->getNom() << " sur le symbole "
-        << Symbole::getName(this->lexeur->getCurrent()) ;
+        << Symbole::getName(this->lexeur->getCurrent());
         return false;
     }
     else if (pasRetour == TERMINE) {
@@ -142,26 +142,25 @@ int Automate::pas() {
 }
 
 void Automate::afficherProgramme() {
-    LOG(INFO) << "AFFICHAGE DU PROGRAMME" ;
+    LOG(INFO) << "AFFICHAGE DU PROGRAMME";
     this->programme->afficher();
 }
 
 void Automate::analyserProgramme() {
-    LOG(INFO) << "ANALYSE DU PROGRAMME" ;
+    LOG(INFO) << "ANALYSE DU PROGRAMME";
     this->programme->analyser(&tableDesSymboles);
 }
 
 void Automate::optimiserProgramme() {
-    LOG(INFO) << "OPTIMISATION DU PROGRAMME" ;
+    LOG(INFO) << "OPTIMISATION DU PROGRAMME";
     this->programme->optimiser();
 }
 
 void Automate::executerProgramme() {
-    LOG(DEBUG) << "EXECUTION DU PROGRAMME" ;
-    //this->programme->executer();
+    LOG(DEBUG) << "EXECUTION DU PROGRAMME";
+    this->programme->executer(&this->tableDesSymboles);
 }
 
-bool Automate::programmeEstCharge()
-{
-    return prgrammeCharge;
+bool Automate::programmeEstCharge() {
+    return this->programmeCharge;
 }
