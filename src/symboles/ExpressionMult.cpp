@@ -22,7 +22,7 @@ void ExpressionMult::afficher()
 
 int ExpressionMult::eval(TableDesSymboles *tablesDesSymboles)
 {
-    return (facteur->eval(tablesDesSymboles) * terme->eval(tablesDesSymboles));
+    return (terme->eval(tablesDesSymboles) * facteur->eval(tablesDesSymboles));
 }
 
 void ExpressionMult::executer(TableDesSymboles *tableDesSymboles)
@@ -32,5 +32,5 @@ void ExpressionMult::executer(TableDesSymboles *tableDesSymboles)
 
 void ExpressionMult::analyser(TableDesSymboles *tableDesSymboles)
 {
-    
+
 }

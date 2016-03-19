@@ -24,7 +24,7 @@ void InstructionEcriture::afficher()
 
 void InstructionEcriture::executer(TableDesSymboles *tableDesSymboles)
 {
-    cout << expression->eval(tableDesSymboles);
+    cout << expression->eval(tableDesSymboles) << endl;
 }
 
 

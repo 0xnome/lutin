@@ -22,5 +22,5 @@ void ExpressionSoustractive::executer(TableDesSymboles *tableDesSymboles) {
 }
 
 int ExpressionSoustractive::eval(TableDesSymboles *tablesDesSymboles) {
-    return (terme->eval(tablesDesSymboles) - expression->eval(tablesDesSymboles));
+    return (expression->eval(tablesDesSymboles) - terme->eval(tablesDesSymboles));
 }

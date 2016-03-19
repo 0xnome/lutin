@@ -31,7 +31,7 @@ void InstructionAffectation::afficher()
 
 void InstructionAffectation::executer(TableDesSymboles *tableDesSymboles)
 {
-    tableDesSymboles->setVariableValeur(id->getNom(), expression->eval(nullptr));
+    tableDesSymboles->setVariableValeur(id->getNom(), expression->eval(tableDesSymboles));
 }
 
 bool InstructionAffectation::estVide()
