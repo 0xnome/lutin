@@ -17,7 +17,8 @@ int Etat6::transition(Automate *automate, Symbole *s) {
             automate->decalage(new Etat17, s);
             return CONTINUE;
         case EXPRESSION:
-            automate->decalage(new Etat16, s);
+            automate->pushSymbole(s);
+            automate->pushEtat(new Etat16);
             return CONTINUE;
         default:
             return ERREUR;

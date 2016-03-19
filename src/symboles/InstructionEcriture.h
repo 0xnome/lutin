@@ -17,6 +17,9 @@ public:
 
     bool estVide();
 
+    void analyser();
+
+    void optimiser();
 protected:
     Expression *expression;
 

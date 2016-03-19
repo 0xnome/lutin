@@ -5,7 +5,7 @@ int Etat16::transition(Automate *automate, Symbole *s) {
     switch (*s) {
         case POINT_VIRGULE_TERMINAL:
             automate->decalage(new Etat44, s);
-            return CONTINUE
+            return CONTINUE;
         default:
             return ERREUR;
     }

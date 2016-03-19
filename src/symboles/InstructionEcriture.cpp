@@ -26,3 +26,8 @@ void InstructionEcriture::executer(TableDesSymboles *tableDesSymboles) {
 bool InstructionEcriture::estVide() {
     return this->expression == nullptr;
 }
+
+
+ void InstructionEcriture::analyser() {}
+
+ void InstructionEcriture::optimiser() {}
