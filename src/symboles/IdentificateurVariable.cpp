@@ -28,8 +28,16 @@ void IdentificateurVariable::executer(TableDesSymboles *tableDesSymboles) {
     tableDesSymboles->ajouterVariable(this->id->getNom());
 }
 
-void IdentificateurVariable::analyser() {
-    //TODO
+void IdentificateurVariable::analyser(TableDesSymboles* tableDesSymboles) {
+
+    if(tableDesSymboles->estDeclaree(this->id->getNom()))
+    {
+        std::cout << "Erreur ligne " << this->id->getLigne() << " : " <<  this->id->getNom() << " est déjà déclarée !" <<std::endl;
+    } else
+    {
+        tableDesSymboles->ajouterVariable(this->id->getNom());
+    }
+
 }
 
 void IdentificateurVariable::optimiser() {

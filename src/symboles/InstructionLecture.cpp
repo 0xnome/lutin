@@ -29,9 +29,12 @@ bool InstructionLecture::estVide() {
     return this->id == nullptr;
 }
 
-void InstructionLecture::analyser() {
-}
 
 void InstructionLecture::optimiser() {
+
+}
+
+void InstructionLecture::analyser(TableDesSymboles *tableDesSymboles)
+{
 
 }

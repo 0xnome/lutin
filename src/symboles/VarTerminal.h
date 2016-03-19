@@ -1,12 +1,12 @@
 #ifndef LUTIN_VARTERMINAL_H
 #define LUTIN_VARTERMINAL_H
 
-#include "Symbole.h"
+#include "SymboleTerminal.h"
 
 
-class VarTerminal : public Symbole {
+class VarTerminal : public SymboleTerminal {
 public:
-    VarTerminal() : Symbole(VAR_TERMINAL) { }
+    VarTerminal(unsigned ligne, unsigned colonne) : SymboleTerminal(VAR_TERMINAL, ligne, colonne) { }
 
     ~VarTerminal() { }
 };

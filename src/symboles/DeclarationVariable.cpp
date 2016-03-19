@@ -20,8 +20,13 @@ void DeclarationVariable::afficher() {
     }
 }
 
-void DeclarationVariable::analyser() {
-
+void DeclarationVariable::analyser(TableDesSymboles *tableDesSymboles)
+{
+    IdentificateurVariable *id_courant = this->identificateurVariable;
+    while (id_courant != nullptr) {
+        id_courant->analyser(tableDesSymboles);
+        id_courant = id_courant->getSuivant();
+    }
 }
 
 void DeclarationVariable::optimiser() {
@@ -39,6 +44,4 @@ void DeclarationVariable::executer(TableDesSymboles *tableDesSymboles) {
 bool DeclarationVariable::estVide() {
     return identificateurVariable == nullptr;
 }
-
-
 

@@ -31,15 +31,15 @@ public:
     /**
      * Ajoute une variable dans la table des symboles
      */
-    void ajouterVariable(std::string nomConstante);
+    void ajouterVariable(std::string nomVariable);
 
     /**
-     * Set le booleen qui dit que la variable a été initialisée
+     * Set le booleen qui dit que la variable a été utilisée
      */
     void setVariableUtilisee(std::string nomVariable);
 
     /**
-     * Set le booleen qui dit que la variable a été initialisée
+     * Set le booleen qui dit que la variable a été utilisee
      */
     void setConstanteUtilisee(std::string nomConstante);
 
@@ -54,9 +54,13 @@ public:
     int getConstanteValeur(std::string nomConstante) const;
 
 
+    /**
+     * Retourne la valeur d'une variable ou d'une constante
+     */
     int getValeur(std::string nom) const;
 
-    Entree* getEntree(std::string nom)const;
+
+    Entree *getEntree(std::string nom) const;
 
     /**
      * Set la valeur de la variable à valeur
@@ -64,7 +68,8 @@ public:
     void setVariableValeur(std::string nomVariable, int valeur);
 
     /**
-     * Regarde si la variable dont le nom passé en paramètre a été initialisée
+     * Regarde si la variable dont le nom passé en paramètre a été initialisée.
+     * Suppose que la variable a déja été déclarée
      */
     bool estInitialisee(std::string nomVariable) const;
 
@@ -78,6 +83,8 @@ public:
      */
     bool estDeclaree(std::string nomVariable) const;
 
+    bool estConstante(std::string nom)const;
+
 
     /* ------------ méthodes utilisées pour les tests -------------- */
     unsigned long getNbConstante() const;
@@ -86,10 +93,10 @@ public:
 
 
 private:
-    std::unordered_map<std::string, Entree*> tableVariables;
-    std::unordered_map<std::string, Entree*> tableConstantes;
+    std::unordered_map<std::string, Entree *> tableVariables;
+    std::unordered_map<std::string, Entree *> tableConstantes;
 
-    typedef std::unordered_map<std::string, Entree*>::iterator TableIterator;
+    typedef std::unordered_map<std::string, Entree *>::iterator TableIterator;
 
 
 };

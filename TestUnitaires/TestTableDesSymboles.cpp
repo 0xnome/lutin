@@ -66,11 +66,17 @@ void testAjouterVariable()
 }
 
 
+void testEstDeclaree()
+{
+    TableDesSymboles tableDesSymboles;
+}
+
 int main(int argc, char **argv)
 {
     testAjouterConstante();
     testAjouterVariable();
     testEstInitialiseeEstUtiliseeVariable();
     testEstUtiliseeConstante();
+    testEstDeclaree();
     return 0;
 }

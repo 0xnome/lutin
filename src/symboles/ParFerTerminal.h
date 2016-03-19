@@ -1,11 +1,11 @@
 #ifndef LUTIN_PARFERTERMINAL_H
 #define LUTIN_PARFERTERMINAL_H
 
-#include "Symbole.h"
+#include "SymboleTerminal.h"
 
-class ParFerTerminal : public Symbole {
+class ParFerTerminal : public SymboleTerminal {
 public:
-    ParFerTerminal() : Symbole(PARFER_TERMINAL) { }
+    ParFerTerminal(unsigned ligne, unsigned colonne) : SymboleTerminal(PARFER_TERMINAL, ligne, colonne) { }
 
     ~ParFerTerminal() { }
 };

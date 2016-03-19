@@ -31,11 +31,13 @@ static const boost::regex s_po("\\(");
 static const boost::regex s_pf("\\)");
 
 
-Lexeur::Lexeur(std::vector<std::string> lignesDuFichier) {
+Lexeur::Lexeur(std::vector<std::string> lignesDuFichier)
+{
     std::string chaine;
     this->lignesDuFichier = lignesDuFichier;
 
-    for (string ligne : lignesDuFichier) {
+    for (string ligne : lignesDuFichier)
+    {
         std::vector<std::string> vecteurLigne;
         chaine = boost::regex_replace(ligne, boost::regex(","), boost::regex(" , "));
         chaine = boost::regex_replace(chaine, boost::regex(";"), boost::regex(" ; "));
@@ -53,153 +55,177 @@ Lexeur::Lexeur(std::vector<std::string> lignesDuFichier) {
         lignesDuProgramme.push_back(vecteurLigne);
     };
     ligne = 0;
-    colone = 0;
+    colonne = 0;
     lectureTerminee = false;
     current = nullptr;
     shift();
 }
 
-Symbole *Lexeur::getNext() {
+Symbole *Lexeur::getNext()
+{
     shift();
     return current;
 }
 
-void Lexeur::shift() {
-    if (lectureTerminee) {
+void Lexeur::shift()
+{
+    if (lectureTerminee)
+    {
         current = nullptr;
         return;
     }
 
 
-    if (ligne == lignesDuProgramme.size() - 1 && colone > lignesDuProgramme.at(ligne).size() - 1) {
+    if (ligne == lignesDuProgramme.size() - 1 && colonne > lignesDuProgramme.at(ligne).size() - 1)
+    {
         lectureTerminee = true;
         LOG(INFO) << "Fin Programme" << endl;
         current = new FinProgramme;
         return;
     }
-    if (colone > lignesDuProgramme.at(ligne).size() - 1) {
+    if (colonne > lignesDuProgramme.at(ligne).size() - 1)
+    {
         ligne++;
-        colone = 0;
+        colonne = 0;
     }
 
-    while (lignesDuProgramme.at(ligne).at(0) == "" || lignesDuProgramme.at(ligne).at(0) == " "){
+    while (lignesDuProgramme.at(ligne).at(0) == "" || lignesDuProgramme.at(ligne).at(0) == " ")
+    {
         ligne++;
-        if(ligne >= lignesDuProgramme.size() - 1) {
+        if (ligne >= lignesDuProgramme.size() - 1)
+        {
             LOG(INFO) << "Fin Programme" << endl;
             lectureTerminee = true;
             current = new FinProgramme;
             return;
         }
-        colone = 0 ;
+        colonne = 0;
     }
-    colone++;
+    colonne++;
 
-    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_var)) {
-        LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_var" << endl;
-        current = new VarTerminal();
+    if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_var))
+    {
+        LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_var";
+        current = new VarTerminal(ligne + 1, colonne);
         return;
     }
 
-    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_const)) {
-        LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_const" << endl;
-        current = new ConstTerminal;
+    if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_const))
+    {
+        LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_const";
+        current = new ConstTerminal(ligne + 1, colonne);
         return;
     }
 
-    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_lire)) {
-        LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_lire" << endl;
-        current = new LireTerminal;
+    if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_lire))
+    {
+        LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_lire";
+        current = new LireTerminal(ligne + 1, colonne);
         return;
     }
 
-    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_ecrire)) {
-        LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_ecrire" << endl;
-        current = new EcrireTerminal;
+    if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_ecrire))
+    {
+        LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_ecrire";
+        current = new EcrireTerminal(ligne + 1, colonne);
         return;
     }
 
-    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_num)) {
-        LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_num" << endl;
-        current = new NumTerminal(std::stoi(lignesDuProgramme.at(ligne).at(colone - 1)));
+    if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_num))
+    {
+        LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_num";
+        current = new NumTerminal(std::stoi(lignesDuProgramme.at(ligne).at(colonne - 1)), ligne + 1, colonne);
         return;
     }
 
-    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_id)) {
-        LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_id" << endl;
-        current = new IdTerminal(lignesDuProgramme.at(ligne).at(colone - 1));
+    if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_id))
+    {
+        LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_id";
+        current = new IdTerminal(lignesDuProgramme.at(ligne).at(colonne - 1), ligne + 1, colonne);
         return;
     }
 
-    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_add)) {
-        LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_add" << endl;
-        current = new PlusTerminal;
+    if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_add))
+    {
+        LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_add";
+        current = new PlusTerminal(ligne + 1, colonne);
         return;
     }
 
-    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_sous)) {
-        LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_sous" << endl;
-        current = new MoinsTerminal;
+    if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_sous))
+    {
+        LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_sous";
+        current = new MoinsTerminal(ligne + 1, colonne);
         return;
     }
 
-    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_div)) {
-        LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_div" << endl;
-        current = new DivTerminal;
+    if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_div))
+    {
+        LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_div";
+        current = new DivTerminal(ligne + 1, colonne);
         return;
     }
 
-    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_mul)) {
-        LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_mul" << endl;
-        current = new MultTerminal;
+    if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_mul))
+    {
+        LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_mul";
+        current = new MultTerminal(ligne + 1, colonne);
         return;
 
     }
 
-    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_vir)) {
-        LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_vir" << endl;
-        current = new VirguleTerminal;
+    if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_vir))
+    {
+        LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_vir";
+        current = new VirguleTerminal(ligne + 1, colonne);
         return;
     }
 
-    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_pv)) {
-        LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_pv" << endl;
-        current = new PointVirguleTerminal;
+    if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_pv))
+    {
+        LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_pv";
+        current = new PointVirguleTerminal(ligne + 1, colonne);
         return;
     }
 
-    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_eg)) {
-        LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_eg" << endl;
-        current = new EgalTerminal;
+    if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_eg))
+    {
+        LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_eg";
+        current = new EgalTerminal(ligne + 1, colonne);
         return;
     }
 
-    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_opaff)) {
-        LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_opaff" << endl;
-        current = new AffectTerminal;
+    if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_opaff))
+    {
+        LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_opaff";
+        current = new AffectTerminal(ligne + 1, colonne);
         return;
     }
 
-    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_po)) {
-        LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_po" << endl;
-        current = new ParOuvTerminal;
+    if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_po))
+    {
+        LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_po";
+        current = new ParOuvTerminal(ligne + 1, colonne);
         return;
     }
 
-    if (regex_match(lignesDuProgramme.at(ligne).at(colone - 1), s_pf)) {
-        LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : s_pf" << endl;
-        current = new ParFerTerminal;
+    if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_pf))
+    {
+        LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_pf";
+        current = new ParFerTerminal(ligne + 1, colonne);
         return;
     }
 
 
-    LOG(INFO) << lignesDuProgramme.at(ligne).at(colone - 1) + " type : erreur lexicale" << endl;
+    LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : erreur lexicale";
 
     current = new ErreurLexicale("Erreur lexicale (" + std::to_string(ligne + 1) + ":" + std::to_string(
-            lignesDuFichier.at(ligne).find(lignesDuProgramme.at(ligne).at(colone - 1)) + 1) + ") caractere " +
-                                 lignesDuProgramme.at(ligne).at(colone - 1));
+            lignesDuFichier.at(ligne).find(lignesDuProgramme.at(ligne).at(colonne - 1)) + 1) + ") caractere " +
+                                 lignesDuProgramme.at(ligne).at(colonne - 1));
     cout << *((ErreurLexicale *) current)->getMessage();
 }
 
-Symbole *Lexeur::getCurrent() {
+Symbole *Lexeur::getCurrent()
+{
     return current;
 }

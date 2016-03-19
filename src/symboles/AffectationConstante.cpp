@@ -32,7 +32,7 @@ void AffectationConstante::afficher() {
     this->num->afficher();
 }
 
-void AffectationConstante::analyser() {
+void AffectationConstante::analyser(TableDesSymboles* tableDesSymboles) {
 }
 
 void AffectationConstante::optimiser() {

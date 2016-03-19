@@ -32,7 +32,7 @@ bool InstructionAffectation::estVide() {
     return this->expression == nullptr && this->id == nullptr;
 }
 
-void InstructionAffectation::analyser() {
+void InstructionAffectation::analyser(TableDesSymboles* tableDesSymboles) {
 
 }
 

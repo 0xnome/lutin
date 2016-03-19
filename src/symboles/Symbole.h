@@ -183,7 +183,7 @@ public:
      *  - mots clefs interdits (var, const, ecrire et lire) à réflechir...
      *  - modification d'une constante
      */
-    virtual void analyser() { }
+    virtual void analyser(TableDesSymboles* tableDesSymboles) { }
 
 
     /**

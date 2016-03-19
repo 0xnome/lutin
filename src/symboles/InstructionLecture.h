@@ -13,7 +13,7 @@ public:
 
     void executer(TableDesSymboles *tableDesSymboles);
 
-    void analyser();
+    virtual void analyser(TableDesSymboles *tableDesSymboles);
 
     void optimiser();
 
