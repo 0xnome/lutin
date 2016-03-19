@@ -11,10 +11,10 @@ int Etat17::transition(Automate *automate, Symbole *s) {
             // les SUIVANTS de EXPRESSION
             Terme *terme = (Terme *) automate->popSymbole();
             automate->popEtat(1);
-            // attention cast et passage en dynamique
-            terme->setDynamique(true);
+            // attention cast et passage en statique
+            terme->setStatiqueClasse(EXPRESSION);
             Expression *expression = (Expression *) terme;
-            automate->etatCourant()->transition(automate, expression);
+            return automate->etatCourant()->transition(automate, expression);
         }
         default:
             return ERREUR;

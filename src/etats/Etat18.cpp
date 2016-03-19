@@ -19,7 +19,7 @@ int Etat18::transition(Automate *automate, Symbole *s) {
         case CONSTANTE_NUMERIQUE:
         case IDENTIFICATEUR_FACTEUR:
         case EXPRESSION_PARENTHESEE:
-            intS = ((Expression*)s)->identifiantDynamique();
+            intS = ((Expression*)s)->identifiantStatique();
             break;
         default:
             break;

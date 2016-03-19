@@ -14,7 +14,7 @@ int Etat30::transition(Automate *automate, Symbole *s) {
             Facteur *facteur = (Facteur *) automate->popSymbole();
             automate->popEtat(1);
             // attention cast et passage en dynamique
-            facteur->setDynamique(true);
+            facteur->setStatiqueClasse(TERME);
             Terme *terme = (Terme *) facteur;
             return automate->etatCourant()->transition(automate, terme);
         }
