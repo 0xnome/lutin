@@ -1,3 +1,4 @@
+#include <easyloggingpp.h>
 #include "ExpressionParenthesee.h"
 
 using namespace std;
@@ -17,6 +18,7 @@ void ExpressionParenthesee::afficher() {
 }
 
 int ExpressionParenthesee::eval(TableDesSymboles *tablesDesSymboles) {
+    LOG(INFO) << "ExpressionParenthesee::eval";
     return expression->eval(tablesDesSymboles);
 }
 

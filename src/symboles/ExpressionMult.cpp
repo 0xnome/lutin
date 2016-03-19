@@ -1,3 +1,4 @@
+#include <easyloggingpp.h>
 #include "ExpressionMult.h"
 
 using namespace std;
@@ -22,6 +23,7 @@ void ExpressionMult::afficher()
 
 int ExpressionMult::eval(TableDesSymboles *tablesDesSymboles)
 {
+    LOG(INFO) << "ExpressionMult::eval";
     return (terme->eval(tablesDesSymboles) * facteur->eval(tablesDesSymboles));
 }
 

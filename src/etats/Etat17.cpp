@@ -21,7 +21,6 @@ int Etat17::transition(Automate *automate, Symbole *s) {
         case MULT_TERMINAL:
             automate->decalage(new Etat37, s);
             return CONTINUE;
-
         case DIV_TERMINAL:
             automate->decalage(new Etat38, s);
             return CONTINUE;

@@ -2,6 +2,7 @@
 #define LUTIN_CONSTANTENUMERIQUE_H
 
 
+#include <easyloggingpp.h>
 #include "Facteur.h"
 #include "NumTerminal.h"
 
@@ -16,6 +17,7 @@ public:
     }
 
     int eval(TableDesSymboles *tablesDesSymboles) {
+        LOG(INFO) << "ConstanteNumerique::eval";
         return valeur->getValue();
     }
 
