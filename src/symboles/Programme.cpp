@@ -102,3 +102,8 @@ void Programme::analyser(TableDesSymboles *tableDesSymboles)
 void Programme::optimiser() {
     return;
 }
+
+Programme::Programme(int id) : Symbole(id)
+{
+
+}

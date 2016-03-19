@@ -4,9 +4,11 @@
 #include "Symbole.h"
 
 
-class LireTerminal : public SymboleTerminal {
+class LireTerminal : public Symbole
+{
 public:
-    LireTerminal(unsigned ligne, unsigned colonne) : SymboleTerminal(LIRE_TERMINAL, ligne, colonne) { }
+    LireTerminal(unsigned ligne, unsigned colonne) : Symbole(LIRE_TERMINAL, ligne, colonne)
+    { }
 
     ~LireTerminal() { }
 };

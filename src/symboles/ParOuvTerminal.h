@@ -1,11 +1,13 @@
 #ifndef LUTIN_PAROUVTERMINAL_H
 #define LUTIN_PAROUVTERMINAL_H
 
-#include "SymboleTerminal.h"
+#include "Symbole.h"
 
-class ParOuvTerminal : public SymboleTerminal {
+class ParOuvTerminal : public Symbole
+{
 public:
-    ParOuvTerminal(unsigned ligne, unsigned colonne) : SymboleTerminal(PAROUV_TERMINAL, ligne, colonne) { }
+    ParOuvTerminal(unsigned ligne, unsigned colonne) : Symbole(PAROUV_TERMINAL, ligne, colonne)
+    { }
 
     ~ParOuvTerminal() { }
 };

@@ -1,11 +1,13 @@
 #ifndef LUTIN_MULTTERMINAL_H
 #define LUTIN_MULTTERMINAL_H
 
-#include "SymboleTerminal.h"
+#include "Symbole.h"
 
-class MultTerminal : public SymboleTerminal {
+class MultTerminal : public Symbole
+{
 public:
-    MultTerminal(unsigned ligne, unsigned colonne) : SymboleTerminal(MULT_TERMINAL, ligne, colonne) { }
+    MultTerminal(unsigned ligne, unsigned colonne) : Symbole(MULT_TERMINAL, ligne, colonne)
+    { }
 
     ~MultTerminal() { }
 };

@@ -1,11 +1,13 @@
 #ifndef LUTIN_ECRIRETERMINAL_H
 #define LUTIN_ECRIRETERMINAL_H
 
-#include "SymboleTerminal.h"
+#include "Symbole.h"
 
-class EcrireTerminal : public SymboleTerminal {
+class EcrireTerminal : public Symbole
+{
 public:
-    EcrireTerminal(unsigned ligne, unsigned colonne) : SymboleTerminal(ECRIRE_TERMINAL, ligne, colonne) { }
+    EcrireTerminal(unsigned ligne, unsigned colonne) : Symbole(ECRIRE_TERMINAL, ligne, colonne)
+    { }
 
     ~EcrireTerminal() { }
 };

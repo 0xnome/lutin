@@ -1,11 +1,13 @@
 #ifndef LUTIN_PLUSTERMINAL_H
 #define LUTIN_PLUSTERMINAL_H
 
-#include "SymboleTerminal.h"
+#include "Symbole.h"
 
-class PlusTerminal : public SymboleTerminal {
+class PlusTerminal : public Symbole
+{
 public:
-    PlusTerminal(unsigned ligne, unsigned colonne) : SymboleTerminal(PLUS_TERMINAL, ligne, colonne) { }
+    PlusTerminal(unsigned ligne, unsigned colonne) : Symbole(PLUS_TERMINAL, ligne, colonne)
+    { }
 
     ~PlusTerminal() { }
 };

@@ -17,3 +17,8 @@ int IdentificateurFacteur::eval(TableDesSymboles *tablesDesSymboles) {
 
 void IdentificateurFacteur::executer(TableDesSymboles *tableDesSymboles) {
 }
+
+void IdentificateurFacteur::analyser(TableDesSymboles *tableDesSymboles)
+{
+
+}
