@@ -51,13 +51,10 @@ void IdentificateurVariable::analyser(TableDesSymboles *tableDesSymboles)
             " est déjà déclarée à la ligne " << tableDesSymboles->getEntree(id->getNom())->ligne
             << std::endl;
         }
-
-
     } else
     {
         tableDesSymboles->ajouterVariable(this->id->getNom(), this->id->getLigne(), this->id->getColonne());
     }
-
 }
 
 void IdentificateurVariable::optimiser()

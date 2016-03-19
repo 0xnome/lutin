@@ -4,12 +4,13 @@
 #include <iostream>
 #include "TableDesSymboles.h"
 
-enum SYMBOLES {
+enum SYMBOLES
+{
     // Symboles non terminaux
-    PROGRAMME,                  //0
+            PROGRAMME,                  //0
 
     // Partie instruction
-    BLOC_INSTRUCTION,           //1
+            BLOC_INSTRUCTION,           //1
 
     INSTRUCTION_LECTURE,        //2
     INSTRUCTION_ECRITURE,       //3
@@ -28,7 +29,7 @@ enum SYMBOLES {
     IDENTIFICATEUR_FACTEUR,     //14
 
     // Partie déclaration
-    BLOC_DECLARATION,           //15
+            BLOC_DECLARATION,           //15
 
     IDENTIFICATEUR_VARIABLE,    //16
     DECLARATION_VARIABLE,       //17
@@ -38,7 +39,7 @@ enum SYMBOLES {
 
 
     // Symboles terminaux
-    ID_TERMINAL,                //20
+            ID_TERMINAL,                //20
     NUM_TERMINAL,               //21
     VAR_TERMINAL,               //22
     CONST_TERMINAL,             //23
@@ -58,18 +59,23 @@ enum SYMBOLES {
 
 
     // Autres symboles
-    FIN_PROGRAMME,              //36
+            FIN_PROGRAMME,              //36
     ERREUR_LEXICALE             //37
 };
 
 class TableDesSymboles;
-class Symbole {
+
+class Symbole
+{
 protected:
     int identifiant;
-
+    unsigned ligne;
+    unsigned colonne;
 public:
-    static std::string getName(Symbole *s) {
-        switch (*s) {
+    static std::string getName(Symbole *s)
+    {
+        switch (*s)
+        {
             case PROGRAMME :
                 return "PROGRAMME";
             case BLOC_INSTRUCTION :
@@ -151,26 +157,41 @@ public:
         }
     }
 
-    Symbole(int id) : identifiant(id) { }
+    Symbole(int id) : identifiant(id), ligne(0), colonne(0)
+    { };
 
-    virtual ~Symbole() { }
+    Symbole(int id, unsigned ligne, unsigned colonne) : identifiant(id), ligne(ligne), colonne(colonne)
+    { };
 
-    friend std::ostream &operator<<(std::ostream &os, const Symbole &symbole) {
+    virtual ~Symbole()
+    { }
+
+    friend std::ostream &operator<<(std::ostream &os, const Symbole &symbole)
+    {
         return os << symbole.identifiant;
     }
 
-    operator int() const { return identifiant; }
+    operator int() const
+    { return identifiant; }
 
     /**
      * Execute le programme de manière interactive (option -e)
      */
-    virtual void executer(TableDesSymboles *tableDesSymboles) { }
+    virtual void executer(TableDesSymboles *tableDesSymboles)
+    { }
 
     /**
      * Affiche la représentation en memoire du programme (option -p)
      * Les éventuelles erreurs sont affichées
      */
-    virtual void afficher() { }
+    virtual void afficher()
+    { }
+
+    unsigned getLigne()
+    { return ligne; }
+
+    unsigned getColonne()
+    { return colonne; }
 
     /**
      * Analyse statique du programme afin d'en extraire les erreurs (option -a)
@@ -183,13 +204,15 @@ public:
      *  - mots clefs interdits (var, const, ecrire et lire) à réflechir...
      *  - modification d'une constante
      */
-    virtual void analyser(TableDesSymboles* tableDesSymboles) { }
+    virtual void analyser(TableDesSymboles *tableDesSymboles)
+    { }
 
 
     /**
      * Transfome le programme et le simplfie (option -o)
     */
-    virtual void optimiser() { }
+    virtual void optimiser()
+    { }
 
 
 };

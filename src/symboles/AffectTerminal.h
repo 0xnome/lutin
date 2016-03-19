@@ -1,12 +1,12 @@
 #ifndef LUTIN_AFFECTTERMINAL_H
 #define LUTIN_AFFECTTERMINAL_H
 
-#include "SymboleTerminal.h"
+#include "Symbole.h"
 
-class AffectTerminal : public SymboleTerminal
+class AffectTerminal : public Symbole
 {
 public:
-    AffectTerminal(unsigned ligne, unsigned colonne) : SymboleTerminal(AFFECT_TERMINAL, ligne, colonne)
+    AffectTerminal(unsigned ligne, unsigned colonne) : Symbole(AFFECT_TERMINAL, ligne, colonne)
     { }
 
     ~AffectTerminal()

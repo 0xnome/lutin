@@ -1,12 +1,14 @@
 #ifndef LUTIN_IDTERMINAL_H
 #define LUTIN_IDTERMINAL_H
 
-#include "SymboleTerminal.h"
+#include "Symbole.h"
 
 
-class IdTerminal : public SymboleTerminal {
+class IdTerminal : public Symbole
+{
 public:
-    IdTerminal(std::string nom, unsigned ligne, unsigned colonne) : SymboleTerminal(ID_TERMINAL, ligne, colonne), nom(nom) { };
+    IdTerminal(std::string nom, unsigned ligne, unsigned colonne) : Symbole(ID_TERMINAL, ligne, colonne), nom(nom)
+    { };
 
     ~IdTerminal() { }
 

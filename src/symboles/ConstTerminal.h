@@ -1,12 +1,14 @@
 #ifndef LUTIN_CONSTTERMINAL_H
 #define LUTIN_CONSTTERMINAL_H
 
-#include "SymboleTerminal.h"
+#include "Symbole.h"
 
 
-class ConstTerminal : public SymboleTerminal {
+class ConstTerminal : public Symbole
+{
 public:
-    ConstTerminal(unsigned ligne, unsigned colonne) : SymboleTerminal(CONST_TERMINAL, ligne, colonne) { }
+    ConstTerminal(unsigned ligne, unsigned colonne) : Symbole(CONST_TERMINAL, ligne, colonne)
+    { }
 
     ~ConstTerminal() { }
 };

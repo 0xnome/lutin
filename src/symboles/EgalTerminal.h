@@ -1,12 +1,14 @@
 #ifndef LUTIN_EGALTERMINAL_H
 #define LUTIN_EGALTERMINAL_H
 
-#include "SymboleTerminal.h"
+#include "Symbole.h"
 
 
-class EgalTerminal : public SymboleTerminal {
+class EgalTerminal : public Symbole
+{
 public:
-    EgalTerminal(unsigned ligne, unsigned colonne) : SymboleTerminal(EGAL_TERMINAL, ligne, colonne) { }
+    EgalTerminal(unsigned ligne, unsigned colonne) : Symbole(EGAL_TERMINAL, ligne, colonne)
+    { }
 
     ~EgalTerminal() { }
 };

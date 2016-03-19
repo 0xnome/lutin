@@ -15,11 +15,13 @@ public:
 
     ~ExpressionMult();
 
-    void executer(TableDesSymboles *tableDesSymboles);
+    virtual void executer(TableDesSymboles *tableDesSymboles);
 
-    void afficher();
+    virtual void afficher();
 
     int eval(TableDesSymboles *tablesDesSymboles);
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles);
 
 protected:
     Facteur *facteur;

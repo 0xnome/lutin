@@ -1,13 +1,13 @@
 #ifndef LUTIN_NUMTERMINAL_H
 #define LUTIN_NUMTERMINAL_H
 
-#include "SymboleTerminal.h"
+#include "Symbole.h"
 
 
-class NumTerminal : public SymboleTerminal
+class NumTerminal : public Symbole
 {
 public:
-    NumTerminal(int val, unsigned ligne, unsigned colonne) : SymboleTerminal(NUM_TERMINAL, ligne, colonne), value(val)
+    NumTerminal(int val, unsigned ligne, unsigned colonne) : Symbole(NUM_TERMINAL, ligne, colonne), value(val)
     { };
 
     ~NumTerminal()

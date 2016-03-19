@@ -4,10 +4,12 @@
 #include "TableDesSymboles.h"
 #include "Expression.h"
 
-class Terme : public Expression {
+class Terme : public Expression
+{
 
 public:
-    Terme() : Expression(TERME) { }
+    Terme() : Expression(TERME)
+    { }
 
     virtual void afficher() = 0;
 
@@ -15,10 +17,12 @@ public:
 
     virtual int eval(TableDesSymboles *tablesDesSymboles) = 0;
 
-    virtual ~Terme() { }
+    virtual ~Terme()
+    { }
 
 protected:
-    Terme(int id) : Expression(id) { }
+    Terme(int id) : Expression(id)
+    { }
 
 };
 

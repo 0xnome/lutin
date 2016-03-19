@@ -8,7 +8,7 @@
 class IdentificateurFacteur : public Facteur
 {
 public:
-    IdentificateurFacteur(IdTerminal * idTerminal);
+    IdentificateurFacteur(IdTerminal *idTerminal);
 
     ~IdentificateurFacteur();
 
@@ -18,8 +18,10 @@ public:
 
     virtual void executer(TableDesSymboles *tableDesSymboles);
 
+    virtual void analyser(TableDesSymboles *tableDesSymboles);
+
 protected:
-    IdTerminal * id;
+    IdTerminal *id;
 };
 
 
