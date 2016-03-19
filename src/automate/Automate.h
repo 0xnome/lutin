@@ -32,6 +32,8 @@ public:
 
     void executerProgramme();
 
+    bool programmeEstCharge();
+
     Symbole *popSymbole();
 
     EtatInterface * popEtat();
@@ -58,6 +60,9 @@ private:
     Programme* programme;
 
     bool chargerProgramme();
+
+    bool prgrammeCharge;
+
 
     int pas();
 
