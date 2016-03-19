@@ -28,6 +28,6 @@ bool InstructionEcriture::estVide() {
 }
 
 
- void InstructionEcriture::analyser() {}
+ void InstructionEcriture::analyser(TableDesSymboles *tableDesSymboles) {}
 
  void InstructionEcriture::optimiser() {}

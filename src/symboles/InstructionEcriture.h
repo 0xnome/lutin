@@ -17,7 +17,7 @@ public:
 
     bool estVide();
 
-    void analyser();
+    void analyser(TableDesSymboles *tableDesSymboles);
 
     void optimiser();
 protected:
