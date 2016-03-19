@@ -52,6 +52,7 @@ Lexeur::Lexeur(std::vector<std::string> lignesDuFichier)
         chaine = boost::regex_replace(chaine, boost::regex("\\s{2,}"), boost::regex(" "));
         trim(chaine);
         boost::algorithm::split_regex(vecteurLigne, chaine, boost::regex(" "));
+        index.push_back(vecteurLigne.size());
         lignesDuProgramme.push_back(vecteurLigne);
     };
     ligne = 0;
@@ -89,18 +90,13 @@ void Lexeur::shift()
         colonne = 0;
     }
 
-    while (lignesDuProgramme.at(ligne).at(0) == "" || lignesDuProgramme.at(ligne).at(0) == " ")
-    {
-        ligne++;
-        if (ligne >= lignesDuProgramme.size() - 1)
-        {
-            LOG(INFO) << "Fin Programme" << endl;
-            lectureTerminee = true;
-            current = new FinProgramme;
-            return;
-        }
-        colonne = 0;
+    while (index.at(ligne) == 1) {
+        if (lignesDuProgramme.at(ligne).at(colonne) == "") {
+            ligne++;
+            colonne = 0;
+        } else break;
     }
+
     colonne++;
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_var))
