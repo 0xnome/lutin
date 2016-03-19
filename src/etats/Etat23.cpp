@@ -1,6 +1,10 @@
 #include "Etat23.h"
 #include "Etat29.h"
+#include "Etat30.h"
 #include "Etat31.h"
+#include "Etat32.h"
+#include "Etat33.h"
+#include <Expression.h>
 
 int Etat23::transition(Automate *automate, Symbole *s)
 {
