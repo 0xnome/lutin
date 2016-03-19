@@ -61,8 +61,7 @@ private:
 
     bool chargerProgramme();
 
-    bool prgrammeCharge;
-
+    bool programmeCharge;
 
     int pas();
 
