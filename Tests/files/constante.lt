@@ -1,4 +1,1 @@
-var a;
-const b = 4, r = 2;
-lire a;
-lire n;
+b := r;

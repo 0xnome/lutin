@@ -8,7 +8,7 @@
 class Expression : public Symbole {
 
 public:
-    Expression() : Symbole(EXPRESSION) { }
+    Expression() : Symbole(EXPRESSION), dynamique(false) { }
 
     virtual void afficher() = 0;
 
@@ -18,9 +18,21 @@ public:
 
     virtual ~Expression() { };
 
-protected:
-    Expression(int id) : Symbole(id) { }
+    int identifiantDynamique() {
+        if (this->dynamique) {
+            return EXPRESSION;
+        }
+        else {
+            return identifiant;
+        }
+    }
 
+    void setDynamique(bool dynamique) { this->dynamique = dynamique; }
+
+protected:
+    Expression(int id) : Symbole(id), dynamique(false) { }
+
+    bool dynamique;
 };
 
 

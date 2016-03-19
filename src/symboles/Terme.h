@@ -17,6 +17,15 @@ public:
 
     virtual ~Terme() { }
 
+    int identifiantDynamique(){
+        if(this->dynamique){
+            return TERME;
+        }
+        else{
+            return identifiant;
+        }
+    }
+
 protected:
     Terme(int id) : Expression(id) { }
 

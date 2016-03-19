@@ -1,5 +1,6 @@
 #include "Etat2.h"
 #include "Etat5.h"
+#include "Etat7.h"
 
 int Etat2::transition(Automate *automate, Symbole *s) {
     switch (*s) {
@@ -14,6 +15,9 @@ int Etat2::transition(Automate *automate, Symbole *s) {
         }
         case LIRE_TERMINAL:
             automate->decalage(new Etat5, s);
+            return CONTINUE;
+        case ID_TERMINAL:
+            automate->decalage(new Etat7, s);
             return CONTINUE;
         default:
             return ERREUR;

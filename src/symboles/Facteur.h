@@ -17,7 +17,6 @@ public:
 
 protected:
     Facteur(int id) : Terme(id) { }
-
 };
 
 

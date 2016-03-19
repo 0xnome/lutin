@@ -16,6 +16,8 @@ public:
 
     int eval(TableDesSymboles *tablesDesSymboles);
 
+    virtual void executer(TableDesSymboles *tableDesSymboles);
+
 protected:
     IdTerminal * id;
 };
