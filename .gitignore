@@ -29,8 +29,6 @@
 bin
 
 # Makefile & cmake
-Makefile
-cmake_install.cmake
 CmakeFiles
 CmakeCache.txt
 
@@ -39,3 +37,5 @@ CmakeCache.txt
 
 # lien symbolique pour les tests
 Tests/lut
+logs
+build
