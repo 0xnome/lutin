@@ -15,6 +15,8 @@ public:
 
     int eval(TableDesSymboles *tablesDesSymboles);
 
+    void executer(TableDesSymboles *tableDesSymboles);
+
 protected:
     Expression * expression;
 };
