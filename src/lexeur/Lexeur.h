@@ -19,7 +19,7 @@ public:
 
 private:
     std::vector<std::vector<std::string>> lignesDuProgramme;
-    unsigned int ligne,colone;
+    unsigned int ligne, colonne;
     bool lectureTerminee;
     Symbole* current;
     std::vector<std::string> lignesDuFichier;

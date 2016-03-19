@@ -1,12 +1,12 @@
 #ifndef LUTIN_VIRGULETERMINAL_H
 #define LUTIN_VIRGULETERMINAL_H
 
-#include "Symbole.h"
+#include "SymboleTerminal.h"
 
 
-class VirguleTerminal : public Symbole {
+class VirguleTerminal : public SymboleTerminal {
 public:
-    VirguleTerminal() : Symbole(VIRGULE_TERMINAL) { };
+    VirguleTerminal(unsigned ligne, unsigned colonne) : SymboleTerminal(VIRGULE_TERMINAL, ligne, colonne) { };
 
     ~VirguleTerminal() { };
 };

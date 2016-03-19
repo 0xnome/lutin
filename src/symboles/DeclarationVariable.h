@@ -14,11 +14,12 @@ public:
 
     virtual void afficher();
 
-    virtual void analyser();
+    virtual void analyser(TableDesSymboles *tableDesSymboles);
 
     virtual void optimiser();
 
     virtual bool estVide();
+
 
 protected:
     IdentificateurVariable *identificateurVariable;

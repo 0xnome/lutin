@@ -69,7 +69,33 @@ void Programme::afficher() {
     return;
 }
 
-void Programme::analyser() {
+void Programme::analyser(TableDesSymboles *tableDesSymboles)
+{
+    if (blocDeclaration != nullptr)
+    {
+        BlocDeclaration* declarationCur;
+        declarationCur = blocDeclaration;
+
+        declarationCur->analyser(tableDesSymboles);
+
+        while(declarationCur->getSuivant() != nullptr){
+            declarationCur = declarationCur->getSuivant();
+            declarationCur->analyser(tableDesSymboles);
+        }
+    }
+
+    if (blocInstruction != nullptr)
+    {
+        BlocInstruction* instructionCur;
+        instructionCur = blocInstruction;
+
+        instructionCur->analyser(tableDesSymboles);
+
+        while(instructionCur->getSuivant() != nullptr){
+            instructionCur = instructionCur->getSuivant();
+            instructionCur->analyser(tableDesSymboles);
+        }
+    }
     return;
 }
 

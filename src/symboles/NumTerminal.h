@@ -1,20 +1,25 @@
 #ifndef LUTIN_NUMTERMINAL_H
 #define LUTIN_NUMTERMINAL_H
 
-#include "Symbole.h"
+#include "SymboleTerminal.h"
 
 
-class NumTerminal : public Symbole {
+class NumTerminal : public SymboleTerminal
+{
 public:
-    NumTerminal(int val) : Symbole(NUM_TERMINAL), value(val) { };
+    NumTerminal(int val, unsigned ligne, unsigned colonne) : SymboleTerminal(NUM_TERMINAL, ligne, colonne), value(val)
+    { };
 
-    ~NumTerminal() { }
+    ~NumTerminal()
+    { }
 
-    void afficher() {
+    void afficher()
+    {
         std::cout << value;
     }
 
-    int getValue() {
+    int getValue()
+    {
         return value;
     }
 

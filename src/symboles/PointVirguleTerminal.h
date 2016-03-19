@@ -1,14 +1,17 @@
 #ifndef LUTIN_POINTVIRGULETERMINAL_H
 #define LUTIN_POINTVIRGULETERMINAL_H
 
-#include "Symbole.h"
+#include "SymboleTerminal.h"
 
 
-class PointVirguleTerminal : public Symbole {
+class PointVirguleTerminal : public SymboleTerminal
+{
 public:
-    PointVirguleTerminal() : Symbole(POINT_VIRGULE_TERMINAL) { }
+    PointVirguleTerminal(unsigned ligne, unsigned colonne) : SymboleTerminal(POINT_VIRGULE_TERMINAL, ligne, colonne)
+    { }
 
-    ~PointVirguleTerminal() { }
+    ~PointVirguleTerminal()
+    { }
 };
 
 

@@ -1,13 +1,16 @@
 #ifndef LUTIN_MOINSTERMINAL_H
 #define LUTIN_MOINSTERMINAL_H
 
-#include "Symbole.h"
+#include "SymboleTerminal.h"
 
-class MoinsTerminal : public Symbole {
+class MoinsTerminal : public SymboleTerminal
+{
 public:
-    MoinsTerminal() : Symbole(MOINS_TERMINAL) { }
+    MoinsTerminal(unsigned ligne, unsigned colonne) : SymboleTerminal(MOINS_TERMINAL, ligne, colonne)
+    { }
 
-    ~MoinsTerminal() { }
+    ~MoinsTerminal()
+    { }
 };
 
 #endif //LUTIN_MOINSTERMINAL_H

@@ -20,8 +20,12 @@ void DeclarationConstante::afficher() {
     }
 }
 
-void DeclarationConstante::analyser() {
-}
+void DeclarationConstante::analyser(TableDesSymboles *tableDesSymboles) {
+    AffectationConstante *id_courant = this->affectationConstante;
+    while (id_courant != nullptr) {
+        id_courant->analyser(tableDesSymboles);
+        id_courant = id_courant->getSuivant();
+    }}
 
 void DeclarationConstante::optimiser() {
 }
@@ -37,3 +41,4 @@ void DeclarationConstante::executer(TableDesSymboles *tableDesSymboles) {
 bool DeclarationConstante::estVide() {
     return affectationConstante == nullptr;
 }
+
