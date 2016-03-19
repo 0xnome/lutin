@@ -83,6 +83,8 @@ public:
      */
     bool estDeclaree(std::string nomVariable) const;
 
+    bool estConstante(std::string nom)const;
+
 
     /* ------------ méthodes utilisées pour les tests -------------- */
     unsigned long getNbConstante() const;

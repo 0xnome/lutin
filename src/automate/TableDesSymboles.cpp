@@ -144,6 +144,13 @@ Entree *TableDesSymboles::getEntree(std::string nom) const
     }
 }
 
+bool TableDesSymboles::estConstante(std::string nom) const
+{
+    return this->tableConstantes.find(nom) != this->tableConstantes.end();
+}
+
+
+
 
 
 
