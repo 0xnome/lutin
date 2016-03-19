@@ -9,8 +9,8 @@ int Etat29::transition(Automate *automate, Symbole *s)
     switch (*s)
     {
         //  suivant de exp
-        case EXPRESSION_ADDITIVE:
-        case EXPRESSION_SOUSTRACTIVE:
+        case PLUS_TERMINAL:
+        case MOINS_TERMINAL:
         case PARFER_TERMINAL:
         case POINT_VIRGULE_TERMINAL:
         {
@@ -24,11 +24,11 @@ int Etat29::transition(Automate *automate, Symbole *s)
             return automate->etatCourant()->transition(automate, expressionAdditive);
         }
 
-        case EXPRESSION_MULT:
+        case MULT_TERMINAL:
             automate->decalage(new Etat37,s);
             return CONTINUE;
 
-        case EXPRESSION_DIV:
+        case DIV_TERMINAL:
             automate->decalage(new Etat38,s);
             return CONTINUE;
 

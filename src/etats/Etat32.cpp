@@ -6,10 +6,10 @@
 int Etat32::transition(Automate *automate, Symbole *s) {
     switch (*s) {
         // suivant de Facteur
-        case EXPRESSION_MULT:
-        case EXPRESSION_DIV:
-        case EXPRESSION_SOUSTRACTIVE:
-        case EXPRESSION_ADDITIVE:
+        case MULT_TERMINAL:
+        case DIV_TERMINAL:
+        case MOINS_TERMINAL:
+        case PLUS_TERMINAL:
         case PARFER_TERMINAL:
         case POINT_VIRGULE_TERMINAL:
         {

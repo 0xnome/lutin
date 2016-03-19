@@ -10,11 +10,11 @@ int Etat39::transition(Automate *automate, Symbole *s) {
             automate->decalage(new Etat43, s);
             return CONTINUE;
 
-        case EXPRESSION_ADDITIVE:
+        case PLUS_TERMINAL:
             automate->decalage(new Etat23, s);
             return CONTINUE;
 
-        case EXPRESSION_SOUSTRACTIVE:
+        case MOINS_TERMINAL:
             automate->decalage(new Etat24, s);
             return CONTINUE;
 

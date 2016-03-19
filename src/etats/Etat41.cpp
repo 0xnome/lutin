@@ -4,10 +4,10 @@
 int Etat41::transition(Automate *automate, Symbole *s) {
     switch (*s) {
       // suivant Terme
-      case EXPRESSION_MULT:
-      case EXPRESSION_DIV:
-      case EXPRESSION_ADDITIVE:
-      case EXPRESSION_SOUSTRACTIVE:
+      case MULT_TERMINAL:
+      case DIV_TERMINAL:
+      case PLUS_TERMINAL:
+      case MOINS_TERMINAL:
       case PARFER_TERMINAL:
       case POINT_VIRGULE_TERMINAL:
       {
