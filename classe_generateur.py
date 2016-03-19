@@ -1,7 +1,7 @@
 import os
 
 DIRECTORY = "etatsGeneres"
-LAST_NUM_CLASS = 42
+LAST_NUM_CLASS = 44
 TEMPLATE_CPP ="""#include "Etat{{NUM}}.h"
 
 bool Etat{{NUM}}::transition(Automate* automate, Symbole* s)
