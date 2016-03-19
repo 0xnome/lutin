@@ -1,4 +1,5 @@
 #include <TableDesSymboles.h>
+#include <easyloggingpp.h>
 #include "Programme.h"
 
 
@@ -15,7 +16,8 @@ Programme::~Programme() {
 }
 
 void Programme::executer(TableDesSymboles *tableDesSymboles) {
-    if (blocDeclaration != nullptr) {
+    LOG(INFO) << "Programme::execute";
+    if (!blocDeclaration->estVide()) {
         BlocDeclaration *declarationCur;
         declarationCur = blocDeclaration;
 
@@ -27,7 +29,7 @@ void Programme::executer(TableDesSymboles *tableDesSymboles) {
         }
     }
 
-    if (blocInstruction != nullptr) {
+    if (!blocInstruction->estVide()) {
         BlocInstruction *instructionCur;
         instructionCur = blocInstruction;
 
@@ -71,7 +73,7 @@ void Programme::afficher() {
 
 void Programme::analyser(TableDesSymboles *tableDesSymboles)
 {
-    if (blocDeclaration != nullptr)
+    if (blocDeclaration->estVide())
     {
         BlocDeclaration* declarationCur;
         declarationCur = blocDeclaration;
@@ -84,7 +86,7 @@ void Programme::analyser(TableDesSymboles *tableDesSymboles)
         }
     }
 
-    if (blocInstruction != nullptr)
+    if (blocInstruction->estVide())
     {
         BlocInstruction* instructionCur;
         instructionCur = blocInstruction;

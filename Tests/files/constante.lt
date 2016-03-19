@@ -1,1 +1,2 @@
-ecrire a;
+const a, b, c;
+const d;

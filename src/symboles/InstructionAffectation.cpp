@@ -26,7 +26,7 @@ void InstructionAffectation::afficher()
     this->id->afficher();
     cout << " := ";
     this->expression->afficher();
-    cout << " ;";
+    cout << " ;" << endl;
 }
 
 void InstructionAffectation::executer(TableDesSymboles *tableDesSymboles)
