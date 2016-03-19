@@ -23,6 +23,7 @@ private:
     bool lectureTerminee;
     Symbole* current;
     std::vector<std::string> lignesDuFichier;
+    std::vector<unsigned long> index ;
 };
 
 #endif //LUTIN_LEXEUR_H
