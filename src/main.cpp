@@ -10,13 +10,15 @@ namespace po = boost::program_options;
 
 using namespace std;
 
-namespace {
+namespace
+{
     const size_t ERROR_IN_COMMAND_LINE = 1;
     const size_t SUCCESS = 0;
     const size_t ERROR_UNHANDLED_EXCEPTION = 2;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     /**
      * variables pour la récupération des options
      */
@@ -27,7 +29,8 @@ int main(int argc, char **argv) {
     bool program = false;
 
 
-    try {
+    try
+    {
         po::options_description desc("Options");
 
         desc.add_options()
@@ -50,26 +53,30 @@ int main(int argc, char **argv) {
         c.parseFromText("*GLOBAL:\n FORMAT = --- %level --- %msg");
 
         el::Loggers::reconfigureLogger("default", c);
-        try {
+        try
+        {
             po::store(po::command_line_parser(argc, argv).
                     options(desc).positional(p).run(), vm);
 
 
-            if (argc == 1) {
+            if (argc == 1)
+            {
                 std::cerr << "Compilateur Lutin" << std::endl;
                 std::cerr << "Utilisation: lut [options] fichier" << std::endl;
                 std::cerr << desc << std::endl;
                 return ERROR_IN_COMMAND_LINE;
             }
 
-            if (vm.count("help")) {
+            if (vm.count("help"))
+            {
                 std::cout << "Compilateur Lutin" << std::endl;
                 std::cout << "Utilisation: lut [options] fichier" << std::endl;
                 std::cout << desc << std::endl;
                 return SUCCESS;
             }
 
-            if (vm.count("verbose")) {
+            if (vm.count("verbose"))
+            {
                 c.parseFromText("*GLOBAL:\n ENABLED = TRUE");
                 el::Loggers::reconfigureLogger("default", c);
             }
@@ -83,7 +90,8 @@ int main(int argc, char **argv) {
             po::notify(vm);
         }
 
-        catch (po::error &e) {
+        catch (po::error &e)
+        {
             std::cerr << "ERROR: " << e.what() << std::endl << std::endl;
             std::cerr << desc << std::endl;
             return ERROR_IN_COMMAND_LINE;
@@ -91,21 +99,28 @@ int main(int argc, char **argv) {
 
         Automate automate(fichier);
 
-        if (analyse)
-            automate.analyserProgramme();
+        if (automate.programmeEstCharge())
+        {
+            if (analyse)
+                automate.analyserProgramme();
 
-        if (optimize)
-            automate.optimiserProgramme();
+            if (optimize)
+                automate.optimiserProgramme();
 
-        if (program)
-            automate.afficherProgramme();
+            if (program)
+                automate.afficherProgramme();
 
-        if (execute)
-            automate.executerProgramme();
+            if (execute)
+                automate.executerProgramme();
+
+        } else{
+            std::cerr << "Le programme n'est pas correcte." << std::endl;
+        }
 
     }
 
-    catch (std::exception &e) {
+    catch (std::exception &e)
+    {
         std::cerr << "Un erreur non traitée est remontée jusqu'au main : "
         << e.what() << std::endl << "L'application va se stopper" << std::endl;
         return ERROR_UNHANDLED_EXCEPTION;

@@ -74,9 +74,11 @@ Automate::Automate(string nomFichier) {
 
         if(this->chargerProgramme()){
             LOG(INFO) << "chargement : REUSSI" ;
+            prgrammeCharge = true;
         }
         else{
             LOG(ERROR) << "chargement : ECHOUE" ;
+            prgrammeCharge = false;
         }
 /*
 // Pour tester le lexeur
@@ -157,4 +159,9 @@ void Automate::optimiserProgramme() {
 void Automate::executerProgramme() {
     LOG(DEBUG) << "EXECUTION DU PROGRAMME" ;
     //this->programme->executer();
+}
+
+bool Automate::programmeEstCharge()
+{
+    return prgrammeCharge;
 }
