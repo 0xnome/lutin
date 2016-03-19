@@ -39,12 +39,14 @@ int Etat33::transition(Automate *automate, Symbole *s)
             automate->pushSymbole(s);
             automate->pushEtat(new Etat30);
             return CONTINUE;
+
         case TERME:
         case EXPRESSION_MULT:
         case EXPRESSION_DIV:
             automate->pushSymbole(s);
             automate->pushEtat(new Etat17);
             return CONTINUE;
+
         case EXPRESSION:
         case EXPRESSION_ADDITIVE:
         case EXPRESSION_SOUSTRACTIVE:
@@ -56,9 +58,11 @@ int Etat33::transition(Automate *automate, Symbole *s)
         case ID_TERMINAL :
             automate->decalage(new Etat31, s);
             return CONTINUE;
+
         case NUM_TERMINAL:
             automate->decalage(new Etat32, s);
             return CONTINUE;
+
         case PAROUV_TERMINAL:
             automate->decalage(new Etat33, s);
             return CONTINUE;

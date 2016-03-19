@@ -1,5 +1,7 @@
 #include <Terme.h>
 #include "Etat17.h"
+#include "Etat37.h"
+#include "Etat38.h"
 #include "Terme.h"
 
 int Etat17::transition(Automate *automate, Symbole *s) {
@@ -16,6 +18,13 @@ int Etat17::transition(Automate *automate, Symbole *s) {
             Expression *expression = (Expression *) terme;
             return automate->etatCourant()->transition(automate, expression);
         }
+        case MULT_TERMINAL:
+            automate->decalage(new Etat37, s);
+            return CONTINUE;
+
+        case DIV_TERMINAL:
+            automate->decalage(new Etat38, s);
+            return CONTINUE;
         default:
             return ERREUR;
     }
