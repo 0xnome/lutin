@@ -14,8 +14,7 @@ int Etat31::transition(Automate *automate, Symbole *s) {
             IdTerminal* id = (IdTerminal*)automate->popSymbole();
             automate->popEtat(1);
             Facteur* facteur = new IdentificateurFacteur(id);
-            automate->etatCourant()->transition(automate, facteur);
-            return CONTINUE;
+            return automate->etatCourant()->transition(automate, facteur);
         }
         default:
             return ERREUR;

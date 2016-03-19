@@ -5,7 +5,7 @@
 
 int Etat32::transition(Automate *automate, Symbole *s) {
     switch (*s) {
-        case FACTEUR:
+        // suivant de Facteur
         case EXPRESSION_MULT:
         case EXPRESSION_DIV:
         case EXPRESSION_SOUSTRACTIVE:
@@ -17,9 +17,7 @@ int Etat32::transition(Automate *automate, Symbole *s) {
             automate->popEtat(1);
 
             ConstanteNumerique * constanteNumerique = new ConstanteNumerique(numTerminal);
-            automate->etatCourant()->transition(automate, constanteNumerique);
-
-            return CONTINUE;
+            return automate->etatCourant()->transition(automate, constanteNumerique);
         }
         default:
             return ERREUR;

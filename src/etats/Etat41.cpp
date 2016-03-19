@@ -3,6 +3,7 @@
 
 int Etat41::transition(Automate *automate, Symbole *s) {
     switch (*s) {
+      // suivant Terme
       case EXPRESSION_MULT:
       case EXPRESSION_DIV:
       case EXPRESSION_ADDITIVE:
@@ -16,9 +17,7 @@ int Etat41::transition(Automate *automate, Symbole *s) {
             automate->popEtat(3);
 
             ExpressionMult * expressionMult = new ExpressionMult(facteur, terme);
-            automate->etatCourant()->transition(automate, expressionMult);
-
-            return CONTINUE;
+            return automate->etatCourant()->transition(automate, expressionMult);
         }
         default:
             return ERREUR;

@@ -3,6 +3,7 @@
 
 int Etat42::transition(Automate *automate, Symbole *s) {
     switch (*s) {
+      //suivant de Terme
       case EXPRESSION_MULT:
       case EXPRESSION_DIV:
       case EXPRESSION_ADDITIVE:
@@ -16,9 +17,7 @@ int Etat42::transition(Automate *automate, Symbole *s) {
           automate->popEtat(3);
 
           ExpressionDiv * expressionDiv = new ExpressionDiv(facteur, terme);
-          automate->etatCourant()->transition(automate, expressionDiv);
-
-          return CONTINUE;
+          return automate->etatCourant()->transition(automate, expressionDiv);
       }
       default:
           return ERREUR;

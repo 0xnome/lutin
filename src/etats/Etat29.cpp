@@ -8,7 +8,7 @@ int Etat29::transition(Automate *automate, Symbole *s)
 {
     switch (*s)
     {
-
+        //  suivant de exp
         case EXPRESSION_ADDITIVE:
         case EXPRESSION_SOUSTRACTIVE:
         case PARFER_TERMINAL:
@@ -21,8 +21,7 @@ int Etat29::transition(Automate *automate, Symbole *s)
             ExpressionAdditive *expressionAdditive = new ExpressionAdditive(terme, expression);
             automate->popEtat(3);
 
-            automate->etatCourant()->transition(automate, expressionAdditive);
-            return CONTINUE;
+            return automate->etatCourant()->transition(automate, expressionAdditive);
         }
 
         case EXPRESSION_MULT:
