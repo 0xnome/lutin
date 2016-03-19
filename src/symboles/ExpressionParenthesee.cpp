@@ -19,3 +19,6 @@ void ExpressionParenthesee::afficher() {
 int ExpressionParenthesee::eval(TableDesSymboles *tablesDesSymboles) {
     return expression->eval(tablesDesSymboles);
 }
+
+void ExpressionParenthesee::executer(TableDesSymboles *tableDesSymboles)
+{}
