@@ -62,7 +62,7 @@ enum SYMBOLES {
     ERREUR_LEXICALE             //37
 };
 
-
+class TableDesSymboles;
 class Symbole {
 protected:
     int identifiant;

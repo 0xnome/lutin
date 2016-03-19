@@ -10,9 +10,9 @@ struct Entree
     bool estInitialisee;
     bool estUtilisee;
     int valeur;
-
+    unsigned ligne;
+    unsigned colonne;
 };
-
 
 class TableDesSymboles
 {
@@ -26,12 +26,12 @@ public:
     /**
      * Ajoute une constante dans la table des symboles
      */
-    void ajouterConstante(std::string nomConstante, int valeurConstante);
+    void ajouterConstante(std::string constante, unsigned ligne, unsigned colonne, int valeurConstante);
 
     /**
      * Ajoute une variable dans la table des symboles
      */
-    void ajouterVariable(std::string nomVariable);
+    void ajouterVariable(std::string variable, unsigned ligne, unsigned colonne);
 
     /**
      * Set le booleen qui dit que la variable a été utilisée
