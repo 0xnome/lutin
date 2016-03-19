@@ -1,6 +1,8 @@
 #include <Terme.h>
 #include <ExpressionAdditive.h>
 #include "Etat29.h"
+#include "Etat37.h"
+#include "Etat38.h"
 
 int Etat29::transition(Automate *automate, Symbole *s)
 {
@@ -22,6 +24,14 @@ int Etat29::transition(Automate *automate, Symbole *s)
             automate->etatCourant()->transition(automate, expressionAdditive);
             return CONTINUE;
         }
+
+        case EXPRESSION_MULT:
+            automate->decalage(new Etat37,s);
+            return CONTINUE;
+
+        case EXPRESSION_DIV:
+            automate->decalage(new Etat38,s);
+            return CONTINUE;
 
         default:
             return ERREUR;
