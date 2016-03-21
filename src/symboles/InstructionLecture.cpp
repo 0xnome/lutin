@@ -58,4 +58,6 @@ void InstructionLecture::analyser(TableDesSymboles *tableDesSymboles)
         std::cerr << "Erreur ligne " << this->id->getLigne() << " : " << this->id->getNom() <<
         " n'a pas été déclarée." << std::endl;
     }
+
+    tableDesSymboles->setInitialisee(id->getNom());
 }

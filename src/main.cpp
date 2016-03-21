@@ -110,16 +110,8 @@ int main(int argc, char **argv)
             if (program)
                 automate.afficherProgramme();
 
-            try
-            {
-                if (execute)
-                    automate.executerProgramme();
-            } catch (std::exception &e)
-            {
-                std::cerr << "Un erreur est survenue lors de l'execution du programme : "
-                << e.what() << std::endl << "L'application va se stopper" << std::endl;
-                return ERROR_UNHANDLED_EXCEPTION;
-            }
+            if (execute)
+                automate.executerProgramme();
 
         } else
         {

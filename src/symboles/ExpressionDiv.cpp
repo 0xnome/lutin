@@ -34,6 +34,7 @@ int ExpressionDiv::eval(TableDesSymboles *tablesDesSymboles)
     {
         std::cerr << "Erreur lors de l'execution, ligne " << facteur->getLigne() << ":" << facteur->getColonne() <<
         " : Division par 0." << std::endl;
+        exit(1);
     }
     return terme->eval(tablesDesSymboles) / facteur->eval(tablesDesSymboles);
 }
