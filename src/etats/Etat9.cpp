@@ -1,5 +1,6 @@
 #include "Etat9.h"
 #include "Etat21.h"
+#include "EgalTerminal.h"
 
 int Etat9::transition(Automate *automate, Symbole *s) {
     switch (*s) {
@@ -9,7 +10,7 @@ int Etat9::transition(Automate *automate, Symbole *s) {
         // recuperation des erreurs
         case NUM_TERMINAL:
         {
-            Symbole* symboleOublie = new Symbole(EGAL_TERMINAL);
+            EgalTerminal* symboleOublie = new EgalTerminal(s->getLigne(), s->getColonne());
             automate->pushSymbole(symboleOublie);
             automate->pushEtat(new Etat21);
             return CONTINUE;

@@ -2,6 +2,7 @@
 #include "Etat23.h"
 #include "Etat24.h"
 #include "Etat35.h"
+#include "PointVirguleTerminal.h"
 
 int Etat25::transition(Automate *automate, Symbole *s) {
     switch (*s) {
@@ -22,7 +23,7 @@ int Etat25::transition(Automate *automate, Symbole *s) {
         case ID_TERMINAL:
         case FIN_PROGRAMME:
         {
-            Symbole* symboleOublie = new Symbole(POINT_VIRGULE_TERMINAL);
+            PointVirguleTerminal* symboleOublie = new PointVirguleTerminal(s->getLigne(), s->getColonne());
             automate->pushSymbole(symboleOublie);
             automate->pushEtat(new Etat35);
             return CONTINUE;

@@ -1,5 +1,6 @@
 #include "Etat7.h"
 #include "Etat18.h"
+#include "AffectTerminal.h"
 
 int Etat7::transition(Automate *automate, Symbole *s) {
     switch (*s) {
@@ -11,7 +12,7 @@ int Etat7::transition(Automate *automate, Symbole *s) {
         case NUM_TERMINAL:
         case PAROUV_TERMINAL:
         {
-            Symbole* symboleOublie = new Symbole(AFFECT_TERMINAL);
+            AffectTerminal* symboleOublie = new AffectTerminal(s->getLigne(), s->getColonne());
             automate->pushSymbole(symboleOublie);
             automate->pushEtat(new Etat18);
             return CONTINUE;
