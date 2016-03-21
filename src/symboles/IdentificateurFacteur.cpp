@@ -57,7 +57,7 @@ bool IdentificateurFacteur::analyser(TableDesSymboles *tableDesSymboles)
         ret = false;
     } else
     {
-        tableDesSymboles->setVariableUtilisee(id->getNom());
+        tableDesSymboles->setSymboleUtilise(id->getNom());
 
         if (!tableDesSymboles->estInitialisee(this->id->getNom()))
         {

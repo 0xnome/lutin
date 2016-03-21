@@ -217,3 +217,9 @@ std::unordered_map<std::string, Entree *> TableDesSymboles::getListConstatnesNon
 
     return mapEntree;
 }
+
+void TableDesSymboles::setSymboleUtilise(std::string nom)
+{
+    setVariableUtilisee(nom);
+    setConstanteUtilisee(nom);
+}

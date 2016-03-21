@@ -34,15 +34,11 @@ public:
      */
     void ajouterVariable(std::string variable, unsigned ligne, unsigned colonne);
 
-    /**
-     * Set le booleen qui dit que la variable a été utilisée
-     */
-    void setVariableUtilisee(std::string nomVariable);
 
     /**
      * Set le booleen qui dit que la variable a été utilisee
      */
-    void setConstanteUtilisee(std::string nomConstante);
+    void setSymboleUtilise(std::string nom);
 
     /**
      * Indique qu'une variable est initialisée
@@ -118,6 +114,16 @@ private:
     std::unordered_map<std::string, Entree *> tableConstantes;
 
     typedef std::unordered_map<std::string, Entree *>::iterator TableIterator;
+
+    /**
+     * Set le booleen qui dit que la variable a été utilisée
+     */
+    void setVariableUtilisee(std::string nomVariable);
+
+    /**
+     * Set le booleen qui dit que la variable a été utilisee
+     */
+    void setConstanteUtilisee(std::string nomConstante);
 
 
 };
