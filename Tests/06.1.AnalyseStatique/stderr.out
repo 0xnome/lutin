@@ -1,1 +1,1 @@
-une valeur dans l'expression a*b n'est pas connue.
+Erreur ligne 6:10 : b n'est pas initialisée.

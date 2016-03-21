@@ -204,7 +204,7 @@ void Lexeur::shift() {
     current = new ErreurLexicale("Erreur lexicale (" + std::to_string(ligne + 1) + ":" + std::to_string(
             colonne_o) + ") caractere " +
                                  lignesDuProgramme.at(ligne).at(colonne - 1));
-    cout << *((ErreurLexicale *) current)->getMessage();
+    cout << *((ErreurLexicale *) current)->getMessage() << std::endl;
 }
 
 Symbole *Lexeur::getCurrent() {
