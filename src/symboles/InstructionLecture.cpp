@@ -24,9 +24,16 @@ void InstructionLecture::afficher()
 
 void InstructionLecture::executer(TableDesSymboles *tableDesSymboles)
 {
-    // todo vérif sur la valeur d'entrée ? int, negatif, ... à voir
     int val;
     cin >> val;
+
+     while(std::cin.fail()) {
+        std::cout << "Vous devez rentrer un Entier..." << std::endl;
+        std::cin.clear();
+        std::cin.ignore(256,'\n');
+        std::cin >> val;
+    }
+
     tableDesSymboles->setVariableValeur(id->getNom(), val);
 }
 
