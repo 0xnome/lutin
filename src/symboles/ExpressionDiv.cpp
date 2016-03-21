@@ -29,8 +29,12 @@ void ExpressionDiv::executer(TableDesSymboles *tableDesSymboles)
 
 int ExpressionDiv::eval(TableDesSymboles *tablesDesSymboles)
 {
-    // TODO facteur doit etre différent de 0 !!!
     LOG(INFO) << "ExpressionDiv::eval";
+    if (facteur->eval(tablesDesSymboles) == 0)
+    {
+        std::cerr << "Erreur lors de l'execution, ligne " << facteur->getLigne() << ":" << facteur->getColonne() <<
+        " : Division par 0." << std::endl;
+    }
     return terme->eval(tablesDesSymboles) / facteur->eval(tablesDesSymboles);
 }
 
