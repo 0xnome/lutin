@@ -36,7 +36,7 @@ IdTerminal *IdentificateurFacteur::getId() const
 }
 
 bool IdentificateurFacteur::estConstante(TableDesSymboles *tableDesSymboles) {
-    return tableDesSymboles->estInitialisee(id->getNom()) && tableDesSymboles->getValeur(id->getNom()) != nullptr;
+    return tableDesSymboles->estConstante(id->getNom()) || (tableDesSymboles->estInitialisee(id->getNom()) && tableDesSymboles->getValeur(id->getNom()) != nullptr);
 }
 
 void IdentificateurFacteur::optimiser(TableDesSymboles *tableDesSymboles) {
