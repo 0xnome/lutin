@@ -45,6 +45,12 @@ void InstructionEcriture::optimiser(TableDesSymboles *tableDesSymboles)
                 new NumTerminal(val, this->expression->getLigne(), this->expression->getColonne()));
         delete this->expression;
         this->expression = expr;
+    }else{
+        Expression *exp;
+        while ((exp = this->expression->simplifier(tableDesSymboles))!= nullptr){
+            delete this->expression;
+            this->expression = exp;
+        }
     }
 }
 

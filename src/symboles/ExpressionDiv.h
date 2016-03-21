@@ -33,6 +33,9 @@ protected:
 
     Facteur *facteur;
 
+    static const unsigned ELEMENT_NEUTRE = 1;
+
+    static const unsigned ELEMENT_ABSORBANT = 0;
 };
 
 

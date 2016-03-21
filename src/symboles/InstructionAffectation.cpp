@@ -80,8 +80,8 @@ void InstructionAffectation::optimiser(TableDesSymboles *tableDesSymboles) {
         tableDesSymboles->setVariableValeur(id->getNom(), val);
     }
     else{
-        Expression *exp = this->expression->simplifier(tableDesSymboles);
-        if(exp != nullptr){
+        Expression *exp;
+        while ((exp = this->expression->simplifier(tableDesSymboles))!= nullptr){
             delete this->expression;
             this->expression = exp;
         }

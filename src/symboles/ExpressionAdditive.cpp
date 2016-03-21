@@ -55,6 +55,7 @@ void ExpressionAdditive::optimiser(TableDesSymboles *tableDesSymboles)
         delete this->expression;
         this->expression = expr;
     }
+
     this->terme->optimiser(tableDesSymboles);
     if (this->terme->estConstante(tableDesSymboles))
     {
@@ -63,6 +64,7 @@ void ExpressionAdditive::optimiser(TableDesSymboles *tableDesSymboles)
         delete this->terme;
         this->terme = ter;
     }
+
 }
 
 Expression *ExpressionAdditive::simplifier(TableDesSymboles *tableDesSymboles)

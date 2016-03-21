@@ -50,6 +50,6 @@ bool ExpressionParenthesee::analyser(TableDesSymboles *tableDesSymboles)
     return this->expression->analyser(tableDesSymboles);
 }
 
-Expression *ExpressionParenthesee::simplifier(TableDesSymboles *tableDesSymboles) {
-    return nullptr;
+Expression *ExpressionParenthesee::simplifier(TableDesSymboles* tableDesSymboles) {
+    return expression->simplifier(tableDesSymboles);
 }
