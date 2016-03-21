@@ -112,10 +112,17 @@ int main(int argc, char **argv)
                 automate.afficherProgramme();
 
             if (execute && analyse_ok)
+            {
                 automate.executerProgramme();
+            }
             else
-                std::cerr << "L'analyse du programme indique que le programme ne doit pas etre executé." << std::endl;
-
+            {
+                if (!analyse_ok && execute)
+                {
+                    std::cerr << "L'analyse du programme indique que le programme ne doit pas etre executé." <<
+                    std::endl;
+                }
+            }
 
         } else
         {

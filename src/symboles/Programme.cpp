@@ -91,12 +91,12 @@ bool Programme::analyser(TableDesSymboles *tableDesSymboles)
         BlocDeclaration *declarationCur;
         declarationCur = blocDeclaration;
 
-        ret = ret && declarationCur->analyser(tableDesSymboles);
+        ret = ret & declarationCur->analyser(tableDesSymboles);
 
         while (declarationCur->getSuivant() != nullptr)
         {
             declarationCur = declarationCur->getSuivant();
-            ret = ret && declarationCur->analyser(tableDesSymboles);
+            ret = ret & declarationCur->analyser(tableDesSymboles);
         }
     }
 
@@ -105,12 +105,12 @@ bool Programme::analyser(TableDesSymboles *tableDesSymboles)
         BlocInstruction *instructionCur;
         instructionCur = blocInstruction;
 
-        ret = ret && instructionCur->analyser(tableDesSymboles);
+        ret = ret & instructionCur->analyser(tableDesSymboles);
 
         while (instructionCur->getSuivant() != nullptr)
         {
             instructionCur = instructionCur->getSuivant();
-            ret = ret && instructionCur->analyser(tableDesSymboles);
+            ret = ret & instructionCur->analyser(tableDesSymboles);
         }
     }
     return ret;
