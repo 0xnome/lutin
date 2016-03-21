@@ -20,10 +20,6 @@ public:
         return &message;
     }
 
-    virtual void analyser(TableDesSymboles *tableDesSymboles)
-    { };
-
-
 private:
     std::string message;
 };

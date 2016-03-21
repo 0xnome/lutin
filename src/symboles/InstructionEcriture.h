@@ -17,9 +17,10 @@ public:
 
     virtual bool estVide();
 
-    virtual void analyser(TableDesSymboles *tableDesSymboles);
+    virtual bool analyser(TableDesSymboles *tableDesSymboles, Contexte contexte);
 
-    virtual void optimiser(TableDesSymboles*);
+    virtual void optimiser(TableDesSymboles *);
+
 protected:
     Expression *expression;
 

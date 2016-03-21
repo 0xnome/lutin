@@ -34,11 +34,12 @@ bool InstructionEcriture::estVide()
 }
 
 
-void InstructionEcriture::analyser(TableDesSymboles *tableDesSymboles)
+void InstructionEcriture::optimiser(TableDesSymboles *symboles)
 {
-    expression->analyser(tableDesSymboles);
+    expression->optimiser(symboles);
 }
 
-void InstructionEcriture::optimiser(TableDesSymboles *symboles) {
-    expression->optimiser(symboles);
+bool InstructionEcriture::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+{
+    return expression->analyser(tableDesSymboles, contexte);
 }

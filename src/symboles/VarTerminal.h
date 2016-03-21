@@ -12,10 +12,6 @@ public:
 
     ~VarTerminal()
     { }
-
-
-    virtual void analyser(TableDesSymboles *tableDesSymboles)
-    { };
 };
 
 

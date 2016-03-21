@@ -33,12 +33,12 @@ void ExpressionAdditive::executer(TableDesSymboles *tableDesSymboles)
 
 }
 
-void ExpressionAdditive::analyser(TableDesSymboles *tableDesSymboles)
+bool ExpressionAdditive::estConstante(TableDesSymboles *tableDesSymboles)
 {
-    terme->analyser(tableDesSymboles);
-    expression->analyser(tableDesSymboles);
+    return this->terme->estConstante(tableDesSymboles) && this->expression->estConstante(tableDesSymboles);
 }
 
-bool ExpressionAdditive::estConstante(TableDesSymboles *tableDesSymboles) {
-    return this->terme->estConstante(tableDesSymboles) && this-> expression->estConstante(tableDesSymboles);
+bool ExpressionAdditive::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+{
+    return terme->analyser(tableDesSymboles, contexte) && expression->analyser(tableDesSymboles, contexte);
 }

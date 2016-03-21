@@ -12,9 +12,6 @@ public:
 
     ~LireTerminal()
     { }
-
-    virtual void analyser(TableDesSymboles *tableDesSymboles)
-    { };
 };
 
 

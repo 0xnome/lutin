@@ -13,9 +13,6 @@ public:
     ~ConstTerminal()
     { }
 
-
-    virtual void analyser(TableDesSymboles *tableDesSymboles)
-    { };
 };
 
 

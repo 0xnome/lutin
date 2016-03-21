@@ -12,10 +12,6 @@ public:
 
     ~FinProgramme()
     { }
-
-
-    virtual void analyser(TableDesSymboles *tableDesSymboles)
-    { };
 };
 
 

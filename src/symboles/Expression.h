@@ -16,7 +16,10 @@ public:
 
     virtual void executer(TableDesSymboles *tableDesSymboles) = 0;
 
-    virtual void analyser(TableDesSymboles *tableDesSymboles) = 0;
+    virtual bool analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+    {
+        return true;
+    };
 
     virtual bool estConstante(TableDesSymboles *tableDesSymboles) = 0;
 

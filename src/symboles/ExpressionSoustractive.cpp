@@ -32,12 +32,13 @@ int ExpressionSoustractive::eval(TableDesSymboles *tablesDesSymboles)
     return (expression->eval(tablesDesSymboles) - terme->eval(tablesDesSymboles));
 }
 
-void ExpressionSoustractive::analyser(TableDesSymboles *tableDesSymboles)
+bool ExpressionSoustractive::estConstante(TableDesSymboles *tableDesSymboles)
 {
-    this->terme->analyser(tableDesSymboles);
-    this->expression->analyser(tableDesSymboles);
+    return this->terme->estConstante(tableDesSymboles) && this->expression->estConstante(tableDesSymboles);
 }
 
-bool ExpressionSoustractive::estConstante(TableDesSymboles *tableDesSymboles) {
-    return this->terme->estConstante(tableDesSymboles) && this-> expression->estConstante(tableDesSymboles);
+bool ExpressionSoustractive::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+{
+    return this->expression->analyser(tableDesSymboles, contexte)
+           && this->terme->analyser(tableDesSymboles, contexte);
 }

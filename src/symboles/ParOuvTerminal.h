@@ -11,9 +11,6 @@ public:
 
     ~ParOuvTerminal()
     { }
-
-    virtual void analyser(TableDesSymboles *tableDesSymboles)
-    { };
 };
 
 #endif //LUTIN_PAROUVTERMINAL_H
