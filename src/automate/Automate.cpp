@@ -158,8 +158,8 @@ void Automate::analyserProgramme() {
     std::unordered_map<std::string, Entree *> mapEntree= table.getListVariablesNonUtilisees();
 
     for(auto it=mapEntree.begin(); it != mapEntree.end(); it++){
-        cerr<<"Warining : la variable \""<<it->first<<"\" déclarée à "<<it->second->ligne<<":"<<it->second->colonne
-                <<" n'est pas utilisée."<<endl;
+        cerr<<"Warining ligne "  <<it->second->ligne<<":"<<it->second->colonne<<" : La variable '"<<it->first
+                <<"' n'est pas utilisée."<<endl;
     }
 }
 
