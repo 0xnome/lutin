@@ -14,7 +14,7 @@ public:
 
     void afficher();
 
-    int eval(TableDesSymboles *tablesDesSymboles);
+    virtual int eval(TableDesSymboles *tablesDesSymboles);
 
     virtual void executer(TableDesSymboles *tableDesSymboles);
 

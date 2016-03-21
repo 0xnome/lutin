@@ -17,7 +17,7 @@ public:
 
     virtual void executer(TableDesSymboles *tableDesSymboles);
 
-    int eval(TableDesSymboles *tablesDesSymboles);
+    virtual int eval(TableDesSymboles *tablesDesSymboles);
 
     virtual void analyser(TableDesSymboles *tableDesSymboles);
 

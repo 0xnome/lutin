@@ -18,7 +18,7 @@ void IdentificateurFacteur::afficher()
 int IdentificateurFacteur::eval(TableDesSymboles *tablesDesSymboles)
 {
     LOG(INFO) << "IdentificateurFacteur::eval";
-    return tablesDesSymboles->getValeur(id->getNom());
+    return *tablesDesSymboles->getValeur(id->getNom());
 }
 
 void IdentificateurFacteur::executer(TableDesSymboles *tableDesSymboles)
