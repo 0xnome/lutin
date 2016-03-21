@@ -180,4 +180,27 @@ void TableDesSymboles::resetTableDesSymboles()
     // TODO : faire des clear
 }
 
+std::vector<Entree *> TableDesSymboles::getListVariablesNonUtilisees() const
+{
+    vector<Entree*> vectorEntree;
+
+    for (auto it = this->tableConstantes.begin(); it != this->tableConstantes.end(); ++it)
+    {
+        if(!it->second->estUtilisee){
+            vectorEntree.push_back(it->second);
+        }
+    }
+
+    for (auto it = this->tableVariables.begin(); it != this->tableVariables.end(); ++it)
+    {
+        if(!it->second->estUtilisee){
+            vectorEntree.push_back(it->second);
+        }
+    }
+
+    return vectorEntree;
+}
+
+
+
 

@@ -3,6 +3,7 @@
 
 #include <unordered_map>
 #include <string>
+#include <vector>
 
 
 struct Entree
@@ -88,7 +89,13 @@ public:
      */
     bool estDeclaree(std::string nomVariable) const;
 
+    /**
+     * Regarde si la constante a été intialisée
+     */
     bool estConstante(std::string nom)const;
+
+
+    std::vector<Entree*> getListVariablesNonUtilisees()const;
 
 
     /**

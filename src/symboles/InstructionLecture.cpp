@@ -24,9 +24,16 @@ void InstructionLecture::afficher()
 
 void InstructionLecture::executer(TableDesSymboles *tableDesSymboles)
 {
-    // todo vérif sur la valeur d'entrée ? int, negatif, ... à voir
     int val;
     cin >> val;
+
+     while(std::cin.fail()) {
+        std::cout << "Vous devez rentrer un Entier..." << std::endl;
+        std::cin.clear();
+        std::cin.ignore(256,'\n');
+        std::cin >> val;
+    }
+
     tableDesSymboles->setVariableValeur(id->getNom(), val);
 }
 
@@ -59,13 +66,13 @@ bool InstructionLecture::analyser(TableDesSymboles *tableDesSymboles, Contexte c
         std::cerr << "Erreur ligne " << this->id->getLigne() << " : " << this->id->getNom() <<
         " n'a pas été déclarée." << std::endl;
         return false;
-
     }
 
     tableDesSymboles->setInitialisee(id->getNom());
     return true;
 }
 
-void InstructionLecture::optimiser(TableDesSymboles *tableDesSymboles) {
+void InstructionLecture::optimiser(TableDesSymboles *tableDesSymboles)
+{
     tableDesSymboles->setInitialisee(id->getNom());
 }

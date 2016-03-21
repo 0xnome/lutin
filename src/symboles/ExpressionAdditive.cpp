@@ -41,19 +41,25 @@ bool ExpressionAdditive::estConstante(TableDesSymboles *tableDesSymboles)
 
 bool ExpressionAdditive::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
 {
+    contexte.validerDeclaration = true;
+    contexte.validerInitilisation = true;
     return terme->analyser(tableDesSymboles, contexte) && expression->analyser(tableDesSymboles, contexte);
 }
 
-void ExpressionAdditive::optimiser(TableDesSymboles *tableDesSymboles) {
+void ExpressionAdditive::optimiser(TableDesSymboles *tableDesSymboles)
+{
     this->expression->optimiser(tableDesSymboles);
-    if(this->expression->estConstante(tableDesSymboles)){
+    if (this->expression->estConstante(tableDesSymboles))
+    {
         int val = this->expression->eval(tableDesSymboles);
-        Expression *expr = new ConstanteNumerique(new NumTerminal(val, this->expression->getLigne(), this->expression->getColonne()));
+        Expression *expr = new ConstanteNumerique(
+                new NumTerminal(val, this->expression->getLigne(), this->expression->getColonne()));
         delete this->expression;
         this->expression = expr;
     }
     this->terme->optimiser(tableDesSymboles);
-    if(this->terme->estConstante(tableDesSymboles)){
+    if (this->terme->estConstante(tableDesSymboles))
+    {
         int val = this->terme->eval(tableDesSymboles);
         Terme *ter = new ConstanteNumerique(new NumTerminal(val, this->terme->getLigne(), this->terme->getColonne()));
         delete this->terme;
