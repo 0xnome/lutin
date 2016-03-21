@@ -44,5 +44,9 @@ bool IdentificateurFacteur::analyser(TableDesSymboles *tableDesSymboles, Context
 {
     contexte.validerDeclaration = true;
     contexte.validerInitialisation = true;
+
+    // on dit que la variable a été utilisée
+    tableDesSymboles->setVariableUtilisee(id->getNom());
+
     return this->id->analyser(tableDesSymboles, contexte);
 }
