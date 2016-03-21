@@ -47,7 +47,7 @@ void InstructionLecture::analyser(TableDesSymboles *tableDesSymboles)
     {
         if (tableDesSymboles->estConstante(id->getNom()))
         {
-            std::cout << "Erreur ligne " << this->id->getLigne() << " : " << this->id->getNom() <<
+            std::cerr << "Erreur ligne " << this->id->getLigne() << " : " << this->id->getNom() <<
             " est une constante et ne peut etre modifiée " << std::endl;
         } else
         {
@@ -55,7 +55,7 @@ void InstructionLecture::analyser(TableDesSymboles *tableDesSymboles)
         }
     } else
     {
-        std::cout << "Erreur ligne " << this->id->getLigne() << " : " << this->id->getNom() <<
+        std::cerr << "Erreur ligne " << this->id->getLigne() << " : " << this->id->getNom() <<
         " n'a pas été déclarée." << std::endl;
     }
 }

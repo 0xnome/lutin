@@ -197,12 +197,12 @@ public:
      * Analyse statique du programme afin d'en extraire les erreurs (option -a)
      *
      * TODO: erreurs à vérifier
-     *  - Les variables et constantes utilisées dans la partie intructions sont bien dans la déclaration
+     *  - Les variables et constantes utilisées dans la partie intruction sont bien dans la déclaration [OK]
      *  - var déclarées mais non initialisées
      *  - Mettre des warnings si elles ne sont pas utilisées
-     *  - Duplications ou conflits de noms de variables et constantes
+     *  - Duplications ou conflits de noms de variables et constantes [OK]
      *  - mots clefs interdits (var, const, ecrire et lire) à réflechir...
-     *  - modification d'une constante
+     *  - modification d'une constante [OK]
      */
     virtual void analyser(TableDesSymboles *tableDesSymboles)
     { }
