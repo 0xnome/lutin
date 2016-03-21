@@ -4,23 +4,32 @@
 using namespace std;
 
 ExpressionParenthesee::ExpressionParenthesee(Expression *expression) : Facteur(EXPRESSION_PARENTHESEE),
-                                                                       expression(expression) {
+                                                                       expression(expression)
+{
 }
 
-ExpressionParenthesee::~ExpressionParenthesee() {
+ExpressionParenthesee::~ExpressionParenthesee()
+{
     delete this->expression;
 }
 
-void ExpressionParenthesee::afficher() {
+void ExpressionParenthesee::afficher()
+{
     std::cout << "(";
     this->expression->afficher();
     std::cout << ")";
 }
 
-int ExpressionParenthesee::eval(TableDesSymboles *tablesDesSymboles) {
+int ExpressionParenthesee::eval(TableDesSymboles *tablesDesSymboles)
+{
     LOG(INFO) << "ExpressionParenthesee::eval";
     return expression->eval(tablesDesSymboles);
 }
 
 void ExpressionParenthesee::executer(TableDesSymboles *tableDesSymboles)
-{}
+{ }
+
+void ExpressionParenthesee::analyser(TableDesSymboles *tableDesSymboles)
+{
+    this->expression->analyser(tableDesSymboles);
+}

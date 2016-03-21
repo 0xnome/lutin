@@ -16,6 +16,8 @@ public:
 
     virtual void executer(TableDesSymboles *tableDesSymboles) = 0;
 
+    virtual void analyser(TableDesSymboles *tableDesSymboles) = 0;
+
     virtual ~Expression() { };
 
     int identifiantStatique() {

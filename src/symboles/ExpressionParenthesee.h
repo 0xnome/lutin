@@ -7,18 +7,20 @@ class ExpressionParenthesee : public Facteur
 {
 
 public:
-    ExpressionParenthesee(Expression * expression);
+    ExpressionParenthesee(Expression *expression);
 
     ~ExpressionParenthesee();
 
-    void afficher();
+    virtual void afficher();
 
-    int eval(TableDesSymboles *tablesDesSymboles);
+    virtual int eval(TableDesSymboles *tablesDesSymboles);
 
-    void executer(TableDesSymboles *tableDesSymboles);
+    virtual void executer(TableDesSymboles *tableDesSymboles);
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles);
 
 protected:
-    Expression * expression;
+    Expression *expression;
 };
 
 

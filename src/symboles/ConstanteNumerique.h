@@ -6,27 +6,35 @@
 #include "Facteur.h"
 #include "NumTerminal.h"
 
-class ConstanteNumerique : public Facteur {
+class ConstanteNumerique : public Facteur
+{
 
 public:
-    ConstanteNumerique(NumTerminal *numTerminal) : Facteur(CONSTANTE_NUMERIQUE), valeur(numTerminal) {
+    ConstanteNumerique(NumTerminal *numTerminal) : Facteur(CONSTANTE_NUMERIQUE), valeur(numTerminal)
+    {
     }
 
-    ~ConstanteNumerique() {
+    ~ConstanteNumerique()
+    {
         delete this->valeur;
     }
 
-    int eval(TableDesSymboles *tablesDesSymboles) {
+    int eval(TableDesSymboles *tablesDesSymboles)
+    {
         LOG(INFO) << "ConstanteNumerique::eval";
         return valeur->getValue();
     }
 
-    void afficher() {
+    void afficher()
+    {
         this->valeur->afficher();
     }
 
     void executer(TableDesSymboles *tableDesSymboles)
-    {}
+    { }
+
+    void analyser(TableDesSymboles *tableDesSymboles)
+    { }
 
 protected:
     NumTerminal *valeur;

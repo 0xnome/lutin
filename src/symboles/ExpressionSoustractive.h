@@ -12,9 +12,11 @@ public:
 
     ~ExpressionSoustractive();
 
-    void afficher();
+    virtual void afficher();
 
-    void executer(TableDesSymboles *tableDesSymboles);
+    virtual void executer(TableDesSymboles *tableDesSymboles);
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles);
 
     int eval(TableDesSymboles *tablesDesSymboles);
 

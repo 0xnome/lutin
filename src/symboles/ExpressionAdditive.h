@@ -13,13 +13,14 @@ public:
 
     ~ExpressionAdditive();
 
-    void afficher();
 
-    int eval(TableDesSymboles *tablesDesSymboles);
+    virtual int eval(TableDesSymboles *tablesDesSymboles);
 
-    void executer(TableDesSymboles *tableDesSymboles);
+    virtual void afficher();
 
-    void analyser(TableDesSymboles *tableDesSymboles);
+    virtual void executer(TableDesSymboles *tableDesSymboles);
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles);
 
 protected:
 
