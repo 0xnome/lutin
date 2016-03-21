@@ -43,7 +43,7 @@ void TableDesSymboles::ajouterConstante(std::string constante, unsigned ligne, u
     *constEntree = {true, false, val, ligne, colonne};
     pair<TableIterator, bool> result = this->tableConstantes.insert({constante, constEntree});
 
-    if(!result.second)
+    if (!result.second)
     { // si l'insertion s'est mal passée, on supprime l'entrée que l'on a crée
         delete (constEntree);
     }
@@ -59,7 +59,7 @@ void TableDesSymboles::ajouterVariable(std::string variable, unsigned ligne, uns
     varEntree->valeur = nullptr;
     pair<TableIterator, bool> result = this->tableVariables.insert({variable, varEntree});
 
-    if(!result.second)
+    if (!result.second)
     { // si l'insertion s'est mal passée, on supprime l'entrée que l'on a crée
         delete (varEntree);
     }
@@ -70,7 +70,7 @@ void TableDesSymboles::ajouterVariable(std::string variable, unsigned ligne, uns
 void TableDesSymboles::setVariableUtilisee(std::string nomVariable)
 {
     auto iterator = this->tableVariables.find(nomVariable);
-    if(iterator != this->tableVariables.end())
+    if (iterator != this->tableVariables.end())
     {
         iterator->second->estUtilisee = true;
     }
@@ -79,7 +79,7 @@ void TableDesSymboles::setVariableUtilisee(std::string nomVariable)
 void TableDesSymboles::setVariableValeur(std::string nomVariable, int valeur)
 {
     auto iterator = this->tableVariables.find(nomVariable);
-    if(iterator != this->tableVariables.end())
+    if (iterator != this->tableVariables.end())
     {
         iterator->second->valeur = new int(valeur);
         iterator->second->estInitialisee = true;
@@ -89,7 +89,7 @@ void TableDesSymboles::setVariableValeur(std::string nomVariable, int valeur)
 void TableDesSymboles::setConstanteUtilisee(std::string nomConstante)
 {
     auto iterator = this->tableConstantes.find(nomConstante);
-    if(iterator != this->tableConstantes.end())
+    if (iterator != this->tableConstantes.end())
     {
         iterator->second->estUtilisee = true;
     }
@@ -121,7 +121,7 @@ int *TableDesSymboles::getValeur(std::string nom) const
 {
     auto iterator = this->tableVariables.find(nom);
 
-    if(iterator != this->tableVariables.end())
+    if (iterator != this->tableVariables.end())
     {
         return iterator->second->valeur;
     }
@@ -137,11 +137,11 @@ Entree *TableDesSymboles::getEntree(std::string nom) const
     auto iteratorTableVariable = this->tableVariables.find(nom);
 
 
-    if(iteratorTableConstante != this->tableConstantes.end())
+    if (iteratorTableConstante != this->tableConstantes.end())
     {
         return iteratorTableConstante->second;
     }
-    else if(iteratorTableVariable != this->tableVariables.end())
+    else if (iteratorTableVariable != this->tableVariables.end())
     {
         return iteratorTableVariable->second;
     }
@@ -160,7 +160,7 @@ bool TableDesSymboles::estConstante(std::string nom) const
 void TableDesSymboles::setInitialisee(std::string nom)
 {
     auto iterator = this->tableVariables.find(nom);
-    if(iterator != this->tableVariables.end())
+    if (iterator != this->tableVariables.end())
     {
         iterator->second->estInitialisee = true;
         iterator->second->valeur = nullptr;
@@ -191,17 +191,9 @@ std::unordered_map<std::string, Entree *> TableDesSymboles::getListVariablesNonU
 {
     std::unordered_map<std::string, Entree *> mapEntree;
 
-    for (auto it = this->tableConstantes.begin(); it != this->tableConstantes.end(); ++it)
-    {
-        if(!it->second->estUtilisee)
-        {
-            mapEntree.insert({it->first, it->second});
-        }
-    }
-
     for (auto it = this->tableVariables.begin(); it != this->tableVariables.end(); ++it)
     {
-        if(!it->second->estUtilisee)
+        if (!it->second->estUtilisee)
         {
             mapEntree.insert({it->first, it->second});
         }
@@ -211,5 +203,17 @@ std::unordered_map<std::string, Entree *> TableDesSymboles::getListVariablesNonU
 }
 
 
+std::unordered_map<std::string, Entree *> TableDesSymboles::getListConstatnesNonUtilisees() const
+{
+    std::unordered_map<std::string, Entree *> mapEntree;
 
+    for (auto it = this->tableConstantes.begin(); it != this->tableConstantes.end(); ++it)
+    {
+        if (!it->second->estUtilisee)
+        {
+            mapEntree.insert({it->first, it->second});
+        }
+    }
 
+    return mapEntree;
+}

@@ -98,6 +98,9 @@ public:
     std::unordered_map<std::string, Entree *> getListVariablesNonUtilisees() const;
 
 
+    std::unordered_map<std::string, Entree *> getListConstatnesNonUtilisees() const;
+
+
     /**
      *
      */

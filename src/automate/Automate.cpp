@@ -179,14 +179,20 @@ bool Automate::analyserProgramme()
     LOG(INFO) << "ANALYSE DU PROGRAMME";
     TableDesSymboles table;
     bool ret = this->programme->analyser(&table);
-    std::unordered_map<std::string, Entree *> mapEntree = table.getListVariablesNonUtilisees();
+    std::unordered_map<std::string, Entree *> mapVariables = table.getListVariablesNonUtilisees();
+    std::unordered_map<std::string, Entree *> mapConstantes = table.getListConstatnesNonUtilisees();
 
-    for (auto it = mapEntree.begin(); it != mapEntree.end(); it++)
+    for (auto it = mapVariables.begin(); it != mapVariables.end(); it++)
     {
         cerr << "Warining ligne " << it->second->ligne << ":" << it->second->colonne << " : La variable '" << it->first
         << "' n'est pas utilisée." << endl;
     }
 
+    for (auto it = mapConstantes.begin(); it != mapConstantes.end(); it++)
+    {
+        cerr << "Warining ligne " << it->second->ligne << ":" << it->second->colonne << " : La constante '" << it->first
+        << "' n'est pas utilisée." << endl;
+    }
     return ret;
 }
 
