@@ -52,18 +52,18 @@ public:
     /**
      * Renvoie la valeur de la variable
      */
-    int* getVariableValeur(std::string nomVariable) const;
+    int *getVariableValeur(std::string nomVariable) const;
 
     /**
      * Renvoie la valeur de la constante
      */
-    int* getConstanteValeur(std::string nomConstante) const;
+    int *getConstanteValeur(std::string nomConstante) const;
 
 
     /**
      * Retourne la valeur d'une variable ou d'une constante
      */
-    int* getValeur(std::string nom) const;
+    int *getValeur(std::string nom) const;
 
 
     Entree *getEntree(std::string nom) const;
@@ -92,10 +92,10 @@ public:
     /**
      * Regarde si la constante a été intialisée
      */
-    bool estConstante(std::string nom)const;
+    bool estConstante(std::string nom) const;
 
 
-    std::vector<Entree*> getListVariablesNonUtilisees()const;
+    std::unordered_map<std::string, Entree *> getListVariablesNonUtilisees() const;
 
 
     /**

@@ -180,25 +180,27 @@ void TableDesSymboles::resetTableDesSymboles()
     // TODO : faire des clear
 }
 
-std::vector<Entree *> TableDesSymboles::getListVariablesNonUtilisees() const
+std::unordered_map<std::string, Entree *> TableDesSymboles::getListVariablesNonUtilisees() const
 {
-    vector<Entree*> vectorEntree;
+    std::unordered_map<std::string, Entree *> mapEntree;
 
     for (auto it = this->tableConstantes.begin(); it != this->tableConstantes.end(); ++it)
     {
-        if(!it->second->estUtilisee){
-            vectorEntree.push_back(it->second);
+        if(!it->second->estUtilisee)
+        {
+            mapEntree.insert({it->first, it->second});
         }
     }
 
     for (auto it = this->tableVariables.begin(); it != this->tableVariables.end(); ++it)
     {
-        if(!it->second->estUtilisee){
-            vectorEntree.push_back(it->second);
+        if(!it->second->estUtilisee)
+        {
+            mapEntree.insert({it->first, it->second});
         }
     }
 
-    return vectorEntree;
+    return mapEntree;
 }
 
 
