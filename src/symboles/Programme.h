@@ -17,7 +17,7 @@ public:
 
     Programme(int id);
 
-    virtual bool analyser(TableDesSymboles *tableDesSymboles, Contexte contexte);
+    virtual bool analyser(TableDesSymboles *tableDesSymboles);
 
     virtual void optimiser(TableDesSymboles *tableDesSymboles);
 

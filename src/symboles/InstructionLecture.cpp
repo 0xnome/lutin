@@ -27,10 +27,11 @@ void InstructionLecture::executer(TableDesSymboles *tableDesSymboles)
     int val;
     cin >> val;
 
-     while(std::cin.fail()) {
+    while (std::cin.fail())
+    {
         std::cout << "Vous devez rentrer un Entier..." << std::endl;
         std::cin.clear();
-        std::cin.ignore(256,'\n');
+        std::cin.ignore(256, '\n');
         std::cin >> val;
     }
 
@@ -48,7 +49,7 @@ void InstructionLecture::optimiser()
     return;
 }
 
-bool InstructionLecture::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+bool InstructionLecture::analyser(TableDesSymboles *tableDesSymboles)
 {
     if (tableDesSymboles->estDeclaree(id->getNom()))
     {

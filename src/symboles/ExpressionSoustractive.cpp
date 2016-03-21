@@ -38,12 +38,10 @@ bool ExpressionSoustractive::estConstante(TableDesSymboles *tableDesSymboles)
     return this->terme->estConstante(tableDesSymboles) && this->expression->estConstante(tableDesSymboles);
 }
 
-bool ExpressionSoustractive::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+bool ExpressionSoustractive::analyser(TableDesSymboles *tableDesSymboles)
 {
-    contexte.validerDeclaration = true;
-    contexte.validerInitialisation = true;
-    return this->expression->analyser(tableDesSymboles, contexte)
-           && this->terme->analyser(tableDesSymboles, contexte);
+    return this->expression->analyser(tableDesSymboles)
+           & this->terme->analyser(tableDesSymboles);
 }
 
 void ExpressionSoustractive::optimiser(TableDesSymboles *tableDesSymboles)
@@ -67,6 +65,7 @@ void ExpressionSoustractive::optimiser(TableDesSymboles *tableDesSymboles)
     }
 }
 
-Expression *ExpressionSoustractive::simplifier(TableDesSymboles *tableDesSymboles) {
+Expression *ExpressionSoustractive::simplifier(TableDesSymboles *tableDesSymboles)
+{
     return nullptr;
 }

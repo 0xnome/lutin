@@ -35,36 +35,34 @@ void IdentificateurVariable::executer(TableDesSymboles *tableDesSymboles)
     tableDesSymboles->ajouterVariable(this->id->getNom(), this->id->getLigne(), this->id->getColonne());
 }
 
-bool IdentificateurVariable::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+bool IdentificateurVariable::analyser(TableDesSymboles *tableDesSymboles)
 {
     bool ret = true;
-    if (contexte.validerDeclaration)
+    if (tableDesSymboles->estDeclaree(this->id->getNom()))
     {
-        if (tableDesSymboles->estDeclaree(this->id->getNom()))
+        if (tableDesSymboles->estConstante(id->getNom()))
         {
-            if (tableDesSymboles->estConstante(id->getNom()))
-            {
-                std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : " <<
-                this->id->getNom() <<
-                " est déjà déclarée en tant que constante à la ligne " <<
-                tableDesSymboles->getEntree(id->getNom())->ligne
-                << ":" << tableDesSymboles->getEntree(id->getNom())->colonne
-                << "." << std::endl;
-                ret = false;
-            } else
-            {
-                std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : " <<
-                this->id->getNom() <<
-                " est déjà déclarée à la ligne " << tableDesSymboles->getEntree(id->getNom())->ligne << ":"
-                << tableDesSymboles->getEntree(id->getNom())->colonne
-                << "." << std::endl;
-                ret = false;
-            }
+            std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : '" <<
+            this->id->getNom() <<
+            "' est déjà déclarée en tant que constante à la ligne " <<
+            tableDesSymboles->getEntree(id->getNom())->ligne
+            << ":" << tableDesSymboles->getEntree(id->getNom())->colonne
+            << "." << std::endl;
+            ret = false;
         } else
         {
-            tableDesSymboles->ajouterVariable(this->id->getNom(), this->id->getLigne(), this->id->getColonne());
+            std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : '" <<
+            this->id->getNom() <<
+            "' est déjà déclarée à la ligne " << tableDesSymboles->getEntree(id->getNom())->ligne << ":"
+            << tableDesSymboles->getEntree(id->getNom())->colonne
+            << "." << std::endl;
+            ret = false;
         }
+    } else
+    {
+        tableDesSymboles->ajouterVariable(this->id->getNom(), this->id->getLigne(), this->id->getColonne());
     }
+
 
     return ret;
 }

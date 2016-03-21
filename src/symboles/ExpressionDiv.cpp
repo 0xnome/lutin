@@ -30,7 +30,7 @@ void ExpressionDiv::executer(TableDesSymboles *tableDesSymboles)
 int ExpressionDiv::eval(TableDesSymboles *tablesDesSymboles)
 {
     LOG(INFO) << "ExpressionDiv::eval";
-    if (analyser(tablesDesSymboles, Contexte()))
+    if (analyser(tablesDesSymboles))
     {
 
         if (facteur->eval(tablesDesSymboles) == 0)
@@ -72,13 +72,11 @@ void ExpressionDiv::optimiser(TableDesSymboles *tableDesSymboles)
     }
 }
 
-bool ExpressionDiv::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+bool ExpressionDiv::analyser(TableDesSymboles *tableDesSymboles)
 {
     bool ret = true;
-    contexte.validerDeclaration = true;
-    contexte.validerInitialisation = true;
-    ret = ret && terme->analyser(tableDesSymboles, contexte);
-    ret = ret && facteur->analyser(tableDesSymboles, contexte);
+    ret = ret & terme->analyser(tableDesSymboles);
+    ret = ret & facteur->analyser(tableDesSymboles);
 
     if (ret)
     {
@@ -116,11 +114,10 @@ bool ExpressionDiv::analyser(TableDesSymboles *tableDesSymboles, Contexte contex
             }
         }
     }
-
-
     return ret;
 }
 
-Expression *ExpressionDiv::simplifier(TableDesSymboles *tableDesSymboles) {
+Expression *ExpressionDiv::simplifier(TableDesSymboles *tableDesSymboles)
+{
     return nullptr;
 }

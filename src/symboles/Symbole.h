@@ -211,7 +211,7 @@ public:
      *  - mots clefs interdits (var, const, ecrire et lire) à réflechir...
      *  - modification d'une constante [OK]
      */
-    virtual bool analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+    virtual bool analyser(TableDesSymboles *tableDesSymboles)
     {
         return true;
     }

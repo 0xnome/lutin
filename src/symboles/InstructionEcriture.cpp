@@ -48,9 +48,7 @@ void InstructionEcriture::optimiser(TableDesSymboles *tableDesSymboles)
     }
 }
 
-bool InstructionEcriture::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+bool InstructionEcriture::analyser(TableDesSymboles *tableDesSymboles)
 {
-    contexte.validerDeclaration = true;
-    contexte.validerInitialisation = true;
-    return expression->analyser(tableDesSymboles, contexte);
+    return expression->analyser(tableDesSymboles);
 }

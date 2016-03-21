@@ -40,7 +40,7 @@ void AffectationConstante::afficher()
     this->num->afficher();
 }
 
-bool AffectationConstante::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+bool AffectationConstante::analyser(TableDesSymboles *tableDesSymboles)
 {
 
     if (tableDesSymboles->estDeclaree(id->getNom()))

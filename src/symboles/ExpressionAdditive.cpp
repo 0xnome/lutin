@@ -39,11 +39,9 @@ bool ExpressionAdditive::estConstante(TableDesSymboles *tableDesSymboles)
     return this->terme->estConstante(tableDesSymboles) && this->expression->estConstante(tableDesSymboles);
 }
 
-bool ExpressionAdditive::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+bool ExpressionAdditive::analyser(TableDesSymboles *tableDesSymboles)
 {
-    contexte.validerDeclaration = true;
-    contexte.validerInitialisation = true;
-    return terme->analyser(tableDesSymboles, contexte) && expression->analyser(tableDesSymboles, contexte);
+    return expression->analyser(tableDesSymboles) & terme->analyser(tableDesSymboles);
 }
 
 void ExpressionAdditive::optimiser(TableDesSymboles *tableDesSymboles)
@@ -67,14 +65,19 @@ void ExpressionAdditive::optimiser(TableDesSymboles *tableDesSymboles)
     }
 }
 
-Expression *ExpressionAdditive::simplifier(TableDesSymboles* tableDesSymboles) {
-    if(this->expression->estConstante(tableDesSymboles) && this->expression->eval(tableDesSymboles) == ExpressionAdditive::ELEMENT_NEUTRE){
-        Expression* exp = (Expression*) this->terme;
+Expression *ExpressionAdditive::simplifier(TableDesSymboles *tableDesSymboles)
+{
+    if (this->expression->estConstante(tableDesSymboles) &&
+        this->expression->eval(tableDesSymboles) == ExpressionAdditive::ELEMENT_NEUTRE)
+    {
+        Expression *exp = (Expression *) this->terme;
         this->terme = nullptr;
         return exp;
     }
-    else if(this->terme->estConstante(tableDesSymboles) && this->terme->eval(tableDesSymboles) == ExpressionAdditive::ELEMENT_NEUTRE){
-        Expression* exp = this->expression;
+    else if (this->terme->estConstante(tableDesSymboles) &&
+             this->terme->eval(tableDesSymboles) == ExpressionAdditive::ELEMENT_NEUTRE)
+    {
+        Expression *exp = this->expression;
         this->expression = nullptr;
         return exp;
     }

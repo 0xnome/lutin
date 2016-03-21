@@ -83,7 +83,7 @@ void Programme::afficher()
     return;
 }
 
-bool Programme::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+bool Programme::analyser(TableDesSymboles *tableDesSymboles)
 {
     bool ret = true;
     if (!blocDeclaration->estVide())
@@ -91,12 +91,12 @@ bool Programme::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
         BlocDeclaration *declarationCur;
         declarationCur = blocDeclaration;
 
-        ret = ret && declarationCur->analyser(tableDesSymboles, (Contexte()));
+        ret = ret && declarationCur->analyser(tableDesSymboles);
 
         while (declarationCur->getSuivant() != nullptr)
         {
             declarationCur = declarationCur->getSuivant();
-            ret = ret && declarationCur->analyser(tableDesSymboles, (Contexte()));
+            ret = ret && declarationCur->analyser(tableDesSymboles);
         }
     }
 
@@ -105,12 +105,12 @@ bool Programme::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
         BlocInstruction *instructionCur;
         instructionCur = blocInstruction;
 
-        ret = ret && instructionCur->analyser(tableDesSymboles, (Contexte()));
+        ret = ret && instructionCur->analyser(tableDesSymboles);
 
         while (instructionCur->getSuivant() != nullptr)
         {
             instructionCur = instructionCur->getSuivant();
-            ret = ret && instructionCur->analyser(tableDesSymboles, (Contexte()));
+            ret = ret && instructionCur->analyser(tableDesSymboles);
         }
     }
     return ret;

@@ -180,7 +180,7 @@ bool Automate::analyserProgramme()
 {
     LOG(INFO) << "ANALYSE DU PROGRAMME";
     TableDesSymboles table;
-    bool ret = this->programme->analyser(&table, (Contexte()));
+    bool ret = this->programme->analyser(&table);
     std::unordered_map<std::string, Entree *> mapEntree = table.getListVariablesNonUtilisees();
 
     for (auto it = mapEntree.begin(); it != mapEntree.end(); it++)

@@ -18,7 +18,7 @@ public:
 
     virtual void executer(TableDesSymboles *tableDesSymboles);
 
-    virtual bool analyser(TableDesSymboles *tableDesSymboles, Contexte contexte);
+    virtual bool analyser(TableDesSymboles *tableDesSymboles);
 
     int eval(TableDesSymboles *tablesDesSymboles);
 

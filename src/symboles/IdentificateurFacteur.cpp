@@ -45,7 +45,7 @@ Expression *IdentificateurFacteur::simplifier(TableDesSymboles *tableDesSymboles
     return nullptr;
 }
 
-bool IdentificateurFacteur::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+bool IdentificateurFacteur::analyser(TableDesSymboles *tableDesSymboles)
 {
     bool ret = true;
 

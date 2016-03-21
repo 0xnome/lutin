@@ -60,12 +60,13 @@ void ExpressionMult::optimiser(TableDesSymboles *tableDesSymboles)
 }
 
 
-Expression *ExpressionMult::simplifier(TableDesSymboles *tableDesSymboles) {
+Expression *ExpressionMult::simplifier(TableDesSymboles *tableDesSymboles)
+{
     return nullptr;
 }
 
-bool ExpressionMult::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+bool ExpressionMult::analyser(TableDesSymboles *tableDesSymboles)
 {
-    return this->facteur->analyser(tableDesSymboles, (Contexte())) &&
-           this->terme->analyser(tableDesSymboles, (Contexte()));
+    return this->facteur->analyser(tableDesSymboles) &
+           this->terme->analyser(tableDesSymboles);
 }

@@ -15,7 +15,7 @@ public:
 
     virtual void afficher();
 
-    virtual bool analyser(TableDesSymboles *tableDesSymboles, Contexte contexte);
+    virtual bool analyser(TableDesSymboles *tableDesSymboles);
 
     virtual void optimiser();
 

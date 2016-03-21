@@ -42,7 +42,7 @@ bool InstructionAffectation::estVide()
     return this->expression == nullptr && this->id == nullptr;
 }
 
-bool InstructionAffectation::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+bool InstructionAffectation::analyser(TableDesSymboles *tableDesSymboles)
 {
     bool ret = true;
     if (tableDesSymboles->estDeclaree(id->getNom()))
@@ -64,7 +64,7 @@ bool InstructionAffectation::analyser(TableDesSymboles *tableDesSymboles, Contex
         " n'a pas été déclarée." << std::endl;
         ret = false;
     }
-    ret = ret && expression->analyser(tableDesSymboles, contexte);
+    ret = ret && expression->analyser(tableDesSymboles);
 
     return ret;
 }

@@ -45,11 +45,9 @@ void ExpressionParenthesee::optimiser(TableDesSymboles *tableDesSymboles) {
     }
 }
 
-bool ExpressionParenthesee::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+bool ExpressionParenthesee::analyser(TableDesSymboles *tableDesSymboles)
 {
-    contexte.validerDeclaration = true;
-    contexte.validerInitialisation = true;
-    return this->expression->analyser(tableDesSymboles, contexte);
+    return this->expression->analyser(tableDesSymboles);
 }
 
 Expression *ExpressionParenthesee::simplifier(TableDesSymboles *tableDesSymboles) {
