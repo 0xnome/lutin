@@ -30,13 +30,20 @@ void ExpressionDiv::executer(TableDesSymboles *tableDesSymboles)
 int ExpressionDiv::eval(TableDesSymboles *tablesDesSymboles)
 {
     LOG(INFO) << "ExpressionDiv::eval";
-    if (facteur->eval(tablesDesSymboles) == 0)
+    if (analyser(tablesDesSymboles, Contexte()))
     {
-        std::cerr << "Erreur lors de l'execution, ligne " << facteur->getLigne() << ":" << facteur->getColonne() <<
-        " : Division par 0." << std::endl;
+
+        if (facteur->eval(tablesDesSymboles) == 0)
+        {
+            std::cerr << "Erreur lors de l'execution, ligne " << facteur->getLigne() << ":" << facteur->getColonne() <<
+            " : Division par 0." << std::endl;
+            exit(1);
+        }
+        return terme->eval(tablesDesSymboles) / facteur->eval(tablesDesSymboles);
+    } else
+    {
         exit(1);
     }
-    return terme->eval(tablesDesSymboles) / facteur->eval(tablesDesSymboles);
 }
 
 bool ExpressionDiv::estConstante(TableDesSymboles *tableDesSymboles)
@@ -73,7 +80,7 @@ bool ExpressionDiv::analyser(TableDesSymboles *tableDesSymboles, Contexte contex
     ret = ret && terme->analyser(tableDesSymboles, contexte);
     ret = ret && facteur->analyser(tableDesSymboles, contexte);
 
-    if (!ret)
+    if (ret)
     {
         if ((int) *facteur == CONSTANTE_NUMERIQUE)
         {

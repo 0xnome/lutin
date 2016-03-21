@@ -7,35 +7,42 @@ Programme::Programme(BlocDeclaration *blocDeclaration, BlocInstruction *blocInst
                                                                                            blocDeclaration(
                                                                                                    blocDeclaration),
                                                                                            blocInstruction(
-                                                                                                   blocInstruction) {
+                                                                                                   blocInstruction)
+{
 }
 
-Programme::~Programme() {
+Programme::~Programme()
+{
     delete this->blocDeclaration;
     delete this->blocInstruction;
 }
 
-void Programme::executer(TableDesSymboles *tableDesSymboles) {
+void Programme::executer(TableDesSymboles *tableDesSymboles)
+{
     LOG(INFO) << "Programme::execute";
-    if (!blocDeclaration->estVide()) {
+    if (!blocDeclaration->estVide())
+    {
         BlocDeclaration *declarationCur;
         declarationCur = blocDeclaration;
 
         declarationCur->executer(tableDesSymboles);
 
-        while (declarationCur->getSuivant() != nullptr) {
+        while (declarationCur->getSuivant() != nullptr)
+        {
             declarationCur = declarationCur->getSuivant();
             declarationCur->executer(tableDesSymboles);
         }
     }
 
-    if (!blocInstruction->estVide()) {
+    if (!blocInstruction->estVide())
+    {
         BlocInstruction *instructionCur;
         instructionCur = blocInstruction;
 
         instructionCur->executer(tableDesSymboles);
 
-        while (instructionCur->getSuivant() != nullptr) {
+        while (instructionCur->getSuivant() != nullptr)
+        {
             instructionCur = instructionCur->getSuivant();
             instructionCur->executer(tableDesSymboles);
         }
@@ -43,27 +50,32 @@ void Programme::executer(TableDesSymboles *tableDesSymboles) {
     return;
 }
 
-void Programme::afficher() {
+void Programme::afficher()
+{
 
-    if (!blocDeclaration->estVide()) {
+    if (!blocDeclaration->estVide())
+    {
         BlocDeclaration *declarationCur;
         declarationCur = blocDeclaration;
 
         declarationCur->afficher();
 
-        while (declarationCur->getSuivant() != nullptr) {
+        while (declarationCur->getSuivant() != nullptr)
+        {
             declarationCur = declarationCur->getSuivant();
             declarationCur->afficher();
         }
     }
 
-    if (!blocInstruction->estVide()) {
+    if (!blocInstruction->estVide())
+    {
         BlocInstruction *instructionCur;
         instructionCur = blocInstruction;
 
         instructionCur->afficher();
 
-        while (instructionCur->getSuivant() != nullptr) {
+        while (instructionCur->getSuivant() != nullptr)
+        {
             instructionCur = instructionCur->getSuivant();
             instructionCur->afficher();
         }
@@ -73,43 +85,48 @@ void Programme::afficher() {
 
 bool Programme::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
 {
+    bool ret = true;
     if (!blocDeclaration->estVide())
     {
-        BlocDeclaration* declarationCur;
+        BlocDeclaration *declarationCur;
         declarationCur = blocDeclaration;
 
-        declarationCur->analyser(tableDesSymboles, (Contexte()));
+        ret = ret && declarationCur->analyser(tableDesSymboles, (Contexte()));
 
-        while(declarationCur->getSuivant() != nullptr){
+        while (declarationCur->getSuivant() != nullptr)
+        {
             declarationCur = declarationCur->getSuivant();
-            declarationCur->analyser(tableDesSymboles, (Contexte()));
+            ret = ret && declarationCur->analyser(tableDesSymboles, (Contexte()));
         }
     }
 
     if (!blocInstruction->estVide())
     {
-        BlocInstruction* instructionCur;
+        BlocInstruction *instructionCur;
         instructionCur = blocInstruction;
 
-        instructionCur->analyser(tableDesSymboles, (Contexte()));
+        ret = ret && instructionCur->analyser(tableDesSymboles, (Contexte()));
 
-        while(instructionCur->getSuivant() != nullptr){
+        while (instructionCur->getSuivant() != nullptr)
+        {
             instructionCur = instructionCur->getSuivant();
-            instructionCur->analyser(tableDesSymboles, (Contexte()));
+            ret = ret && instructionCur->analyser(tableDesSymboles, (Contexte()));
         }
     }
-    return true;
+    return ret;
 }
 
-void Programme::optimiser(TableDesSymboles *tableDesSymboles) {
+void Programme::optimiser(TableDesSymboles *tableDesSymboles)
+{
     if (!blocDeclaration->estVide())
     {
-        BlocDeclaration* declarationCur;
+        BlocDeclaration *declarationCur;
         declarationCur = blocDeclaration;
 
         declarationCur->executer(tableDesSymboles);
 
-        while(declarationCur->getSuivant() != nullptr){
+        while (declarationCur->getSuivant() != nullptr)
+        {
             declarationCur = declarationCur->getSuivant();
             declarationCur->executer(tableDesSymboles);
         }
@@ -117,12 +134,13 @@ void Programme::optimiser(TableDesSymboles *tableDesSymboles) {
 
     if (!blocInstruction->estVide())
     {
-        BlocInstruction* instructionCur;
+        BlocInstruction *instructionCur;
         instructionCur = blocInstruction;
 
         instructionCur->optimiser(tableDesSymboles);
 
-        while(instructionCur->getSuivant() != nullptr){
+        while (instructionCur->getSuivant() != nullptr)
+        {
             instructionCur = instructionCur->getSuivant();
             instructionCur->optimiser(tableDesSymboles);
         }

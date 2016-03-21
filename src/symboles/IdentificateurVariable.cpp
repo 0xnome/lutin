@@ -66,16 +66,6 @@ bool IdentificateurVariable::analyser(TableDesSymboles *tableDesSymboles, Contex
         }
     }
 
-    if (contexte.validerInitialisation)
-    {
-        if (!tableDesSymboles->estInitialisee(this->id->getNom()))
-        {
-            std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : " <<
-            this->id->getNom() << " n'est pas initialisée." << std::endl;
-            ret = false;
-        }
-    }
-
     return ret;
 }
 

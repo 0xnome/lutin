@@ -24,7 +24,7 @@ public:
 
     void decalage(EtatInterface* nouvelEtat, Symbole* symboleActuel);
 
-    void analyserProgramme();
+    bool analyserProgramme();
 
     void optimiserProgramme();
 

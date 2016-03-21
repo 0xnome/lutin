@@ -101,8 +101,9 @@ int main(int argc, char **argv)
 
         if (automate.programmeEstCharge())
         {
+            bool analyse_ok = true;
             if (analyse)
-                automate.analyserProgramme();
+                analyse_ok = automate.analyserProgramme();
 
             if (optimize)
                 automate.optimiserProgramme();
@@ -110,8 +111,11 @@ int main(int argc, char **argv)
             if (program)
                 automate.afficherProgramme();
 
-            if (execute)
+            if (execute && analyse_ok)
                 automate.executerProgramme();
+            else
+                std::cerr << "L'analyse du programme indique que le programme ne doit pas etre executé." << std::endl;
+
 
         } else
         {

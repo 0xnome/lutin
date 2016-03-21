@@ -32,7 +32,8 @@ IdTerminal *IdentificateurFacteur::getId() const
 
 bool IdentificateurFacteur::estConstante(TableDesSymboles *tableDesSymboles)
 {
-    return tableDesSymboles->estConstante(id->getNom()) || (tableDesSymboles->estInitialisee(id->getNom()) && tableDesSymboles->getValeur(id->getNom()) != nullptr);
+    return tableDesSymboles->estConstante(id->getNom()) ||
+           (tableDesSymboles->estInitialisee(id->getNom()) && tableDesSymboles->getValeur(id->getNom()) != nullptr);
 }
 
 void IdentificateurFacteur::optimiser(TableDesSymboles *tableDesSymboles)
@@ -46,11 +47,25 @@ Expression *IdentificateurFacteur::simplifier(TableDesSymboles *tableDesSymboles
 
 bool IdentificateurFacteur::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
 {
-    contexte.validerDeclaration = true;
-    contexte.validerInitialisation = true;
+    bool ret = true;
 
-    // on dit que la variable a été utilisée
-    tableDesSymboles->setVariableUtilisee(id->getNom());
+    if (!tableDesSymboles->estDeclaree(this->id->getNom()))
+    {
+        std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : '" <<
+        this->id->getNom() << "' n'est pas déclarée." << std::endl;
+        ret = false;
+    } else
+    {
+        if (!tableDesSymboles->estInitialisee(this->id->getNom()))
+        {
+            std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : " <<
+            this->id->getNom() << " n'est pas initialisée." << std::endl;
+            ret = false;
+        } else
+        {
+            tableDesSymboles->setVariableUtilisee(id->getNom());
+        }
+    }
 
-    return this->id->analyser(tableDesSymboles, contexte);
+    return ret;
 }
