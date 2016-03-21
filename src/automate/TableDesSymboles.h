@@ -44,6 +44,11 @@ public:
     void setConstanteUtilisee(std::string nomConstante);
 
     /**
+     * Indique qu'une variable est initialisée
+     */
+    void setInitialisee(std::string nom);
+
+    /**
      * Renvoie la valeur de la variable
      */
     int getVariableValeur(std::string nomVariable) const;

@@ -153,9 +153,11 @@ bool TableDesSymboles::estConstante(std::string nom) const
 }
 
 
-
-
-
-
-
-
+void TableDesSymboles::setInitialisee(std::string nom)
+{
+    auto iterator = this->tableVariables.find(nom);
+    if (iterator != this->tableVariables.end())
+    {
+        iterator->second->estInitialisee = true;
+    }
+}
