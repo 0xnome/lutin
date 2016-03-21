@@ -61,7 +61,7 @@ void IdentificateurVariable::analyser(TableDesSymboles *tableDesSymboles)
     }
 }
 
-void IdentificateurVariable::optimiser()
+void IdentificateurVariable::optimiser(TableDesSymboles *tableDesSymboles)
 {
     //TODO
 }

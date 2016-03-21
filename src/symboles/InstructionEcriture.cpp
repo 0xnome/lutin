@@ -39,5 +39,6 @@ void InstructionEcriture::analyser(TableDesSymboles *tableDesSymboles)
     expression->analyser(tableDesSymboles);
 }
 
-void InstructionEcriture::optimiser()
-{ }
+void InstructionEcriture::optimiser(TableDesSymboles *symboles) {
+    expression->optimiser(symboles);
+}

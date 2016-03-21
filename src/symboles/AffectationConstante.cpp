@@ -66,7 +66,7 @@ void AffectationConstante::analyser(TableDesSymboles *tableDesSymboles)
 
 }
 
-void AffectationConstante::optimiser()
+void AffectationConstante::optimiser(TableDesSymboles *tableDesSymboles)
 {
 }
 

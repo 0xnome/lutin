@@ -211,7 +211,7 @@ public:
     /**
      * Transfome le programme et le simplfie (option -o)
     */
-    virtual void optimiser()
+    virtual void optimiser(TableDesSymboles *tableDesSymboles)
     { }
 
 

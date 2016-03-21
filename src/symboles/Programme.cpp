@@ -101,7 +101,32 @@ void Programme::analyser(TableDesSymboles *tableDesSymboles)
     return;
 }
 
-void Programme::optimiser() {
+void Programme::optimiser(TableDesSymboles *tableDesSymboles) {
+    if (!blocDeclaration->estVide())
+    {
+        BlocDeclaration* declarationCur;
+        declarationCur = blocDeclaration;
+
+        declarationCur->executer(tableDesSymboles);
+
+        while(declarationCur->getSuivant() != nullptr){
+            declarationCur = declarationCur->getSuivant();
+            declarationCur->executer(tableDesSymboles);
+        }
+    }
+
+    if (!blocInstruction->estVide())
+    {
+        BlocInstruction* instructionCur;
+        instructionCur = blocInstruction;
+
+        instructionCur->optimiser(tableDesSymboles);
+
+        while(instructionCur->getSuivant() != nullptr){
+            instructionCur = instructionCur->getSuivant();
+            instructionCur->optimiser(tableDesSymboles);
+        }
+    }
     return;
 }
 

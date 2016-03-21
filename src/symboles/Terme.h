@@ -17,6 +17,8 @@ public:
 
     virtual int eval(TableDesSymboles *tablesDesSymboles) = 0;
 
+    virtual bool estConstante(TableDesSymboles *tableDesSymboles) = 0;
+
     virtual ~Terme()
     { }
 

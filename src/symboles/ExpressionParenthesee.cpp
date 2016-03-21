@@ -33,3 +33,7 @@ void ExpressionParenthesee::analyser(TableDesSymboles *tableDesSymboles)
 {
     this->expression->analyser(tableDesSymboles);
 }
+
+bool ExpressionParenthesee::estConstante(TableDesSymboles *tableDesSymboles) {
+    return this->expression->estConstante(tableDesSymboles);
+}

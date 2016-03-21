@@ -45,3 +45,6 @@ bool DeclarationVariable::estVide() {
     return identificateurVariable == nullptr;
 }
 
+void DeclarationVariable::optimiser(TableDesSymboles *symboles) {
+    // TODO
+}

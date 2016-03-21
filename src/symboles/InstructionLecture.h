@@ -9,17 +9,19 @@ class InstructionLecture : public BlocInstruction {
 public:
     InstructionLecture(IdTerminal *idTerminal);
 
-    void afficher();
+    virtual void afficher();
 
-    void executer(TableDesSymboles *tableDesSymboles);
+    virtual void executer(TableDesSymboles *tableDesSymboles);
 
     virtual void analyser(TableDesSymboles *tableDesSymboles);
 
-    void optimiser();
+    virtual void optimiser();
 
     ~InstructionLecture();
 
-    bool estVide();
+    virtual bool estVide();
+
+    virtual void optimiser(TableDesSymboles*);
 
 protected:
     IdTerminal *id;

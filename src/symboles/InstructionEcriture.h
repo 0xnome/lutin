@@ -11,15 +11,15 @@ public:
 
     ~InstructionEcriture();
 
-    void afficher();
+    virtual void afficher();
 
-    void executer(TableDesSymboles *tableDesSymboles);
+    virtual void executer(TableDesSymboles *tableDesSymboles);
 
-    bool estVide();
+    virtual bool estVide();
 
-    void analyser(TableDesSymboles *tableDesSymboles);
+    virtual void analyser(TableDesSymboles *tableDesSymboles);
 
-    void optimiser();
+    virtual void optimiser(TableDesSymboles*);
 protected:
     Expression *expression;
 

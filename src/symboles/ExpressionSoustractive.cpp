@@ -37,3 +37,7 @@ void ExpressionSoustractive::analyser(TableDesSymboles *tableDesSymboles)
     this->terme->analyser(tableDesSymboles);
     this->expression->analyser(tableDesSymboles);
 }
+
+bool ExpressionSoustractive::estConstante(TableDesSymboles *tableDesSymboles) {
+    return this->terme->estConstante(tableDesSymboles) && this-> expression->estConstante(tableDesSymboles);
+}

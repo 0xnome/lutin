@@ -19,6 +19,9 @@ public:
 
     virtual void analyser(TableDesSymboles *tableDesSymboles);
 
+    virtual bool estConstante(TableDesSymboles *tableDesSymboles);
+
+
 protected:
     Expression *expression;
 };

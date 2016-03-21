@@ -20,7 +20,10 @@ public:
 
     virtual void analyser(TableDesSymboles *tableDesSymboles);
 
+    virtual bool estConstante(TableDesSymboles *tableDesSymboles);
+
     IdTerminal *getId() const;
+
 protected:
     IdTerminal *id;
 };

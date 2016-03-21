@@ -23,6 +23,7 @@ public:
 
     virtual void analyser(TableDesSymboles *tableDesSymboles);
 
+    virtual bool estConstante(TableDesSymboles *tableDesSymboles);
 protected:
     Facteur *facteur;
 
