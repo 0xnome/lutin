@@ -32,7 +32,7 @@ void ExpressionParenthesee::executer(TableDesSymboles *tableDesSymboles)
 
 void ExpressionParenthesee::analyser(TableDesSymboles *tableDesSymboles)
 {
-    this->expression->analyser(tableDesSymboles);
+    this->expression->analyser(tableDesSymboles, (Contexte()));
 }
 
 bool ExpressionParenthesee::estConstante(TableDesSymboles *tableDesSymboles) {

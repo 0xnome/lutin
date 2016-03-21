@@ -35,7 +35,7 @@ void IdentificateurVariable::executer(TableDesSymboles *tableDesSymboles)
     tableDesSymboles->ajouterVariable(this->id->getNom(), this->id->getLigne(), this->id->getColonne());
 }
 
-void IdentificateurVariable::analyser(TableDesSymboles *tableDesSymboles)
+bool IdentificateurVariable::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
 {
 
     if (tableDesSymboles->estDeclaree(this->id->getNom()))

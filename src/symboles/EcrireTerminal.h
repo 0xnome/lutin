@@ -12,8 +12,6 @@ public:
     ~EcrireTerminal()
     { }
 
-    virtual void analyser(TableDesSymboles *tableDesSymboles)
-    { };
 };
 
 

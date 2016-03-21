@@ -71,18 +71,18 @@ void Programme::afficher() {
     return;
 }
 
-void Programme::analyser(TableDesSymboles *tableDesSymboles)
+bool Programme::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
 {
     if (!blocDeclaration->estVide())
     {
         BlocDeclaration* declarationCur;
         declarationCur = blocDeclaration;
 
-        declarationCur->analyser(tableDesSymboles);
+        declarationCur->analyser(tableDesSymboles, (Contexte()));
 
         while(declarationCur->getSuivant() != nullptr){
             declarationCur = declarationCur->getSuivant();
-            declarationCur->analyser(tableDesSymboles);
+            declarationCur->analyser(tableDesSymboles, (Contexte()));
         }
     }
 
@@ -91,14 +91,14 @@ void Programme::analyser(TableDesSymboles *tableDesSymboles)
         BlocInstruction* instructionCur;
         instructionCur = blocInstruction;
 
-        instructionCur->analyser(tableDesSymboles);
+        instructionCur->analyser(tableDesSymboles, (Contexte()));
 
         while(instructionCur->getSuivant() != nullptr){
             instructionCur = instructionCur->getSuivant();
-            instructionCur->analyser(tableDesSymboles);
+            instructionCur->analyser(tableDesSymboles, (Contexte()));
         }
     }
-    return;
+    return true;
 }
 
 void Programme::optimiser(TableDesSymboles *tableDesSymboles) {

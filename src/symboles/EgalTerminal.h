@@ -13,8 +13,6 @@ public:
     ~EgalTerminal()
     { }
 
-    virtual void analyser(TableDesSymboles *tableDesSymboles)
-    { };
 };
 
 

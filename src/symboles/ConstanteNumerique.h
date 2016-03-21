@@ -33,10 +33,8 @@ public:
     void executer(TableDesSymboles *tableDesSymboles)
     { }
 
-    void analyser(TableDesSymboles *tableDesSymboles)
-    { }
-
-    bool estConstante(TableDesSymboles *tableDesSymboles) {
+    bool estConstante(TableDesSymboles *tableDesSymboles)
+    {
         return true;
     }
 

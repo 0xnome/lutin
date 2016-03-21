@@ -12,7 +12,7 @@ public:
     ~MoinsTerminal()
     { }
 
-    virtual void analyser(TableDesSymboles *tableDesSymboles)
+    virtual bool analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
     { };
 };
 

@@ -41,8 +41,8 @@ int ExpressionDiv::eval(TableDesSymboles *tablesDesSymboles)
 
 void ExpressionDiv::analyser(TableDesSymboles *tableDesSymboles)
 {
-    terme->analyser(tableDesSymboles);
-    facteur->analyser(tableDesSymboles);
+    terme->analyser(tableDesSymboles, (Contexte()));
+    facteur->analyser(tableDesSymboles, (Contexte()));
 
     if ((int) *facteur == CONSTANTE_NUMERIQUE)
     {

@@ -40,7 +40,7 @@ void AffectationConstante::afficher()
     this->num->afficher();
 }
 
-void AffectationConstante::analyser(TableDesSymboles *tableDesSymboles)
+bool AffectationConstante::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
 {
 
     if (tableDesSymboles->estDeclaree(id->getNom()))
@@ -50,11 +50,13 @@ void AffectationConstante::analyser(TableDesSymboles *tableDesSymboles)
             std::cout << "Erreur ligne " << id->getLigne() << ":" << this->id->getColonne() << " : "
             << id->getNom() << " est déjà déclarée à la ligne " << tableDesSymboles->getEntree(id->getNom())->ligne
             << std::endl;
+            return false;
         } else
         {
             std::cout << "Erreur ligne " << id->getLigne() << ":" << this->id->getColonne() << " : " << id->getNom() <<
             " est déjà déclarée en tant que variable à la ligne " << tableDesSymboles->getEntree(id->getNom())->ligne
             << std::endl;
+            return false;
         }
 
     } else
@@ -63,7 +65,7 @@ void AffectationConstante::analyser(TableDesSymboles *tableDesSymboles)
                                            this->num->getValue());
     }
 
-
+    return true;
 }
 
 void AffectationConstante::optimiser(TableDesSymboles *tableDesSymboles)

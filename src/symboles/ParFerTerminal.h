@@ -10,9 +10,6 @@ public:
     { }
 
     ~ParFerTerminal() { }
-
-    virtual void analyser(TableDesSymboles *tableDesSymboles)
-    { };
 };
 
 #endif //LUTIN_PARFERTERMINAL_H

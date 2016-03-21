@@ -211,7 +211,10 @@ public:
      *  - mots clefs interdits (var, const, ecrire et lire) à réflechir...
      *  - modification d'une constante [OK]
      */
-    virtual void analyser(TableDesSymboles *tableDesSymboles) = 0;
+    virtual bool analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+    {
+        return true;
+    }
 
 
     /**

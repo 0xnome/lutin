@@ -161,17 +161,17 @@ void TableDesSymboles::resetTableDesSymboles()
 {
     for (auto it = this->tableConstantes.begin(); it != this->tableConstantes.end(); ++it)
     {
-        delete it->second;
         delete it->second->valeur;
         it->second->valeur = nullptr;
+        delete it->second;
     }
 
 
     for (auto it = this->tableVariables.begin(); it != this->tableVariables.end(); ++it)
     {
-        delete it->second;
         delete it->second->valeur;
         it->second->valeur = nullptr;
+        delete it->second;
     }
 
     // TODO : faire des clear

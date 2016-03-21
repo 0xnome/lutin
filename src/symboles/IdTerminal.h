@@ -23,8 +23,6 @@ public:
         return nom;
     }
 
-    virtual void analyser(TableDesSymboles *tableDesSymboles)
-    { };
 
 protected:
     std::string nom;

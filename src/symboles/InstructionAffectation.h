@@ -5,7 +5,8 @@
 #include "Expression.h"
 #include "IdTerminal.h"
 
-class InstructionAffectation : public BlocInstruction {
+class InstructionAffectation : public BlocInstruction
+{
 public:
     InstructionAffectation(Expression *expression, IdTerminal *idTerminal);
 
@@ -15,9 +16,9 @@ public:
 
     virtual void afficher();
 
-    virtual void analyser(TableDesSymboles* tableDesSymboles);
+    virtual bool analyser(TableDesSymboles *tableDesSymboles, Contexte contexte);
 
-    virtual void optimiser(TableDesSymboles* tableDesSymboles);
+    virtual void optimiser(TableDesSymboles *tableDesSymboles);
 
     virtual bool estVide();
 

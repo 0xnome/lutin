@@ -154,7 +154,7 @@ void Automate::afficherProgramme() {
 void Automate::analyserProgramme() {
     LOG(INFO) << "ANALYSE DU PROGRAMME";
     TableDesSymboles table;
-    this->programme->analyser(&table);
+    this->programme->analyser(&table, nullptr);
 }
 
 void Automate::optimiserProgramme() {
