@@ -30,10 +30,6 @@ int ExpressionParenthesee::eval(TableDesSymboles *tablesDesSymboles)
 void ExpressionParenthesee::executer(TableDesSymboles *tableDesSymboles)
 { }
 
-void ExpressionParenthesee::analyser(TableDesSymboles *tableDesSymboles)
-{
-    this->expression->analyser(tableDesSymboles, (Contexte()));
-}
 
 bool ExpressionParenthesee::estConstante(TableDesSymboles *tableDesSymboles) {
     return this->expression->estConstante(tableDesSymboles);
@@ -47,7 +43,13 @@ void ExpressionParenthesee::optimiser(TableDesSymboles *tableDesSymboles) {
         delete this->expression;
         this->expression = expr;
     }
+}
 
+bool ExpressionParenthesee::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+{
+    contexte.validerDeclaration = true;
+    contexte.validerInitialisation = true;
+    return this->expression->analyser(tableDesSymboles, contexte);
 }
 
 Expression *ExpressionParenthesee::simplifier(TableDesSymboles *tableDesSymboles) {

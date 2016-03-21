@@ -65,7 +65,7 @@ enum SYMBOLES
 
 struct Contexte
 {
-    bool validerInitilisation;
+    bool validerInitialisation;
     bool validerDeclaration;
 };
 

@@ -37,30 +37,46 @@ void IdentificateurVariable::executer(TableDesSymboles *tableDesSymboles)
 
 bool IdentificateurVariable::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
 {
-    if (tableDesSymboles->estDeclaree(this->id->getNom()))
+    bool ret = true;
+    if (contexte.validerDeclaration)
     {
-        if (tableDesSymboles->estConstante(id->getNom()))
+        if (tableDesSymboles->estDeclaree(this->id->getNom()))
         {
-            std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : " <<
-            this->id->getNom() <<
-            " est déjà déclarée en tant que constante à la ligne " << tableDesSymboles->getEntree(id->getNom())->ligne
-            << ":" << tableDesSymboles->getEntree(id->getNom())->colonne
-            << "." << std::endl;
-            return false;
+            if (tableDesSymboles->estConstante(id->getNom()))
+            {
+                std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : " <<
+                this->id->getNom() <<
+                " est déjà déclarée en tant que constante à la ligne " <<
+                tableDesSymboles->getEntree(id->getNom())->ligne
+                << ":" << tableDesSymboles->getEntree(id->getNom())->colonne
+                << "." << std::endl;
+                ret = false;
+            } else
+            {
+                std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : " <<
+                this->id->getNom() <<
+                " est déjà déclarée à la ligne " << tableDesSymboles->getEntree(id->getNom())->ligne << ":"
+                << tableDesSymboles->getEntree(id->getNom())->colonne
+                << "." << std::endl;
+                ret = false;
+            }
         } else
         {
-            std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : " <<
-            this->id->getNom() <<
-            " est déjà déclarée à la ligne " << tableDesSymboles->getEntree(id->getNom())->ligne << ":"
-            << tableDesSymboles->getEntree(id->getNom())->colonne
-            << "." << std::endl;
-            return false;
+            tableDesSymboles->ajouterVariable(this->id->getNom(), this->id->getLigne(), this->id->getColonne());
         }
-    } else
-    {
-        tableDesSymboles->ajouterVariable(this->id->getNom(), this->id->getLigne(), this->id->getColonne());
     }
-    return true;
+
+    if (contexte.validerInitialisation)
+    {
+        if (!tableDesSymboles->estInitialisee(this->id->getNom()))
+        {
+            std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : " <<
+            this->id->getNom() << " n'est pas initialisée." << std::endl;
+            ret = false;
+        }
+    }
+
+    return ret;
 }
 
 void IdentificateurVariable::optimiser(TableDesSymboles *tableDesSymboles)

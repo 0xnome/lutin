@@ -54,10 +54,12 @@ void DeclarationVariable::optimiser(TableDesSymboles *symboles)
 bool DeclarationVariable::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
 {
     bool ret = true;
+    contexte.validerDeclaration = true;
+    contexte.validerInitialisation = false;
     IdentificateurVariable *id_courant = this->identificateurVariable;
     while (id_courant != nullptr)
     {
-        ret = ret && id_courant->analyser(tableDesSymboles, (Contexte()));
+        ret = ret && id_courant->analyser(tableDesSymboles, contexte);
         id_courant = id_courant->getSuivant();
     }
     return ret;

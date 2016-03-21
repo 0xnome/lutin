@@ -25,24 +25,32 @@ void IdentificateurFacteur::executer(TableDesSymboles *tableDesSymboles)
 {
 }
 
-void IdentificateurFacteur::analyser(TableDesSymboles *tableDesSymboles)
-{
-
-}
-
 IdTerminal *IdentificateurFacteur::getId() const
 {
     return id;
 }
 
-bool IdentificateurFacteur::estConstante(TableDesSymboles *tableDesSymboles) {
+bool IdentificateurFacteur::estConstante(TableDesSymboles *tableDesSymboles)
+{
     return tableDesSymboles->estConstante(id->getNom()) || (tableDesSymboles->estInitialisee(id->getNom()) && tableDesSymboles->getValeur(id->getNom()) != nullptr);
 }
 
-void IdentificateurFacteur::optimiser(TableDesSymboles *tableDesSymboles) {
+void IdentificateurFacteur::optimiser(TableDesSymboles *tableDesSymboles)
+{
     return;
 }
 
 Expression *IdentificateurFacteur::simplifier(TableDesSymboles *tableDesSymboles) {
     return nullptr;
+}
+
+bool IdentificateurFacteur::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+{
+    contexte.validerDeclaration = true;
+    contexte.validerInitialisation = true;
+
+    // on dit que la variable a été utilisée
+    tableDesSymboles->setVariableUtilisee(id->getNom());
+
+    return this->id->analyser(tableDesSymboles, contexte);
 }

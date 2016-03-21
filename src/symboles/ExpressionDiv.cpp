@@ -69,40 +69,48 @@ bool ExpressionDiv::analyser(TableDesSymboles *tableDesSymboles, Contexte contex
 {
     bool ret = true;
     contexte.validerDeclaration = true;
-    contexte.validerInitilisation = true;
+    contexte.validerInitialisation = true;
     ret = ret && terme->analyser(tableDesSymboles, contexte);
     ret = ret && facteur->analyser(tableDesSymboles, contexte);
 
-    if ((int) *facteur == CONSTANTE_NUMERIQUE)
+    if (!ret)
     {
-        ConstanteNumerique *constante = (ConstanteNumerique *) facteur;
-        if (constante->eval(tableDesSymboles) == 0)
+        if ((int) *facteur == CONSTANTE_NUMERIQUE)
         {
-            std::cerr << "Erreur ligne " << facteur->getLigne() << ":" << facteur->getColonne() <<
-            " : Division par 0." << std::endl;
+            ConstanteNumerique *constante = (ConstanteNumerique *) facteur;
+            if (constante->eval(tableDesSymboles) == 0)
+            {
+                std::cerr << "Erreur ligne " << facteur->getLigne() << ":" << facteur->getColonne() <<
+                " : Division par 0." << std::endl;
+            }
+            ret = false;
         }
-        ret = false;
+
+        if ((int) *facteur == IDENTIFICATEUR_FACTEUR)
+        {
+            IdentificateurFacteur *idfacteur = (IdentificateurFacteur *) facteur;
+            if (tableDesSymboles->estConstante(idfacteur->getId()->getNom())
+                && tableDesSymboles->getValeur(idfacteur->getId()->getNom()) == 0)
+            {
+                std::cerr << "Erreur ligne " << facteur->getLigne() << ":" << facteur->getColonne() <<
+                " : Division par la constante '" <<
+                idfacteur->getId()->getNom() << "' qui vaut 0." << std::endl;
+                ret = false;
+            }
+            else if (tableDesSymboles->getValeur(idfacteur->getId()->getNom()) != nullptr)
+            {
+                if (*(tableDesSymboles->getValeur(idfacteur->getId()->getNom())) == 0)
+                {
+                    std::cerr << "Erreur ligne " << facteur->getLigne() << ":" << facteur->getColonne() <<
+                    " : Division par la variable '" <<
+                    idfacteur->getId()->getNom() << "' qui vaut 0." << std::endl;
+                    ret = false;
+                }
+            }
+        }
     }
 
-    if ((int) *facteur == IDENTIFICATEUR_FACTEUR)
-    {
-        IdentificateurFacteur *idfacteur = (IdentificateurFacteur *) facteur;
-        if (tableDesSymboles->estConstante(idfacteur->getId()->getNom())
-            && tableDesSymboles->getValeur(idfacteur->getId()->getNom()) == 0)
-        {
-            std::cerr << "Erreur ligne " << facteur->getLigne() << ":" << facteur->getColonne() <<
-            " : Division par la constante '" <<
-            idfacteur->getId()->getNom() << "' qui vaut 0." << std::endl;
-            ret = false;
-        }
-        else if (tableDesSymboles->getValeur(idfacteur->getId()->getNom()) == 0)
-        {
-            std::cerr << "Erreur ligne " << facteur->getLigne() << ":" << facteur->getColonne() <<
-            " : Division par la variable '" <<
-            idfacteur->getId()->getNom() << "' qui vaut 0." << std::endl;
-            ret = false;
-        }
-    }
+
     return ret;
 }
 

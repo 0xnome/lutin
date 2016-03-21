@@ -53,6 +53,8 @@ void DeclarationConstante::optimiser(TableDesSymboles *symboles)
 bool DeclarationConstante::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
 {
     bool ret = true;
+    contexte.validerDeclaration = true;
+    contexte.validerInitialisation = false;
     AffectationConstante *id_courant = this->affectationConstante;
     while (id_courant != nullptr)
     {

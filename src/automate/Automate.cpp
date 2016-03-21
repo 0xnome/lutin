@@ -155,6 +155,8 @@ void Automate::analyserProgramme() {
     LOG(INFO) << "ANALYSE DU PROGRAMME";
     TableDesSymboles table;
     this->programme->analyser(&table, (Contexte()));
+    vector<Entree*> vectorEntree = table.getListVariablesNonUtilisees();
+    // TODO : afficher les variables non utilisées
 }
 
 void Automate::optimiserProgramme() {

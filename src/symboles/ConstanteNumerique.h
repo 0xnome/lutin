@@ -33,12 +33,18 @@ public:
     void executer(TableDesSymboles *tableDesSymboles)
     { }
 
+    virtual bool analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+    {
+        return true;
+    };
+
     bool estConstante(TableDesSymboles *tableDesSymboles)
     {
         return true;
     }
 
-    void optimiser(TableDesSymboles* tableDesSymboles){
+    void optimiser(TableDesSymboles *tableDesSymboles)
+    {
         return;
     }
 
