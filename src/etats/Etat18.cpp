@@ -28,7 +28,6 @@ int Etat18::transition(Automate *automate, Symbole *s) {
     }
 
     switch (intS) {
-        // TODO non terminal : EXP, TERME
         case ID_TERMINAL:
             automate->decalage(new Etat31, s);
             return CONTINUE;

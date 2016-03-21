@@ -4,8 +4,17 @@
 
 int Etat14::transition(Automate *automate, Symbole *s) {
     switch (*s) {
+        //suivant de IDS
         case VIRGULE_TERMINAL:
-        case POINT_VIRGULE_TERMINAL: {
+        case POINT_VIRGULE_TERMINAL:
+        //recuperation des erreurs
+        case VAR_TERMINAL:
+        case CONST_TERMINAL:
+        case LIRE_TERMINAL:
+        case ECRIRE_TERMINAL :
+        case ID_TERMINAL:
+        case FIN_PROGRAMME:
+        {
             //On a lu un suivant de IDS
             IdTerminal *id = (IdTerminal *) automate->popSymbole();
             automate->popSymbole(); // pop du VIRGULE_TERMINAL

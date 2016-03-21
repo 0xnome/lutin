@@ -16,6 +16,17 @@ int Etat16::transition(Automate *automate, Symbole *s)
         case MOINS_TERMINAL:
             automate->decalage(new Etat24, s);
             return CONTINUE;
+        //recuperation des erreurs
+        case LIRE_TERMINAL:
+        case ECRIRE_TERMINAL:
+        case ID_TERMINAL:
+        case FIN_PROGRAMME:
+        {
+            Symbole* symboleOublie = new Symbole(POINT_VIRGULE_TERMINAL);
+            automate->pushSymbole(symboleOublie);
+            automate->pushEtat(new Etat44);
+            return CONTINUE;
+        }
         default:
             return ERREUR;
     }

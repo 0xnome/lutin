@@ -12,6 +12,11 @@ int Etat43::transition(Automate *automate, Symbole *s) {
         case MOINS_TERMINAL:
         case PARFER_TERMINAL:
         case POINT_VIRGULE_TERMINAL:
+        //recuperation des erreurs
+        case LIRE_TERMINAL:
+        case ECRIRE_TERMINAL:
+        case ID_TERMINAL:
+        case FIN_PROGRAMME:
         {
           automate->popSymbole(); //parfer
           Expression * expr = (Expression*) automate->popSymbole();
