@@ -1,5 +1,6 @@
 #include <easyloggingpp.h>
 #include "InstructionAffectation.h"
+#include "ConstanteNumerique.h"
 
 using namespace std;
 
@@ -55,5 +56,12 @@ void InstructionAffectation::analyser(TableDesSymboles *tableDesSymboles) {
 
 void InstructionAffectation::optimiser(TableDesSymboles *tableDesSymboles) {
     expression->optimiser(tableDesSymboles);
-    // tableDesSymboles->setVariableValeur(id->getNom(), expression->eval(tableDesSymboles));
+    this->expression->optimiser(tableDesSymboles);
+    if(this->expression->estConstante(tableDesSymboles)){
+        int val = this->expression->eval(tableDesSymboles);
+        Expression *expr = new ConstanteNumerique(new NumTerminal(val, this->expression->getLigne(), this->expression->getColonne()));
+        delete this->expression;
+        this->expression = expr;
+        tableDesSymboles->setVariableValeur(id->getNom(), val);
+    }
 }

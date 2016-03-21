@@ -37,6 +37,6 @@ IdTerminal *IdentificateurFacteur::getId() const
 
 bool IdentificateurFacteur::estConstante(TableDesSymboles *tableDesSymboles) {
     //TODO
-    return false ;
+    return tableDesSymboles->estInitialisee(id->getNom()) && tableDesSymboles->getValeur(id->getNom()) != nullptr;
 }
 

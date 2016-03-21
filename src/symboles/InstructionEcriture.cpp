@@ -1,4 +1,5 @@
 #include "InstructionEcriture.h"
+#include "ConstanteNumerique.h"
 
 using namespace std;
 
@@ -39,6 +40,12 @@ void InstructionEcriture::analyser(TableDesSymboles *tableDesSymboles)
     expression->analyser(tableDesSymboles);
 }
 
-void InstructionEcriture::optimiser(TableDesSymboles *symboles) {
-    expression->optimiser(symboles);
+void InstructionEcriture::optimiser(TableDesSymboles *tableDesSymboles) {
+    this->expression->optimiser(tableDesSymboles);
+    if(this->expression->estConstante(tableDesSymboles)){
+        int val = this->expression->eval(tableDesSymboles);
+        Expression *expr = new ConstanteNumerique(new NumTerminal(val, this->expression->getLigne(), this->expression->getColonne()));
+        delete this->expression;
+        this->expression = expr;
+    }
 }

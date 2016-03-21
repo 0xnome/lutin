@@ -62,6 +62,6 @@ void InstructionLecture::analyser(TableDesSymboles *tableDesSymboles)
     tableDesSymboles->setInitialisee(id->getNom());
 }
 
-void InstructionLecture::optimiser(TableDesSymboles *symboles) {
-    //TODO
+void InstructionLecture::optimiser(TableDesSymboles *tableDesSymboles) {
+    tableDesSymboles->setVariableValeur(id->getNom(), nullptr);
 }

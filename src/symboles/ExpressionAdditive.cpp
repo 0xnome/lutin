@@ -42,3 +42,7 @@ void ExpressionAdditive::analyser(TableDesSymboles *tableDesSymboles)
 bool ExpressionAdditive::estConstante(TableDesSymboles *tableDesSymboles) {
     return this->terme->estConstante(tableDesSymboles) && this-> expression->estConstante(tableDesSymboles);
 }
+
+void ExpressionAdditive::optimiser(TableDesSymboles *tableDesSymboles) {
+
+}

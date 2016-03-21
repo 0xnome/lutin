@@ -23,6 +23,8 @@ public:
     virtual void analyser(TableDesSymboles *tableDesSymboles);
 
     virtual bool estConstante(TableDesSymboles *tableDesSymboles);
+
+    virtual void optimiser(TableDesSymboles* tableDesSymboles);
 protected:
 
     Terme *terme;
