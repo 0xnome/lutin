@@ -55,7 +55,7 @@ bool InstructionAffectation::analyser(TableDesSymboles *tableDesSymboles)
             ret = false;
         } else
         {
-            tableDesSymboles->estInitialisee(id->getNom());
+            tableDesSymboles->setInitialisee(id->getNom());
         }
     } else
     {
