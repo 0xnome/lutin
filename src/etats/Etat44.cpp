@@ -1,7 +1,5 @@
 #include "Etat44.h"
 #include "InstructionEcriture.h"
-#include "Expression.h"
-#include "BlocInstruction.h"
 
 int Etat44::transition(Automate *automate, Symbole *s) {
     switch (*s) {

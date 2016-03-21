@@ -1,8 +1,6 @@
 #include "EtatDefaut.h"
-#include "Automate.h"
 #include <fstream>
 #include <sstream>
-#include <vector>
 #include <Etat0.h>
 #include "easyloggingpp.h"
 

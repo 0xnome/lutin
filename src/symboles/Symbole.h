@@ -63,11 +63,6 @@ enum SYMBOLES
     ERREUR_LEXICALE             //37
 };
 
-struct Contexte
-{
-    bool validerInitialisation;
-    bool validerDeclaration;
-};
 
 
 class TableDesSymboles;

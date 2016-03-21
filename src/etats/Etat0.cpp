@@ -1,6 +1,4 @@
 #include <BlocDeclaration.h>
-#include <BlocInstruction.h>
-#include <Programme.h>
 #include <DeclarationConstante.h>
 #include "Etat0.h"
 #include "EtatFin.h"

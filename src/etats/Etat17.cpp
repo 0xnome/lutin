@@ -2,7 +2,6 @@
 #include "Etat17.h"
 #include "Etat37.h"
 #include "Etat38.h"
-#include "Terme.h"
 
 int Etat17::transition(Automate *automate, Symbole *s) {
     switch (*s) {

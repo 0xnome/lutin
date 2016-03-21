@@ -5,7 +5,6 @@
 #include "Etat39.h"
 #include "Etat17.h"
 #include "Etat30.h"
-#include "Etat29.h"
 
 int Etat33::transition(Automate *automate, Symbole *s)
 {

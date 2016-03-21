@@ -1,8 +1,6 @@
 #include "Lexeur.h"
-#include <iostream>
 #include <boost/algorithm/string/regex.hpp>
 #include <boost/algorithm/string/trim.hpp>
-#include <boost/regex.hpp>
 #include <regex>
 #include "easyloggingpp.h"
 
