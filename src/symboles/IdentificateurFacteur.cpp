@@ -41,7 +41,8 @@ void IdentificateurFacteur::optimiser(TableDesSymboles *tableDesSymboles)
     return;
 }
 
-Expression *IdentificateurFacteur::simplifier(TableDesSymboles *tableDesSymboles) {
+Expression *IdentificateurFacteur::simplifier(TableDesSymboles *tableDesSymboles)
+{
     return nullptr;
 }
 
@@ -56,14 +57,13 @@ bool IdentificateurFacteur::analyser(TableDesSymboles *tableDesSymboles)
         ret = false;
     } else
     {
+        tableDesSymboles->setVariableUtilisee(id->getNom());
+
         if (!tableDesSymboles->estInitialisee(this->id->getNom()))
         {
             std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : " <<
             this->id->getNom() << " n'est pas initialisée." << std::endl;
             ret = false;
-        } else
-        {
-            tableDesSymboles->setVariableUtilisee(id->getNom());
         }
     }
 
