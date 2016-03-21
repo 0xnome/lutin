@@ -11,9 +11,6 @@ public:
 
     ~MultTerminal()
     { }
-
-    virtual bool analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
-    { };
 };
 
 #endif //LUTIN_MULTTERMINAL_H

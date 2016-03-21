@@ -67,5 +67,5 @@ bool InstructionLecture::analyser(TableDesSymboles *tableDesSymboles, Contexte c
 }
 
 void InstructionLecture::optimiser(TableDesSymboles *tableDesSymboles) {
-    tableDesSymboles->setVariableValeur(id->getNom(), nullptr);
+    tableDesSymboles->setInitialisee(id->getNom());
 }

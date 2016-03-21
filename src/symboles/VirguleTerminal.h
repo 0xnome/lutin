@@ -12,10 +12,6 @@ public:
 
     ~VirguleTerminal()
     { };
-
-    virtual bool analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
-    { };
-
 };
 
 

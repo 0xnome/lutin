@@ -11,10 +11,6 @@ public:
 
     ~PlusTerminal()
     { }
-
-    virtual bool analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
-    { };
-
 };
 
 #endif //LUTIN_PLUSTERMINAL_H

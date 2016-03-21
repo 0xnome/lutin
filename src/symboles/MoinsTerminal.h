@@ -11,9 +11,6 @@ public:
 
     ~MoinsTerminal()
     { }
-
-    virtual bool analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
-    { };
 };
 
 #endif //LUTIN_MOINSTERMINAL_H

@@ -11,10 +11,6 @@ public:
 
     ~DivTerminal()
     { }
-
-    virtual bool analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
-    { };
-
 };
 
 #endif //LUTIN_DIVTERMINAL_H
