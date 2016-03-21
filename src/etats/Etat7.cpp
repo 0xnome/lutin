@@ -12,6 +12,7 @@ int Etat7::transition(Automate *automate, Symbole *s) {
         case NUM_TERMINAL:
         case PAROUV_TERMINAL:
         {
+            automate->erreurSyntaxique(s, "operateur :=");
             AffectTerminal* symboleOublie = new AffectTerminal(s->getLigne(), s->getColonne());
             automate->pushSymbole(symboleOublie);
             automate->pushEtat(new Etat18);

@@ -214,3 +214,10 @@ bool Automate::programmeEstCharge()
 {
     return this->programmeCharge;
 }
+
+void Automate::erreurSyntaxique(Symbole* s, std::string symboleManquant)
+{
+    std::cerr << "Erreur syntaxique (" + std::to_string(s->getLigne()) + ":"
+        + std::to_string(s->getColonne()) + ") " + symboleManquant + " attendu" << std::endl;
+}
+

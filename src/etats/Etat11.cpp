@@ -19,6 +19,7 @@ int Etat11::transition(Automate *automate, Symbole *s) {
         case ECRIRE_TERMINAL :
         case FIN_PROGRAMME:
         {
+            automate->erreurSyntaxique(s, "symbole ;");
             PointVirguleTerminal* symboleOublie = new PointVirguleTerminal(s->getLigne(), s->getColonne());
             automate->pushSymbole(symboleOublie);
             automate->pushEtat(new Etat12);
@@ -28,6 +29,7 @@ int Etat11::transition(Automate *automate, Symbole *s) {
         // recuperation  des erreurs - oublie de virgule
         case ID_TERMINAL:
         {
+            automate->erreurSyntaxique(s, "symbole ,");
             VirguleTerminal* symboleOublie = new VirguleTerminal(s->getLigne(), s->getColonne());
             automate->pushSymbole(symboleOublie);
             automate->pushEtat(new Etat13);

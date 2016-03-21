@@ -10,6 +10,7 @@ int Etat9::transition(Automate *automate, Symbole *s) {
         // recuperation des erreurs
         case NUM_TERMINAL:
         {
+            automate->erreurSyntaxique(s, "operateur =");
             EgalTerminal* symboleOublie = new EgalTerminal(s->getLigne(), s->getColonne());
             automate->pushSymbole(symboleOublie);
             automate->pushEtat(new Etat21);

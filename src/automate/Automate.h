@@ -48,6 +48,8 @@ public:
 
     EtatInterface * etatCourant()const ;
 
+    void erreurSyntaxique(Symbole* s, std::string symboleManquant);
+
     ~Automate();
 
 private:

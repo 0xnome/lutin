@@ -13,6 +13,7 @@ int Etat15::transition(Automate *automate, Symbole *s) {
         case ECRIRE_TERMINAL:
         case ID_TERMINAL:
         {
+            automate->erreurSyntaxique(s, "symbole ;");
             PointVirguleTerminal* symboleOublie = new PointVirguleTerminal(s->getLigne(), s->getColonne());
             automate->pushSymbole(symboleOublie);
             automate->pushEtat(new Etat22);
