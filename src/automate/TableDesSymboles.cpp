@@ -20,7 +20,14 @@ bool TableDesSymboles::estUtiliseeVariable(string nomVariable) const
 
 bool TableDesSymboles::estInitialisee(string nomVariable) const
 {
-    return this->tableVariables.find(nomVariable)->second->estInitialisee;
+    if(estConstante(nomVariable))
+    {
+        return true;
+    }
+    else
+    {
+        return this->tableVariables.find(nomVariable)->second->estInitialisee;
+    }
 }
 
 bool TableDesSymboles::estDeclaree(string nomVariable) const
