@@ -47,7 +47,8 @@ void InstructionAffectation::analyser(TableDesSymboles *tableDesSymboles)
     {
         if (tableDesSymboles->estConstante(id->getNom()))
         {
-            std::cout << "Erreur ligne " << this->id->getLigne() << " : " << this->id->getNom() <<
+            std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : " <<
+            this->id->getNom() <<
             " est une constante et ne peut pas être modifiée." << std::endl;
         } else
         {
@@ -55,7 +56,8 @@ void InstructionAffectation::analyser(TableDesSymboles *tableDesSymboles)
         }
     } else
     {
-        std::cout << "Erreur ligne " << this->id->getLigne() << " : " << this->id->getNom() <<
+        std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : " <<
+        this->id->getNom() <<
         " n'a pas été déclarée." << std::endl;
     }
 

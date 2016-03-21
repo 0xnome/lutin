@@ -73,7 +73,7 @@ void Programme::afficher() {
 
 void Programme::analyser(TableDesSymboles *tableDesSymboles)
 {
-    if (blocDeclaration->estVide())
+    if (!blocDeclaration->estVide())
     {
         BlocDeclaration* declarationCur;
         declarationCur = blocDeclaration;
@@ -86,7 +86,7 @@ void Programme::analyser(TableDesSymboles *tableDesSymboles)
         }
     }
 
-    if (blocInstruction->estVide())
+    if (!blocInstruction->estVide())
     {
         BlocInstruction* instructionCur;
         instructionCur = blocInstruction;

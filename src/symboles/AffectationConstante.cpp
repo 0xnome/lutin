@@ -47,12 +47,12 @@ void AffectationConstante::analyser(TableDesSymboles *tableDesSymboles)
     {
         if (tableDesSymboles->estConstante(id->getNom()))
         {
-            std::cout << "Erreur ligne " << id->getLigne() << " : " << id->getNom() <<
-            " est déjà déclarée à la ligne " << tableDesSymboles->getEntree(id->getNom())->ligne
+            std::cout << "Erreur ligne " << id->getLigne() << ":" << this->id->getColonne() << " : "
+            << id->getNom() << " est déjà déclarée à la ligne " << tableDesSymboles->getEntree(id->getNom())->ligne
             << std::endl;
         } else
         {
-            std::cout << "Erreur ligne " << id->getLigne() << " : " << id->getNom() <<
+            std::cout << "Erreur ligne " << id->getLigne() << ":" << this->id->getColonne() << " : " << id->getNom() <<
             " est déjà déclarée en tant que variable à la ligne " << tableDesSymboles->getEntree(id->getNom())->ligne
             << std::endl;
         }

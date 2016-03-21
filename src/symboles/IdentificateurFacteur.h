@@ -20,6 +20,7 @@ public:
 
     virtual void analyser(TableDesSymboles *tableDesSymboles);
 
+    IdTerminal *getId() const;
 protected:
     IdTerminal *id;
 };
