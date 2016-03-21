@@ -155,8 +155,12 @@ void Automate::analyserProgramme() {
     LOG(INFO) << "ANALYSE DU PROGRAMME";
     TableDesSymboles table;
     this->programme->analyser(&table, (Contexte()));
-    vector<Entree*> vectorEntree = table.getListVariablesNonUtilisees();
-    // TODO : afficher les variables non utilisées
+    std::unordered_map<std::string, Entree *> mapEntree= table.getListVariablesNonUtilisees();
+
+    for(auto it=mapEntree.begin(); it != mapEntree.end(); it++){
+        cerr<<"Warining : la variable \""<<it->first<<"\" déclarée à "<<it->second->ligne<<":"<<it->second->colonne
+                <<" n'est pas utilisée."<<endl;
+    }
 }
 
 void Automate::optimiserProgramme() {
