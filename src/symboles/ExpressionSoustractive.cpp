@@ -65,7 +65,17 @@ void ExpressionSoustractive::optimiser(TableDesSymboles *tableDesSymboles)
     }
 }
 
-Expression *ExpressionSoustractive::simplifier(TableDesSymboles *tableDesSymboles)
-{
+
+Expression *ExpressionSoustractive::simplifier(TableDesSymboles* tableDesSymboles) {
+    if(this->expression->estConstante(tableDesSymboles) && this->expression->eval(tableDesSymboles) == ExpressionSoustractive::ELEMENT_NEUTRE){
+        Expression* exp = (Expression*) this->terme;
+        this->terme = nullptr;
+        return exp;
+    }
+    else if(this->terme->estConstante(tableDesSymboles) && this->terme->eval(tableDesSymboles) == ExpressionSoustractive::ELEMENT_NEUTRE){
+        Expression* exp = this->expression;
+        this->expression = nullptr;
+        return exp;
+    }
     return nullptr;
 }

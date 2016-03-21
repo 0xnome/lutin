@@ -117,7 +117,17 @@ bool ExpressionDiv::analyser(TableDesSymboles *tableDesSymboles)
     return ret;
 }
 
-Expression *ExpressionDiv::simplifier(TableDesSymboles *tableDesSymboles)
-{
+
+Expression *ExpressionDiv::simplifier(TableDesSymboles* tableDesSymboles) {
+    if(this->facteur->estConstante(tableDesSymboles) && this->facteur->eval(tableDesSymboles) == ExpressionDiv::ELEMENT_NEUTRE){
+        Expression* exp = (Expression*) this->terme;
+        this->terme = nullptr;
+        return exp;
+    }
+    else if(this->terme->estConstante(tableDesSymboles) && this->terme->eval(tableDesSymboles) == ExpressionDiv::ELEMENT_NEUTRE){
+        Expression* exp = this->facteur;
+        this->facteur = nullptr;
+        return exp;
+    }
     return nullptr;
 }

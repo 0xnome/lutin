@@ -60,8 +60,17 @@ void ExpressionMult::optimiser(TableDesSymboles *tableDesSymboles)
 }
 
 
-Expression *ExpressionMult::simplifier(TableDesSymboles *tableDesSymboles)
-{
+Expression *ExpressionMult::simplifier(TableDesSymboles* tableDesSymboles) {
+    if(this->facteur->estConstante(tableDesSymboles) && this->facteur->eval(tableDesSymboles) == ExpressionMult::ELEMENT_NEUTRE){
+        Expression* exp = (Expression*) this->terme;
+        this->terme = nullptr;
+        return exp;
+    }
+    else if(this->terme->estConstante(tableDesSymboles) && this->terme->eval(tableDesSymboles) == ExpressionMult::ELEMENT_NEUTRE){
+        Expression* exp = this->facteur;
+        this->facteur = nullptr;
+        return exp;
+    }
     return nullptr;
 }
 
