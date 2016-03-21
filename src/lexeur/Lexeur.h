@@ -24,6 +24,7 @@ private:
     Symbole* current;
     std::vector<std::string> lignesDuFichier;
     std::vector<unsigned long> index ;
+    std::size_t pos ;
 };
 
 #endif //LUTIN_LEXEUR_H

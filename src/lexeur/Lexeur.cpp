@@ -58,6 +58,7 @@ Lexeur::Lexeur(std::vector<std::string> lignesDuFichier) {
     colonne = 0;
     lectureTerminee = false;
     current = nullptr;
+    pos = 0 ;
     shift();
 }
 
@@ -81,11 +82,13 @@ void Lexeur::shift() {
     if (colonne > lignesDuProgramme.at(ligne).size() - 1) {
         ligne++;
         colonne = 0;
+        pos = 0 ;
     }
 
     while (index.at(ligne) == 0) {
         ligne++;
         colonne = 0;
+        pos = 0 ;
         if (ligne == lignesDuProgramme.size()) {
             lectureTerminee = true;
             LOG(INFO) << "Fin Programme" << endl;
@@ -96,100 +99,104 @@ void Lexeur::shift() {
 
     colonne++;
 
+    unsigned long colonne_o = lignesDuFichier.at(ligne).find(lignesDuProgramme.at(ligne).at(colonne - 1), pos) + 1 ;
+
+    pos = colonne_o + lignesDuProgramme.at(ligne).at(colonne - 1).size()-1 ;
+
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_var)) {
         LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_var";
-        current = new VarTerminal(ligne + 1, colonne);
+        current = new VarTerminal(ligne + 1, colonne_o);
         return;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_const)) {
         LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_const";
-        current = new ConstTerminal(ligne + 1, colonne);
+        current = new ConstTerminal(ligne + 1, colonne_o);
         return;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_lire)) {
         LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_lire";
-        current = new LireTerminal(ligne + 1, colonne);
+        current = new LireTerminal(ligne + 1, colonne_o);
         return;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_ecrire)) {
         LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_ecrire";
-        current = new EcrireTerminal(ligne + 1, colonne);
+        current = new EcrireTerminal(ligne + 1, colonne_o);
         return;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_num)) {
         LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_num";
-        current = new NumTerminal(std::stoi(lignesDuProgramme.at(ligne).at(colonne - 1)), ligne + 1, colonne);
+        current = new NumTerminal(std::stoi(lignesDuProgramme.at(ligne).at(colonne - 1)), ligne + 1, colonne_o);
         return;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_id)) {
         LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_id";
-        current = new IdTerminal(lignesDuProgramme.at(ligne).at(colonne - 1), ligne + 1, colonne);
+        current = new IdTerminal(lignesDuProgramme.at(ligne).at(colonne - 1), ligne + 1, colonne_o);
         return;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_add)) {
         LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_add";
-        current = new PlusTerminal(ligne + 1, colonne);
+        current = new PlusTerminal(ligne + 1, colonne_o);
         return;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_sous)) {
         LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_sous";
-        current = new MoinsTerminal(ligne + 1, colonne);
+        current = new MoinsTerminal(ligne + 1, colonne_o);
         return;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_div)) {
         LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_div";
-        current = new DivTerminal(ligne + 1, colonne);
+        current = new DivTerminal(ligne + 1, colonne_o);
         return;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_mul)) {
         LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_mul";
-        current = new MultTerminal(ligne + 1, colonne);
+        current = new MultTerminal(ligne + 1, colonne_o);
         return;
 
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_vir)) {
         LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_vir";
-        current = new VirguleTerminal(ligne + 1, colonne);
+        current = new VirguleTerminal(ligne + 1, colonne_o);
         return;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_pv)) {
         LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_pv";
-        current = new PointVirguleTerminal(ligne + 1, colonne);
+        current = new PointVirguleTerminal(ligne + 1, colonne_o);
         return;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_eg)) {
         LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_eg";
-        current = new EgalTerminal(ligne + 1, colonne);
+        current = new EgalTerminal(ligne + 1, colonne_o);
         return;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_opaff)) {
         LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_opaff";
-        current = new AffectTerminal(ligne + 1, colonne);
+        current = new AffectTerminal(ligne + 1, colonne_o);
         return;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_po)) {
         LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_po";
-        current = new ParOuvTerminal(ligne + 1, colonne);
+        current = new ParOuvTerminal(ligne + 1, colonne_o);
         return;
     }
 
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_pf)) {
         LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_pf";
-        current = new ParFerTerminal(ligne + 1, colonne);
+        current = new ParFerTerminal(ligne + 1, colonne_o);
         return;
     }
 
@@ -197,7 +204,7 @@ void Lexeur::shift() {
     LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : erreur lexicale";
 
     current = new ErreurLexicale("Erreur lexicale (" + std::to_string(ligne + 1) + ":" + std::to_string(
-            lignesDuFichier.at(ligne).find(lignesDuProgramme.at(ligne).at(colonne - 1)) + 1) + ") caractere " +
+            colonne_o) + ") caractere " +
                                  lignesDuProgramme.at(ligne).at(colonne - 1));
     cout << *((ErreurLexicale *) current)->getMessage();
 }
