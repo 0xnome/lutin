@@ -1,3 +1,4 @@
+#include <easyloggingpp.h>
 #include "ExpressionSoustractive.h"
 
 using namespace std;
@@ -22,5 +23,6 @@ void ExpressionSoustractive::executer(TableDesSymboles *tableDesSymboles) {
 }
 
 int ExpressionSoustractive::eval(TableDesSymboles *tablesDesSymboles) {
-    return (terme->eval(tablesDesSymboles) - expression->eval(tablesDesSymboles));
+    LOG(INFO) << "ExpressionSoustractive::eval";
+    return (expression->eval(tablesDesSymboles) - terme->eval(tablesDesSymboles));
 }

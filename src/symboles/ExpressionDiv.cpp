@@ -1,3 +1,4 @@
+#include <easyloggingpp.h>
 #include "ExpressionDiv.h"
 #include "ConstanteNumerique.h"
 
@@ -28,7 +29,8 @@ void ExpressionDiv::executer(TableDesSymboles *tableDesSymboles)
 int ExpressionDiv::eval(TableDesSymboles *tablesDesSymboles)
 {
     // TODO facteur doit etre différent de 0 !!!
-    return facteur->eval(tablesDesSymboles) / terme->eval(tablesDesSymboles);
+    LOG(INFO) << "ExpressionDiv::eval";
+    return terme->eval(tablesDesSymboles) / facteur->eval(tablesDesSymboles);
 }
 
 void ExpressionDiv::analyser(TableDesSymboles *tableDesSymboles)

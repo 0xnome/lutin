@@ -1,3 +1,4 @@
+#include <easyloggingpp.h>
 #include "InstructionAffectation.h"
 
 using namespace std;
@@ -31,7 +32,8 @@ void InstructionAffectation::afficher()
 
 void InstructionAffectation::executer(TableDesSymboles *tableDesSymboles)
 {
-    tableDesSymboles->setVariableValeur(id->getNom(), expression->eval(nullptr));
+    LOG(INFO) << "InstructionAffectation::executer";
+    tableDesSymboles->setVariableValeur(id->getNom(), expression->eval(tableDesSymboles));
 }
 
 bool InstructionAffectation::estVide()

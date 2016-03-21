@@ -1,3 +1,4 @@
+#include <easyloggingpp.h>
 #include "ExpressionAdditive.h"
 
 using namespace std;
@@ -22,6 +23,7 @@ void ExpressionAdditive::afficher()
 
 int ExpressionAdditive::eval(TableDesSymboles *tablesDesSymboles)
 {
+    LOG(INFO) << "ExpressionAdditive::eval";
     return (terme->eval(tablesDesSymboles) + expression->eval(tablesDesSymboles));
 }
 
