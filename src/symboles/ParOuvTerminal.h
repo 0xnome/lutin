@@ -9,7 +9,11 @@ public:
     ParOuvTerminal(unsigned ligne, unsigned colonne) : Symbole(PAROUV_TERMINAL, ligne, colonne)
     { }
 
-    ~ParOuvTerminal() { }
+    ~ParOuvTerminal()
+    { }
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles)
+    { };
 };
 
 #endif //LUTIN_PAROUVTERMINAL_H

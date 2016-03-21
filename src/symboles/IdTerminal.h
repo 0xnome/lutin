@@ -10,15 +10,21 @@ public:
     IdTerminal(std::string nom, unsigned ligne, unsigned colonne) : Symbole(ID_TERMINAL, ligne, colonne), nom(nom)
     { };
 
-    ~IdTerminal() { }
+    ~IdTerminal()
+    { }
 
-    void afficher() {
+    void afficher()
+    {
         std::cout << nom;
     }
 
-    std::string getNom() {
+    std::string getNom()
+    {
         return nom;
     }
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles)
+    { };
 
 protected:
     std::string nom;

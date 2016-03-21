@@ -9,7 +9,12 @@ public:
     PlusTerminal(unsigned ligne, unsigned colonne) : Symbole(PLUS_TERMINAL, ligne, colonne)
     { }
 
-    ~PlusTerminal() { }
+    ~PlusTerminal()
+    { }
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles)
+    { };
+
 };
 
 #endif //LUTIN_PLUSTERMINAL_H

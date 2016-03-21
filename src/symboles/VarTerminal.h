@@ -10,8 +10,14 @@ public:
     VarTerminal(unsigned ligne, unsigned colonne) : Symbole(VAR_TERMINAL, ligne, colonne)
     { }
 
-    ~VarTerminal() { }
+    ~VarTerminal()
+    { }
+
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles)
+    { };
 };
 
 
 #endif //LUTIN_VARTERMINAL_H
+

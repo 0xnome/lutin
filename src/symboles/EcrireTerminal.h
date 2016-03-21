@@ -9,7 +9,11 @@ public:
     EcrireTerminal(unsigned ligne, unsigned colonne) : Symbole(ECRIRE_TERMINAL, ligne, colonne)
     { }
 
-    ~EcrireTerminal() { }
+    ~EcrireTerminal()
+    { }
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles)
+    { };
 };
 
 

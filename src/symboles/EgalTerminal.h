@@ -10,7 +10,11 @@ public:
     EgalTerminal(unsigned ligne, unsigned colonne) : Symbole(EGAL_TERMINAL, ligne, colonne)
     { }
 
-    ~EgalTerminal() { }
+    ~EgalTerminal()
+    { }
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles)
+    { };
 };
 
 

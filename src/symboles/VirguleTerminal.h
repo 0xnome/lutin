@@ -10,7 +10,12 @@ public:
     VirguleTerminal(unsigned ligne, unsigned colonne) : Symbole(VIRGULE_TERMINAL, ligne, colonne)
     { };
 
-    ~VirguleTerminal() { };
+    ~VirguleTerminal()
+    { };
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles)
+    { };
+
 };
 
 

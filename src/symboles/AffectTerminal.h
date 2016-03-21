@@ -11,6 +11,10 @@ public:
 
     ~AffectTerminal()
     { }
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles)
+    { };
+
 };
 
 #endif //LUTIN_AFFECTTERMINAL_H

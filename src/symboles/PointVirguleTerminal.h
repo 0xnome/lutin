@@ -12,6 +12,9 @@ public:
 
     ~PointVirguleTerminal()
     { }
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles)
+    { };
 };
 
 

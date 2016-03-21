@@ -9,7 +9,11 @@ public:
     MultTerminal(unsigned ligne, unsigned colonne) : Symbole(MULT_TERMINAL, ligne, colonne)
     { }
 
-    ~MultTerminal() { }
+    ~MultTerminal()
+    { }
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles)
+    { };
 };
 
 #endif //LUTIN_MULTTERMINAL_H

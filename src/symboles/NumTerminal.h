@@ -23,6 +23,9 @@ public:
         return value;
     }
 
+    virtual void analyser(TableDesSymboles *tableDesSymboles)
+    { };
+
 protected:
     int value;
 };
