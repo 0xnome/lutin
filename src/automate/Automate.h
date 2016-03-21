@@ -65,7 +65,6 @@ private:
 
     int pas();
 
-    TableDesSymboles tableDesSymboles;
 };
 
 

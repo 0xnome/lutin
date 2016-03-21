@@ -1,5 +1,6 @@
 #include <easyloggingpp.h>
 #include "ExpressionSoustractive.h"
+#include "ConstanteNumerique.h"
 
 using namespace std;
 
@@ -40,4 +41,21 @@ void ExpressionSoustractive::analyser(TableDesSymboles *tableDesSymboles)
 
 bool ExpressionSoustractive::estConstante(TableDesSymboles *tableDesSymboles) {
     return this->terme->estConstante(tableDesSymboles) && this-> expression->estConstante(tableDesSymboles);
+}
+
+void ExpressionSoustractive::optimiser(TableDesSymboles *tableDesSymboles) {
+    this->expression->optimiser(tableDesSymboles);
+    if(this->expression->estConstante(tableDesSymboles)){
+        int val = this->expression->eval(tableDesSymboles);
+        Expression *expr = new ConstanteNumerique(new NumTerminal(val, this->expression->getLigne(), this->expression->getColonne()));
+        delete this->expression;
+        this->expression = expr;
+    }
+    this->terme->optimiser(tableDesSymboles);
+    if(this->terme->estConstante(tableDesSymboles)){
+        int val = this->terme->eval(tableDesSymboles);
+        Terme *ter = new ConstanteNumerique(new NumTerminal(val, this->terme->getLigne(), this->terme->getColonne()));
+        delete this->terme;
+        this->terme = ter;
+    }
 }

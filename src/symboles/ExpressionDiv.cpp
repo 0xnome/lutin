@@ -76,3 +76,20 @@ void ExpressionDiv::analyser(TableDesSymboles *tableDesSymboles)
 bool ExpressionDiv::estConstante(TableDesSymboles *tableDesSymboles) {
     return this->facteur->estConstante(tableDesSymboles) && this->terme->estConstante(tableDesSymboles);
 }
+
+void ExpressionDiv::optimiser(TableDesSymboles *tableDesSymboles) {
+    this->facteur->optimiser(tableDesSymboles);
+    if(this->facteur->estConstante(tableDesSymboles)){
+        int val = this->facteur->eval(tableDesSymboles);
+        Facteur *fact = new ConstanteNumerique(new NumTerminal(val, this->facteur->getLigne(), this->facteur->getColonne()));
+        delete this->facteur;
+        this->facteur = fact;
+    }
+    this->terme->optimiser(tableDesSymboles);
+    if(this->terme->estConstante(tableDesSymboles)){
+        int val = this->terme->eval(tableDesSymboles);
+        Terme *ter = new ConstanteNumerique(new NumTerminal(val, this->terme->getLigne(), this->terme->getColonne()));
+        delete this->terme;
+        this->terme = ter;
+    }
+}

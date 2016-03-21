@@ -40,6 +40,10 @@ public:
         return true;
     }
 
+    void optimiser(TableDesSymboles* tableDesSymboles){
+        return;
+    }
+
 protected:
     NumTerminal *valeur;
 };

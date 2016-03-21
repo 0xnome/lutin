@@ -153,17 +153,20 @@ void Automate::afficherProgramme() {
 
 void Automate::analyserProgramme() {
     LOG(INFO) << "ANALYSE DU PROGRAMME";
-    this->programme->analyser(&this->tableDesSymboles);
+    TableDesSymboles table;
+    this->programme->analyser(&table);
 }
 
 void Automate::optimiserProgramme() {
     LOG(INFO) << "OPTIMISATION DU PROGRAMME";
-    this->programme->optimiser(&this->tableDesSymboles);
+    TableDesSymboles table;
+    this->programme->optimiser(&table);
 }
 
 void Automate::executerProgramme() {
     LOG(DEBUG) << "EXECUTION DU PROGRAMME";
-    this->programme->executer(&this->tableDesSymboles);
+    TableDesSymboles table;
+    this->programme->executer(&table);
 }
 
 bool Automate::programmeEstCharge() {
