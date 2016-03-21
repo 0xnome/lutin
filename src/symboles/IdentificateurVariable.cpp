@@ -37,7 +37,6 @@ void IdentificateurVariable::executer(TableDesSymboles *tableDesSymboles)
 
 bool IdentificateurVariable::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
 {
-
     if (tableDesSymboles->estDeclaree(this->id->getNom()))
     {
         if (tableDesSymboles->estConstante(id->getNom()))
@@ -47,6 +46,7 @@ bool IdentificateurVariable::analyser(TableDesSymboles *tableDesSymboles, Contex
             " est déjà déclarée en tant que constante à la ligne " << tableDesSymboles->getEntree(id->getNom())->ligne
             << ":" << tableDesSymboles->getEntree(id->getNom())->colonne
             << "." << std::endl;
+            return false;
         } else
         {
             std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : " <<
@@ -54,11 +54,13 @@ bool IdentificateurVariable::analyser(TableDesSymboles *tableDesSymboles, Contex
             " est déjà déclarée à la ligne " << tableDesSymboles->getEntree(id->getNom())->ligne << ":"
             << tableDesSymboles->getEntree(id->getNom())->colonne
             << "." << std::endl;
+            return false;
         }
     } else
     {
         tableDesSymboles->ajouterVariable(this->id->getNom(), this->id->getLigne(), this->id->getColonne());
     }
+    return true;
 }
 
 void IdentificateurVariable::optimiser(TableDesSymboles *tableDesSymboles)
