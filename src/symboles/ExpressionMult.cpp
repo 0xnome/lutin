@@ -59,3 +59,7 @@ void ExpressionMult::optimiser(TableDesSymboles *tableDesSymboles) {
         this->terme = ter;
     }
 }
+
+Expression *ExpressionMult::simplifier(TableDesSymboles *tableDesSymboles) {
+    return nullptr;
+}

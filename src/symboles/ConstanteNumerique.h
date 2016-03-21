@@ -42,6 +42,10 @@ public:
         return;
     }
 
+    virtual Expression* simplifier(TableDesSymboles* tableDesSymboles){
+        return nullptr;
+    }
+
 protected:
     NumTerminal *valeur;
 };

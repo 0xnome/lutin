@@ -66,3 +66,7 @@ void ExpressionSoustractive::optimiser(TableDesSymboles *tableDesSymboles)
         this->terme = ter;
     }
 }
+
+Expression *ExpressionSoustractive::simplifier(TableDesSymboles *tableDesSymboles) {
+    return nullptr;
+}

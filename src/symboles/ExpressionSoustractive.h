@@ -4,6 +4,7 @@
 
 #include "Expression.h"
 #include "Terme.h"
+#include "IdentificateurFacteur.h"
 
 class ExpressionSoustractive : public Expression
 {
@@ -25,11 +26,14 @@ public:
 
     virtual void optimiser(TableDesSymboles* tableDesSymboles);
 
+    virtual Expression* simplifier(TableDesSymboles* tableDesSymboles);
+
 protected:
     Terme *terme;
 
     Expression *expression;
 
+    static const unsigned ELEMENT_NEUTRE = 0;
 };
 
 

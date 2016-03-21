@@ -49,3 +49,7 @@ void ExpressionParenthesee::optimiser(TableDesSymboles *tableDesSymboles) {
     }
 
 }
+
+Expression *ExpressionParenthesee::simplifier(TableDesSymboles *tableDesSymboles) {
+    return nullptr;
+}

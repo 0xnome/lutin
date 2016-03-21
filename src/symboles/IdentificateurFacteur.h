@@ -24,8 +24,10 @@ public:
 
     virtual void optimiser(TableDesSymboles* tableDesSymboles);
 
-    IdTerminal *getId() const;
+    virtual Expression* simplifier(TableDesSymboles* tableDesSymboles);
 
+
+    IdTerminal *getId() const;
 protected:
     IdTerminal *id;
 };

@@ -42,3 +42,7 @@ bool IdentificateurFacteur::estConstante(TableDesSymboles *tableDesSymboles) {
 void IdentificateurFacteur::optimiser(TableDesSymboles *tableDesSymboles) {
     return;
 }
+
+Expression *IdentificateurFacteur::simplifier(TableDesSymboles *tableDesSymboles) {
+    return nullptr;
+}

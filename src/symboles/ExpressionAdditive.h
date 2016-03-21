@@ -25,12 +25,15 @@ public:
     virtual bool estConstante(TableDesSymboles *tableDesSymboles);
 
     virtual void optimiser(TableDesSymboles* tableDesSymboles);
+
+    virtual Expression* simplifier(TableDesSymboles* tableDesSymboles);
 protected:
 
     Terme *terme;
 
     Expression *expression;
 
+    static const unsigned ELEMENT_NEUTRE = 0;
 };
 
 

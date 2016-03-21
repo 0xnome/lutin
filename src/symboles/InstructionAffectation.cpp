@@ -79,4 +79,11 @@ void InstructionAffectation::optimiser(TableDesSymboles *tableDesSymboles) {
         this->expression = expr;
         tableDesSymboles->setVariableValeur(id->getNom(), val);
     }
+    else{
+        Expression *exp = this->expression->simplifier(tableDesSymboles);
+        if(exp != nullptr){
+            delete this->expression;
+            this->expression = exp;
+        }
+    }
 }

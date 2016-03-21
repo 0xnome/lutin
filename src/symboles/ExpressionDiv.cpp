@@ -105,3 +105,7 @@ bool ExpressionDiv::analyser(TableDesSymboles *tableDesSymboles, Contexte contex
     }
     return ret;
 }
+
+Expression *ExpressionDiv::simplifier(TableDesSymboles *tableDesSymboles) {
+    return nullptr;
+}

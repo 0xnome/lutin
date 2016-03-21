@@ -23,6 +23,8 @@ public:
 
     virtual bool estConstante(TableDesSymboles *tableDesSymboles) = 0;
 
+    virtual Expression *simplifier(TableDesSymboles* tableDesSymboles) = 0;
+
     virtual ~Expression() { };
 
     int identifiantStatique() {
@@ -39,3 +41,4 @@ protected:
 
 
 #endif //LUTIN_EXPRESSION_H
+

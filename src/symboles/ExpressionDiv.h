@@ -25,6 +25,8 @@ public:
 
     virtual void optimiser(TableDesSymboles* tableDesSymboles);
 
+    virtual Expression* simplifier(TableDesSymboles* tableDesSymboles);
+
 protected:
 
     Terme *terme;

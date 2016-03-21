@@ -26,10 +26,16 @@ public:
     virtual bool estConstante(TableDesSymboles *tableDesSymboles);
 
     virtual void optimiser(TableDesSymboles* tableDesSymboles);
+
+    virtual Expression* simplifier(TableDesSymboles* tableDesSymboles);
 protected:
     Facteur *facteur;
 
     Terme *terme;
+
+    static const unsigned ELEMENT_NEUTRE = 1;
+
+    static const unsigned ELEMENT_ABSORBANT = 0;
 };
 
 

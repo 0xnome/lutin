@@ -66,3 +66,17 @@ void ExpressionAdditive::optimiser(TableDesSymboles *tableDesSymboles)
         this->terme = ter;
     }
 }
+
+Expression *ExpressionAdditive::simplifier(TableDesSymboles* tableDesSymboles) {
+    if(this->expression->estConstante(tableDesSymboles) && this->expression->eval(tableDesSymboles) == ExpressionAdditive::ELEMENT_NEUTRE){
+        Expression* exp = (Expression*) this->terme;
+        this->terme = nullptr;
+        return exp;
+    }
+    else if(this->terme->estConstante(tableDesSymboles) && this->terme->eval(tableDesSymboles) == ExpressionAdditive::ELEMENT_NEUTRE){
+        Expression* exp = this->expression;
+        this->expression = nullptr;
+        return exp;
+    }
+    return nullptr;
+}
