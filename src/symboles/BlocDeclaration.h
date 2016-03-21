@@ -29,7 +29,7 @@ public:
 
     virtual void analyser(TableDesSymboles *tableDesSymboles) = 0;
 
-    virtual void optimiser() = 0;
+    virtual void optimiser(TableDesSymboles *tableDesSymboles) = 0;
 
     virtual bool estVide() = 0;
 

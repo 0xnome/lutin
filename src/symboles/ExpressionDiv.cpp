@@ -72,3 +72,7 @@ void ExpressionDiv::analyser(TableDesSymboles *tableDesSymboles)
         }
     }
 }
+
+bool ExpressionDiv::estConstante(TableDesSymboles *tableDesSymboles) {
+    return this->facteur->estConstante(tableDesSymboles) && this->terme->estConstante(tableDesSymboles);
+}

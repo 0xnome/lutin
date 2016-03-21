@@ -18,7 +18,7 @@ public:
 
     virtual void analyser(TableDesSymboles *tableDesSymboles);
 
-    virtual void optimiser();
+    virtual void optimiser(TableDesSymboles *tableDesSymboles);
 
     void setSuivant(AffectationConstante *suivant);
 

@@ -17,7 +17,7 @@ public:
 
     virtual void analyser(TableDesSymboles* tableDesSymboles);
 
-    virtual void optimiser();
+    virtual void optimiser(TableDesSymboles* tableDesSymboles);
 
     virtual bool estVide();
 

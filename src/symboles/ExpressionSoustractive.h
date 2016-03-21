@@ -20,6 +20,7 @@ public:
 
     int eval(TableDesSymboles *tablesDesSymboles);
 
+    virtual bool estConstante(TableDesSymboles *tableDesSymboles);
 protected:
     Terme *terme;
 

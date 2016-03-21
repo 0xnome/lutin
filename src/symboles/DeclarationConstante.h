@@ -21,6 +21,8 @@ public:
 
     virtual bool estVide();
 
+    virtual void optimiser(TableDesSymboles*);
+
 protected:
     AffectationConstante *affectationConstante;
 

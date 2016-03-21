@@ -38,3 +38,7 @@ void ExpressionAdditive::analyser(TableDesSymboles *tableDesSymboles)
     terme->analyser(tableDesSymboles);
     expression->analyser(tableDesSymboles);
 }
+
+bool ExpressionAdditive::estConstante(TableDesSymboles *tableDesSymboles) {
+    return this->terme->estConstante(tableDesSymboles) && this-> expression->estConstante(tableDesSymboles);
+}

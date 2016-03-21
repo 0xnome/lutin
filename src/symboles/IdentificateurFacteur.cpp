@@ -34,3 +34,9 @@ IdTerminal *IdentificateurFacteur::getId() const
 {
     return id;
 }
+
+bool IdentificateurFacteur::estConstante(TableDesSymboles *tableDesSymboles) {
+    //TODO
+    return false ;
+}
+

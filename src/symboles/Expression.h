@@ -18,6 +18,8 @@ public:
 
     virtual void analyser(TableDesSymboles *tableDesSymboles) = 0;
 
+    virtual bool estConstante(TableDesSymboles *tableDesSymboles) = 0;
+
     virtual ~Expression() { };
 
     int identifiantStatique() {

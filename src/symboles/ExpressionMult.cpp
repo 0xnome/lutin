@@ -37,3 +37,7 @@ void ExpressionMult::analyser(TableDesSymboles *tableDesSymboles)
     this->facteur->analyser(tableDesSymboles);
     this->terme->analyser(tableDesSymboles);
 }
+
+bool ExpressionMult::estConstante(TableDesSymboles *tableDesSymboles) {
+    return this->terme->estConstante(tableDesSymboles) && this->facteur->estConstante(tableDesSymboles);
+}

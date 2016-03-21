@@ -36,6 +36,10 @@ public:
     void analyser(TableDesSymboles *tableDesSymboles)
     { }
 
+    bool estConstante(TableDesSymboles *tableDesSymboles) {
+        return true;
+    }
+
 protected:
     NumTerminal *valeur;
 };

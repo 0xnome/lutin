@@ -38,7 +38,7 @@ bool InstructionLecture::estVide()
 
 void InstructionLecture::optimiser()
 {
-
+    return;
 }
 
 void InstructionLecture::analyser(TableDesSymboles *tableDesSymboles)
@@ -60,4 +60,8 @@ void InstructionLecture::analyser(TableDesSymboles *tableDesSymboles)
     }
 
     tableDesSymboles->setInitialisee(id->getNom());
+}
+
+void InstructionLecture::optimiser(TableDesSymboles *symboles) {
+    //TODO
 }

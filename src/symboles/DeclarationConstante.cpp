@@ -42,3 +42,6 @@ bool DeclarationConstante::estVide() {
     return affectationConstante == nullptr;
 }
 
+void DeclarationConstante::optimiser(TableDesSymboles *symboles) {
+    // TODO
+}
