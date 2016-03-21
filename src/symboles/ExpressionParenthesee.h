@@ -17,11 +17,12 @@ public:
 
     virtual void executer(TableDesSymboles *tableDesSymboles);
 
-    virtual void analyser(TableDesSymboles *tableDesSymboles);
+    virtual bool analyser(TableDesSymboles *tableDesSymboles, Contexte contexte);
 
     virtual bool estConstante(TableDesSymboles *tableDesSymboles);
 
     virtual void optimiser(TableDesSymboles* tableDesSymboles);
+
 
 protected:
     Expression *expression;

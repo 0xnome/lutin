@@ -33,29 +33,34 @@ void ExpressionMult::executer(TableDesSymboles *tableDesSymboles)
 
 }
 
-void ExpressionMult::analyser(TableDesSymboles *tableDesSymboles)
+bool ExpressionMult::estConstante(TableDesSymboles *tableDesSymboles)
 {
-    this->facteur->analyser(tableDesSymboles, (Contexte()));
-    this->terme->analyser(tableDesSymboles, (Contexte()));
-}
-
-bool ExpressionMult::estConstante(TableDesSymboles *tableDesSymboles) {
     return this->terme->estConstante(tableDesSymboles) && this->facteur->estConstante(tableDesSymboles);
 }
 
-void ExpressionMult::optimiser(TableDesSymboles *tableDesSymboles) {
+void ExpressionMult::optimiser(TableDesSymboles *tableDesSymboles)
+{
     this->facteur->optimiser(tableDesSymboles);
-    if(this->facteur->estConstante(tableDesSymboles)){
+    if (this->facteur->estConstante(tableDesSymboles))
+    {
         int val = this->facteur->eval(tableDesSymboles);
-        Facteur *fact = new ConstanteNumerique(new NumTerminal(val, this->facteur->getLigne(), this->facteur->getColonne()));
+        Facteur *fact = new ConstanteNumerique(
+                new NumTerminal(val, this->facteur->getLigne(), this->facteur->getColonne()));
         delete this->facteur;
         this->facteur = fact;
     }
     this->terme->optimiser(tableDesSymboles);
-    if(this->terme->estConstante(tableDesSymboles)){
+    if (this->terme->estConstante(tableDesSymboles))
+    {
         int val = this->terme->eval(tableDesSymboles);
         Terme *ter = new ConstanteNumerique(new NumTerminal(val, this->terme->getLigne(), this->terme->getColonne()));
         delete this->terme;
         this->terme = ter;
     }
+}
+
+bool ExpressionMult::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+{
+    return this->facteur->analyser(tableDesSymboles, (Contexte())) &&
+           this->terme->analyser(tableDesSymboles, (Contexte()));
 }

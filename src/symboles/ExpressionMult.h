@@ -21,7 +21,7 @@ public:
 
     int eval(TableDesSymboles *tablesDesSymboles);
 
-    virtual void analyser(TableDesSymboles *tableDesSymboles);
+    virtual bool analyser(TableDesSymboles *tableDesSymboles, Contexte contexte);
 
     virtual bool estConstante(TableDesSymboles *tableDesSymboles);
 

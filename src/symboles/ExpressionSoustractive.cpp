@@ -41,7 +41,7 @@ bool ExpressionSoustractive::estConstante(TableDesSymboles *tableDesSymboles)
 bool ExpressionSoustractive::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
 {
     contexte.validerDeclaration = true;
-    contexte.validerInitilisation = true;
+    contexte.validerInitialisation = true;
     return this->expression->analyser(tableDesSymboles, contexte)
            && this->terme->analyser(tableDesSymboles, contexte);
 }

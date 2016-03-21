@@ -42,7 +42,7 @@ bool ExpressionAdditive::estConstante(TableDesSymboles *tableDesSymboles)
 bool ExpressionAdditive::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
 {
     contexte.validerDeclaration = true;
-    contexte.validerInitilisation = true;
+    contexte.validerInitialisation = true;
     return terme->analyser(tableDesSymboles, contexte) && expression->analyser(tableDesSymboles, contexte);
 }
 
