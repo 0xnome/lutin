@@ -34,5 +34,6 @@ void ExpressionMult::executer(TableDesSymboles *tableDesSymboles)
 
 void ExpressionMult::analyser(TableDesSymboles *tableDesSymboles)
 {
-
+    this->facteur->analyser(tableDesSymboles);
+    this->terme->analyser(tableDesSymboles);
 }
