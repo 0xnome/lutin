@@ -138,6 +138,11 @@ bool Automate::chargerProgramme() {
 
 int Automate::pas() {
     Symbole *s = this->lexeur->getCurrent();
+    while((int)*s==ERREUR_LEXICALE){
+        this->lexeur->shift();
+        s = this->lexeur->getCurrent();
+    }
+    s = this->lexeur->getCurrent();
     return this->etatCourant()->transition(this, s);
 }
 
