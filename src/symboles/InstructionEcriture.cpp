@@ -35,10 +35,11 @@ bool InstructionEcriture::estVide()
 }
 
 
-
-void InstructionEcriture::optimiser(TableDesSymboles *tableDesSymboles) {
+void InstructionEcriture::optimiser(TableDesSymboles *tableDesSymboles)
+{
     this->expression->optimiser(tableDesSymboles);
-    if (this->expression->estConstante(tableDesSymboles)) {
+    if (this->expression->estConstante(tableDesSymboles))
+    {
         int val = this->expression->eval(tableDesSymboles);
         Expression *expr = new ConstanteNumerique(
                 new NumTerminal(val, this->expression->getLigne(), this->expression->getColonne()));
@@ -47,6 +48,9 @@ void InstructionEcriture::optimiser(TableDesSymboles *tableDesSymboles) {
     }
 }
 
-bool InstructionEcriture::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte) {
+bool InstructionEcriture::analyser(TableDesSymboles *tableDesSymboles, Contexte contexte)
+{
+    contexte.validerDeclaration = true;
+    contexte.validerInitilisation = true;
     return expression->analyser(tableDesSymboles, contexte);
 }

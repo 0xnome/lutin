@@ -66,13 +66,13 @@ bool InstructionLecture::analyser(TableDesSymboles *tableDesSymboles, Contexte c
         std::cerr << "Erreur ligne " << this->id->getLigne() << " : " << this->id->getNom() <<
         " n'a pas été déclarée." << std::endl;
         return false;
-
     }
 
     tableDesSymboles->setInitialisee(id->getNom());
     return true;
 }
 
-void InstructionLecture::optimiser(TableDesSymboles *tableDesSymboles) {
+void InstructionLecture::optimiser(TableDesSymboles *tableDesSymboles)
+{
     tableDesSymboles->setInitialisee(id->getNom());
 }
