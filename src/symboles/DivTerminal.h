@@ -9,7 +9,12 @@ public:
     DivTerminal(unsigned ligne, unsigned colonne) : Symbole(DIV_TERMINAL, ligne, colonne)
     { }
 
-    ~DivTerminal() { }
+    ~DivTerminal()
+    { }
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles)
+    { };
+
 };
 
 #endif //LUTIN_DIVTERMINAL_H

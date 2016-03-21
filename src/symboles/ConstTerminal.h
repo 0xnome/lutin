@@ -10,7 +10,12 @@ public:
     ConstTerminal(unsigned ligne, unsigned colonne) : Symbole(CONST_TERMINAL, ligne, colonne)
     { }
 
-    ~ConstTerminal() { }
+    ~ConstTerminal()
+    { }
+
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles)
+    { };
 };
 
 

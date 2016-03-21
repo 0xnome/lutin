@@ -4,15 +4,26 @@
 #include "Symbole.h"
 
 
-class ErreurLexicale : public Symbole {
+class ErreurLexicale : public Symbole
+{
 public:
-    ErreurLexicale(std::string message):Symbole(ERREUR_LEXICALE){
-        this->message = message ;
+    ErreurLexicale(std::string message) : Symbole(ERREUR_LEXICALE)
+    {
+        this->message = message;
     }
-    ~ErreurLexicale(){}
-    std::string* getMessage(){
+
+    ~ErreurLexicale()
+    { }
+
+    std::string *getMessage()
+    {
         return &message;
     }
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles)
+    { };
+
+
 private:
     std::string message;
 };

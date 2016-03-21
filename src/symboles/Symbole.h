@@ -63,6 +63,13 @@ enum SYMBOLES
     ERREUR_LEXICALE             //37
 };
 
+struct Contexte
+{
+    bool validerInitilisation;
+    bool validerDeclaration;
+};
+
+
 class TableDesSymboles;
 
 class Symbole
@@ -204,8 +211,7 @@ public:
      *  - mots clefs interdits (var, const, ecrire et lire) à réflechir...
      *  - modification d'une constante [OK]
      */
-    virtual void analyser(TableDesSymboles *tableDesSymboles)
-    { }
+    virtual void analyser(TableDesSymboles *tableDesSymboles) = 0;
 
 
     /**

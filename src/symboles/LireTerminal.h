@@ -10,7 +10,11 @@ public:
     LireTerminal(unsigned ligne, unsigned colonne) : Symbole(LIRE_TERMINAL, ligne, colonne)
     { }
 
-    ~LireTerminal() { }
+    ~LireTerminal()
+    { }
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles)
+    { };
 };
 
 

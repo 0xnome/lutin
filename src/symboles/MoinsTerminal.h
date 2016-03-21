@@ -11,6 +11,9 @@ public:
 
     ~MoinsTerminal()
     { }
+
+    virtual void analyser(TableDesSymboles *tableDesSymboles)
+    { };
 };
 
 #endif //LUTIN_MOINSTERMINAL_H
