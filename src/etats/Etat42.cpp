@@ -10,6 +10,11 @@ int Etat42::transition(Automate *automate, Symbole *s) {
       case MOINS_TERMINAL:
       case PARFER_TERMINAL:
       case POINT_VIRGULE_TERMINAL:
+      //recuperation des erreurs
+      case LIRE_TERMINAL:
+      case ECRIRE_TERMINAL:
+      case ID_TERMINAL:
+      case FIN_PROGRAMME:
       {
           Facteur* facteur = (Facteur*) automate->popSymbole();
           automate->popSymbole(); //div

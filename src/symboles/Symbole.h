@@ -39,7 +39,7 @@ enum SYMBOLES
 
 
     // Symboles terminaux
-            ID_TERMINAL,                //20
+    ID_TERMINAL,                //20
     NUM_TERMINAL,               //21
     VAR_TERMINAL,               //22
     CONST_TERMINAL,             //23
@@ -59,7 +59,7 @@ enum SYMBOLES
 
 
     // Autres symboles
-            FIN_PROGRAMME,              //36
+    FIN_PROGRAMME,              //36
     ERREUR_LEXICALE             //37
 };
 

@@ -35,8 +35,9 @@ void TableDesSymboles::ajouterConstante(std::string constante, unsigned ligne, u
     int *val = new int(valeurConstante);
     *constEntree = {true, false, val, ligne, colonne};
     pair<TableIterator, bool> result = this->tableConstantes.insert({constante, constEntree});
+
     if(!result.second)
-    {
+    { // si l'insertion s'est mal passée, on supprime l'entrée que l'on a crée
         delete (constEntree);
     }
 
@@ -45,12 +46,14 @@ void TableDesSymboles::ajouterConstante(std::string constante, unsigned ligne, u
 void TableDesSymboles::ajouterVariable(std::string variable, unsigned ligne, unsigned colonne)
 {
     Entree *varEntree = new Entree;
-    *varEntree = {false, false,};
+    *varEntree = {false, false};
     varEntree->ligne = ligne;
     varEntree->colonne = colonne;
+    varEntree->valeur = nullptr;
     pair<TableIterator, bool> result = this->tableVariables.insert({variable, varEntree});
+
     if(!result.second)
-    {
+    { // si l'insertion s'est mal passée, on supprime l'entrée que l'on a crée
         delete (varEntree);
     }
 

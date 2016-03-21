@@ -13,6 +13,11 @@ int Etat29::transition(Automate *automate, Symbole *s)
         case MOINS_TERMINAL:
         case PARFER_TERMINAL:
         case POINT_VIRGULE_TERMINAL:
+        //recuperation des erreurs
+        case LIRE_TERMINAL:
+        case ECRIRE_TERMINAL:
+        case ID_TERMINAL:
+        case FIN_PROGRAMME:
         {
             Terme *terme = (Terme *) automate->popSymbole(); // on recupère la terme
             automate->popSymbole(); // on pop le add

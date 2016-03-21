@@ -1,6 +1,8 @@
 #include "Etat8.h"
 #include "Etat19.h"
 #include "Etat20.h"
+#include "PointVirguleTerminal.h"
+#include "VirguleTerminal.h"
 
 int Etat8::transition(Automate *automate, Symbole *s) {
     switch (*s) {
@@ -10,6 +12,26 @@ int Etat8::transition(Automate *automate, Symbole *s) {
         case VIRGULE_TERMINAL:
             automate->decalage(new Etat20, s);
             return CONTINUE;
+        //recuperation des erreurs
+        case VAR_TERMINAL:
+        case CONST_TERMINAL:
+        case LIRE_TERMINAL:
+        case ECRIRE_TERMINAL :
+        case FIN_PROGRAMME:
+        {
+            PointVirguleTerminal* symboleOublie = new PointVirguleTerminal(s->getLigne(), s->getColonne());
+            automate->pushSymbole(symboleOublie);
+            automate->pushEtat(new Etat19);
+            return CONTINUE;
+        }
+
+        case ID_TERMINAL:
+        {
+            VirguleTerminal* symboleOublie = new VirguleTerminal(s->getLigne(), s->getColonne());
+            automate->pushSymbole(symboleOublie);
+            automate->pushEtat(new Etat20);
+            return CONTINUE;
+        }
         default:
             return ERREUR;
     }
