@@ -19,9 +19,9 @@ int Etat29::transition(Automate *automate, Symbole *s)
         case ID_TERMINAL:
         case FIN_PROGRAMME:
         {
-            Terme *terme = (Terme *) automate->popSymbole(); // on recupère la terme
-            automate->popSymbole(); // on pop le add
-            Expression *expression = (Expression *) automate->popSymbole();
+            Terme *terme = (Terme *) automate->popSymbole(false); // on recupère la terme
+            automate->popSymbole(true); // on pop le add
+            Expression *expression = (Expression *) automate->popSymbole(false);
 
             ExpressionAdditive *expressionAdditive = new ExpressionAdditive(terme, expression);
             automate->popEtat(3);

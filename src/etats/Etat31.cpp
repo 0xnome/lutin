@@ -17,7 +17,7 @@ int Etat31::transition(Automate *automate, Symbole *s) {
         case ID_TERMINAL:
         case FIN_PROGRAMME:
         {
-            IdTerminal* id = (IdTerminal*)automate->popSymbole();
+            IdTerminal *id = (IdTerminal *) automate->popSymbole(false);
             automate->popEtat(1);
             Facteur* facteur = new IdentificateurFacteur(id);
             return automate->etatCourant()->transition(automate, facteur);

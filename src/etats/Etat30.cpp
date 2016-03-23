@@ -17,7 +17,7 @@ int Etat30::transition(Automate *automate, Symbole *s) {
         case FIN_PROGRAMME:
         {
             // SUIVANTS de TERME
-            Facteur *facteur = (Facteur *) automate->popSymbole();
+            Facteur *facteur = (Facteur *) automate->popSymbole(false);
             automate->popEtat(1);
             // attention cast et passage en dynamique
             facteur->setStatiqueClasse(TERME);

@@ -3,23 +3,25 @@
 #include <AffectationConstante.h>
 #include "Etat28.h"
 
-int Etat28::transition(Automate *automate, Symbole *s) {
-    switch (*s) {
+int Etat28::transition(Automate *automate, Symbole *s)
+{
+    switch (*s)
+    {
         //suivant de Affects
         case VIRGULE_TERMINAL:
         case POINT_VIRGULE_TERMINAL:
-        //recuperation des erreurs
+            //recuperation des erreurs
         case VAR_TERMINAL:
         case CONST_TERMINAL:
         case LIRE_TERMINAL:
         case ECRIRE_TERMINAL :
         case ID_TERMINAL:
         case FIN_PROGRAMME:
-         {
+        {
             //On a lu un suivant de AFFECTS
-            NumTerminal *num = (NumTerminal *) automate->popSymbole();
-            automate->popSymbole(); // pop du EGAL_TERMINAL
-            IdTerminal *id = (IdTerminal *) automate->popSymbole();
+            NumTerminal *num = (NumTerminal *) automate->popSymbole(false);
+            automate->popSymbole(true); // pop du EGAL_TERMINAL
+            IdTerminal *id = (IdTerminal *) automate->popSymbole(false);
             automate->popEtat(3);   // pop de 3 symboles, donc pop de 3 Etats
 
             // Etat courant : Etat3

@@ -12,15 +12,16 @@ int Etat19::transition(Automate *automate, Symbole *s) {
         case CONST_TERMINAL:
         case FIN_PROGRAMME: {
             // on lit un suivant de DECS
-            automate->popSymbole(); // point virgule
-            AffectationConstante *affects = (AffectationConstante *) automate->popSymbole(); // AFFECTS
-            automate->popSymbole(); // const
-            BlocDeclaration *decs = (BlocDeclaration *) automate->popSymbole(); // DECS
+            automate->popSymbole(true); // point virgule
+            AffectationConstante *affects = (AffectationConstante *) automate->popSymbole(false); // AFFECTS
+            automate->popSymbole(true); // const
+            BlocDeclaration *decs = (BlocDeclaration *) automate->popSymbole(false); // DECS
 
             automate->popEtat(4); // on arrive en E0
 
             DeclarationConstante *declarationConstante = new DeclarationConstante(affects);
             if (decs->estVide()) {
+                delete decs;
                 // alors la nouvelle DelcarationContanteest est le premier BlocDeclaration
                 return automate->etatCourant()->transition(automate, declarationConstante);
             }

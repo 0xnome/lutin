@@ -15,7 +15,7 @@ int Etat10::transition(Automate *automate, Symbole *s) {
         case FIN_PROGRAMME:
         {
             // suivants de IDS
-            IdTerminal *idTerminal = (IdTerminal *) automate->popSymbole();
+            IdTerminal *idTerminal = (IdTerminal *) automate->popSymbole(false);
             automate->popEtat(1);
 
             IdentificateurVariable *ids = new IdentificateurVariable(idTerminal);
