@@ -61,7 +61,7 @@ Lexeur::Lexeur(std::vector<std::string> lignesDuFichier) {
     shift();
 }
 
-Symbole* Lexeur::getNext() {
+Symbole *Lexeur::getNext() {
     shift();
     return current;
 }
@@ -75,7 +75,7 @@ void Lexeur::shift() {
     if (ligne == lignesDuProgramme.size() - 1 && colonne > lignesDuProgramme.at(ligne).size() - 1) {
         lectureTerminee = true;
         LOG(TRACE) << "Fin Programme" << endl;
-        current = new FinProgramme;
+        current = new FinProgramme(ligne + 1, lignesDuFichier.at(ligne).size()+1);
         return;
     }
     if (colonne > lignesDuProgramme.at(ligne).size() - 1) {
@@ -91,7 +91,7 @@ void Lexeur::shift() {
         if (ligne == lignesDuProgramme.size()) {
             lectureTerminee = true;
             LOG(TRACE) << "Fin Programme" << endl;
-            current = new FinProgramme;
+            current = new FinProgramme(ligne + 1, lignesDuFichier.at(ligne).size()+1);
             return;
         }
     }

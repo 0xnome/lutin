@@ -7,7 +7,7 @@
 class FinProgramme : public Symbole
 {
 public:
-    FinProgramme() : Symbole(FIN_PROGRAMME)
+    FinProgramme(unsigned ligne, unsigned colonne) : Symbole(FIN_PROGRAMME, ligne, colonne)
     { }
 
     ~FinProgramme()
