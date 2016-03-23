@@ -3,12 +3,15 @@
 #include "ConstanteNumerique.h"
 
 using namespace std;
-InstructionAffectation::InstructionAffectation() : BlocInstruction(INSTRUCTION_AFFECTATION, 1, 1), expression(nullptr), id(nullptr)
+
+InstructionAffectation::InstructionAffectation() : BlocInstruction(INSTRUCTION_AFFECTATION, 1, 1), expression(nullptr),
+                                                   id(nullptr)
 {
 }
 
 InstructionAffectation::InstructionAffectation(Expression *expression, IdTerminal *idTerminal) : BlocInstruction(
-        INSTRUCTION_AFFECTATION, idTerminal->getLigne(), idTerminal->getColonne()), expression(expression), id(idTerminal)
+        INSTRUCTION_AFFECTATION, idTerminal->getLigne(), idTerminal->getColonne()), expression(expression),
+                                                                                                 id(idTerminal)
 {
 }
 
@@ -51,9 +54,9 @@ bool InstructionAffectation::analyser(TableDesSymboles *tableDesSymboles)
     {
         if (tableDesSymboles->estConstante(id->getNom()))
         {
-            std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : " <<
+            std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : '" <<
             this->id->getNom() <<
-            " est une constante et ne peut pas être modifiée." << std::endl;
+            "' est une constante et ne peut pas être modifiée." << std::endl;
             ret = false;
         } else
         {
@@ -61,9 +64,9 @@ bool InstructionAffectation::analyser(TableDesSymboles *tableDesSymboles)
         }
     } else
     {
-        std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : " <<
+        std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : '" <<
         this->id->getNom() <<
-        " n'a pas été déclarée." << std::endl;
+        "' n'a pas été déclarée." << std::endl;
         ret = false;
     }
     ret = ret && expression->analyser(tableDesSymboles);
