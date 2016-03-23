@@ -1,0 +1,9 @@
+const a=2;
+const b=3;
+const c=4;
+var d;
+var e;
+var f;
+lire d;
+e := d*4 ;
+ecrire f ;

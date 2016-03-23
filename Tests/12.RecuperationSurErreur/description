@@ -1,0 +1,2 @@
+Test de recuperation sur erreurs:on test toutes les transitions ou l'on peut avoir un recuperation sur erreurs.
+On test le code generé et les messages d'erreurs
