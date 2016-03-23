@@ -42,7 +42,7 @@ void ExpressionMult::optimiser(TableDesSymboles *tableDesSymboles)
 {
     this->facteur->optimiser(tableDesSymboles);
     // si facteur a une valeur connue et n'est pas déjà une constante numérique
-    if (this->facteur->estConstante(tableDesSymboles) && (int)this->facteur != CONSTANTE_NUMERIQUE)
+    if (this->facteur->estConstante(tableDesSymboles) && (int) *(this->facteur) != CONSTANTE_NUMERIQUE)
     {
         int val = this->facteur->eval(tableDesSymboles);
         Facteur *fact = new ConstanteNumerique(

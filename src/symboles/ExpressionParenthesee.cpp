@@ -62,11 +62,4 @@ bool ExpressionParenthesee::analyser(TableDesSymboles *tableDesSymboles)
 
 Expression *ExpressionParenthesee::simplifier(TableDesSymboles* tableDesSymboles) {
     return nullptr;
-    if(this->expression->estConstante(tableDesSymboles) || (int)this->expression == IDENTIFICATEUR_FACTEUR)
-    {
-        Expression* exp = this->expression;
-        this->expression = nullptr;
-        return exp;
-    }
-    return nullptr;
 }
