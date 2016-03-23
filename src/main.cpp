@@ -39,7 +39,7 @@ int main(int argc, char **argv)
                 ("execute,e", "Exécution interactive du programme")
                 ("analyse,a", "Analyse statique du programme")
                 ("optimize,o", "Transforme le programme et le simplifie")
-                ("verbose,v", "Affiche le debug")
+                ("verbose,v", po::value<std::string>() , "Affiche le debug")
                 ("input,i", po::value<std::string>()->required(), "programme lutin, argument par défaut");
 
         po::positional_options_description p;
@@ -77,7 +77,12 @@ int main(int argc, char **argv)
 
             if (vm.count("verbose"))
             {
-                c.parseFromText("*GLOBAL:\n ENABLED = TRUE");
+                std::string level = vm["verbose"].as<std::string>();
+                if (level.empty())
+                    level = "GLOBAL";
+                std::cout << level << endl;
+                std::string levelCommand = "*"+level+":\n ENABLED = TRUE";
+                c.parseFromText(levelCommand);
                 el::Loggers::reconfigureLogger("default", c);
             }
 
