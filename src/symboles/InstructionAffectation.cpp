@@ -6,7 +6,7 @@ using namespace std;
 
 
 InstructionAffectation::InstructionAffectation(Expression *expression, IdTerminal *idTerminal) : BlocInstruction(
-        INSTRUCTION_AFFECTATION), expression(expression), id(idTerminal)
+        INSTRUCTION_AFFECTATION, idTerminal->getLigne(), idTerminal->getColonne()), expression(expression), id(idTerminal)
 {
 }
 

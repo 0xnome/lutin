@@ -1,7 +1,7 @@
 #include <TableDesSymboles.h>
 #include "IdentificateurVariable.h"
 
-IdentificateurVariable::IdentificateurVariable(IdTerminal *idTerminal) : Symbole(IDENTIFICATEUR_VARIABLE),
+IdentificateurVariable::IdentificateurVariable(IdTerminal *idTerminal) : Symbole(IDENTIFICATEUR_VARIABLE, idTerminal->getLigne(), idTerminal->getColonne()),
                                                                          id(idTerminal), suivant(nullptr)
 {
 }

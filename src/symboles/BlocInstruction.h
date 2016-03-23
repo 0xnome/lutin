@@ -35,7 +35,7 @@ public:
     virtual bool estVide() = 0;
 
 protected:
-    BlocInstruction(int id) : Symbole(id), suivant(nullptr) {
+    BlocInstruction(int id, unsigned ligne, unsigned colonne) : Symbole(id, ligne, colonne), suivant(nullptr) {
     }
 
     BlocInstruction *suivant;

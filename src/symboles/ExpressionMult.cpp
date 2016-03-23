@@ -4,7 +4,7 @@
 
 using namespace std;
 
-ExpressionMult::ExpressionMult(Facteur *facteur, Terme *terme) : Terme(EXPRESSION_MULT), facteur(facteur),
+ExpressionMult::ExpressionMult(Facteur *facteur, Terme *terme) : Terme(EXPRESSION_MULT, terme->getLigne(), terme->getColonne()), facteur(facteur),
                                                                  terme(terme)
 {
 }

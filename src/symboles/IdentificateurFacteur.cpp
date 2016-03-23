@@ -1,7 +1,7 @@
 #include <easyloggingpp.h>
 #include "IdentificateurFacteur.h"
 
-IdentificateurFacteur::IdentificateurFacteur(IdTerminal *idTerminal) : Facteur(IDENTIFICATEUR_FACTEUR), id(idTerminal)
+IdentificateurFacteur::IdentificateurFacteur(IdTerminal *idTerminal) : Facteur(IDENTIFICATEUR_FACTEUR, idTerminal->getLigne(), idTerminal->getColonne()), id(idTerminal)
 {
 }
 

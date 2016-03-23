@@ -3,7 +3,7 @@
 using namespace std;
 
 
-InstructionLecture::InstructionLecture(IdTerminal *idTerminal) : BlocInstruction(INSTRUCTION_LECTURE), id(idTerminal)
+InstructionLecture::InstructionLecture(IdTerminal *idTerminal) : BlocInstruction(INSTRUCTION_LECTURE, idTerminal->getLigne(), idTerminal->getColonne()), id(idTerminal)
 {
 }
 

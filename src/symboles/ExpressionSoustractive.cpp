@@ -5,7 +5,7 @@
 using namespace std;
 
 ExpressionSoustractive::ExpressionSoustractive(Terme *terme, Expression *expression) : Expression(
-        EXPRESSION_SOUSTRACTIVE), terme(terme), expression(expression)
+        EXPRESSION_SOUSTRACTIVE, expression->getLigne(), expression->getColonne()), terme(terme), expression(expression)
 {
 }
 

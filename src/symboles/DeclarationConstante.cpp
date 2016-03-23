@@ -1,7 +1,7 @@
 #include "DeclarationConstante.h"
 
 DeclarationConstante::DeclarationConstante(AffectationConstante *affectationConstante) : BlocDeclaration(
-        DECLARATION_CONSTANTE), affectationConstante(affectationConstante)
+        DECLARATION_CONSTANTE, affectationConstante->getLigne(), affectationConstante->getColonne()), affectationConstante(affectationConstante)
 {
 }
 

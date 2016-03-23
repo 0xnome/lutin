@@ -36,7 +36,7 @@ public:
 
 
 protected:
-    BlocDeclaration(int id) : Symbole(id), suivant(nullptr) {
+    BlocDeclaration(int id, unsigned ligne, unsigned colonne) : Symbole(id, ligne, colonne), suivant(nullptr) {
     }
 
     BlocDeclaration *suivant;

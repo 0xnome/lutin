@@ -17,7 +17,7 @@ public:
 
     virtual bool estConstante(TableDesSymboles *tableDesSymboles) = 0;
 protected:
-    Facteur(int id) : Terme(id) { }
+    Facteur(int id, unsigned ligne, unsigned colonne) : Terme(id, ligne, colonne) { }
 };
 
 

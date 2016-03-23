@@ -10,7 +10,7 @@ class ConstanteNumerique : public Facteur
 {
 
 public:
-    ConstanteNumerique(NumTerminal *numTerminal) : Facteur(CONSTANTE_NUMERIQUE), valeur(numTerminal)
+    ConstanteNumerique(NumTerminal *numTerminal) : Facteur(CONSTANTE_NUMERIQUE, numTerminal->getLigne(), numTerminal->getColonne()), valeur(numTerminal)
     {
     }
 
@@ -36,7 +36,7 @@ public:
     virtual bool analyser(TableDesSymboles *tableDesSymboles)
     {
         return true;
-    };
+    }
 
     bool estConstante(TableDesSymboles *tableDesSymboles)
     {

@@ -4,7 +4,7 @@
 
 using namespace std;
 
-ExpressionAdditive::ExpressionAdditive(Terme *terme, Expression *expression) : Expression(EXPRESSION_ADDITIVE),
+ExpressionAdditive::ExpressionAdditive(Terme *terme, Expression *expression) : Expression(EXPRESSION_ADDITIVE, expression->getLigne(), expression->getColonne()),
                                                                                terme(terme), expression(expression)
 {
 }

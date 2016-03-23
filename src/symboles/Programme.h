@@ -7,7 +7,7 @@
 
 class Programme : public Symbole {
 public:
-    Programme(BlocDeclaration *blocDeclaration, BlocInstruction *blocInstruction);
+    Programme(BlocDeclaration *blocDeclaration, BlocInstruction *blocInstruction) : Symbole(PROGRAMME, blocDeclaration->getLigne(), blocDeclaration->getColonne()){}
 
     ~Programme();
 

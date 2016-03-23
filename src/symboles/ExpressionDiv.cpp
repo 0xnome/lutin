@@ -5,7 +5,7 @@
 
 using namespace std;
 
-ExpressionDiv::ExpressionDiv(Facteur *facteur, Terme *terme) : Terme(EXPRESSION_DIV), terme(terme), facteur(facteur)
+ExpressionDiv::ExpressionDiv(Facteur *facteur, Terme *terme) : Terme(EXPRESSION_DIV, terme->getLigne(), terme->getColonne()), terme(terme), facteur(facteur)
 {
 }
 

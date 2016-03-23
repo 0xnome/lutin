@@ -23,7 +23,7 @@ public:
     { }
 
 protected:
-    Terme(int id) : Expression(id)
+    Terme(int id, unsigned ligne, unsigned colonne) : Expression(id, ligne, colonne)
     { }
 
 };

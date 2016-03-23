@@ -1,7 +1,7 @@
 #include "DeclarationVariable.h"
 
 DeclarationVariable::DeclarationVariable(IdentificateurVariable *identificateurVariable) : BlocDeclaration(
-        DECLARATION_VARIABLE), identificateurVariable(identificateurVariable)
+        DECLARATION_VARIABLE, identificateurVariable->getLigne(), identificateurVariable->getColonne()), identificateurVariable(identificateurVariable)
 {
 }
 

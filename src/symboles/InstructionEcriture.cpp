@@ -11,7 +11,7 @@ InstructionEcriture::~InstructionEcriture()
     }
 }
 
-InstructionEcriture::InstructionEcriture(Expression *expression) : BlocInstruction(INSTRUCTION_ECRITURE),
+InstructionEcriture::InstructionEcriture(Expression *expression) : BlocInstruction(INSTRUCTION_ECRITURE, expression->getLigne(), expression->getColonne()),
                                                                    expression(expression)
 {
 }

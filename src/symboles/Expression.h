@@ -31,7 +31,7 @@ public:
     void setStatiqueClasse(int statiqueClasse) { this->statiqueClasse = statiqueClasse; }
 
 protected:
-    Expression(int id) : Symbole(id), statiqueClasse(id) { }
+    Expression(int id, unsigned ligne, unsigned colonne) : Symbole(id, ligne, colonne), statiqueClasse(id) { }
 
     int statiqueClasse;
 };

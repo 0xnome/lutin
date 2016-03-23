@@ -1,7 +1,7 @@
 #include "AffectationConstante.h"
 
 
-AffectationConstante::AffectationConstante(IdTerminal *idTerminal, NumTerminal *numT) : Symbole(AFFECTATION_CONSTANTE),
+AffectationConstante::AffectationConstante(IdTerminal *idTerminal, NumTerminal *numT) : Symbole(AFFECTATION_CONSTANTE, idTerminal->getLigne(), idTerminal->getColonne()),
                                                                                         id(idTerminal), num(numT),
                                                                                         suivant(nullptr)
 {

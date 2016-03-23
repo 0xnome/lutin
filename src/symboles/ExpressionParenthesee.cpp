@@ -4,7 +4,7 @@
 
 using namespace std;
 
-ExpressionParenthesee::ExpressionParenthesee(Expression *expression) : Facteur(EXPRESSION_PARENTHESEE),
+ExpressionParenthesee::ExpressionParenthesee(Expression *expression) : Facteur(EXPRESSION_PARENTHESEE, expression->getLigne(), expression->getColonne()),
                                                                        expression(expression)
 {
 }
