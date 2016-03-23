@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <Etat0.h>
+#include <ErreurLexicale.h>
 #include "easyloggingpp.h"
 
 using namespace std;
@@ -181,6 +182,8 @@ int Automate::pas()
     Symbole *s = this->lexeur->getCurrent();
     while ((int) *s == ERREUR_LEXICALE)
     {
+        std::cerr << *((ErreurLexicale *) s)->getMessage() << std::endl;
+        delete s;
         this->lexeur->shift();
         s = this->lexeur->getCurrent();
     }
@@ -238,6 +241,6 @@ bool Automate::programmeEstCharge()
 void Automate::erreurSyntaxique(Symbole *s, std::string symboleManquant)
 {
     std::cerr << "Erreur syntaxique (" + std::to_string(s->getLigne()) + ":"
-                 + std::to_string(s->getColonne()) + ") " + symboleManquant + " attendu"+Symbole::getName(s) << std::endl;
+                 + std::to_string(s->getColonne()) + ") " + symboleManquant + " attendu" << std::endl;
 }
 
