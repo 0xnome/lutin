@@ -11,15 +11,16 @@ int Etat12::transition(Automate *automate, Symbole *s) {
         case CONST_TERMINAL:
         case FIN_PROGRAMME: {
             // on lit un suivant de DECS
-            automate->popSymbole(); // point virgule
-            IdentificateurVariable *ids = (IdentificateurVariable *) automate->popSymbole(); // IDS
-            automate->popSymbole(); // var
-            BlocDeclaration *decs = (BlocDeclaration *) automate->popSymbole(); // DECS
+            automate->popSymbole(true); // point virgule
+            IdentificateurVariable *ids = (IdentificateurVariable *) automate->popSymbole(false); // IDS
+            automate->popSymbole(true); // var
+            BlocDeclaration *decs = (BlocDeclaration *) automate->popSymbole(false); // DECS
 
             automate->popEtat(4); // on arrive en E0
 
             DeclarationVariable *declarationVariable = new DeclarationVariable(ids);
             if (decs->estVide()) {
+                delete decs;
                 // alors la nouvelle DeclarationVariable est est le premier BlocDeclaration
                 return automate->etatCourant()->transition(automate, declarationVariable);
             }

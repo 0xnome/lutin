@@ -18,7 +18,7 @@ int Etat32::transition(Automate *automate, Symbole *s) {
         case ID_TERMINAL:
         case FIN_PROGRAMME:
         {
-            NumTerminal* numTerminal = (NumTerminal*) automate->popSymbole();
+            NumTerminal *numTerminal = (NumTerminal *) automate->popSymbole(false);
             automate->popEtat(1);
 
             ConstanteNumerique * constanteNumerique = new ConstanteNumerique(numTerminal);

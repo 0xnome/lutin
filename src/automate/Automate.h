@@ -34,7 +34,7 @@ public:
 
     bool programmeEstCharge();
 
-    Symbole *popSymbole();
+    Symbole *popSymbole(bool doDelete);
 
     EtatInterface * popEtat();
 

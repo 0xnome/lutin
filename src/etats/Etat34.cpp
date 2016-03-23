@@ -7,38 +7,39 @@
 
 int Etat34::transition(Automate *automate, Symbole *s)
 {
-   switch (*s){
-
-    // suivant de exp
-    case PLUS_TERMINAL:
-    case MOINS_TERMINAL:
-    case PARFER_TERMINAL:
-    case POINT_VIRGULE_TERMINAL:
-    //recuperation des erreurs
-    case LIRE_TERMINAL:
-    case ECRIRE_TERMINAL:
-    case ID_TERMINAL:
-    case FIN_PROGRAMME:
+    switch (*s)
     {
-        Terme* terme = (Terme *) automate->popSymbole();
-        automate->popSymbole(); // sous
-        Expression* expr = (Expression *) automate->popSymbole();
 
-        automate->popEtat(3);
+        // suivant de exp
+        case PLUS_TERMINAL:
+        case MOINS_TERMINAL:
+        case PARFER_TERMINAL:
+        case POINT_VIRGULE_TERMINAL:
+            //recuperation des erreurs
+        case LIRE_TERMINAL:
+        case ECRIRE_TERMINAL:
+        case ID_TERMINAL:
+        case FIN_PROGRAMME:
+        {
+            Terme *terme = (Terme *) automate->popSymbole(false);
+            automate->popSymbole(true); // sous
+            Expression *expr = (Expression *) automate->popSymbole(false);
 
-        ExpressionSoustractive *expression = new ExpressionSoustractive(terme, expr);
+            automate->popEtat(3);
 
-        return automate->etatCourant()->transition(automate, expression);
+            ExpressionSoustractive *expression = new ExpressionSoustractive(terme, expr);
+
+            return automate->etatCourant()->transition(automate, expression);
+        }
+        case DIV_TERMINAL:
+            automate->decalage(new Etat38, s);
+            return CONTINUE;
+
+        case MULT_TERMINAL:
+            automate->decalage(new Etat37, s);
+            return CONTINUE;
+
+        default:
+            return ERREUR;
     }
-    case DIV_TERMINAL:
-        automate->decalage(new Etat38, s);
-        return CONTINUE;
-
-    case MULT_TERMINAL:
-        automate->decalage(new Etat37, s);
-        return CONTINUE;
-
-		default:
-           return ERREUR;
-   }
 }

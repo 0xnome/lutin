@@ -24,7 +24,7 @@ EtatInterface *Automate::popEtat()
     return etat;
 }
 
-Symbole *Automate::popSymbole()
+Symbole *Automate::popSymbole(bool doDelete)
 {
     if (pilesSymboles.empty())
     {
@@ -33,6 +33,11 @@ Symbole *Automate::popSymbole()
     Symbole *symbole = pilesSymboles.top();
     LOG(INFO) << "(POP) Symbole pop : " << Symbole::getName(symbole);
     pilesSymboles.pop();
+    if (doDelete)
+    {
+        delete symbole;
+        return nullptr;
+    }
     return symbole;
 }
 
@@ -114,6 +119,21 @@ Automate::~Automate()
 {
     delete lexeur;
     delete programme;
+
+    while (!pilesEtats.empty())
+    {
+        EtatInterface *e = pilesEtats.top();
+        pilesEtats.pop();
+        delete e;
+    }
+
+    while (!pilesSymboles.empty())
+    {
+        EtatInterface *e = pilesEtats.top();
+        pilesEtats.pop();
+        delete e;
+    }
+
 }
 
 EtatInterface *Automate::etatCourant() const
@@ -215,9 +235,9 @@ bool Automate::programmeEstCharge()
     return this->programmeCharge;
 }
 
-void Automate::erreurSyntaxique(Symbole* s, std::string symboleManquant)
+void Automate::erreurSyntaxique(Symbole *s, std::string symboleManquant)
 {
     std::cerr << "Erreur syntaxique (" + std::to_string(s->getLigne()) + ":"
-        + std::to_string(s->getColonne()) + ") " + symboleManquant + " attendu" << std::endl;
+                 + std::to_string(s->getColonne()) + ") " + symboleManquant + " attendu" << std::endl;
 }
 

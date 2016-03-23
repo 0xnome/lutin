@@ -16,9 +16,9 @@ int Etat14::transition(Automate *automate, Symbole *s) {
         case FIN_PROGRAMME:
         {
             //On a lu un suivant de IDS
-            IdTerminal *id = (IdTerminal *) automate->popSymbole();
-            automate->popSymbole(); // pop du VIRGULE_TERMINAL
-            IdentificateurVariable *ids = (IdentificateurVariable *) automate->popSymbole(); // IDS
+            IdTerminal *id = (IdTerminal *) automate->popSymbole(false);
+            automate->popSymbole(true); // pop du VIRGULE_TERMINAL
+            IdentificateurVariable *ids = (IdentificateurVariable *) automate->popSymbole(false); // IDS
             automate->popEtat(3);   // pop de 3 symboles, donc pop de 3 Etats, retour en E4
 
             // Etat courant : Etat4
