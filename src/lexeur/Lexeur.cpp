@@ -27,6 +27,7 @@ static const boost::regex s_eg("=");
 static const boost::regex s_opaff(":=");
 static const boost::regex s_po("\\(");
 static const boost::regex s_pf("\\)");
+static const boost::regex s_com("#");
 
 
 Lexeur::Lexeur(std::vector<std::string> lignesDuFichier) {
@@ -46,6 +47,7 @@ Lexeur::Lexeur(std::vector<std::string> lignesDuFichier) {
         chaine = boost::regex_replace(chaine, boost::regex("\\("), boost::regex(" \\( "));
         chaine = boost::regex_replace(chaine, boost::regex("\\)"), boost::regex(" \\) "));
         chaine = boost::regex_replace(chaine, boost::regex("\\s{2,}"), boost::regex(" "));
+        chaine = boost::regex_replace(chaine, boost::regex("#"), boost::regex(" # "));
         trim(chaine);
         boost::algorithm::split_regex(vecteurLigne, chaine, boost::regex(" "));
         if (vecteurLigne.size() == 1 && vecteurLigne.at(0) == "") index.push_back(0);
@@ -195,6 +197,16 @@ void Lexeur::shift() {
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_pf)) {
         LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_pf";
         current = new ParFerTerminal(ligne + 1, colonne_o);
+        return;
+    }
+
+
+    if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_com)) {
+        LOG(INFO) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_com";
+        ligne++;
+        colonne = 0;
+        pos = 0 ;
+        shift();
         return;
     }
 
