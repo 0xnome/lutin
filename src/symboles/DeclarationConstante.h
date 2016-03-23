@@ -9,6 +9,8 @@ class DeclarationConstante : public BlocDeclaration {
 public:
     DeclarationConstante(AffectationConstante *affectationConstante);
 
+    DeclarationConstante();
+
     ~DeclarationConstante();
 
     virtual void executer(TableDesSymboles *tableDesSymboles);

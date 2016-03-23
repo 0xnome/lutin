@@ -20,7 +20,7 @@ int Etat1::transition(Automate *automate, Symbole *s) {
             // on fait une reduction qui produit un INSTRS vide (cas particulier)
 
             // ici on a mis une InstructionAffectation, mais ça n'a pas d'importance
-            BlocInstruction *instrs = new InstructionAffectation(nullptr, nullptr);
+            BlocInstruction *instrs = new InstructionAffectation();
             //faire la transition sur instrs
             return automate->etatCourant()->transition(automate, instrs);
         }

@@ -5,6 +5,10 @@ DeclarationConstante::DeclarationConstante(AffectationConstante *affectationCons
 {
 }
 
+DeclarationConstante::DeclarationConstante() : BlocDeclaration(DECLARATION_CONSTANTE, 1, 1), affectationConstante(nullptr)
+{
+}
+
 DeclarationConstante::~DeclarationConstante()
 {
     if (this->affectationConstante != nullptr)

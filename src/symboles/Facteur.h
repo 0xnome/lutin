@@ -7,7 +7,7 @@
 class Facteur : public Terme {
 
 public:
-    Facteur() : Terme(FACTEUR) { }
+    Facteur() : Terme(FACTEUR, this->ligne, this->colonne) { }
 
     virtual ~Facteur() { }
 

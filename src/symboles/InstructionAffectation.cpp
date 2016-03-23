@@ -3,7 +3,9 @@
 #include "ConstanteNumerique.h"
 
 using namespace std;
-
+InstructionAffectation::InstructionAffectation() : BlocInstruction(INSTRUCTION_AFFECTATION, 1, 1), expression(nullptr), id(nullptr)
+{
+}
 
 InstructionAffectation::InstructionAffectation(Expression *expression, IdTerminal *idTerminal) : BlocInstruction(
         INSTRUCTION_AFFECTATION, idTerminal->getLigne(), idTerminal->getColonne()), expression(expression), id(idTerminal)

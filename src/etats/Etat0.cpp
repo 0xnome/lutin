@@ -28,7 +28,7 @@ int Etat0::transition(Automate *automate, Symbole *s) {
             // on fait une reduction qui produit un DECS vide (cas particulier ici)
 
             // on a mis une DeclarationConstante, mais ça n'a pas d'importance
-            BlocDeclaration *decs = new DeclarationConstante(nullptr);
+            BlocDeclaration *decs = new DeclarationConstante();
             //faire la transition sur decs
             return automate->etatCourant()->transition(automate, decs);
         }

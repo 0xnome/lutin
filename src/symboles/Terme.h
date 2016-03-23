@@ -8,7 +8,7 @@ class Terme : public Expression
 {
 
 public:
-    Terme() : Expression(TERME)
+    Terme() : Expression(TERME, this->ligne, this->colonne)
     { }
 
     virtual void afficher() = 0;

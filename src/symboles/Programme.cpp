@@ -3,7 +3,7 @@
 #include "Programme.h"
 
 
-Programme::Programme(BlocDeclaration *blocDeclaration, BlocInstruction *blocInstruction) : Symbole(PROGRAMME),
+Programme::Programme(BlocDeclaration *blocDeclaration, BlocInstruction *blocInstruction) : Symbole(PROGRAMME, blocDeclaration->getLigne(), blocDeclaration->getColonne()),
                                                                                            blocDeclaration(
                                                                                                    blocDeclaration),
                                                                                            blocInstruction(

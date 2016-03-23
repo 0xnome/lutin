@@ -10,6 +10,8 @@ class InstructionAffectation : public BlocInstruction
 public:
     InstructionAffectation(Expression *expression, IdTerminal *idTerminal);
 
+    InstructionAffectation();
+
     ~InstructionAffectation();
 
     virtual void executer(TableDesSymboles *tableDesSymboles);
