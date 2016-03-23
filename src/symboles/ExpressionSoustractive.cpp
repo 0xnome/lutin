@@ -54,6 +54,16 @@ void ExpressionSoustractive::optimiser(TableDesSymboles *tableDesSymboles)
                 new NumTerminal(val, this->expression->getLigne(), this->expression->getColonne()));
         delete this->expression;
         this->expression = expr;
+    }else
+    {
+        // si on a pu remplacer par une constante numerique on tente une simplification
+        Expression *expr;
+        expr = (Expression *) this->expression->simplifier(tableDesSymboles);
+        if(expr != nullptr)
+        {
+            delete this->expression;
+            this->expression = expr;
+        }
     }
     this->terme->optimiser(tableDesSymboles);
     if (this->terme->estConstante(tableDesSymboles))
@@ -62,17 +72,30 @@ void ExpressionSoustractive::optimiser(TableDesSymboles *tableDesSymboles)
         Terme *ter = new ConstanteNumerique(new NumTerminal(val, this->terme->getLigne(), this->terme->getColonne()));
         delete this->terme;
         this->terme = ter;
+    }else
+    {
+        // si on a pu remplacer par une constante numerique on tente une simplification
+        Terme *ter;
+        ter = (Terme *) this->terme->simplifier(tableDesSymboles);
+        if(ter != nullptr)
+        {
+            delete this->terme;
+            this->terme = ter;
+        }
     }
 }
 
 
 Expression *ExpressionSoustractive::simplifier(TableDesSymboles* tableDesSymboles) {
-    if(this->expression->estConstante(tableDesSymboles) && this->expression->eval(tableDesSymboles) == ExpressionSoustractive::ELEMENT_NEUTRE){
-        Expression* exp = (Expression*) this->terme;
+    // 0 - a = -a
+    /* TODO or not TODO les nombres négatifs that is the question
+    if(this->expression->estConstante(tableDesSymboles) && this->expression->eval(tableDesSymboles) == ExpressionSoustractive::ELEMENT_NEUTRE) {
+        Expression *exp = (Expression *) this->terme;
         this->terme = nullptr;
         return exp;
     }
-    else if(this->terme->estConstante(tableDesSymboles) && this->terme->eval(tableDesSymboles) == ExpressionSoustractive::ELEMENT_NEUTRE){
+        // a - 0 = a
+    else */if(this->terme->estConstante(tableDesSymboles) && this->terme->eval(tableDesSymboles) == ExpressionSoustractive::ELEMENT_NEUTRE){
         Expression* exp = this->expression;
         this->expression = nullptr;
         return exp;

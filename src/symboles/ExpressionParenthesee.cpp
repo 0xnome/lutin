@@ -43,6 +43,16 @@ void ExpressionParenthesee::optimiser(TableDesSymboles *tableDesSymboles) {
         delete this->expression;
         this->expression = expr;
     }
+    else{
+        // si on a pu remplacer par une constante numerique on tente une simplification
+        Expression *exp;
+        exp = this->expression->simplifier(tableDesSymboles);
+        if(exp != nullptr)
+        {
+            delete this->expression;
+            this->expression = exp;
+        }
+    }
 }
 
 bool ExpressionParenthesee::analyser(TableDesSymboles *tableDesSymboles)
@@ -51,5 +61,12 @@ bool ExpressionParenthesee::analyser(TableDesSymboles *tableDesSymboles)
 }
 
 Expression *ExpressionParenthesee::simplifier(TableDesSymboles* tableDesSymboles) {
-    return expression->simplifier(tableDesSymboles);
+    return nullptr;
+    if(this->expression->estConstante(tableDesSymboles) || (int)this->expression == IDENTIFICATEUR_FACTEUR)
+    {
+        Expression* exp = this->expression;
+        this->expression = nullptr;
+        return exp;
+    }
+    return nullptr;
 }

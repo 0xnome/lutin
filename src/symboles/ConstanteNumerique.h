@@ -21,7 +21,6 @@ public:
 
     int eval(TableDesSymboles *tablesDesSymboles)
     {
-        LOG(INFO) << "ConstanteNumerique::eval";
         return valeur->getValue();
     }
 

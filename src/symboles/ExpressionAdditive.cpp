@@ -54,6 +54,16 @@ void ExpressionAdditive::optimiser(TableDesSymboles *tableDesSymboles)
                 new NumTerminal(val, this->expression->getLigne(), this->expression->getColonne()));
         delete this->expression;
         this->expression = expr;
+    }else
+    {
+        // si on a pu remplacer par une constante numerique on tente une simplification
+        Expression *expr;
+        expr = (Expression *) this->expression->simplifier(tableDesSymboles);
+        if(expr != nullptr)
+        {
+            delete this->expression;
+            this->expression = expr;
+        }
     }
 
     this->terme->optimiser(tableDesSymboles);
@@ -63,6 +73,16 @@ void ExpressionAdditive::optimiser(TableDesSymboles *tableDesSymboles)
         Terme *ter = new ConstanteNumerique(new NumTerminal(val, this->terme->getLigne(), this->terme->getColonne()));
         delete this->terme;
         this->terme = ter;
+    }else
+    {
+        // si on a pu remplacer par une constante numerique on tente une simplification
+        Terme *ter;
+        ter = (Terme *) this->terme->simplifier(tableDesSymboles);
+        if(ter != nullptr)
+        {
+            delete this->terme;
+            this->terme = ter;
+        }
     }
 
 }

@@ -40,6 +40,7 @@ void InstructionEcriture::optimiser(TableDesSymboles *tableDesSymboles)
     this->expression->optimiser(tableDesSymboles);
     if (this->expression->estConstante(tableDesSymboles))
     {
+        // CRemplacement par une constanteNumerique
         int val = this->expression->eval(tableDesSymboles);
         Expression *expr = new ConstanteNumerique(
                 new NumTerminal(val, this->expression->getLigne(), this->expression->getColonne()));
@@ -47,8 +48,10 @@ void InstructionEcriture::optimiser(TableDesSymboles *tableDesSymboles)
         this->expression = expr;
     } else
     {
+        // si on a pu remplacer par une constante numerique on tente une simplification
         Expression *exp;
-        while ((exp = this->expression->simplifier(tableDesSymboles)) != nullptr)
+        exp = this->expression->simplifier(tableDesSymboles);
+        if(exp != nullptr)
         {
             delete this->expression;
             this->expression = exp;

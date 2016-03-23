@@ -72,8 +72,9 @@ bool InstructionAffectation::analyser(TableDesSymboles *tableDesSymboles)
 }
 
 void InstructionAffectation::optimiser(TableDesSymboles *tableDesSymboles) {
-    expression->optimiser(tableDesSymboles);
+
     this->expression->optimiser(tableDesSymboles);
+
     if(this->expression->estConstante(tableDesSymboles)){
         int val = this->expression->eval(tableDesSymboles);
         Expression *expr = new ConstanteNumerique(new NumTerminal(val, this->expression->getLigne(), this->expression->getColonne()));
@@ -82,8 +83,11 @@ void InstructionAffectation::optimiser(TableDesSymboles *tableDesSymboles) {
         tableDesSymboles->setVariableValeur(id->getNom(), val);
     }
     else{
+        // si on a pu remplacer par une constante numerique on tente une simplification
         Expression *exp;
-        while ((exp = this->expression->simplifier(tableDesSymboles))!= nullptr){
+        exp = this->expression->simplifier(tableDesSymboles);
+        if(exp != nullptr)
+        {
             delete this->expression;
             this->expression = exp;
         }
