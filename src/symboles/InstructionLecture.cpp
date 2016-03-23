@@ -55,7 +55,7 @@ bool InstructionLecture::analyser(TableDesSymboles *tableDesSymboles)
     {
         if (tableDesSymboles->estConstante(id->getNom()))
         {
-            std::cerr << "Erreur ligne " << this->id->getLigne() << " : " << this->id->getColonne() << this->id->getNom() <<
+            std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne()<<" " << this->id->getNom() <<
             " est une constante et ne peut etre modifiée " << std::endl;
             return false;
         } else
