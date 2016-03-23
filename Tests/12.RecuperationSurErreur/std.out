@@ -6,4 +6,4 @@ var e;
 var f;
 lire d;
 e := d*4 ;
-ecrire f ;
+ecrire f+g-zz/appa ;

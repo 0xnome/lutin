@@ -8,4 +8,4 @@ Erreur syntaxique (3:1) symbole ; attendu
 Erreur syntaxique (4:1) symbole ; attendu
 Erreur syntaxique (4:3) operateur := attendu
 Erreur syntaxique (5:1) symbole ; attendu
-Erreur syntaxique (0:0) symbole ; attendu
+Erreur syntaxique (5:21) symbole ; attendu
