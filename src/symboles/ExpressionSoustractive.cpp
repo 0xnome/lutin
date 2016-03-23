@@ -30,7 +30,13 @@ void ExpressionSoustractive::executer(TableDesSymboles *tableDesSymboles)
 int ExpressionSoustractive::eval(TableDesSymboles *tablesDesSymboles)
 {
     LOG(INFO) << "ExpressionSoustractive::eval";
-    return (expression->eval(tablesDesSymboles) - terme->eval(tablesDesSymboles));
+    if (expression->analyser(tablesDesSymboles) & terme->analyser(tablesDesSymboles))
+    {
+        return (expression->eval(tablesDesSymboles) - terme->eval(tablesDesSymboles));
+    } else
+    {
+        exit(1);
+    }
 }
 
 bool ExpressionSoustractive::estConstante(TableDesSymboles *tableDesSymboles)
@@ -54,12 +60,12 @@ void ExpressionSoustractive::optimiser(TableDesSymboles *tableDesSymboles)
                 new NumTerminal(val, this->expression->getLigne(), this->expression->getColonne()));
         delete this->expression;
         this->expression = expr;
-    }else
+    } else
     {
         // si on a pu remplacer par une constante numerique on tente une simplification
         Expression *expr;
         expr = (Expression *) this->expression->simplifier(tableDesSymboles);
-        if(expr != nullptr)
+        if (expr != nullptr)
         {
             delete this->expression;
             this->expression = expr;
@@ -72,12 +78,12 @@ void ExpressionSoustractive::optimiser(TableDesSymboles *tableDesSymboles)
         Terme *ter = new ConstanteNumerique(new NumTerminal(val, this->terme->getLigne(), this->terme->getColonne()));
         delete this->terme;
         this->terme = ter;
-    }else
+    } else
     {
         // si on a pu remplacer par une constante numerique on tente une simplification
         Terme *ter;
         ter = (Terme *) this->terme->simplifier(tableDesSymboles);
-        if(ter != nullptr)
+        if (ter != nullptr)
         {
             delete this->terme;
             this->terme = ter;
@@ -86,7 +92,8 @@ void ExpressionSoustractive::optimiser(TableDesSymboles *tableDesSymboles)
 }
 
 
-Expression *ExpressionSoustractive::simplifier(TableDesSymboles* tableDesSymboles) {
+Expression *ExpressionSoustractive::simplifier(TableDesSymboles *tableDesSymboles)
+{
     // 0 - a = -a
     /* TODO or not TODO les nombres négatifs that is the question
     if(this->expression->estConstante(tableDesSymboles) && this->expression->eval(tableDesSymboles) == ExpressionSoustractive::ELEMENT_NEUTRE) {
@@ -95,8 +102,10 @@ Expression *ExpressionSoustractive::simplifier(TableDesSymboles* tableDesSymbole
         return exp;
     }
         // a - 0 = a
-    else */if(this->terme->estConstante(tableDesSymboles) && this->terme->eval(tableDesSymboles) == ExpressionSoustractive::ELEMENT_NEUTRE){
-        Expression* exp = this->expression;
+    else */if (this->terme->estConstante(tableDesSymboles) &&
+               this->terme->eval(tableDesSymboles) == ExpressionSoustractive::ELEMENT_NEUTRE)
+    {
+        Expression *exp = this->expression;
         this->expression = nullptr;
         return exp;
     }

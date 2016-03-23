@@ -26,7 +26,7 @@ void ExpressionMult::afficher()
 int ExpressionMult::eval(TableDesSymboles *tablesDesSymboles)
 {
     LOG(INFO) << "ExpressionMult::eval";
-    if (terme->analyser(tablesDesSymboles) && facteur->analyser(tablesDesSymboles))
+    if (terme->analyser(tablesDesSymboles) & facteur->analyser(tablesDesSymboles))
     {
         return (terme->eval(tablesDesSymboles) * facteur->eval(tablesDesSymboles));
     } else
