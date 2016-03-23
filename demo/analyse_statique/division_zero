@@ -1,5 +1,6 @@
-# 
+# options : -a
 # demonstration de la division par zero
+
 const a = 0;
 var b, z, c, d;
 

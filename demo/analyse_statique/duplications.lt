@@ -1,2 +1,3 @@
+# option : -a
 const a = 0
 var a, b, a;
