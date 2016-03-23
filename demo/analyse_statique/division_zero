@@ -1,0 +1,8 @@
+const a = 0;
+var b, z, c, d;
+
+b = a / 0;
+z = a + 0;
+c = (3 + a) / 0;
+lire a;
+d = 3 / a;
