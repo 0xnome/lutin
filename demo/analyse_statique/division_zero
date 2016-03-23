@@ -1,3 +1,5 @@
+# 
+# demonstration de la division par zero
 const a = 0;
 var b, z, c, d;
 
@@ -7,7 +9,7 @@ c := (3 + a) / 0;
 lire a;
 d := 3 / a;
 
-#supression des warnings
+# supression des warnings
 
 ecrire d;
 ecrire c;

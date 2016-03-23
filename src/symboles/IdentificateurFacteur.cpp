@@ -1,7 +1,9 @@
 #include <easyloggingpp.h>
 #include "IdentificateurFacteur.h"
 
-IdentificateurFacteur::IdentificateurFacteur(IdTerminal *idTerminal) : Facteur(IDENTIFICATEUR_FACTEUR, idTerminal->getLigne(), idTerminal->getColonne()), id(idTerminal)
+IdentificateurFacteur::IdentificateurFacteur(IdTerminal *idTerminal) : Facteur(IDENTIFICATEUR_FACTEUR,
+                                                                               idTerminal->getLigne(),
+                                                                               idTerminal->getColonne()), id(idTerminal)
 {
 }
 
@@ -18,7 +20,13 @@ void IdentificateurFacteur::afficher()
 int IdentificateurFacteur::eval(TableDesSymboles *tablesDesSymboles)
 {
     LOG(INFO) << "IdentificateurFacteur::eval";
-    return *tablesDesSymboles->getValeur(id->getNom());
+    if (analyser(tablesDesSymboles))
+    {
+        return *tablesDesSymboles->getValeur(id->getNom());
+    } else
+    {
+        exit(1);
+    }
 }
 
 void IdentificateurFacteur::executer(TableDesSymboles *tableDesSymboles)
