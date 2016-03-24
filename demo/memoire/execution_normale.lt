@@ -1,0 +1,6 @@
+# On a un programme correcte. Liberation correcte de toutes les variables crées
+# valgrind --leak-check=full --suppressions=osx.supp  bin/lutin -e  demo/memoire/execution_normale.lt
+var x, carre;
+x := 3;
+carre := x*x;
+ecrire carre;

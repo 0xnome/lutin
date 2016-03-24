@@ -1,0 +1,11 @@
+# Gestion correcte de la mémoire avec une erreur lexicale à la ligne 3 de ce fichier
+# valgrind --leak-check=full --suppressions=osx.supp  bin/lutin -e  demo/memoire/lexerror.lt
+var _ a,b;
+const c = 4;
+const d = 6;
+var e;
+a := (c+d)*3-5;
+lire b;
+ecrire a*b;
+e := b+d;
+ecrire e;

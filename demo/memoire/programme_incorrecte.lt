@@ -1,0 +1,2 @@
+#valgrind --leak-check=full --suppressions=osx.supp  bin/lutin -e  demo/memoire/programme_incorrecte.lt
+var k0 = 0;

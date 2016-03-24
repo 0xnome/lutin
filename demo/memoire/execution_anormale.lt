@@ -1,0 +1,4 @@
+# Erreur à l'exécution sans analyse : division pa zéro
+# valgrind --leak-check=full --suppressions=osx.supp  bin/lutin -e  demo/memoire/execution_anormale.lt
+var res;
+res := 9 /0

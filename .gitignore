@@ -40,3 +40,5 @@ Tests/lut
 logs
 build
 Tests/files/momo.lt
+Tests/results.csv
+osx.supp
