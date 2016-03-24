@@ -211,3 +211,6 @@ void Lexeur::shift() {
 Symbole *Lexeur::getCurrent() {
     return current;
 }
+
+Lexeur::~Lexeur() {
+}

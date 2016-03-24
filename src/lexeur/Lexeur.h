@@ -16,6 +16,7 @@ public:
     Symbole* getNext();
     Symbole* getCurrent();
     void shift();
+    ~Lexeur();
 
 private:
     std::vector<std::vector<std::string>> lignesDuProgramme;
