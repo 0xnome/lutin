@@ -1,0 +1,133 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam TitleFontSize 20
+skinparam sequenceTitleFontSize 20
+skinparam sequenceTitleFontStyle plain
+
+skinparam class {
+	BackgroundColor white
+	BackgroundColor<<Warning>> lightblue
+}
+
+title Diagramme de classe
+
+class Symbole{
+	~int id
+	~unsigned ligne
+	~unsigned colonne
+	+Symbole (int id, unsigned ligne, unsigned colonne)
+	+operator int() const
+	+void afficher()
+	+void exectuer(TableDesSymboles *table)
+	+void analyser(TableDesSymboles *table)
+	+void optimiser(TableDesSymboles *table)
+}
+
+class IdTerminal{
+  +String IdName
+}
+class NumTerminal{
+  +Int Value
+}
+
+class AffectationConstante{
+	+AffectationConstante suivant
+}
+class IdentificateurVariable{
+	+IdentificateurVariable suivant
+}
+class IdentificateurFacteur
+class BlocDeclaration {
+    +BlocDeclaration suivant
+}
+class DeclarationVariable
+class DeclarationConstante
+class Programme{
+}
+class BlocInstruction {
+    +BlocInstruction suivant
+}
+class InstructionLecture
+class InstructionEcriture
+class InstructionAffectation
+class Expression{
+    +int eval(TableDesSymboles *table)
+    +bool estConstante(TableDesSymboles *table)
+    +Expression* simplifier(TableDesSymboles *table)
+}
+class ExpressionAdditive
+class ExpressionSoustractive
+class Terme
+class ExpressionMult
+class ExpressionDiv
+class Facteur
+class ExpressionParenthesee
+class ConstanteNumerique
+
+
+AffectationConstante *-- IdTerminal : id
+AffectationConstante *-- NumTerminal : valeur
+
+BlocDeclaration <|-- DeclarationConstante
+BlocDeclaration <|-- DeclarationVariable
+BlocInstruction <|-- InstructionAffectation
+BlocInstruction <|-- InstructionEcriture
+BlocInstruction <|-- InstructionLecture
+
+ConstanteNumerique *-- NumTerminal : valeur
+
+DeclarationConstante *-- AffectationConstante
+
+DeclarationVariable *-- IdentificateurVariable
+
+Expression <|-- ExpressionAdditive
+Expression <|-- ExpressionSoustractive
+Expression <|-- Terme
+
+ExpressionAdditive *-- Expression
+ExpressionAdditive *-- Terme
+
+ExpressionDiv *-- Facteur
+ExpressionDiv *-- Terme
+
+ExpressionMult *-- Facteur
+ExpressionMult *-- Terme
+
+ExpressionParenthesee *-- Expression
+
+ExpressionSoustractive *-- Expression
+ExpressionSoustractive *-- Terme
+
+Facteur <|-- ConstanteNumerique
+Facteur <|-- ExpressionParenthesee
+Facteur <|-- IdentificateurFacteur
+
+IdentificateurFacteur *-- IdTerminal : id
+
+IdentificateurVariable *-- IdTerminal : id
+
+InstructionAffectation *-- Expression
+InstructionAffectation *-- IdTerminal : id
+
+InstructionEcriture *-- Expression
+
+InstructionLecture *-- IdTerminal : id
+
+Programme *-- BlocDeclaration
+Programme *-- BlocInstruction
+
+Symbole <|-- AffectationConstante
+Symbole <|-- BlocDeclaration
+Symbole <|-- BlocInstruction
+Symbole <|-- Expression
+Symbole <|-- IdentificateurVariable
+Symbole <|-- Programme
+Symbole <|-- IdTerminal
+Symbole <|-- NumTerminal
+
+Terme <|-- ExpressionDiv
+Terme <|-- ExpressionMult
+Terme <|-- Facteur
+
+@enduml
