@@ -13,42 +13,31 @@ skinparam class {
 title Structure du programme
 
 class Symbole{
-	~int id
-	+Symbole (int id)
-	+operator int() const
-	+void exectuer()
-	+void afficher()
-	+void analyser()
-	+void optimiser()
+
 }
 
 class Automate{
 
 }
 
-Automate -> Symbole : stack<Symbole*>\n pileSymboles
-Automate --> Etat : stack<Etat*>\n pileEtats
-Automate --> Lexeur : lexeur
-Automate --> Programme : programme
+Automate ---> Symbole : stack<Symbole*>\n pileSymboles
+Automate ---> Etat : stack<Etat*>\n pileEtats
+Automate ---> Lexeur : lexeur
+Automate ---> Programme : programme
 
 class Etat{
-    ~string nom
-    +transition(Automate *, Symbole *)
+
 }
 
 class Programme{
 
- +AjouterDeclarationVar()
- +AjouterDeclarationConst()
-
 }
 
-Programme -- BlocDeclaration : HashMap<string,BlocDeclaration>\n dictDeclaration
-Programme -- BlocInstruction : Vector<BlocInstruction>\n dictInstruction
 
+class TableDesSymboles{
+}
 
-
-
+Automate --> TableDesSymboles : TableDesSymboles
 
 
 class Lexeur{

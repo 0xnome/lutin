@@ -1,3 +1,4 @@
 # option -a
 var a, b;
 b := 10 + a * c;
+ecrire b;

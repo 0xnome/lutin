@@ -58,9 +58,6 @@ bool InstructionAffectation::analyser(TableDesSymboles *tableDesSymboles)
             this->id->getNom() <<
             "' est une constante et ne peut pas être modifiée." << std::endl;
             ret = false;
-        } else
-        {
-            tableDesSymboles->setInitialisee(id->getNom());
         }
     } else
     {
@@ -69,27 +66,36 @@ bool InstructionAffectation::analyser(TableDesSymboles *tableDesSymboles)
         "' n'a pas été déclarée." << std::endl;
         ret = false;
     }
+
     ret = ret && expression->analyser(tableDesSymboles);
 
+    if (ret && !tableDesSymboles->estConstante(id->getNom()))
+    {
+        tableDesSymboles->setInitialisee(id->getNom());
+    }
     return ret;
 }
 
-void InstructionAffectation::optimiser(TableDesSymboles *tableDesSymboles) {
+void InstructionAffectation::optimiser(TableDesSymboles *tableDesSymboles)
+{
 
     this->expression->optimiser(tableDesSymboles);
 
-    if(this->expression->estConstante(tableDesSymboles)){
+    if (this->expression->estConstante(tableDesSymboles))
+    {
         int val = this->expression->eval(tableDesSymboles);
-        Expression *expr = new ConstanteNumerique(new NumTerminal(val, this->expression->getLigne(), this->expression->getColonne()));
+        Expression *expr = new ConstanteNumerique(
+                new NumTerminal(val, this->expression->getLigne(), this->expression->getColonne()));
         delete this->expression;
         this->expression = expr;
         tableDesSymboles->setVariableValeur(id->getNom(), val);
     }
-    else{
+    else
+    {
         // si on a pu remplacer par une constante numerique on tente une simplification
         Expression *exp;
         exp = this->expression->simplifier(tableDesSymboles);
-        if(exp != nullptr)
+        if (exp != nullptr)
         {
             delete this->expression;
             this->expression = exp;
