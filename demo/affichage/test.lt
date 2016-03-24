@@ -1,0 +1,7 @@
+#../demo/affichage/test.lt -p
+const c=5, d=10, p=99;
+var a, b;
+
+
+
+                                b := 9;a := b + c;ecrire a;
