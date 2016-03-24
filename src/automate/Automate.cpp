@@ -128,10 +128,10 @@ Automate::~Automate()
         delete e;
     }
 
-    while (!pilesEtats.empty())
+    while (!pilesSymboles.empty())
     {
-        EtatInterface *e = pilesEtats.top();
-        pilesEtats.pop();
+        Symbole *e = pilesSymboles.top();
+        pilesSymboles.pop();
         delete e;
     }
 
