@@ -208,13 +208,13 @@ bool Automate::analyserProgramme()
 
     for (auto it = mapVariables.begin(); it != mapVariables.end(); it++)
     {
-        cerr << "Warining ligne " << it->second->ligne << ":" << it->second->colonne << " : La variable '" << it->first
+        cerr << "Warning ligne " << it->second->ligne << ":" << it->second->colonne << " : La variable '" << it->first
         << "' n'est pas utilisée." << endl;
     }
 
     for (auto it = mapConstantes.begin(); it != mapConstantes.end(); it++)
     {
-        cerr << "Warining ligne " << it->second->ligne << ":" << it->second->colonne << " : La constante '" << it->first
+        cerr << "Warning ligne " << it->second->ligne << ":" << it->second->colonne << " : La constante '" << it->first
         << "' n'est pas utilisée." << endl;
     }
     return ret;

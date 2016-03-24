@@ -7,4 +7,4 @@ Erreur syntaxique (8:1) symbole ; attendu
 Erreur syntaxique (11:4) operateur := attendu
 Erreur ligne 7:16 : a n'est pas initialisée.
 Erreur ligne 7:18 : 'dd' n'est pas déclarée.
-Warining ligne 4:7 : La constante 'w' n'est pas utilisée.
+Warning ligne 4:7 : La constante 'w' n'est pas utilisée.
