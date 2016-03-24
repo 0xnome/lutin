@@ -1,0 +1,10 @@
+# -o -p ../demo/optimisation/remplacement_variable.lt
+var a, b;
+a := 5;
+b := a;
+# a et b ont des valeurs connues
+ecrire a;
+ecrire b;
+# la lecture va rendre la valeur de b incertaine
+lire b;
+ecrire b;

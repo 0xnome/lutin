@@ -1,0 +1,6 @@
+# -o -p ../demo/optimisation/remplacement_complexe.lt
+const a = 1, b = 2, c = 3;
+var x,y,z;
+# (1+3)*(2+3-y)/z
+x := (a+c)*(b+c-y)/z;
+ecrire x;

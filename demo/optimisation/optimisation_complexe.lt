@@ -1,0 +1,14 @@
+# -p -o ../demo/optimisation/optimisation_complexe.lt.
+var w,x,y;
+# multiplications successives
+ecrire 1*1*w*1*x*1*y*1*1;
+# additions successives
+ecrire 0+0+w+0+x+0+y+0+0;
+# divisions successives
+ecrire 1/w/1/x/1/y/1/1;
+# soustractions successives
+ecrire 0-w-0-0-x-0-y-0-0;
+# Mix
+ecrire y*1+0+x-0-w/1;
+# avec parenthèses
+ecrire (y*0+w-0)*(x/1+0);

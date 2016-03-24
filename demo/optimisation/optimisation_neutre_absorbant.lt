@@ -1,0 +1,19 @@
+# -p -o ../demo/optimisation/optimisation_neutre_absorbant.lt
+var x;
+# additition : element neutre
+ecrire x+0;
+ecrire 0+x;
+# soustraction : element neutre
+ecrire x-0;
+ecrire 0-x; # ce cas ne sera pas simplifié, "-x" ne fait pas partie de notre grammaire
+# multiplication : element neutre
+ecrire x*1;
+ecrire 1*x;
+# multiplication : element absorbant
+ecrire x*0;
+ecrire 0*x;
+# division : element neutre
+ecrire x/1;
+ecrire 1/x; # ce cas ne sera pas simplifié, 1/x peut valoir 1 si x=1 ou 0 si x > 1
+# division : element absorbant
+ecrire 0/x;

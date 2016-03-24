@@ -1,0 +1,4 @@
+# -o -p ../demo/optimisation/remplacement_constante.lt
+# simplification d'un constante
+const a = 3;
+ecrire a;
