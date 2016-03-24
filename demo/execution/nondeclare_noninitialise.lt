@@ -1,2 +1,2 @@
-# option -e uniquement
-ecrire f+g-zz / appa
+const declare = 10;
+ecrire declare * nonDeclare;
