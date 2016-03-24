@@ -34,7 +34,9 @@ Lexeur::Lexeur(std::vector<std::string> lignesDuFichier) {
 
     for (string ligne : lignesDuFichier) {
         std::vector<std::string> vecteurLigne;
-        chaine = boost::regex_replace(ligne, boost::regex(","), boost::regex(" , "));
+        chaine = boost::regex_replace(ligne, boost::regex("#(.)*"), boost::regex(""));
+        chaine = boost::regex_replace(chaine, boost::regex("\\t+"), boost::regex(""));
+        chaine = boost::regex_replace(chaine, boost::regex(","), boost::regex(" , "));
         chaine = boost::regex_replace(chaine, boost::regex(";"), boost::regex(" ; "));
         chaine = boost::regex_replace(chaine, boost::regex("(:=|=)"), boost::regex(" $1 "));
         chaine = boost::regex_replace(chaine, boost::regex("\\+"), boost::regex(" \\+ "));
@@ -44,7 +46,6 @@ Lexeur::Lexeur(std::vector<std::string> lignesDuFichier) {
         chaine = boost::regex_replace(chaine, boost::regex("\\("), boost::regex(" \\( "));
         chaine = boost::regex_replace(chaine, boost::regex("\\)"), boost::regex(" \\) "));
         chaine = boost::regex_replace(chaine, boost::regex("\\s{2,}"), boost::regex(" "));
-        chaine = boost::regex_replace(chaine, boost::regex("#(.)*"), boost::regex(""));
         trim(chaine);
         boost::algorithm::split_regex(vecteurLigne, chaine, boost::regex(" "));
         if (vecteurLigne.size() == 1 && vecteurLigne.at(0) == "") {
