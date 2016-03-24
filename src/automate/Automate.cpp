@@ -168,6 +168,7 @@ bool Automate::chargerProgramme()
         LOG(ERROR) << "Erreur d'execution du programme lors de la transition dans l'etat "
         << this->etatCourant()->getNom() << " sur le symbole "
         << Symbole::getName(this->lexeur->getCurrent());
+        delete this->lexeur->getCurrent();
         return false;
     }
     else if (pasRetour == TERMINE)
