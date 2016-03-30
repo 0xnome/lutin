@@ -11,6 +11,7 @@
 using namespace boost;
 using namespace std;
 
+// liste des expression regulieres
 static const boost::regex s_id("[a-zA-Z][a-zA-Z0-9]*");
 static const boost::regex s_num("[0-9]+");
 static const boost::regex s_var("var");
@@ -32,10 +33,15 @@ Lexeur::Lexeur(std::vector<std::string> lignesDuFichier) {
     std::string chaine;
     this->lignesDuFichier = lignesDuFichier;
 
+    // netoyer chaque ligne du fichier & séparer les symboles terminaux
     for (string ligne : lignesDuFichier) {
         std::vector<std::string> vecteurLigne;
+        // supprimer les commentaires
         chaine = boost::regex_replace(ligne, boost::regex("#(.)*"), boost::regex(""));
+        // supprimer les tabulations
         chaine = boost::regex_replace(chaine, boost::regex("\\t+"), boost::regex(""));
+
+        // intercaler des éspaces aprés et avant chaque symbole terminal sauf les identificateurs et les terminaux numeriques
         chaine = boost::regex_replace(chaine, boost::regex(","), boost::regex(" , "));
         chaine = boost::regex_replace(chaine, boost::regex(";"), boost::regex(" ; "));
         chaine = boost::regex_replace(chaine, boost::regex("(:=|=)"), boost::regex(" $1 "));
@@ -45,7 +51,11 @@ Lexeur::Lexeur(std::vector<std::string> lignesDuFichier) {
         chaine = boost::regex_replace(chaine, boost::regex("/"), boost::regex(" / "));
         chaine = boost::regex_replace(chaine, boost::regex("\\("), boost::regex(" \\( "));
         chaine = boost::regex_replace(chaine, boost::regex("\\)"), boost::regex(" \\) "));
+
+        // supprimer toute auccurence de 2 ou plusieurs éspaces
         chaine = boost::regex_replace(chaine, boost::regex("\\s{2,}"), boost::regex(" "));
+
+        // separer les symboles qui sont deja separer par des espaces
         trim(chaine);
         boost::algorithm::split_regex(vecteurLigne, chaine, boost::regex(" "));
         if (vecteurLigne.size() == 1 && vecteurLigne.at(0) == "") {
@@ -68,23 +78,29 @@ Symbole *Lexeur::getNext() {
 }
 
 void Lexeur::shift() {
+
+    //la fin de lecture
     if (lectureTerminee) {
         current = nullptr;
         return;
     }
 
+    //fin du programme
     if (ligne == lignesDuProgramme.size() - 1 && colonne > lignesDuProgramme.at(ligne).size() - 1) {
         lectureTerminee = true;
         LOG(TRACE) << "Fin Programme" << endl;
         current = new FinProgramme(ligne+1,lignesDuFichier.at(ligne).size()+1);
         return;
     }
+
+    //passage à la ligne suivante
     if (colonne > lignesDuProgramme.at(ligne).size() - 1) {
         ligne++;
         colonne = 0;
         pos = 0;
     }
 
+    // pour ignorer les lignes vides et on revoie le fin du programme si la fin du fichier est une ligne vide
     while (index.at(ligne) == 0) {
         ligne++;
         colonne = 0;
@@ -99,10 +115,12 @@ void Lexeur::shift() {
 
     colonne++;
 
+    // la position exacte du symbole dans le fichier
     unsigned long colonne_o = lignesDuFichier.at(ligne).find(lignesDuProgramme.at(ligne).at(colonne - 1), pos) + 1;
-
     pos = colonne_o + lignesDuProgramme.at(ligne).at(colonne - 1).size() - 1;
 
+
+    // test de correspondance
     if (regex_match(lignesDuProgramme.at(ligne).at(colonne - 1), s_var)) {
         LOG(TRACE) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : s_var";
         current = new VarTerminal(ligne + 1, colonne_o);
@@ -203,6 +221,7 @@ void Lexeur::shift() {
 
     LOG(TRACE) << lignesDuProgramme.at(ligne).at(colonne - 1) + " type : erreur lexicale";
 
+    // erreur lexicale detecté
     current = new ErreurLexicale("Erreur lexicale (" + std::to_string(ligne + 1) + ":" + std::to_string(
             colonne_o) + ") caractere " +
                                  lignesDuProgramme.at(ligne).at(colonne - 1));
