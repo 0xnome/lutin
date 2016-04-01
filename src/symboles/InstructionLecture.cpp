@@ -3,32 +3,29 @@
 using namespace std;
 
 
-InstructionLecture::InstructionLecture(IdTerminal *idTerminal) : BlocInstruction(INSTRUCTION_LECTURE, idTerminal->getLigne(), idTerminal->getColonne()), id(idTerminal)
-{
+InstructionLecture::InstructionLecture(IdTerminal *idTerminal) : BlocInstruction(INSTRUCTION_LECTURE,
+                                                                                 idTerminal->getLigne(),
+                                                                                 idTerminal->getColonne()),
+                                                                 id(idTerminal) {
 }
 
-InstructionLecture::~InstructionLecture()
-{
-    if (this->id != nullptr)
-    {
+InstructionLecture::~InstructionLecture() {
+    if (this->id != nullptr) {
         delete this->id;
     }
 }
 
-void InstructionLecture::afficher()
-{
+void InstructionLecture::afficher() {
     cout << "lire ";
     this->id->afficher();
     cout << ";" << endl;
 }
 
-void InstructionLecture::executer(TableDesSymboles *tableDesSymboles)
-{
+void InstructionLecture::executer(TableDesSymboles *tableDesSymboles) {
     int val;
     cin >> val;
 
-    while (std::cin.fail())
-    {
+    while (std::cin.fail()) {
         std::cout << "Vous devez rentrer un Entier..." << std::endl;
         std::cin.clear();
         std::cin.ignore(256, '\n');
@@ -38,32 +35,26 @@ void InstructionLecture::executer(TableDesSymboles *tableDesSymboles)
     tableDesSymboles->setVariableValeur(id->getNom(), val);
 }
 
-bool InstructionLecture::estVide()
-{
+bool InstructionLecture::estVide() {
     return this->id == nullptr;
 }
 
 
-void InstructionLecture::optimiser()
-{
+void InstructionLecture::optimiser() {
     return;
 }
 
-bool InstructionLecture::analyser(TableDesSymboles *tableDesSymboles)
-{
-    if (tableDesSymboles->estDeclaree(id->getNom()))
-    {
-        if (tableDesSymboles->estConstante(id->getNom()))
-        {
-            std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne()<<" " << this->id->getNom() <<
+bool InstructionLecture::analyser(TableDesSymboles *tableDesSymboles) {
+    if (tableDesSymboles->estDeclaree(id->getNom())) {
+        if (tableDesSymboles->estConstante(id->getNom())) {
+            std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " " <<
+            this->id->getNom() <<
             " est une constante et ne peut etre modifiée " << std::endl;
             return false;
-        } else
-        {
+        } else {
             tableDesSymboles->estInitialisee(id->getNom());
         }
-    } else
-    {
+    } else {
         std::cerr << "Erreur ligne " << this->id->getLigne() << " : " << this->id->getNom() <<
         " n'a pas été déclarée." << std::endl;
         return false;
@@ -73,7 +64,6 @@ bool InstructionLecture::analyser(TableDesSymboles *tableDesSymboles)
     return true;
 }
 
-void InstructionLecture::optimiser(TableDesSymboles *tableDesSymboles)
-{
+void InstructionLecture::optimiser(TableDesSymboles *tableDesSymboles) {
     tableDesSymboles->setInitialisee(id->getNom());
 }

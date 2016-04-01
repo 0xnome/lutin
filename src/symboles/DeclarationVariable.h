@@ -20,7 +20,7 @@ public:
 
     virtual bool estVide();
 
-    virtual void optimiser(TableDesSymboles*);
+    virtual void optimiser(TableDesSymboles *);
 
 
 protected:

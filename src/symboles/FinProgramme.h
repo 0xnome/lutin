@@ -4,14 +4,11 @@
 
 #include "Symbole.h"
 
-class FinProgramme : public Symbole
-{
+class FinProgramme : public Symbole {
 public:
-    FinProgramme(unsigned ligne, unsigned colonne) : Symbole(FIN_PROGRAMME, ligne, colonne)
-    { }
+    FinProgramme(unsigned ligne, unsigned colonne) : Symbole(FIN_PROGRAMME, ligne, colonne) { }
 
-    ~FinProgramme()
-    { }
+    ~FinProgramme() { }
 };
 
 

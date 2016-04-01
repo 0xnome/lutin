@@ -10,8 +10,8 @@
 
 int Etat6::transition(Automate *automate, Symbole *s) {
     // ATTENTION CONFLIT DE TYPE POTENTIEL DANS LES CASES
-    int intS = (int)*s;
-    switch (intS){
+    int intS = (int) *s;
+    switch (intS) {
         case EXPRESSION:
         case EXPRESSION_ADDITIVE:
         case EXPRESSION_SOUSTRACTIVE:
@@ -22,7 +22,7 @@ int Etat6::transition(Automate *automate, Symbole *s) {
         case CONSTANTE_NUMERIQUE:
         case IDENTIFICATEUR_FACTEUR:
         case EXPRESSION_PARENTHESEE:
-            intS = ((Expression*)s)->identifiantStatique();
+            intS = ((Expression *) s)->identifiantStatique();
             break;
         default:
             break;

@@ -4,12 +4,10 @@
 #include "TableDesSymboles.h"
 #include "Expression.h"
 
-class Terme : public Expression
-{
+class Terme : public Expression {
 
 public:
-    Terme() : Expression(TERME, this->ligne, this->colonne)
-    { }
+    Terme() : Expression(TERME, this->ligne, this->colonne) { }
 
     virtual void afficher() = 0;
 
@@ -19,12 +17,10 @@ public:
 
     virtual bool estConstante(TableDesSymboles *tableDesSymboles) = 0;
 
-    virtual ~Terme()
-    { }
+    virtual ~Terme() { }
 
 protected:
-    Terme(int id, unsigned ligne, unsigned colonne) : Expression(id, ligne, colonne)
-    { }
+    Terme(int id, unsigned ligne, unsigned colonne) : Expression(id, ligne, colonne) { }
 
 };
 

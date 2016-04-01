@@ -10,12 +10,11 @@ int Etat30::transition(Automate *automate, Symbole *s) {
         case PLUS_TERMINAL:
         case PARFER_TERMINAL:
         case POINT_VIRGULE_TERMINAL:
-        //recuperation des erreurs
+            //recuperation des erreurs
         case LIRE_TERMINAL:
         case ECRIRE_TERMINAL:
         case ID_TERMINAL:
-        case FIN_PROGRAMME:
-        {
+        case FIN_PROGRAMME: {
             // SUIVANTS de TERME
             Facteur *facteur = (Facteur *) automate->popSymbole(false);
             automate->popEtat(1);

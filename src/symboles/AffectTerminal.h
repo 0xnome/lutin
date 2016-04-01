@@ -3,14 +3,11 @@
 
 #include "Symbole.h"
 
-class AffectTerminal : public Symbole
-{
+class AffectTerminal : public Symbole {
 public:
-    AffectTerminal(unsigned ligne, unsigned colonne) : Symbole(AFFECT_TERMINAL, ligne, colonne)
-    { }
+    AffectTerminal(unsigned ligne, unsigned colonne) : Symbole(AFFECT_TERMINAL, ligne, colonne) { }
 
-    ~AffectTerminal()
-    { }
+    ~AffectTerminal() { }
 
 };
 

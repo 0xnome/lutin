@@ -11,15 +11,14 @@ int Etat31::transition(Automate *automate, Symbole *s) {
         case MOINS_TERMINAL:
         case PLUS_TERMINAL:
         case POINT_VIRGULE_TERMINAL:
-        //recuperation des erreurs
+            //recuperation des erreurs
         case LIRE_TERMINAL:
         case ECRIRE_TERMINAL:
         case ID_TERMINAL:
-        case FIN_PROGRAMME:
-        {
+        case FIN_PROGRAMME: {
             IdTerminal *id = (IdTerminal *) automate->popSymbole(false);
             automate->popEtat(1);
-            Facteur* facteur = new IdentificateurFacteur(id);
+            Facteur *facteur = new IdentificateurFacteur(id);
             return automate->etatCourant()->transition(automate, facteur);
         }
         default:

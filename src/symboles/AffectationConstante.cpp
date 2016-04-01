@@ -1,66 +1,56 @@
 #include "AffectationConstante.h"
 
 
-AffectationConstante::AffectationConstante(IdTerminal *idTerminal, NumTerminal *numT) : Symbole(AFFECTATION_CONSTANTE, idTerminal->getLigne(), idTerminal->getColonne()),
+AffectationConstante::AffectationConstante(IdTerminal *idTerminal, NumTerminal *numT) : Symbole(AFFECTATION_CONSTANTE,
+                                                                                                idTerminal->getLigne(),
+                                                                                                idTerminal->getColonne()),
                                                                                         id(idTerminal), num(numT),
-                                                                                        suivant(nullptr)
-{
+                                                                                        suivant(nullptr) {
 }
 
-void AffectationConstante::setSuivant(AffectationConstante *suiv)
-{
+void AffectationConstante::setSuivant(AffectationConstante *suiv) {
     this->suivant = suiv;
 }
 
-AffectationConstante::~AffectationConstante()
-{
-    if (this->suivant != nullptr)
-    {
+AffectationConstante::~AffectationConstante() {
+    if (this->suivant != nullptr) {
         delete this->suivant;
     }
     delete this->id;
     delete this->num;
 }
 
-AffectationConstante *AffectationConstante::getSuivant() const
-{
+AffectationConstante *AffectationConstante::getSuivant() const {
     return suivant;
 }
 
-void AffectationConstante::executer(TableDesSymboles *tableDesSymboles)
-{
+void AffectationConstante::executer(TableDesSymboles *tableDesSymboles) {
     tableDesSymboles->ajouterConstante(this->id->getNom(), this->id->getLigne(), this->id->getColonne(),
                                        this->num->getValue());
 }
 
-void AffectationConstante::afficher()
-{
+void AffectationConstante::afficher() {
     this->id->afficher();
     std::cout << "=";
     this->num->afficher();
 }
 
-bool AffectationConstante::analyser(TableDesSymboles *tableDesSymboles)
-{
+bool AffectationConstante::analyser(TableDesSymboles *tableDesSymboles) {
 
-    if (tableDesSymboles->estDeclaree(id->getNom()))
-    {
-        if (tableDesSymboles->estConstante(id->getNom()))
-        {
+    if (tableDesSymboles->estDeclaree(id->getNom())) {
+        if (tableDesSymboles->estConstante(id->getNom())) {
             std::cout << "Erreur ligne " << id->getLigne() << ":" << this->id->getColonne() << " : "
             << id->getNom() << " est déjà déclarée à la ligne " << tableDesSymboles->getEntree(id->getNom())->ligne
             << std::endl;
             return false;
-        } else
-        {
+        } else {
             std::cout << "Erreur ligne " << id->getLigne() << ":" << this->id->getColonne() << " : " << id->getNom() <<
             " est déjà déclarée en tant que variable à la ligne " << tableDesSymboles->getEntree(id->getNom())->ligne
             << std::endl;
             return false;
         }
 
-    } else
-    {
+    } else {
         tableDesSymboles->ajouterConstante(this->id->getNom(), this->id->getLigne(), this->id->getColonne(),
                                            this->num->getValue());
     }
@@ -68,8 +58,7 @@ bool AffectationConstante::analyser(TableDesSymboles *tableDesSymboles)
     return true;
 }
 
-void AffectationConstante::optimiser(TableDesSymboles *tableDesSymboles)
-{
+void AffectationConstante::optimiser(TableDesSymboles *tableDesSymboles) {
 }
 
 

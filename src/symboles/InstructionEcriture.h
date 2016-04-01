@@ -4,8 +4,7 @@
 #include "BlocInstruction.h"
 #include "Expression.h"
 
-class InstructionEcriture : public BlocInstruction
-{
+class InstructionEcriture : public BlocInstruction {
 public:
     InstructionEcriture(Expression *exp);
 

@@ -5,8 +5,7 @@
 #include "Facteur.h"
 #include "IdTerminal.h"
 
-class IdentificateurFacteur : public Facteur
-{
+class IdentificateurFacteur : public Facteur {
 public:
     IdentificateurFacteur(IdTerminal *idTerminal);
 
@@ -22,12 +21,13 @@ public:
 
     virtual bool estConstante(TableDesSymboles *tableDesSymboles);
 
-    virtual void optimiser(TableDesSymboles* tableDesSymboles);
+    virtual void optimiser(TableDesSymboles *tableDesSymboles);
 
-    virtual Expression* simplifier(TableDesSymboles* tableDesSymboles);
+    virtual Expression *simplifier(TableDesSymboles *tableDesSymboles);
 
 
     IdTerminal *getId() const;
+
 protected:
     IdTerminal *id;
 };

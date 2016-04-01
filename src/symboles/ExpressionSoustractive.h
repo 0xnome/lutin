@@ -6,8 +6,7 @@
 #include "Terme.h"
 #include "IdentificateurFacteur.h"
 
-class ExpressionSoustractive : public Expression
-{
+class ExpressionSoustractive : public Expression {
 
 public:
     ExpressionSoustractive(Terme *terme, Expression *expression);
@@ -24,9 +23,9 @@ public:
 
     virtual bool estConstante(TableDesSymboles *tableDesSymboles);
 
-    virtual void optimiser(TableDesSymboles* tableDesSymboles);
+    virtual void optimiser(TableDesSymboles *tableDesSymboles);
 
-    virtual Expression* simplifier(TableDesSymboles* tableDesSymboles);
+    virtual Expression *simplifier(TableDesSymboles *tableDesSymboles);
 
 protected:
     Terme *terme;

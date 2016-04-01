@@ -4,31 +4,28 @@
 
 using namespace std;
 
-ExpressionParenthesee::ExpressionParenthesee(Expression *expression) : Facteur(EXPRESSION_PARENTHESEE, expression->getLigne(), expression->getColonne()),
-                                                                       expression(expression)
-{
+ExpressionParenthesee::ExpressionParenthesee(Expression *expression) : Facteur(EXPRESSION_PARENTHESEE,
+                                                                               expression->getLigne(),
+                                                                               expression->getColonne()),
+                                                                       expression(expression) {
 }
 
-ExpressionParenthesee::~ExpressionParenthesee()
-{
+ExpressionParenthesee::~ExpressionParenthesee() {
     delete this->expression;
 }
 
-void ExpressionParenthesee::afficher()
-{
+void ExpressionParenthesee::afficher() {
     std::cout << "(";
     this->expression->afficher();
     std::cout << ")";
 }
 
-int ExpressionParenthesee::eval(TableDesSymboles *tablesDesSymboles)
-{
+int ExpressionParenthesee::eval(TableDesSymboles *tablesDesSymboles) {
     LOG(INFO) << "ExpressionParenthesee::eval";
     return expression->eval(tablesDesSymboles);
 }
 
-void ExpressionParenthesee::executer(TableDesSymboles *tableDesSymboles)
-{ }
+void ExpressionParenthesee::executer(TableDesSymboles *tableDesSymboles) { }
 
 
 bool ExpressionParenthesee::estConstante(TableDesSymboles *tableDesSymboles) {
@@ -37,29 +34,28 @@ bool ExpressionParenthesee::estConstante(TableDesSymboles *tableDesSymboles) {
 
 void ExpressionParenthesee::optimiser(TableDesSymboles *tableDesSymboles) {
     this->expression->optimiser(tableDesSymboles);
-    if(this->expression->estConstante(tableDesSymboles)){
+    if (this->expression->estConstante(tableDesSymboles)) {
         int val = this->expression->eval(tableDesSymboles);
-        Expression *expr = new ConstanteNumerique(new NumTerminal(val, this->expression->getLigne(), this->expression->getColonne()));
+        Expression *expr = new ConstanteNumerique(
+                new NumTerminal(val, this->expression->getLigne(), this->expression->getColonne()));
         delete this->expression;
         this->expression = expr;
     }
-    else{
+    else {
         // si on a pu remplacer par une constante numerique on tente une simplification
         Expression *exp;
         exp = this->expression->simplifier(tableDesSymboles);
-        if(exp != nullptr)
-        {
+        if (exp != nullptr) {
             delete this->expression;
             this->expression = exp;
         }
     }
 }
 
-bool ExpressionParenthesee::analyser(TableDesSymboles *tableDesSymboles)
-{
+bool ExpressionParenthesee::analyser(TableDesSymboles *tableDesSymboles) {
     return this->expression->analyser(tableDesSymboles);
 }
 
-Expression *ExpressionParenthesee::simplifier(TableDesSymboles* tableDesSymboles) {
+Expression *ExpressionParenthesee::simplifier(TableDesSymboles *tableDesSymboles) {
     return nullptr;
 }

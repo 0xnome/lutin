@@ -5,10 +5,8 @@
 #include "Terme.h"
 #include "ExpressionSoustractive.h"
 
-int Etat34::transition(Automate *automate, Symbole *s)
-{
-    switch (*s)
-    {
+int Etat34::transition(Automate *automate, Symbole *s) {
+    switch (*s) {
 
         // suivant de exp
         case PLUS_TERMINAL:
@@ -19,8 +17,7 @@ int Etat34::transition(Automate *automate, Symbole *s)
         case LIRE_TERMINAL:
         case ECRIRE_TERMINAL:
         case ID_TERMINAL:
-        case FIN_PROGRAMME:
-        {
+        case FIN_PROGRAMME: {
             Terme *terme = (Terme *) automate->popSymbole(false);
             automate->popSymbole(true); // sous
             Expression *expr = (Expression *) automate->popSymbole(false);

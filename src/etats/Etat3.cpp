@@ -2,9 +2,8 @@
 #include "Etat8.h"
 #include "Etat9.h"
 
-int Etat3::transition(Automate *automate, Symbole *s)
-{
-    switch (*s){
+int Etat3::transition(Automate *automate, Symbole *s) {
+    switch (*s) {
         case AFFECTATION_CONSTANTE:
             automate->pushSymbole(s);
             automate->pushEtat(new Etat8);

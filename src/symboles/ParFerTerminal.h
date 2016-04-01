@@ -3,11 +3,9 @@
 
 #include "Symbole.h"
 
-class ParFerTerminal : public Symbole
-{
+class ParFerTerminal : public Symbole {
 public:
-    ParFerTerminal(unsigned ligne, unsigned colonne) : Symbole(PARFER_TERMINAL, ligne, colonne)
-    { }
+    ParFerTerminal(unsigned ligne, unsigned colonne) : Symbole(PARFER_TERMINAL, ligne, colonne) { }
 
     ~ParFerTerminal() { }
 };

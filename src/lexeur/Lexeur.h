@@ -13,19 +13,32 @@
 class Lexeur {
 public:
     Lexeur(std::vector<std::string> lignesDuFichier);
-    Symbole* getNext();
-    Symbole* getCurrent();
-    void shift();
+
     ~Lexeur();
+
+    // Déplace la tête de lecture et retourne le nouveau symbole courant
+    Symbole *getNext();
+
+    // Retourne le symbole courant
+    Symbole *getCurrent();
+
+    // Déplace la tête de lecture
+    void shift();
 
 private:
     std::vector<std::vector<std::string>> lignesDuProgramme;
+
     unsigned int ligne, colonne;
+
     bool lectureTerminee;
-    Symbole* current;
+
+    Symbole *current;
+
     std::vector<std::string> lignesDuFichier;
-    std::vector<unsigned long> index ;
-    std::size_t pos ;
+
+    std::vector<unsigned long> index;
+
+    std::size_t pos;
 };
 
 #endif //LUTIN_LEXEUR_H

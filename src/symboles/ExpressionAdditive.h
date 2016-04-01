@@ -5,8 +5,7 @@
 #include "Expression.h"
 #include "Terme.h"
 
-class ExpressionAdditive : public Expression
-{
+class ExpressionAdditive : public Expression {
 
 public:
     ExpressionAdditive(Terme *terme1, Expression *expression1);
@@ -24,9 +23,10 @@ public:
 
     virtual bool estConstante(TableDesSymboles *tableDesSymboles);
 
-    virtual void optimiser(TableDesSymboles* tableDesSymboles);
+    virtual void optimiser(TableDesSymboles *tableDesSymboles);
 
-    virtual Expression* simplifier(TableDesSymboles* tableDesSymboles);
+    virtual Expression *simplifier(TableDesSymboles *tableDesSymboles);
+
 protected:
 
     Terme *terme;

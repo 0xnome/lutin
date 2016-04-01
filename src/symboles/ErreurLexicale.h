@@ -4,19 +4,15 @@
 #include "Symbole.h"
 
 
-class ErreurLexicale : public Symbole
-{
+class ErreurLexicale : public Symbole {
 public:
-    ErreurLexicale(std::string message) : Symbole(ERREUR_LEXICALE)
-    {
+    ErreurLexicale(std::string message) : Symbole(ERREUR_LEXICALE) {
         this->message = message;
     }
 
-    ~ErreurLexicale()
-    { }
+    ~ErreurLexicale() { }
 
-    std::string *getMessage()
-    {
+    std::string *getMessage() {
         return &message;
     }
 

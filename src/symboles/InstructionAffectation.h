@@ -5,8 +5,7 @@
 #include "Expression.h"
 #include "IdTerminal.h"
 
-class InstructionAffectation : public BlocInstruction
-{
+class InstructionAffectation : public BlocInstruction {
 public:
     InstructionAffectation(Expression *expression, IdTerminal *idTerminal);
 

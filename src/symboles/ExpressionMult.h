@@ -7,8 +7,7 @@
 
 #include "Facteur.h"
 
-class ExpressionMult : public Terme
-{
+class ExpressionMult : public Terme {
 
 public:
     ExpressionMult(Facteur *facteur1, Terme *terme1);
@@ -25,9 +24,10 @@ public:
 
     virtual bool estConstante(TableDesSymboles *tableDesSymboles);
 
-    virtual void optimiser(TableDesSymboles* tableDesSymboles);
+    virtual void optimiser(TableDesSymboles *tableDesSymboles);
 
-    virtual Expression* simplifier(TableDesSymboles* tableDesSymboles);
+    virtual Expression *simplifier(TableDesSymboles *tableDesSymboles);
+
 protected:
     Facteur *facteur;
 

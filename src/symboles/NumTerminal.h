@@ -4,22 +4,17 @@
 #include "Symbole.h"
 
 
-class NumTerminal : public Symbole
-{
+class NumTerminal : public Symbole {
 public:
-    NumTerminal(int val, unsigned ligne, unsigned colonne) : Symbole(NUM_TERMINAL, ligne, colonne), value(val)
-    { };
+    NumTerminal(int val, unsigned ligne, unsigned colonne) : Symbole(NUM_TERMINAL, ligne, colonne), value(val) { };
 
-    ~NumTerminal()
-    { }
+    ~NumTerminal() { }
 
-    void afficher()
-    {
+    void afficher() {
         std::cout << value;
     }
 
-    int getValue()
-    {
+    int getValue() {
         return value;
     }
 

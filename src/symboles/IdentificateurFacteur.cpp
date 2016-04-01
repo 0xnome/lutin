@@ -3,72 +3,58 @@
 
 IdentificateurFacteur::IdentificateurFacteur(IdTerminal *idTerminal) : Facteur(IDENTIFICATEUR_FACTEUR,
                                                                                idTerminal->getLigne(),
-                                                                               idTerminal->getColonne()), id(idTerminal)
-{
+                                                                               idTerminal->getColonne()),
+                                                                       id(idTerminal) {
 }
 
-IdentificateurFacteur::~IdentificateurFacteur()
-{
+IdentificateurFacteur::~IdentificateurFacteur() {
     delete this->id;
 }
 
-void IdentificateurFacteur::afficher()
-{
+void IdentificateurFacteur::afficher() {
     this->id->afficher();
 }
 
-int IdentificateurFacteur::eval(TableDesSymboles *tablesDesSymboles)
-{
+int IdentificateurFacteur::eval(TableDesSymboles *tablesDesSymboles) {
     LOG(INFO) << "IdentificateurFacteur::eval";
-    if (analyser(tablesDesSymboles))
-    {
+    if (analyser(tablesDesSymboles)) {
         return *tablesDesSymboles->getValeur(id->getNom());
-    } else
-    {
+    } else {
         exit(1);
     }
 }
 
-void IdentificateurFacteur::executer(TableDesSymboles *tableDesSymboles)
-{
+void IdentificateurFacteur::executer(TableDesSymboles *tableDesSymboles) {
 }
 
-IdTerminal *IdentificateurFacteur::getId() const
-{
+IdTerminal *IdentificateurFacteur::getId() const {
     return id;
 }
 
-bool IdentificateurFacteur::estConstante(TableDesSymboles *tableDesSymboles)
-{
+bool IdentificateurFacteur::estConstante(TableDesSymboles *tableDesSymboles) {
     return tableDesSymboles->estConstante(id->getNom()) ||
            (tableDesSymboles->estInitialisee(id->getNom()) && tableDesSymboles->getValeur(id->getNom()) != nullptr);
 }
 
-void IdentificateurFacteur::optimiser(TableDesSymboles *tableDesSymboles)
-{
+void IdentificateurFacteur::optimiser(TableDesSymboles *tableDesSymboles) {
     return;
 }
 
-Expression *IdentificateurFacteur::simplifier(TableDesSymboles *tableDesSymboles)
-{
+Expression *IdentificateurFacteur::simplifier(TableDesSymboles *tableDesSymboles) {
     return nullptr;
 }
 
-bool IdentificateurFacteur::analyser(TableDesSymboles *tableDesSymboles)
-{
+bool IdentificateurFacteur::analyser(TableDesSymboles *tableDesSymboles) {
     bool ret = true;
 
-    if (!tableDesSymboles->estDeclaree(this->id->getNom()))
-    {
+    if (!tableDesSymboles->estDeclaree(this->id->getNom())) {
         std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : '" <<
         this->id->getNom() << "' n'est pas déclarée." << std::endl;
         ret = false;
-    } else
-    {
+    } else {
         tableDesSymboles->setSymboleUtilise(id->getNom());
 
-        if (!tableDesSymboles->estInitialisee(this->id->getNom()))
-        {
+        if (!tableDesSymboles->estInitialisee(this->id->getNom())) {
             std::cerr << "Erreur ligne " << this->id->getLigne() << ":" << this->id->getColonne() << " : " <<
             this->id->getNom() << " n'est pas initialisée." << std::endl;
             ret = false;

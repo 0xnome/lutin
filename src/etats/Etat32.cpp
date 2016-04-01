@@ -12,16 +12,15 @@ int Etat32::transition(Automate *automate, Symbole *s) {
         case PLUS_TERMINAL:
         case PARFER_TERMINAL:
         case POINT_VIRGULE_TERMINAL:
-        //recuperation des erreurs
+            //recuperation des erreurs
         case LIRE_TERMINAL:
         case ECRIRE_TERMINAL:
         case ID_TERMINAL:
-        case FIN_PROGRAMME:
-        {
+        case FIN_PROGRAMME: {
             NumTerminal *numTerminal = (NumTerminal *) automate->popSymbole(false);
             automate->popEtat(1);
 
-            ConstanteNumerique * constanteNumerique = new ConstanteNumerique(numTerminal);
+            ConstanteNumerique *constanteNumerique = new ConstanteNumerique(numTerminal);
             return automate->etatCourant()->transition(automate, constanteNumerique);
         }
         default:

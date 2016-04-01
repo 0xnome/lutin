@@ -10,15 +10,13 @@ namespace po = boost::program_options;
 
 using namespace std;
 
-namespace
-{
+namespace {
     const size_t ERROR_IN_COMMAND_LINE = 1;
     const size_t SUCCESS = 0;
     const size_t ERROR_UNHANDLED_EXCEPTION = 2;
 }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     /**
      * variables pour la récupération des options
      */
@@ -29,8 +27,7 @@ int main(int argc, char **argv)
     bool program = false;
 
 
-    try
-    {
+    try {
         po::options_description desc("Options");
 
         desc.add_options()
@@ -39,7 +36,7 @@ int main(int argc, char **argv)
                 ("execute,e", "Exécution interactive du programme")
                 ("analyse,a", "Analyse statique du programme")
                 ("optimize,o", "Transforme le programme et le simplifie")
-                ("verbose,v", po::value<std::string>() , "Affiche le debug")
+                ("verbose,v", "Affiche le debug")
                 ("input,i", po::value<std::string>()->required(), "programme lutin, argument par défaut");
 
         po::positional_options_description p;
@@ -47,41 +44,35 @@ int main(int argc, char **argv)
         po::variables_map vm;
         po::notify(vm);
 
+        // Configuration du logger
         el::Configurations c;
         c.setToDefault();
         c.parseFromText("*GLOBAL:\n ENABLED = FALSE");
         c.parseFromText("*GLOBAL:\n FORMAT = --- %level --- %msg");
 
         el::Loggers::reconfigureLogger("default", c);
-        try
-        {
+        try {
             po::store(po::command_line_parser(argc, argv).
                     options(desc).positional(p).run(), vm);
 
 
-            if (argc == 1)
-            {
+            if (argc == 1) {
                 std::cerr << "Compilateur Lutin" << std::endl;
                 std::cerr << "Utilisation: lut [options] fichier" << std::endl;
                 std::cerr << desc << std::endl;
                 return ERROR_IN_COMMAND_LINE;
             }
 
-            if (vm.count("help"))
-            {
+            if (vm.count("help")) {
                 std::cout << "Compilateur Lutin" << std::endl;
                 std::cout << "Utilisation: lut [options] fichier" << std::endl;
                 std::cout << desc << std::endl;
                 return SUCCESS;
             }
 
-            if (vm.count("verbose"))
-            {
-                std::string level = vm["verbose"].as<std::string>();
-                if (level.empty())
-                    level = "GLOBAL";
-                std::cout << level << endl;
-                std::string levelCommand = "*"+level+":\n ENABLED = TRUE";
+            if (vm.count("verbose")) {
+                std::string level = "GLOBAL";
+                std::string levelCommand = "*" + level + ":\n ENABLED = TRUE";
                 c.parseFromText(levelCommand);
                 el::Loggers::reconfigureLogger("default", c);
             }
@@ -95,18 +86,18 @@ int main(int argc, char **argv)
             po::notify(vm);
         }
 
-        catch (po::error &e)
-        {
+        catch (po::error &e) {
             std::cerr << "ERROR: " << e.what() << std::endl << std::endl;
             std::cerr << desc << std::endl;
             return ERROR_IN_COMMAND_LINE;
         }
 
+        // Création de l'automate
         Automate automate(fichier);
 
-        if (automate.programmeEstCharge())
-        {
+        if (automate.programmeEstCharge()) {
             bool analyse_ok = true;
+            // Execution des différents modules demandés
             if (analyse)
                 analyse_ok = automate.analyserProgramme();
 
@@ -116,28 +107,23 @@ int main(int argc, char **argv)
             if (program)
                 automate.afficherProgramme();
 
-            if (execute && analyse_ok)
-            {
+            if (execute && analyse_ok) {
                 automate.executerProgramme();
             }
-            else
-            {
-                if (!analyse_ok && execute)
-                {
+            else {
+                if (!analyse_ok && execute) {
                     std::cerr << "L'analyse du programme indique que le programme ne doit pas etre executé." <<
                     std::endl;
                 }
             }
 
-        } else
-        {
-            std::cerr << "Le programme n'est pas correcte." << std::endl;
+        } else {
+            std::cerr << "Le programme n'est pas correct." << std::endl;
         }
 
     }
 
-    catch (std::exception &e)
-    {
+    catch (std::exception &e) {
         std::cerr << "Un erreur non traitée est remontée jusqu'au main : "
         << e.what() << std::endl << "L'application va se stopper" << std::endl;
         return ERROR_UNHANDLED_EXCEPTION;

@@ -6,8 +6,7 @@
 #include <vector>
 
 
-struct Entree
-{
+struct Entree {
     bool estInitialisee;
     bool estUtilisee;
     int *valeur;
@@ -15,8 +14,7 @@ struct Entree
     unsigned colonne;
 };
 
-class TableDesSymboles
-{
+class TableDesSymboles {
 
 public:
 

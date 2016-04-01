@@ -1,10 +1,8 @@
 #include "Etat42.h"
 #include "ExpressionDiv.h"
 
-int Etat42::transition(Automate *automate, Symbole *s)
-{
-    switch (*s)
-    {
+int Etat42::transition(Automate *automate, Symbole *s) {
+    switch (*s) {
         //suivant de Terme
         case MULT_TERMINAL:
         case DIV_TERMINAL:
@@ -16,8 +14,7 @@ int Etat42::transition(Automate *automate, Symbole *s)
         case LIRE_TERMINAL:
         case ECRIRE_TERMINAL:
         case ID_TERMINAL:
-        case FIN_PROGRAMME:
-        {
+        case FIN_PROGRAMME: {
             Facteur *facteur = (Facteur *) automate->popSymbole(false);
             automate->popSymbole(true); //div
             Terme *terme = (Terme *) automate->popSymbole(false);

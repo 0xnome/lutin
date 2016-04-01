@@ -5,8 +5,7 @@
 #include "Terme.h"
 #include "Facteur.h"
 
-class ExpressionDiv : public Terme
-{
+class ExpressionDiv : public Terme {
 
 public:
     ExpressionDiv(Facteur *facteur1, Terme *terme1);
@@ -23,9 +22,9 @@ public:
 
     virtual bool estConstante(TableDesSymboles *tableDesSymboles);
 
-    virtual void optimiser(TableDesSymboles* tableDesSymboles);
+    virtual void optimiser(TableDesSymboles *tableDesSymboles);
 
-    virtual Expression* simplifier(TableDesSymboles* tableDesSymboles);
+    virtual Expression *simplifier(TableDesSymboles *tableDesSymboles);
 
 protected:
 

@@ -3,46 +3,41 @@
 #include "Programme.h"
 
 
-Programme::Programme(BlocDeclaration *blocDeclaration, BlocInstruction *blocInstruction) : Symbole(PROGRAMME, blocDeclaration->getLigne(), blocDeclaration->getColonne()),
+Programme::Programme(BlocDeclaration *blocDeclaration, BlocInstruction *blocInstruction) : Symbole(PROGRAMME,
+                                                                                                   blocDeclaration->getLigne(),
+                                                                                                   blocDeclaration->getColonne()),
                                                                                            blocDeclaration(
                                                                                                    blocDeclaration),
                                                                                            blocInstruction(
-                                                                                                   blocInstruction)
-{
+                                                                                                   blocInstruction) {
 }
 
-Programme::~Programme()
-{
+Programme::~Programme() {
     delete this->blocDeclaration;
     delete this->blocInstruction;
 }
 
-void Programme::executer(TableDesSymboles *tableDesSymboles)
-{
+void Programme::executer(TableDesSymboles *tableDesSymboles) {
     LOG(INFO) << "Programme::execute";
-    if (!blocDeclaration->estVide())
-    {
+    if (!blocDeclaration->estVide()) {
         BlocDeclaration *declarationCur;
         declarationCur = blocDeclaration;
 
         declarationCur->executer(tableDesSymboles);
 
-        while (declarationCur->getSuivant() != nullptr)
-        {
+        while (declarationCur->getSuivant() != nullptr) {
             declarationCur = declarationCur->getSuivant();
             declarationCur->executer(tableDesSymboles);
         }
     }
 
-    if (!blocInstruction->estVide())
-    {
+    if (!blocInstruction->estVide()) {
         BlocInstruction *instructionCur;
         instructionCur = blocInstruction;
 
         instructionCur->executer(tableDesSymboles);
 
-        while (instructionCur->getSuivant() != nullptr)
-        {
+        while (instructionCur->getSuivant() != nullptr) {
             instructionCur = instructionCur->getSuivant();
             instructionCur->executer(tableDesSymboles);
         }
@@ -50,32 +45,27 @@ void Programme::executer(TableDesSymboles *tableDesSymboles)
     return;
 }
 
-void Programme::afficher()
-{
+void Programme::afficher() {
 
-    if (!blocDeclaration->estVide())
-    {
+    if (!blocDeclaration->estVide()) {
         BlocDeclaration *declarationCur;
         declarationCur = blocDeclaration;
 
         declarationCur->afficher();
 
-        while (declarationCur->getSuivant() != nullptr)
-        {
+        while (declarationCur->getSuivant() != nullptr) {
             declarationCur = declarationCur->getSuivant();
             declarationCur->afficher();
         }
     }
 
-    if (!blocInstruction->estVide())
-    {
+    if (!blocInstruction->estVide()) {
         BlocInstruction *instructionCur;
         instructionCur = blocInstruction;
 
         instructionCur->afficher();
 
-        while (instructionCur->getSuivant() != nullptr)
-        {
+        while (instructionCur->getSuivant() != nullptr) {
             instructionCur = instructionCur->getSuivant();
             instructionCur->afficher();
         }
@@ -83,32 +73,27 @@ void Programme::afficher()
     return;
 }
 
-bool Programme::analyser(TableDesSymboles *tableDesSymboles)
-{
+bool Programme::analyser(TableDesSymboles *tableDesSymboles) {
     bool ret = true;
-    if (!blocDeclaration->estVide())
-    {
+    if (!blocDeclaration->estVide()) {
         BlocDeclaration *declarationCur;
         declarationCur = blocDeclaration;
 
         ret = ret & declarationCur->analyser(tableDesSymboles);
 
-        while (declarationCur->getSuivant() != nullptr)
-        {
+        while (declarationCur->getSuivant() != nullptr) {
             declarationCur = declarationCur->getSuivant();
             ret = ret & declarationCur->analyser(tableDesSymboles);
         }
     }
 
-    if (!blocInstruction->estVide())
-    {
+    if (!blocInstruction->estVide()) {
         BlocInstruction *instructionCur;
         instructionCur = blocInstruction;
 
         ret = ret & instructionCur->analyser(tableDesSymboles);
 
-        while (instructionCur->getSuivant() != nullptr)
-        {
+        while (instructionCur->getSuivant() != nullptr) {
             instructionCur = instructionCur->getSuivant();
             ret = ret & instructionCur->analyser(tableDesSymboles);
         }
@@ -116,31 +101,26 @@ bool Programme::analyser(TableDesSymboles *tableDesSymboles)
     return ret;
 }
 
-void Programme::optimiser(TableDesSymboles *tableDesSymboles)
-{
-    if (!blocDeclaration->estVide())
-    {
+void Programme::optimiser(TableDesSymboles *tableDesSymboles) {
+    if (!blocDeclaration->estVide()) {
         BlocDeclaration *declarationCur;
         declarationCur = blocDeclaration;
 
         declarationCur->executer(tableDesSymboles);
 
-        while (declarationCur->getSuivant() != nullptr)
-        {
+        while (declarationCur->getSuivant() != nullptr) {
             declarationCur = declarationCur->getSuivant();
             declarationCur->executer(tableDesSymboles);
         }
     }
 
-    if (!blocInstruction->estVide())
-    {
+    if (!blocInstruction->estVide()) {
         BlocInstruction *instructionCur;
         instructionCur = blocInstruction;
 
         instructionCur->optimiser(tableDesSymboles);
 
-        while (instructionCur->getSuivant() != nullptr)
-        {
+        while (instructionCur->getSuivant() != nullptr) {
             instructionCur = instructionCur->getSuivant();
             instructionCur->optimiser(tableDesSymboles);
         }
@@ -148,7 +128,6 @@ void Programme::optimiser(TableDesSymboles *tableDesSymboles)
     return;
 }
 
-Programme::Programme(int id) : Symbole(id)
-{
+Programme::Programme(int id) : Symbole(id) {
 
 }

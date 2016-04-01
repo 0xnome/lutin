@@ -4,22 +4,17 @@
 #include "Symbole.h"
 
 
-class IdTerminal : public Symbole
-{
+class IdTerminal : public Symbole {
 public:
-    IdTerminal(std::string nom, unsigned ligne, unsigned colonne) : Symbole(ID_TERMINAL, ligne, colonne), nom(nom)
-    { };
+    IdTerminal(std::string nom, unsigned ligne, unsigned colonne) : Symbole(ID_TERMINAL, ligne, colonne), nom(nom) { };
 
-    ~IdTerminal()
-    { }
+    ~IdTerminal() { }
 
-    void afficher()
-    {
+    void afficher() {
         std::cout << nom;
     }
 
-    std::string getNom()
-    {
+    std::string getNom() {
         return nom;
     }
 

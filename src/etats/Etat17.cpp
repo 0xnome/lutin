@@ -10,12 +10,11 @@ int Etat17::transition(Automate *automate, Symbole *s) {
         case POINT_VIRGULE_TERMINAL:
         case PLUS_TERMINAL:
         case MOINS_TERMINAL:
-        //recuperation des erreurs
+            //recuperation des erreurs
         case FIN_PROGRAMME:
         case ECRIRE_TERMINAL:
         case LIRE_TERMINAL:
-        case ID_TERMINAL:
-        {
+        case ID_TERMINAL: {
             Terme *terme = (Terme *) automate->popSymbole(false);
             automate->popEtat(1);
             // attention cast et passage en statique

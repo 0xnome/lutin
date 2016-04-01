@@ -3,14 +3,11 @@
 
 #include "Symbole.h"
 
-class DivTerminal : public Symbole
-{
+class DivTerminal : public Symbole {
 public:
-    DivTerminal(unsigned ligne, unsigned colonne) : Symbole(DIV_TERMINAL, ligne, colonne)
-    { }
+    DivTerminal(unsigned ligne, unsigned colonne) : Symbole(DIV_TERMINAL, ligne, colonne) { }
 
-    ~DivTerminal()
-    { }
+    ~DivTerminal() { }
 };
 
 #endif //LUTIN_DIVTERMINAL_H

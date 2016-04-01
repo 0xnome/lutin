@@ -4,21 +4,18 @@
 #include "Etat37.h"
 #include "Etat38.h"
 
-int Etat29::transition(Automate *automate, Symbole *s)
-{
-    switch (*s)
-    {
+int Etat29::transition(Automate *automate, Symbole *s) {
+    switch (*s) {
         //  suivant de exp
         case PLUS_TERMINAL:
         case MOINS_TERMINAL:
         case PARFER_TERMINAL:
         case POINT_VIRGULE_TERMINAL:
-        //recuperation des erreurs
+            //recuperation des erreurs
         case LIRE_TERMINAL:
         case ECRIRE_TERMINAL:
         case ID_TERMINAL:
-        case FIN_PROGRAMME:
-        {
+        case FIN_PROGRAMME: {
             Terme *terme = (Terme *) automate->popSymbole(false); // on recupère la terme
             automate->popSymbole(true); // on pop le add
             Expression *expression = (Expression *) automate->popSymbole(false);
@@ -30,11 +27,11 @@ int Etat29::transition(Automate *automate, Symbole *s)
         }
 
         case MULT_TERMINAL:
-            automate->decalage(new Etat37,s);
+            automate->decalage(new Etat37, s);
             return CONTINUE;
 
         case DIV_TERMINAL:
-            automate->decalage(new Etat38,s);
+            automate->decalage(new Etat38, s);
             return CONTINUE;
 
         default:

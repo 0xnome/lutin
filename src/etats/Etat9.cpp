@@ -7,11 +7,10 @@ int Etat9::transition(Automate *automate, Symbole *s) {
         case EGAL_TERMINAL:
             automate->decalage(new Etat21, s);
             return CONTINUE;
-        // recuperation des erreurs
-        case NUM_TERMINAL:
-        {
+            // recuperation des erreurs
+        case NUM_TERMINAL: {
             automate->erreurSyntaxique(s, "operateur =");
-            EgalTerminal* symboleOublie = new EgalTerminal(s->getLigne(), s->getColonne());
+            EgalTerminal *symboleOublie = new EgalTerminal(s->getLigne(), s->getColonne());
             automate->pushSymbole(symboleOublie);
             automate->pushEtat(new Etat21);
             return CONTINUE;

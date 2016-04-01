@@ -34,7 +34,6 @@ public:
     virtual bool estVide() = 0;
 
 
-
 protected:
     BlocDeclaration(int id, unsigned ligne, unsigned colonne) : Symbole(id, ligne, colonne), suivant(nullptr) {
     }

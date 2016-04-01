@@ -1,10 +1,8 @@
 #include "Etat41.h"
 #include "ExpressionMult.h"
 
-int Etat41::transition(Automate *automate, Symbole *s)
-{
-    switch (*s)
-    {
+int Etat41::transition(Automate *automate, Symbole *s) {
+    switch (*s) {
         // suivant Terme
         case MULT_TERMINAL:
         case DIV_TERMINAL:
@@ -16,8 +14,7 @@ int Etat41::transition(Automate *automate, Symbole *s)
         case LIRE_TERMINAL:
         case ECRIRE_TERMINAL:
         case ID_TERMINAL:
-        case FIN_PROGRAMME:
-        {
+        case FIN_PROGRAMME: {
             Facteur *facteur = (Facteur *) automate->popSymbole(false);
             automate->popSymbole(true); //mult
             Terme *terme = (Terme *) automate->popSymbole(false);

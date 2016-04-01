@@ -3,8 +3,7 @@
 
 #include "Facteur.h"
 
-class ExpressionParenthesee : public Facteur
-{
+class ExpressionParenthesee : public Facteur {
 
 public:
     ExpressionParenthesee(Expression *expression);
@@ -21,9 +20,9 @@ public:
 
     virtual bool estConstante(TableDesSymboles *tableDesSymboles);
 
-    virtual void optimiser(TableDesSymboles* tableDesSymboles);
+    virtual void optimiser(TableDesSymboles *tableDesSymboles);
 
-    virtual Expression* simplifier(TableDesSymboles* tableDesSymboles);
+    virtual Expression *simplifier(TableDesSymboles *tableDesSymboles);
 
 protected:
     Expression *expression;

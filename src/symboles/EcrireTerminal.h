@@ -3,14 +3,11 @@
 
 #include "Symbole.h"
 
-class EcrireTerminal : public Symbole
-{
+class EcrireTerminal : public Symbole {
 public:
-    EcrireTerminal(unsigned ligne, unsigned colonne) : Symbole(ECRIRE_TERMINAL, ligne, colonne)
-    { }
+    EcrireTerminal(unsigned ligne, unsigned colonne) : Symbole(ECRIRE_TERMINAL, ligne, colonne) { }
 
-    ~EcrireTerminal()
-    { }
+    ~EcrireTerminal() { }
 
 };
 
