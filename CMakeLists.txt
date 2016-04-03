@@ -29,5 +29,8 @@ file(GLOB_RECURSE lib_header "lib/*.h")
 add_executable(${project_name} ${header_files} ${source_files} ${lib_header})
 TARGET_LINK_LIBRARIES(${project_name} ${Boost_LIBRARIES})
 
-add_custom_target(tests DEPENDS testLutin ${project_name})
-add_custom_command(OUTPUT testLutin COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/Tests && ./mktest.sh)
+add_custom_target(test DEPENDS ${project_name} testLutin )
+add_custom_command(OUTPUT testLutin
+        COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/bin/${project_name} ${CMAKE_CURRENT_SOURCE_DIR}/Tests/lut  &&
+        cd ${CMAKE_CURRENT_SOURCE_DIR}/Tests &&
+        ./mktest.sh)
