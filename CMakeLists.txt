@@ -16,8 +16,8 @@ include_directories(src/lexeur)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 
 if (WIN32)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -ggdb -std=c++0x -L "C:/Program Files/Boost/boost_1_55_0/stage/lib" -lboost_program_options -lboost_regex")
-else()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -ggdb -std=c++0x -L " C:/Program Files/Boost/boost_1_55_0/stage/lib" -lboost_program_options -lboost_regex")
+else ()
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -ggdb -std=c++0x -lboost_program_options -lboost_regex")
 endif ()
 
@@ -29,5 +29,5 @@ file(GLOB_RECURSE lib_header "lib/*.h")
 add_executable(${project_name} ${header_files} ${source_files} ${lib_header})
 TARGET_LINK_LIBRARIES(${project_name} ${Boost_LIBRARIES})
 
-add_custom_target(tests DEPENDS testLutin )
-add_custom_command(OUTPUT testLutin COMMAND cd  ${CMAKE_CURRENT_SOURCE_DIR}/Tests && ./mktest.sh)
+add_custom_target(tests DEPENDS testLutin ${project_name})
+add_custom_command(OUTPUT testLutin COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/Tests && ./mktest.sh)
