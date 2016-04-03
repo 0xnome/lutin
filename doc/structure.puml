@@ -37,7 +37,6 @@ class Programme{
 class TableDesSymboles{
 }
 
-Automate --> TableDesSymboles : TableDesSymboles
 
 
 class Lexeur{
